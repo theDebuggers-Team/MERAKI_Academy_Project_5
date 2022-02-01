@@ -17,7 +17,10 @@ const getAnProductById = (req, res) => {};
 
 //create controller for getAnProductByCategory
 
-const getAnProductByCategory = (req, res) => {};
+const getAnProductByCategory = (req, res) => {
+  const category = req.query.category
+
+};
 
 //create controller for deleteAnProductById
 
