@@ -29,7 +29,9 @@ const deleteAnProductByUserId = (req, res) => {};
 
 //create controller for updateAnProductById
 
-const updateAnProductById = (req, res) => {};
+const updateAnProductById = (req, res) => {
+  const {productId} = req.params.id
+};
 
 module.exports = {
   createNewProduct,
