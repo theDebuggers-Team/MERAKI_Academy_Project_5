@@ -1,0 +1,28 @@
+ DROP DATABASE MERAKI_Academy_Project_5;
+CREATE DATABASE MERAKI_Academy_Project_5 ;
+USE  MERAKI_Academy_Project_5 ;
+
+
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT NOT NULL,
+    role VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users(
+    id INT AUTO_INCREMENT NOT NULL,
+    firstName VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
+    age INT(3),
+    country VARCHAR(255),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role_id INT NOT NULL,
+    phone_Number VARCHAR(255),
+    FOREIGN KEY (role_id) REFERENCES roles(id),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id),
+    image Blob,
+    publish_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
