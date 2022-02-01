@@ -19,7 +19,7 @@ const getAnProductById = (req, res) => {};
 
 const getAnProductByCategory = (req, res) => {
   const category = req.query.category
-
+  const query = `SELECT title,description,firstName,user_id FROM users INNER JOIN products ON users.id=products.user_id where products.category = ?`;
 };
 
 //create controller for deleteAnProductById
