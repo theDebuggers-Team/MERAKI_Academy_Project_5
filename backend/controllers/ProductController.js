@@ -25,7 +25,7 @@ const getAnProductByCategory = (req, res) => {
     if(err){
     res.status(404).json({success:false,message:"No products found with the indicated category",err:err})
     }else{
-      res.status(200).json({success:true,message:`The products=> ${category} `,results :result})
+      res.status(200).json({success:true,message:`All products with Category=> ${category} `,results :result})
     }
     
     })
