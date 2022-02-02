@@ -11,7 +11,7 @@ const createNewComment = (req, res) => {
   const data = [comment, user_id, productId];
   connection.query(query, data, (err, result) => {
     if (err) {
-      return res.status(404).json({
+      return res.status(500).json({
         success: false,
         message: `Something went wrong while creating a new comment`,
         err: err,
@@ -19,9 +19,7 @@ const createNewComment = (req, res) => {
     }
     res.status(200).json({
       success: true,
-
       message: `The comment has been created successfully`,
-      message: `The comment has been created success`,
       results: result,
     });
   });
@@ -83,7 +81,7 @@ const deleteCommentById = (req, res) => {
 //create controller for delete  comment by user_id
 
 const deleteCommentByUserId = (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params.user_id;
   const query = `update comments set is_deleted=1 where user_id=?`;
   const data = [userId];
   connection.query(query, data, (err, result) => {

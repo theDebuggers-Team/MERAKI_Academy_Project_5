@@ -15,10 +15,10 @@ const register = async (req, res) => {
     phone_Number,
     password,
     role_id,
-    image
+    users_image,
   } = req.body;
   const hashPassword = await bcrypt.hash(password, 10);
-  const query = `insert into users (firstName,lastName,age,country,email,phone_Number,password,role_id,image) values (?,?,?,?,?,?,?,?,?)`;
+  const query = `insert into users (firstName,lastName,age,country,email,phone_Number,password,role_id,users_image) values (?,?,?,?,?,?,?,?,?)`;
 
   const data = [
     firstName,
@@ -29,7 +29,7 @@ const register = async (req, res) => {
     phone_Number,
     hashPassword,
     role_id,
-    image
+    users_image,
   ];
 
   connection.query(query, data, (err, result) => {
@@ -65,8 +65,9 @@ const login = (req, res) => {
     if (result.length) {
       const valid = await bcrypt.compare(password, result[0].password);
       if (valid) {
+        console.log(result);
         const payload = {
-          userId: result[0].userId,
+          userId: result[0].id,
           country: result[0].country,
           role: result[0].role,
           phone_number: result[0].phone_Number,
@@ -78,20 +79,16 @@ const login = (req, res) => {
 
         const token = jwt.sign(payload, process.env.SECRET, options);
 
-        res
-          .status(200)
-          .json({
-            success: true,
-            message: `Valid login credentials`,
-            token: token,
-          });
+        res.status(200).json({
+          success: true,
+          message: `Valid login credentials`,
+          token: token,
+        });
       } else {
-        res
-          .status(404)
-          .json({
-            success: false,
-            message: "The password you’ve entered is incorrect",
-          });
+        res.status(404).json({
+          success: false,
+          message: "The password you’ve entered is incorrect",
+        });
       }
     } else {
       res
