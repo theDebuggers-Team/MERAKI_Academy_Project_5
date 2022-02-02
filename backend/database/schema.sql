@@ -1,7 +1,6 @@
- DROP DATABASE MERAKI_Academy_Project_5;
+DROP DATABASE MERAKI_Academy_Project_5;
 CREATE DATABASE MERAKI_Academy_Project_5 ;
 USE  MERAKI_Academy_Project_5 ;
-
 
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,
@@ -26,3 +25,27 @@ CREATE TABLE users(
     publish_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE products (
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    user_id INT,
+    price INT,
+    image BLOB,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    category VARCHAR(20),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE comments (
+id INT AUTO_INCREMENT NOT NULL,
+comment TEXT NOT NULL,
+user_id INT,
+product_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (product_id) REFERENCES products(id),
+ publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
