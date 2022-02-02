@@ -3,7 +3,9 @@ const {connection} = require("../database/db");
 
 //create controller for create New comment
 
-const createNewComment = (req, res) => {};
+const createNewComment = (req, res) => {
+  const productId = req.params.id
+};
 
 //create controller for update comment by id
 
