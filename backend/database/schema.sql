@@ -47,6 +47,7 @@ product_id INT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (product_id) REFERENCES products(id),
  publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+ is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 
 );
@@ -57,6 +58,7 @@ product_id INT,
 user_id INT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (product_id) REFERENCES products(id),
+is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
 
@@ -66,5 +68,6 @@ product_id INT,
 user_id INT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (product_id) REFERENCES products(id),
+is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
