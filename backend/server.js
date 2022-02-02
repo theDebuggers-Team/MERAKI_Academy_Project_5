@@ -2,13 +2,14 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
- require("./database/db");
+require("./database/db");
 
 const { productRouter } = require("./routes/productRouter");
 const { userRouter } = require("./routes/userRouter");
 const { roleRouter } = require("./routes/roleRouter");
 const { commentRouter } = require("./routes/commentRouter");
-
+const { wishlistRouter } = require("./routes/wishlistRouter");
+const { likeRouter } = require("./routes/likeRouter");
 app.use(cors());
 
 app.use(express.json());
@@ -30,6 +31,12 @@ app.use("/comment", commentRouter);
 //create role route with path of "/role"
 
 app.use("/role", roleRouter);
+
+//create wishlist route with path of "/wishlist"
+app.use("/wishlist", wishlistRouter);
+
+//create like route with path of "/like"
+app.use("/like", likeRouter);
 
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
