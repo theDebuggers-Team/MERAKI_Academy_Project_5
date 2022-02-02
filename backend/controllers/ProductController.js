@@ -41,7 +41,26 @@ const deleteAnProductByUserId = (req, res) => {};
 
 //create controller for updateAnProductById
 
-const updateAnProductById = (req, res) => {};
+const updateAnProductById = (req, res) => {
+  const {productId} = req.params.id
+const {title,description,price,image} = req.body
+
+const query = `UPDATE products SET title=?,description=?,price=?,image=?  where id=?`;
+const data = [title,description,price,image,productId]
+
+connection.query(query,data,(err,result)=>{
+  
+  if(err){
+  res.status(404).json({success:false,message:"The product with id: ${id} is not found",err:err})
+  }
+  else{
+   res.status(200).json({success:true,message:`Product with id :${productId} is updated`,results :result})
+   }
+   
+  
+  })
+
+};
 
 module.exports = {
   createNewProduct,
