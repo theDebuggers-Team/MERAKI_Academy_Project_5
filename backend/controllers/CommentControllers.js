@@ -5,20 +5,22 @@ const { connection } = require("../database/db");
 
 const createNewComment = (req, res) => {
   const productId = req.params.id;
-  const { comment, user_id } = req.body;
-
+  const { comment } = req.body;
+  const user_id = req.token.userId;
   const query = `insert into comments (comment,user_id,product_id) values (?,?,?) `;
   const data = [comment, user_id, productId];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(404).json({
         success: false,
-        message: `something went wrong while creating a new comment`,
+        message: `Something went wrong while creating a new comment`,
         err: err,
       });
     }
     res.status(200).json({
       success: true,
+
+      message: `The comment has been created successfully`,
       message: `The comment has been created success`,
       results: result,
     });

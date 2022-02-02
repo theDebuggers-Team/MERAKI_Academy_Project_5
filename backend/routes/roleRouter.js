@@ -1,4 +1,5 @@
 const express = require("express");
+const authentication = require("../middleware/authentication");
 
 //create product router
 
@@ -9,6 +10,6 @@ const roleRouter = express.Router();
 const { createNewRole } = require("../controllers/RoleContoller");
 
 //create endpoint for create new role
-roleRouter.post("/", createNewRole);
+roleRouter.post("/", authentication,createNewRole);
 
 module.exports = { roleRouter };

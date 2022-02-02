@@ -21,7 +21,7 @@ CREATE TABLE users(
     FOREIGN KEY (role_id) REFERENCES roles(id),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id),
-    image Blob,
+    image MEDIUMTEXT,
     publish_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE products (
     description TEXT NOT NULL,
     user_id INT,
      price INT,
-     image BLOB,
+     image MEDIUMTEXT,
     FOREIGN KEY (user_id) REFERENCES users(id),
     publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
   category VARCHAR(20),
