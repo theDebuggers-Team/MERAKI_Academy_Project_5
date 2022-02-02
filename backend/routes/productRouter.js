@@ -26,11 +26,13 @@ productRouter.get("/", getAllProducts);
 
 //3- for get product by id
 
-productRouter.get("/search_1/id", getAnProductById);
+productRouter.get("/search_1", getAnProductById);
 
 //4- get product by category
 
-productRouter.get("/search_2/category", getAnProductByCategory);
+//category
+
+productRouter.get("/search_2", getAnProductByCategory);
 
 //5- delete product by id
 
