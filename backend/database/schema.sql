@@ -30,11 +30,11 @@ CREATE TABLE products (
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     user_id INT,
-    price INT,
-    image BLOB,
+     price INT,
+     image BLOB,
     FOREIGN KEY (user_id) REFERENCES users(id),
     publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    category VARCHAR(20),
+  category VARCHAR(20),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
@@ -47,5 +47,24 @@ product_id INT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (product_id) REFERENCES products(id),
  publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+
+);
+CREATE TABLE Likes (
+id INT AUTO_INCREMENT NOT NULL,
+love INT,
+product_id INT,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (product_id) REFERENCES products(id),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE favorites (
+id INT AUTO_INCREMENT NOT NULL,
+product_id INT,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (product_id) REFERENCES products(id),
 PRIMARY KEY (id)
 );
