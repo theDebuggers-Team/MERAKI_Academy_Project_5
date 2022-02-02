@@ -50,7 +50,42 @@ const register = async (req, res) => {
 
 //create controller for register
 
-const login = (req, res) => {};
+const login = (req, res) => {
+  const {email, password} = req.body
+  const query = `select * from users where email =?`
+  const data =[email]
+  connection.query(query, data,async (err, result) => {
+    if(err){
+      res.status(404).json({success: false,message:"server error",err:err})
+    }
+    if(result.length){
+      const valid = await bcrypt.compare(password, result[0].password)
+      if(valid){
+        const payload = {
+          userId:result[0].userId,
+          country:result[0].country,
+          role :result[0].role,
+          phone_number:result[0].phone_Number,
+        }
+
+        const options = {
+          expiresIn: "20h"
+
+        }
+
+        const token = jwt.sign(payload,process.env.SECRET,options)
+
+        res.status(200).json({success:true,message:`Valid login credentials`,token:token})
+
+      }else{
+        res.status(404).json({success: false,message:"The password you’ve entered is incorrect"})
+      }
+    }else{
+      res.status(404).json({success: false,message:"The email doesn't exist"})
+    }
+  })
+ 
+};
 
 //create controller for updateUserById
 
