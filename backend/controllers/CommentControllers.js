@@ -5,6 +5,8 @@ const {connection} = require("../database/db");
 
 const createNewComment = (req, res) => {
   const productId = req.params.id
+  const {comment} =req.body
+  const commenter_id = req.token.userId
 };
 
 //create controller for update comment by id
