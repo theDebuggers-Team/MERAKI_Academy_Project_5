@@ -72,3 +72,4 @@ is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
 
+1
