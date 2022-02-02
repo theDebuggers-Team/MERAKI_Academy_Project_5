@@ -23,10 +23,14 @@ commentRouter.put("/:id", authentication, updateCommentById);
 
 //create end point for delete comment by id
 
-commentRouter.delete("/delete/:id", authentication, deleteCommentById);
+commentRouter.delete("/delete_1/:id", authentication, deleteCommentById);
 
 //create end point for delete comment by user_id
 
-commentRouter.delete("/delete/:user_id", authentication, deleteCommentByUserId);
+commentRouter.delete(
+  "/delete_2/:user_id",
+  authentication,
+  deleteCommentByUserId
+);
 
 module.exports = { commentRouter };

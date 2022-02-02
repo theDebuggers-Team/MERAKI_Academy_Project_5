@@ -10,6 +10,6 @@ const roleRouter = express.Router();
 const { createNewRole } = require("../controllers/RoleContoller");
 
 //create endpoint for create new role
-roleRouter.post("/", authentication,createNewRole);
+roleRouter.post("/", createNewRole);
 
 module.exports = { roleRouter };

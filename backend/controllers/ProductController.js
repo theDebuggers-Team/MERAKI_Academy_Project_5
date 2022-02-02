@@ -5,9 +5,9 @@ const { connection } = require("../database/db.js");
 
 const createNewProduct = (req, res) => {
   const { title, description, price, image, category } = req.body;
+  console.log(req.token);
   const user_id = req.token.userId;
-  const query = `insert into products (title, description, price, image,user_id,publish_date,category) values (?,?,?,?,?,?,?)`;
-  const { title, description, price, image, user_id, category } = req.body;
+  const query = `insert into products (title, description, price, image,user_id,category) values (?,?,?,?,?,?)`;
 
   const data = [title, description, price, image, user_id, category];
 
@@ -48,7 +48,7 @@ const getAllProducts = (req, res) => {
 
 const getAnProductById = (req, res) => {
   const productId = req.query.id;
-  const query = `SELECT title,description,firstName,user_id ,image FROM users INNER JOIN products ON users.id=products.user_id where products.id = ? and products.is_deleted =0 and products.is_deleted =0 and users.is_deleted = 0`;
+  const query = `SELECT title,description,firstName,user_id, users.users_image,products.image FROM users INNER JOIN products ON users.id=products.user_id where products.id = ? and products.is_deleted =0 and products.is_deleted =0 and users.is_deleted = 0`;
   const data = [productId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -78,7 +78,7 @@ const getAnProductById = (req, res) => {
 const getAnProductByCategory = (req, res) => {
   const category = req.query.category;
 
-  const query = `SELECT title,description,firstName,user_id FROM users INNER JOIN products ON users.id=products.user_id where products.category = ? and products.is_deleted = 0`;
+  const query = `SELECT  title,description,firstName,user_id, users.users_image,products.image,category FROM users INNER JOIN products ON users.id=products.user_id where products.category = ? and products.is_deleted = 0`;
 
   const data = [category];
   connection.query(query, data, (err, result) => {
@@ -89,15 +89,15 @@ const getAnProductByCategory = (req, res) => {
         err: err,
       });
     } else {
-      if (!result.affectedRows) {
+      if (!result.length) {
         return res.status(404).json({
           success: false,
-          message: `All products with Category=> ${category} `,
+          message: "No products found with the indicated category",
         });
       }
       res.status(200).json({
         success: true,
-        message: "No products found with the indicated category",
+        message: `All products with Category=> ${category}`,
         results: result,
       });
     }
@@ -107,7 +107,7 @@ const getAnProductByCategory = (req, res) => {
 //create controller for deleteAnProductById
 
 const deleteAnProductById = (req, res) => {
-  const  productId  = req.params.id;
+  const productId = req.params.id;
   const query = `UPDATE products SET is_deleted =1 where id=?`;
   const data = [productId];
   connection.query(query, data, (err, result) => {
@@ -121,12 +121,12 @@ const deleteAnProductById = (req, res) => {
       if (!result.affectedRows) {
         return res.status(404).json({
           success: false,
-          message: `The product: ${id} is not found`,
+          message: `The product: ${productId} is not found`,
         });
       }
       res.status(200).json({
         success: true,
-        message: `Succeeded to delete product with id: ${id}`,
+        message: `Succeeded to delete product with id: ${productId}`,
       });
     }
   });

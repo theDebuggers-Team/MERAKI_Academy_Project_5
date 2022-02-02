@@ -21,7 +21,7 @@ CREATE TABLE users(
     FOREIGN KEY (role_id) REFERENCES roles(id),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id),
-    image MEDIUMTEXT,
+    users_image MEDIUMTEXT,
     publish_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -72,4 +72,3 @@ is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
 
-1
