@@ -4,11 +4,11 @@ const { connection } = require("../database/db.js");
 //create controller for create New product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, image, user_id } = req.body;
+  const { title, description, price, image, user_id,publish_date,category } = req.body;
 
-  const query = `insert into products (title, description, price, image,user_id) values (?,?,?,?,?)`;
+  const query = `insert into products (title, description, price, image,user_id,publish_date,category) values (?,?,?,?,?,?,?)`;
 
-  const data = [title, description, price, image, user_id];
+  const data = [title, description, price, image, user_id,publish_date,category];
 
   connection.query(query, data, (err, result) => {
     if (err) {
