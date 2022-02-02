@@ -13,13 +13,10 @@ const createNewRole = (req, res) => {
         .status(500)
         .json({ success: false, message: "server error", err: err });
     }
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: `success role created`,
-        results: result,
-      });
+    res.status(201).json({
+      success: true,
+      message: `success role created`,
+    });
   });
 };
 

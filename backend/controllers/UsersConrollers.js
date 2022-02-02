@@ -15,9 +15,10 @@ const register = async (req, res) => {
     phone_Number,
     password,
     role_id,
+    image
   } = req.body;
   const hashPassword = await bcrypt.hash(password, 10);
-  const query = `insert into users (firstName,lastName,age,country,email,phone_Number,password,role_id) values (?,?,?,?,?,?,?,?)`;
+  const query = `insert into users (firstName,lastName,age,country,email,phone_Number,password,role_id,image) values (?,?,?,?,?,?,?,?,?)`;
 
   const data = [
     firstName,
@@ -28,6 +29,7 @@ const register = async (req, res) => {
     phone_Number,
     hashPassword,
     role_id,
+    image
   ];
 
   connection.query(query, data, (err, result) => {
@@ -51,40 +53,52 @@ const register = async (req, res) => {
 //create controller for register
 
 const login = (req, res) => {
-  const {email, password} = req.body
-  const query = `select * from users where email =?`
-  const data =[email]
-  connection.query(query, data,async (err, result) => {
-    if(err){
-      res.status(404).json({success: false,message:"server error",err:err})
+  const { email, password } = req.body;
+  const query = `select * from users where email =? and is_deleted = 0`;
+  const data = [email];
+  connection.query(query, data, async (err, result) => {
+    if (err) {
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
     }
-    if(result.length){
-      const valid = await bcrypt.compare(password, result[0].password)
-      if(valid){
+    if (result.length) {
+      const valid = await bcrypt.compare(password, result[0].password);
+      if (valid) {
         const payload = {
-          userId:result[0].userId,
-          country:result[0].country,
-          role :result[0].role,
-          phone_number:result[0].phone_Number,
-        }
+          userId: result[0].userId,
+          country: result[0].country,
+          role: result[0].role,
+          phone_number: result[0].phone_Number,
+        };
 
         const options = {
-          expiresIn: "20h"
+          expiresIn: "20h",
+        };
 
-        }
+        const token = jwt.sign(payload, process.env.SECRET, options);
 
-        const token = jwt.sign(payload,process.env.SECRET,options)
-
-        res.status(200).json({success:true,message:`Valid login credentials`,token:token})
-
-      }else{
-        res.status(404).json({success: false,message:"The password you’ve entered is incorrect"})
+        res
+          .status(200)
+          .json({
+            success: true,
+            message: `Valid login credentials`,
+            token: token,
+          });
+      } else {
+        res
+          .status(404)
+          .json({
+            success: false,
+            message: "The password you’ve entered is incorrect",
+          });
       }
-    }else{
-      res.status(404).json({success: false,message:"The email doesn't exist"})
+    } else {
+      res
+        .status(404)
+        .json({ success: false, message: "The email doesn't exist" });
     }
-  })
- 
+  });
 };
 
 //create controller for updateUserById

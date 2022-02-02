@@ -4,8 +4,8 @@ const { connection } = require("../database/db.js");
 //create controller for create New product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, image, user_id, category } = req.body;
-
+  const { title, description, price, image, category } = req.body;
+  const user_id = req.token.userId;
   const query = `insert into products (title, description, price, image,user_id,publish_date,category) values (?,?,?,?,?,?,?)`;
 
   const data = [title, description, price, image, user_id, category];
@@ -14,7 +14,7 @@ const createNewProduct = (req, res) => {
     if (err) {
       return res.status(500).json({
         success: false,
-        message: `Server error`,
+        message: `Some thing went wrong While creating product`,
         err: err,
       });
     }
@@ -81,21 +81,23 @@ const getAnProductByCategory = (req, res) => {
   const data = [category];
   connection.query(query, data, (err, result) => {
     if (err) {
-      res
-        .status(404)
-        .json({
-          success: false,
-          message: "No products found with the indicated category",
-          err: err,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
     } else {
-      res
-        .status(200)
-        .json({
-          success: true,
+      if (!result.affectedRows) {
+        return res.status(404).json({
+          success: false,
           message: `All products with Category=> ${category} `,
-          results: result,
         });
+      }
+      res.status(200).json({
+        success: true,
+        message: "No products found with the indicated category",
+        results: result,
+      });
     }
   });
 };
@@ -108,21 +110,22 @@ const deleteAnProductById = (req, res) => {
   const data = [productId];
   connection.query(query, data, (err, result) => {
     if (err) {
-      res
-        .status(404)
-        .json({
-          success: false,
-          message: "The product: ${id} is not found",
-          err: err,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
     } else {
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: `Succeeded to delete product with id: ${id}`,
-          results: result,
+      if (!result.affectedRows) {
+        return res.status(404).json({
+          success: false,
+          message: `The product: ${id} is not found`,
         });
+      }
+      res.status(200).json({
+        success: true,
+        message: `Succeeded to delete product with id: ${id}`,
+      });
     }
   });
 };
@@ -130,7 +133,7 @@ const deleteAnProductById = (req, res) => {
 //create controller for deleteAnProductByUserId
 const deleteAnProductByUserId = (req, res) => {
   const userId = req.params.user_id;
-  const query = `UPDATE products SET is_deleted =1 where user_id=? and is_deleted =0`
+  const query = `UPDATE products SET is_deleted =1 where user_id=? and is_deleted =0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -149,7 +152,6 @@ const deleteAnProductByUserId = (req, res) => {
       res.status(200).json({
         success: true,
         message: `The products with user_id was deleted=> ${userId} `,
-        
       });
     }
   });
@@ -165,21 +167,22 @@ const updateAnProductById = (req, res) => {
 
   connection.query(query, data, (err, result) => {
     if (err) {
-      res
-        .status(404)
-        .json({
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    } else {
+      if (!result.affectedRows) {
+        return res.status(404).json({
           success: false,
           message: "The product with id: ${id} is not found",
-          err: err,
         });
-    } else {
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: `Product with id :${productId} is updated`,
-          results: result,
-        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `Product with id :${productId} is updated`,
+      });
     }
   });
 };
