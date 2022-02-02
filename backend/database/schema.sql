@@ -71,3 +71,4 @@ FOREIGN KEY (product_id) REFERENCES products(id),
 is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
+
