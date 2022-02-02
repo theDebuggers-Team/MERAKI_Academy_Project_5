@@ -15,7 +15,7 @@ const {
 
 //create end point for create comment
 
-commentRouter.post("/", createNewComment);
+commentRouter.post("/:id", createNewComment);
 
 //create end point for update comment
 

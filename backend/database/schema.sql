@@ -1,7 +1,6 @@
- DROP DATABASE MERAKI_Academy_Project_5;
+DROP DATABASE MERAKI_Academy_Project_5;
 CREATE DATABASE MERAKI_Academy_Project_5 ;
 USE  MERAKI_Academy_Project_5 ;
-
 
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,
@@ -49,6 +48,7 @@ FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (product_id) REFERENCES products(id),
  publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id)
+
 );
 CREATE TABLE Likes (
 id INT AUTO_INCREMENT NOT NULL,
