@@ -26,3 +26,16 @@ CREATE TABLE users(
     publish_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE products (
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    user_id INT,
+     price INT,
+     image BLOB,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+  category VARCHAR(20),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
