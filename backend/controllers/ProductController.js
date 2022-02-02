@@ -33,7 +33,19 @@ const getAnProductByCategory = (req, res) => {
 
 //create controller for deleteAnProductById
 
-const deleteAnProductById = (req, res) => {};
+const deleteAnProductById = (req, res) => {
+  const {productId} = req.params.id;
+  const query = `UPDATE products SET is_deleted =1 where id=?`;
+const data = [productId]
+connection.query(query,data,(err,result)=>{
+if(err){
+res.status(404).json({success:false,message:"The product: ${id} is not found",err:err})
+}else{
+ res.status(200).json({success:true,message:`Succeeded to delete product with id: ${id}`,results :result})
+ }
+
+})
+};
 
 //create controller for deleteAnProductByUserId
 
