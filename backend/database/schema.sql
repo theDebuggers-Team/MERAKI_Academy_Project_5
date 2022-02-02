@@ -39,3 +39,15 @@ CREATE TABLE products (
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
+
+
+CREATE TABLE comments (
+id INT AUTO_INCREMENT NOT NULL,
+comment TEXT NOT NULL,
+user_id INT,
+product_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (product_id) REFERENCES products(id),
+ publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
