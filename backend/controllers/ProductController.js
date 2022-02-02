@@ -103,6 +103,20 @@ const getAnProductByCategory = (req, res) => {
 //create controller for deleteAnProductById
 
 const deleteAnProductById = (req, res) => {
+
+  const  productId  = req.params.id;
+  const query = `UPDATE products SET is_deleted =1 where id=? and is_deleted = 0`;
+  const data = [productId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({ success: false, message: "server error" });
+    } else {
+      if (!result.affectedRows) {
+        return res
+          .status(404)
+          .json({ success: false, message: `The product with id: ${productId} is not found` });
+      }
+=======
   const { productId } = req.params.id;
   const query = `UPDATE products SET is_deleted =1 where id=?`;
   const data = [productId];
@@ -120,6 +134,7 @@ const deleteAnProductById = (req, res) => {
         .status(200)
         .json({
           success: true,
+          message: `Succeeded to delete product with id: ${productId}`,
           message: `Succeeded to delete product with id: ${id}`,
           results: result,
         });
