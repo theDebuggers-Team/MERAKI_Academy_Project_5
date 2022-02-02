@@ -49,3 +49,4 @@ FOREIGN KEY (product_id) REFERENCES products(id),
  publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id)
 );
+
