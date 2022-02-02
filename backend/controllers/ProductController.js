@@ -6,8 +6,6 @@ const { connection } = require("../database/db.js");
 const createNewProduct = (req, res) => {
   const { title, description, price, image, user_id, category } = req.body;
 
-  const query = `insert into products (title, description, price, image,user_id,publish_date,category) values (?,?,?,?,?,?,?)`;
-
   const data = [title, description, price, image, user_id, category];
 
   connection.query(query, data, (err, result) => {
@@ -77,6 +75,29 @@ const getAnProductById = (req, res) => {
 //create controller for getAnProductByCategory
 const getAnProductByCategory = (req, res) => {
   const category = req.query.category;
+
+  const query = `SELECT title,description,firstName,user_id FROM users INNER JOIN products ON users.id=products.user_id where products.category = ? and products.is_deleted = 0`;
+  const data = [category];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "server error",
+        err: err,
+      });
+    } else {
+      if (!result.length) {
+        return res.status(404).json({
+          success: false,
+          message: `There Is not product with Category=> ${category} `,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `All products with Category=> ${category} `,
+        results: result,
+      });
+
   const query = `SELECT title,description,firstName,user_id FROM users INNER JOIN products ON users.id=products.user_id where products.category = ?`;
   const data = [category];
   connection.query(query, data, (err, result) => {
@@ -96,6 +117,7 @@ const getAnProductByCategory = (req, res) => {
           message: `All products with Category=> ${category} `,
           results: result,
         });
+
     }
   });
 };
@@ -116,12 +138,25 @@ const deleteAnProductById = (req, res) => {
           .status(404)
           .json({ success: false, message: `The product with id: ${productId} is not found` });
       }
-=======
+
   const { productId } = req.params.id;
   const query = `UPDATE products SET is_deleted =1 where id=?`;
   const data = [productId];
   connection.query(query, data, (err, result) => {
     if (err) {
+
+      res.status(404).json({
+        success: false,
+        message: "The product: ${id} is not found",
+        err: err,
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: `Succeeded to delete product with id: ${id}`,
+        results: result,
+      });
+
       res
         .status(404)
         .json({
@@ -138,6 +173,7 @@ const deleteAnProductById = (req, res) => {
           message: `Succeeded to delete product with id: ${id}`,
           results: result,
         });
+
     }
   });
 };
@@ -180,6 +216,19 @@ const updateAnProductById = (req, res) => {
 
   connection.query(query, data, (err, result) => {
     if (err) {
+
+      res.status(404).json({
+        success: false,
+        message: "The product with id: ${id} is not found",
+        err: err,
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: `Product with id :${productId} is updated`,
+        results: result,
+      });
+
       res
         .status(404)
         .json({
@@ -195,6 +244,7 @@ const updateAnProductById = (req, res) => {
           message: `Product with id :${productId} is updated`,
           results: result,
         });
+
     }
   });
 };
