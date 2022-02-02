@@ -3,6 +3,8 @@ const { connection } = require("../database/db.js");
 
 //create controller for create New product
 
+const createNewProduct = (req, res) => {};
+
 const createNewProduct = (req, res) => {
   const { title, description, price, image, user_id } = req.body;
 
@@ -28,15 +30,26 @@ const createNewProduct = (req, res) => {
 };
 
 //create controller for getAllProducts
+const getAllProducts = (req, res) => {
+  const query = `select * from products where is_deleted = 0`;
 
-const getAllProducts = (req, res) => {};
+  connection.query(query, (err, result) => {
+    if (err) {
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: `All the products`, results: result });
+    }
+  });
+};
 
 //create controller for getAnProductById
-
 const getAnProductById = (req, res) => {};
 
 //create controller for getAnProductByCategory
-
 const getAnProductByCategory = (req, res) => {
   const category = req.query.category
   const query = `SELECT title,description,firstName,user_id FROM users INNER JOIN products ON users.id=products.user_id where products.category = ?`;
@@ -46,8 +59,7 @@ const getAnProductByCategory = (req, res) => {
     res.status(404).json({success:false,message:"No products found with the indicated category",err:err})
     }else{
       res.status(200).json({success:true,message:`All products with Category=> ${category} `,results :result})
-    }
-    
+      }
     })
 };
 
@@ -64,15 +76,13 @@ res.status(404).json({success:false,message:"The product: ${id} is not found",er
  res.status(200).json({success:true,message:`Succeeded to delete product with id: ${id}`,results :result})
  }
 
-})
+ });
 };
 
 //create controller for deleteAnProductByUserId
-
 const deleteAnProductByUserId = (req, res) => {};
 
 //create controller for updateAnProductById
-
 const updateAnProductById = (req, res) => {
   const {productId} = req.params.id
 const {title,description,price,image} = req.body
@@ -88,10 +98,8 @@ connection.query(query,data,(err,result)=>{
   else{
    res.status(200).json({success:true,message:`Product with id :${productId} is updated`,results :result})
    }
-   
-  
+     
   })
-
 };
 
 module.exports = {
