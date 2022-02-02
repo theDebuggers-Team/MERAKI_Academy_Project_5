@@ -7,6 +7,9 @@ const createNewComment = (req, res) => {
   const productId = req.params.id
   const {comment} =req.body
   const commenter_id = req.token.userId
+  const query = `insert into comments (comment,commenter_id,productId) values (?,?,?) `
+  const data = [ comment, commenter_id,productId ]
+  
 };
 
 //create controller for update comment by id
