@@ -4,11 +4,11 @@ const { connection } = require("../database/db.js");
 //create controller for create New product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, image, user_id } = req.body;
+  const { title, description, price, image, user_id, category } = req.body;
 
-  const query = `insert into products (title, description, price, image,user_id) values (?,?,?,?,?)`;
+  const query = `insert into products (title, description, price, image,user_id,publish_date,category) values (?,?,?,?,?,?,?)`;
 
-  const data = [title, description, price, image, user_id];
+  const data = [title, description, price, image, user_id, category];
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -103,6 +103,7 @@ const getAnProductByCategory = (req, res) => {
 //create controller for deleteAnProductById
 
 const deleteAnProductById = (req, res) => {
+
   const  productId  = req.params.id;
   const query = `UPDATE products SET is_deleted =1 where id=? and is_deleted = 0`;
   const data = [productId];
@@ -115,18 +116,59 @@ const deleteAnProductById = (req, res) => {
           .status(404)
           .json({ success: false, message: `The product with id: ${productId} is not found` });
       }
+=======
+  const { productId } = req.params.id;
+  const query = `UPDATE products SET is_deleted =1 where id=?`;
+  const data = [productId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res
+        .status(404)
+        .json({
+          success: false,
+          message: "The product: ${id} is not found",
+          err: err,
+        });
+    } else {
       res
         .status(200)
         .json({
           success: true,
           message: `Succeeded to delete product with id: ${productId}`,
+          message: `Succeeded to delete product with id: ${id}`,
+          results: result,
         });
     }
   });
 };
 
 //create controller for deleteAnProductByUserId
-const deleteAnProductByUserId = (req, res) => {};
+const deleteAnProductByUserId = (req, res) => {
+  const userId = req.params.user_id;
+  const query = `UPDATE products SET is_deleted =1 where user_id=? and is_deleted =0`
+  const data = [userId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    } else {
+      if (!result.affectedRows) {
+        return res.status(404).json({
+          success: false,
+          message: `No products found with the indicated  user_id => ${userId}`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `The products with user_id was deleted=> ${userId} `,
+        
+      });
+    }
+  });
+};
 
 //create controller for updateAnProductById
 const updateAnProductById = (req, res) => {
