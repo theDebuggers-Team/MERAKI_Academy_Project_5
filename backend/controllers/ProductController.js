@@ -3,13 +3,25 @@ const { connection } = require("../database/db.js");
 
 //create controller for create New product
 
-const createNewProduct = (req, res) => {
-  
-};
+const createNewProduct = (req, res) => {};
 
 //create controller for getAllProducts
 
-const getAllProducts = (req, res) => {};
+const getAllProducts = (req, res) => {
+  const query = `select * from products where is_deleted = 0`;
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: `All the products`, results: result });
+    }
+  });
+};
 
 //create controller for getAnProductById
 
