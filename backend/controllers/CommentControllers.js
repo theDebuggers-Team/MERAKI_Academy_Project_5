@@ -9,7 +9,13 @@ const createNewComment = (req, res) => {
   const commenter_id = req.token.userId
   const query = `insert into comments (comment,commenter_id,productId) values (?,?,?) `
   const data = [ comment, commenter_id,productId ]
-  
+  connection.query(query, data,(err, result)=>{
+    if(err){
+     return res.status(404).json({success: false, message:`something went wrong while creating a new comment`,err: err})
+    }
+    res.status(200).json({success: true, message:`The comment has been created success`,results: result})
+  })
+
 };
 
 //create controller for update comment by id
