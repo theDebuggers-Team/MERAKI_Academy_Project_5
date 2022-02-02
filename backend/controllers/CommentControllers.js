@@ -11,21 +11,17 @@ const createNewComment = (req, res) => {
   const data = [comment, user_id, productId];
   connection.query(query, data, (err, result) => {
     if (err) {
-      return res
-        .status(404)
-        .json({
-          success: false,
-          message: `something went wrong while creating a new comment`,
-          err: err,
-        });
-    }
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: `The comment has been created success`,
-        results: result,
+      return res.status(404).json({
+        success: false,
+        message: `something went wrong while creating a new comment`,
+        err: err,
       });
+    }
+    res.status(200).json({
+      success: true,
+      message: `The comment has been created success`,
+      results: result,
+    });
   });
 };
 
@@ -84,7 +80,30 @@ const deleteCommentById = (req, res) => {
 
 //create controller for delete  comment by user_id
 
-const deleteCommentByUserId = (req, res) => {};
+const deleteCommentByUserId = (req, res) => {
+  const userId = req.params.id;
+  const query = `update comments set is_deleted=1 where user_id=?`;
+  const data = [userId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: `Server Error`, error: err });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(200).json({
+        success: false,
+        message: `no user found with the inducated ${userId}`,
+      });
+    }
+
+    res.status(201).json({
+      success: true,
+      message: `comment deleted successfully`,
+      results: result,
+    });
+  });
+};
 
 module.exports = {
   createNewComment,
