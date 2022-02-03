@@ -12,8 +12,19 @@ const Login = ()=>{
     const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
 
+  const notifyLoginSuccess = ()=>{
+    toast.success("Register Done",{position: toast.POSITION.BOTTOM_CENTER});
+      navigation("/products")
+  }
 
-
-
-
+  const notifyLoginError = ()=>{
+    toast.warn("Please fill All The Fields",{position: toast.POSITION.TOP_RIGHT})
+      }
+   
+      const loginFunction = () => {
+        if (email && password) {
+          const userLogin = { email, password };
+    
+        }
+    }
 }
