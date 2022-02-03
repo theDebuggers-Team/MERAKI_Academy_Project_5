@@ -16,23 +16,24 @@ const Register = () => {
   const [country, setcountry] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
-  const [phone, setPhone] = useState("");
+  const [users_image, setImage] = useState("");
+  const [phone_Number, setPhone] = useState("");
 
   ///// create a notify function to tell the user if any of this felds is empty
   const notifyRegisterError = () => {
     toast.warn("Please fill All The Fields", {
       position: toast.POSITION.TOP_RIGHT,
+      autoClose:false
     });
   };
 
   const notifyRegisterSuccess = () => {
-    toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
-    navigate("/login");
+    toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER,autoClose:10000 });
+    // navigate("/login");
   };
 
   const user = async () => {
-    if (firstName && lastName && age && country && email && password && image) {
+    if (firstName && lastName && age && country && email && password && users_image) {
       const newUser = {
         firstName,
         lastName,
@@ -40,8 +41,9 @@ const Register = () => {
         country,
         email,
         password,
-        image,
-        role: "USER",
+        users_image,
+        phone_Number,
+        role_id: 1,
       };
 
       await axios
@@ -49,6 +51,7 @@ const Register = () => {
         .then((response) => {
           if (response.data.success) {
             notifyRegisterSuccess();
+            console.log(response.data.success);
           }
         })
         .catch((err) => {
@@ -65,7 +68,7 @@ const Register = () => {
         !country ||
         !email ||
         !password ||
-        !image
+        !users_image
       ) {
         notifyRegisterError();
       }
@@ -74,7 +77,10 @@ const Register = () => {
 
   return (
     <div>
-      <form onSubmit={user}>
+      <form onSubmit ={(e)=>{
+        e.preventDefault()
+        user()
+      }}>
         <h3 className="title-sign-up">Register</h3>
 
         <input
@@ -146,7 +152,7 @@ const Register = () => {
           className="register-inp"
           placeholder="Phone Number"
           type="text"
-          value={phone}
+          value={phone_Number}
           onChange={(e) => {
             setPhone(e.target.value);
           }}
@@ -156,7 +162,7 @@ const Register = () => {
           className="register-inp"
           placeholder="Profile Image"
           type="text"
-          value={image}
+          value={users_image}
           onChange={(e) => {
             setImage(e.target.value);
           }}
