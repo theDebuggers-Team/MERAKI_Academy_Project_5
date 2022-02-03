@@ -33,8 +33,8 @@ const Register = () => {
   
   const user = async () => {
     if (
-      (firstName && lastName && age && country && email && password && users_image,
-        phone_Number)
+      (firstName && lastName && age && country && email && password && users_image
+       )
     ) {
       const newUser = {
         firstName,
