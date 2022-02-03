@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 
 toast.configure();
-
+const navigate = useNavigate();
 const Login = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => {
@@ -24,7 +24,7 @@ const Login = () => {
 
   const notifyLoginSuccess = () => {
     toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
-    navigation("/products");
+    navigate("/products");
   };
 
   const notifyLoginError = () => {
