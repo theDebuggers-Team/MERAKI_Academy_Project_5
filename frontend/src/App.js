@@ -9,13 +9,13 @@ import NewProduct from "./component/createNewProduct/createNewProduct";
 function App() {
   return (
     <div className="App">
-      <h1>Start project 5</h1>
 
+<Header/>
      
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/header" element={<Header />} />
+        {/* <Route path="/header" element={<Header />} /> */}
         <Route path="/NewProduct" element={<NewProduct />} />
       </Routes>
       ;
