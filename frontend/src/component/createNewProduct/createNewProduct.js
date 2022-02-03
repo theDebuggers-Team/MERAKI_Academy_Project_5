@@ -1,16 +1,17 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "./getAllProducts.css";
+import "./createNewProduct.css";
 
 import { useNavigate } from "react-router-dom";
 
-const newProduct = () => {
+const NewProduct = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState();
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
+  const [token, setToken] = useState("");
 
   const createNewProduct = () => {
     axios
@@ -68,3 +69,5 @@ const newProduct = () => {
     </div>
   );
 };
+
+export default NewProduct;
