@@ -8,7 +8,6 @@ import decode from "jwt-decode";
 import { BsBag } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 
-import decode from "jwt-decode";
 
 const Header = () => {
   const state = useSelector((state) => {
