@@ -3,10 +3,11 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { useNavigate } from "react-router-dom";
 
 toast.configure()
 const Register = ()=>{ 
-
+    const navigate = useNavigate()
     /////// create useState forall register form feilds
    const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
@@ -25,7 +26,7 @@ const Register = ()=>{
  
       const notifyRegisterSuccess = ()=>{
         toast.success("Register Done",{position: toast.POSITION.BOTTOM_CENTER})
-          navigation("/login")
+        navigate("/login")
       }
       
       const user = async () => {
