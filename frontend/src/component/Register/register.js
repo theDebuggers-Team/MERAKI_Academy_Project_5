@@ -27,7 +27,7 @@ const Register = ()=>{
         toast.success("Register Done",{position: toast.POSITION.BOTTOM_CENTER})
           navigation("/login")
       }
-
+      
       const user = async () => {
         if (firstName && lastName && age && country && email && password&&image) {
           const newUser = {
@@ -49,10 +49,113 @@ const Register = ()=>{
                    
             
           }
-        }) .catch((err) => {
+        }).catch((err) => {
             console.log(err.message);
-            toast.error(err.response.data.message,{position: toast.POSITION.BOTTOM_CENTER}
+            toast.error(err.response.data.message,{position: toast.POSITION.BOTTOM_CENTER})
           });
+
+    }else {
+        if(!firstName || !lastName || !age || !country || !email || !password||!image){
+           
+             notifyRegisterError()
+        }
+      }
+
+}
+ 
+
+return (
+    <div>
+<form onSubmit = {user}>
+      <h3 className="title-sign-up">Register</h3>
+         
+      <input
+      className= "register-inp"
+        placeholder="First Name"
+        type="text"
+        value={firstName}
+        onChange={(e) => {
+          setfirstName(e.target.value);
+        }}
+      />
+      <br />
+      <input
+       className= "register-inp"
+        placeholder="Last Name"
+        type="text"
+        value={lastName}
+        onChange={(e) => {
+          setlastName(e.target.value);
+        }}
+      />
+      <br />
+      <input
+       className= "register-inp"
+        placeholder="Age"
+        type="number"
+        value={age}
+        onChange={(e) => {
+          setAge(e.target.value);
+        }}
+      />
+      <br />
+      <input
+       className= "register-inp"
+        placeholder="Country"
+        type="text"
+        value={country}
+        onChange={(e) => {
+          setcountry(e.target.value);
+        }}
+      />
+      <br />
+      <input
+       className= "register-inp"
+        placeholder="Email"
+        type="email"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <br />
+      <input
+       className= "register-inp"
+        placeholder="Password"
+        type="password"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+      />
+      <input
+      className= "register-inp"
+        placeholder="Phone Number"
+        type="text"
+        value={phone}
+        onChange={(e) => {
+          setPhone(e.target.value);
+        }}
+      />
+      <br />
+<input
+      className= "register-inp"
+        placeholder="Profile Image"
+        type="text"
+        value={image}
+        onChange={(e) => {
+          setImage(e.target.value);
+        }}
+      />
+      <br />
+      <br />
+      <input type="submit" value="Submit"/>
+      <br />
+      </form>
+    </div>
+  );
+
+
 
 }
 
