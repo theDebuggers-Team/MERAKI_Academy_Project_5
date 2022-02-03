@@ -22,6 +22,16 @@ const Products = () => {
   useEffect(() => {
     getAllProducts();
   }, []);
+  /////////////////////////////////////////////////
+  const deleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:5000/products/${id}`)
+      .then((result) => {
+        getAllProducts();
+      })
+      .catch((error) => {});
+  };
+  ////////////////////////////////////////////////////////
 
   return (
     <div>
@@ -32,6 +42,17 @@ const Products = () => {
               <p>{element.title}</p>
               <p>{element.price}JD</p>
               <img src={element.image} className="img" />
+              <button
+                className="add"
+                onClick={(e) => {
+                  if (
+                    window.confirm("Are you sure you wish to delete this item?")
+                  )
+                    deleteProduct(element._id);
+                }}
+              >
+                Delete
+              </button>
             </div>
           );
         })}
