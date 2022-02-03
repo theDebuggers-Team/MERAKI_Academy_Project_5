@@ -41,6 +41,16 @@ const Register = ()=>{
             role: "USER",
           };
 
+          await axios
+        .post(`http://localhost:5000/user/register`, newUser)
+        .then((response) => {
+          if (response.data.success) {
+               notifyRegisterSuccess()
+                   
+            
+          }
+        })
+
 }
 
 
