@@ -1,0 +1,15 @@
+.img-catig-search-prod-deta{
+    width: 69%;
+  height:15rem
+  }
+
+  .search-prod-page-one{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 5rem;
+    padding-left: 1rem;
+      
+  }

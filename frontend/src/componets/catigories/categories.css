@@ -1,0 +1,29 @@
+.categories-buttons{
+    display:flex;
+    gap: 6%;
+    width: 100%;
+    height: 100%;
+    justify-content:space-around;
+    position:absolute;
+
+}
+
+.btn-catig{
+    width:20%;
+    height:3rem;
+    position:relative;
+    top:30%;
+    cursor:pointer;
+    background-color:#308b79;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size:100%;
+    background-image: linear-gradient(-180deg, #308b79, #518f82);
+    border-radius:0.5rem
+
+}
+
+.btn-catig:hover{
+    background-color:rgb(161, 206, 196);
+    color: black
+}
