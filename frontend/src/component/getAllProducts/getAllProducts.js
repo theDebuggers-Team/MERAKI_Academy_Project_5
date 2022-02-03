@@ -4,7 +4,7 @@ import "./getAllProducts.css";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
-const products = () => {
+const Products = () => {
   const [products, setProducts] = useState("");
 
   const getAllProducts = () => {
@@ -25,15 +25,16 @@ const products = () => {
 
   return (
     <div>
-      {products.map((element) => {
-        return (
-          <div className="product">
-            <p>{element.title}</p>
-            <p>{element.price}JD</p>
-            <img src={element.image} className="img" />
-          </div>
-        );
-      })}
+      {products &&
+        products.map((element) => {
+          return (
+            <div className="product">
+              <p>{element.title}</p>
+              <p>{element.price}JD</p>
+              <img src={element.image} className="img" />
+            </div>
+          );
+        })}
     </div>
   );
 };
