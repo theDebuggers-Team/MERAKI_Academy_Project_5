@@ -10,7 +10,10 @@ const Register = ()=>{
     const [lastName, setlastName] = useState("");
     const [age, setAge] = useState(0);
     const [country, setcountry] = useState("");
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+   const [image, setImage] = useState("");
+    const [phone, setPhone] = useState("");
 }
 
 
