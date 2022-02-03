@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import Navigation from "./Navigation";
+// import Navigation from "./Navigation";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBag } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
-import { decode } from "jwt_decode";
+import  decode  from "jwt-decode";
 
-import React from "react";
 
 const Header = () => {
   const state = useSelector((state) => {
