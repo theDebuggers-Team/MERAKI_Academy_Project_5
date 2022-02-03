@@ -28,6 +28,19 @@ const Register = ()=>{
           navigation("/login")
       }
 
+      const user = async () => {
+        if (firstName && lastName && age && country && email && password&&image) {
+          const newUser = {
+            firstName,
+            lastName,
+            age,
+            country,
+            email,
+            password,
+              image,
+            role: "USER",
+          };
+
 }
 
 
