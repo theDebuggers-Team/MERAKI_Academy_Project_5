@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import {toast} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { useDispatch, useSelector } from "react-redux";
 
 toast.configure()
 const Login = ()=>{
@@ -40,6 +41,49 @@ const [email, setEmail] = useState("");
           toast.error(err.response.data.message,{position: toast.POSITION.BOTTOM_CENTER})
         });
 
-        }
+        }else{
+
+            notifyLoginError()
+                 
+          }
     }
+
+    return (
+        <div className="login-form">
+           <form onSubmit = {loginFunction}>
+          <p className="title">Login</p>
+          <div className="form-e">
+            <input
+              className="login-inp"
+              placeholder="Email"
+              type="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              required
+            />
+            <br />
+            <input
+              className="login-inp"
+              placeholder="Password"
+              type="password"
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
+              required
+            />
+            <br />
+          </div>
+          
+             <input type="submit" value="Submit"/>
+         
+          <br />
+          
+    </form>
+        </div>
+      );
+
+
 }
+
+export default Login
