@@ -77,6 +77,7 @@ return (
         onChange={(e) => {
           setfirstName(e.target.value);
         }}
+        required
       />
       <br />
       <input
@@ -87,6 +88,7 @@ return (
         onChange={(e) => {
           setlastName(e.target.value);
         }}
+        required
       />
       <br />
       <input
@@ -97,6 +99,7 @@ return (
         onChange={(e) => {
           setAge(e.target.value);
         }}
+        required
       />
       <br />
       <input
@@ -107,6 +110,7 @@ return (
         onChange={(e) => {
           setcountry(e.target.value);
         }}
+        required
       />
       <br />
       <input
@@ -117,6 +121,7 @@ return (
         onChange={(e) => {
           setEmail(e.target.value);
         }}
+        required
       />
       <br />
       <input
@@ -127,6 +132,7 @@ return (
         onChange={(e) => {
           setPassword(e.target.value);
         }}
+        required
       />
       <input
       className= "register-inp"
@@ -146,6 +152,7 @@ return (
         onChange={(e) => {
           setImage(e.target.value);
         }}
+        required
       />
       <br />
       <br />
