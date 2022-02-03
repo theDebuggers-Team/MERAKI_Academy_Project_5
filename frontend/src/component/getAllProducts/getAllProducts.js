@@ -38,4 +38,6 @@ const Products = () => {
     </div>
   );
 };
-export default Products
+
+export default Products;
+

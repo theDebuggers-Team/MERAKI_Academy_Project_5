@@ -9,6 +9,7 @@ import { BsBag } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 
 
+
 const Header = () => {
   const state = useSelector((state) => {
     return {
