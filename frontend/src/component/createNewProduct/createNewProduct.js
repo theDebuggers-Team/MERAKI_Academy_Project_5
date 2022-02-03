@@ -29,40 +29,42 @@ const newProduct = () => {
       .catch((err) => {
         console.log(err.message);
       });
-
-    return (
-      <div>
-        <input
-          placeholder="title"
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        ></input>
-        <input
-          placeholder="description"
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-        ></input>
-        <input
-          placeholder="Price"
-          onChange={(e) => {
-            setPrice(e.target.value);
-          }}
-        ></input>
-        <input
-          placeholder="ImageURL"
-          onChange={(e) => {
-            setImage(e.target.value);
-          }}
-        ></input>
-        <input
-          placeholder="Category"
-          onChange={(e) => {
-            setCategory(e.target.value);
-          }}
-        ></input>
-      </div>
-    );
   };
+  return (
+    <div>
+      <input
+        placeholder="title"
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+      ></input>
+      <input
+        placeholder="description"
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
+      ></input>
+      <input
+        placeholder="Price"
+        onChange={(e) => {
+          setPrice(e.target.value);
+        }}
+      ></input>
+      <input
+        placeholder="ImageURL"
+        onChange={(e) => {
+          setImage(e.target.value);
+        }}
+      ></input>
+      <input
+        placeholder="Category"
+        onChange={(e) => {
+          setCategory(e.target.value);
+        }}
+      ></input>
+      <button onClick={createNewProduct} className="create">
+        Create Product
+      </button>
+    </div>
+  );
 };
