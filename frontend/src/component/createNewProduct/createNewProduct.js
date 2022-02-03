@@ -66,6 +66,7 @@ const NewProduct = () => {
       <button onClick={createNewProduct} className="create">
         Create Product
       </button>
+      <p>{message}</p>
     </div>
   );
 };
