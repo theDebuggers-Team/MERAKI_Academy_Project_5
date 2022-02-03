@@ -6,9 +6,20 @@ import { useNavigate } from 'react-router-dom'
 import {toast} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { useDispatch, useSelector } from "react-redux";
-
+import {login,logout} from "../reducer/login/index"
 toast.configure()
 const Login = ()=>{
+   
+
+    const dispatch = useDispatch()
+    const state = useSelector((state)=>{
+    
+        return {
+            token:state.loginReducer.token,
+            isLoggedIn:state.isLoggedIn.isLoggedIn
+        }
+
+    })
   
 const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
@@ -32,8 +43,8 @@ const [email, setEmail] = useState("");
           if (response.data.success) {
            
             localStorage.setItem("token", response.data.token);
-
-            notifyRegisterSuccess()
+            dispatch(login(result.data.token))
+            notifyLoginSuccess()
           }
         })
         .catch((err) => {
