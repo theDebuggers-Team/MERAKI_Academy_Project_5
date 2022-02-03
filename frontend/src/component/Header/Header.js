@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-// import Navigation from "./Navigation";
+import Navigation from "./Navigation";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 
-import { BsBag } from "react-icons/bs"
-import decode from "jwt-decode"
+import decode from "jwt-decode";
 import { BsBag } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 
-import  decode  from "jwt-decode";
-
-
-
-
-
+import decode from "jwt-decode";
 
 const Header = () => {
   const state = useSelector((state) => {
@@ -26,13 +20,8 @@ const Header = () => {
 
   const [name, setName] = useState("");
 
-  const token = 1;
-  const navigate = useNavigate();
-  const lastName = (token && decode(token).lastName) ;
-  const firstName = (token && decode(token).firstName) ;
-  const firstName2 = (token && decode(token).given_name) ;
-  const lastName2 = (token && decode(token).family_name) ;
   const token = state.token;
+
   const lastName = token && decode(token).lastName;
   const firstName = token && decode(token).firstName;
   const firstName2 = token && decode(token).given_name;
@@ -90,10 +79,7 @@ const Header = () => {
         ) : null}
       </div>
 
-
-      {/* <Navigation setIsopen={setIsopen} isopen={isopen} /> */}
-      {/* <Navigation /> */}
-
+      <Navigation />
     </div>
   );
 };
