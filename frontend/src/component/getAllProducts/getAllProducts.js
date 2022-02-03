@@ -36,29 +36,41 @@ const Products = () => {
   return (
     <div>
       {products &&
-        products.map((element) => {
-          return (
-            <div className="product">
-              <p>{element.title}</p>
-              <p>{element.price}JD</p>
-              <img src={element.image} className="img" />
-              <button
-                className="add"
-                onClick={(e) => {
-                  if (
-                    window.confirm("Are you sure you wish to delete this item?")
-                  )
-                    deleteProduct(element._id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          );
-        })}
+        products
+          .filter((element) => {
+            if (search === undefined) {
+              return element;
+            } else if (
+              element.name.toLowerCase().includes(search.toLowerCase()) ||
+              element.category.toLowerCase().includes(search.toLowerCase())
+            ) {
+              return element;
+            }
+          })
+          .map((element) => {
+            return (
+              <div className="product">
+                <p>{element.title}</p>
+                <p>{element.price}JD</p>
+                <img src={element.image} className="img" />
+                <button
+                  className="add"
+                  onClick={(e) => {
+                    if (
+                      window.confirm(
+                        "Are you sure you wish to delete this item?"
+                      )
+                    )
+                      deleteProduct(element._id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            );
+          })}
     </div>
   );
 };
 
 export default Products;
-
