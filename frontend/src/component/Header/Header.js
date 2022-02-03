@@ -8,8 +8,12 @@ import { BsBag } from "react-icons/bs"
 import decode from "jwt-decode"
 import { BsBag } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
-import { decode } from "jwt_decode";
-import React from "react";
+
+import  decode  from "jwt-decode";
+
+
+
+
 
 
 const Header = () => {
