@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 toast.configure()
 const Register = ()=>{ 
