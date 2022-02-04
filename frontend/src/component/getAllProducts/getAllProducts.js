@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState("");
-  
+  const [search, setSearch] = useState("");
 
   const getAllProducts = () => {
     axios
