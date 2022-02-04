@@ -33,10 +33,12 @@ const createNewProduct = (req, res) => {
 //create controller for getAllProducts
 const getAllProducts = (req, res) => {
   const { page, limit } = req.query;
-  const query = `select * from products LIMIT ?, OFFSET ? where is_deleted = 0`;
-  const data = [limit, (page - 1) * limit];
+
+  const query = `select * from products  where is_deleted = 0 LIMIT ? OFFSET ? `;
+  const data = [limit - 0, (page - 1) * limit];
   connection.query(query, data, (err, result) => {
     if (err) {
+      console.log(err);
       res
         .status(404)
         .json({ success: false, message: "server error", err: err });
@@ -166,10 +168,10 @@ const deleteAnProductByUserId = (req, res) => {
 //create controller for updateAnProductById
 const updateAnProductById = (req, res) => {
   const productId = req.params.id;
-  const { title, description, price, image } = req.body;
+  const { title, description, price, image, category } = req.body;
 
-  const query = `UPDATE products SET title=?,description=?,price=?,image=?  where id=?`;
-  const data = [title, description, price, image, productId];
+  const query = `UPDATE products SET title=?,description=?,price=?,image=? ,category=? where id=?`;
+  const data = [title, description, price, image, category, productId];
 
   connection.query(query, data, (err, result) => {
     if (err) {
