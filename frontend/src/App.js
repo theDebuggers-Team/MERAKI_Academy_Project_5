@@ -7,6 +7,7 @@ import Products from "./component/getAllProducts/getAllProducts";
 import NewProduct from "./component/createNewProduct/createNewProduct";
 import Login from "./component/Login/login";
 import Categories from "./component/Categories/categories";
+import Update from "./component/updateProduct/updateProduct";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -26,6 +27,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products search={search} />} />
         <Route path="/NewProduct" element={<NewProduct />} />
+        <Route path="/update/:id" element={<Update />} />
+
         <Route path="/login" element={<Login />} />
       </Routes>
       ;
