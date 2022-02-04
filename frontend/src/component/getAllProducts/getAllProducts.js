@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 const Products = ({ search }) => {
   const [products, setProducts] = useState("");
   const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(4);
 
   const getAllProducts = () => {
     axios
-      .get(`http://localhost:5000/product`)
+      .get(`http://localhost:5000/products/?page=${page}&limit=${limit}`)
       .then((response) => {
         console.log(response.data);
         setProducts(response.data.products);
@@ -22,7 +23,7 @@ const Products = ({ search }) => {
 
   useEffect(() => {
     getAllProducts();
-  }, []);
+  }, [page, limit]);
   /////////////////////////////////////////////////
   const deleteProduct = (id) => {
     axios
