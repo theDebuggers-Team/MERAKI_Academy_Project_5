@@ -6,6 +6,7 @@ import Register from "./component/Register/register";
 import Products from "./component/getAllProducts/getAllProducts";
 import NewProduct from "./component/createNewProduct/createNewProduct";
 import Login from "./component/Login/login";
+import Categories from "./component/Categories/categories";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -19,6 +20,7 @@ function App() {
           setSearch(e.target.value);
         }}
       ></input>
+      <Categories />
       <Routes>
         <Route path="/register" element={<Register />} />
 
