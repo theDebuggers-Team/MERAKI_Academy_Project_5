@@ -29,7 +29,15 @@ const Update = () => {
     state.products.filter((ele) => {
       return ele.id == id;
     });
-  console.log(filter);
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState("");
+  const [category, setcategory] = useState("");
+
+  const updateProduct = () => {
+    let updatedProduct = { title, description, price, image, category };
 
   const [title, setTitle] = useState(filter[0].title);
   const [description, setDescription] = useState(filter[0].description);
@@ -59,7 +67,6 @@ const Update = () => {
       });
   };
 
-  // console.log(filter);
   return (
     <div className="update-product">
       <label for="chk" aria-hidden="true">
@@ -138,6 +145,5 @@ const Update = () => {
         Update
       </button>
     </div>
-  );
-};
-export default Update;
+
+ 
