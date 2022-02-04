@@ -8,7 +8,6 @@ const Products = () => {
   const [products, setProducts] = useState("");
   const [search, setSearch] = useState("");
 
-
   const getAllProducts = () => {
     axios
       .get(`http://localhost:5000/product`)
@@ -43,7 +42,7 @@ const Products = () => {
             if (search === undefined) {
               return element;
             } else if (
-              element.name.toLowerCase().includes(search.toLowerCase()) ||
+              element.title.toLowerCase().includes(search.toLowerCase()) ||
               element.category.toLowerCase().includes(search.toLowerCase())
             ) {
               return element;
