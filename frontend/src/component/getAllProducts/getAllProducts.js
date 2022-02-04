@@ -4,9 +4,9 @@ import "./getAllProducts.css";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
-const Products = () => {
+const Products = ({ search }) => {
   const [products, setProducts] = useState("");
-  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
 
   const getAllProducts = () => {
     axios

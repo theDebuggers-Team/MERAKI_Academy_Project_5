@@ -8,6 +8,7 @@ import NewProduct from "./component/createNewProduct/createNewProduct";
 import Login from "./component/Login/login";
 
 function App() {
+  const [search, setSearch] = useState("");
   return (
     <div className="App">
       <Header />
@@ -20,10 +21,9 @@ function App() {
       ></input>
       <Routes>
         <Route path="/register" element={<Register />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/products" element={<Products search={search} />} />
         <Route path="/NewProduct" element={<NewProduct />} />
         <Route path="/login" element={<Login />} />
-
       </Routes>
       ;
     </div>
