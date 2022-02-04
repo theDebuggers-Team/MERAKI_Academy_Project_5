@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../";
+import { login, logout } from "../reducer/login/index";
 
 toast.configure();
 
@@ -21,7 +21,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const notifyLoginSuccess = () => {
     toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
     navigate("/products");
@@ -59,10 +59,12 @@ const navigate = useNavigate()
 
   return (
     <div className="login-form">
-      <form onSubmit={(e)=>{
-        e.preventDefault()
-        loginFunction()
-      }}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          loginFunction();
+        }}
+      >
         <p className="title">Login</p>
         <div className="form-e">
           <input
