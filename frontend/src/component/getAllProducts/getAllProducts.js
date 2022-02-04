@@ -34,6 +34,18 @@ const Products = ({ search }) => {
       .catch((error) => {});
   };
   ////////////////////////////////////////////////////////
+  const updateProduct = (id) => {
+    let updatedProduct = { name, description, price, category, image };
+
+    axios
+      .put(`http://localhost:5000/products/${id}`, updatedProduct)
+      .then((result) => {
+        getAllProducts();
+      })
+      .catch((error) => {});
+  };
+
+  ////////////////////////////////////////////////////
 
   return (
     <div>
@@ -63,7 +75,7 @@ const Products = ({ search }) => {
                         "Are you sure you wish to delete this item?"
                       )
                     )
-                      deleteProduct(element._id);
+                      deleteProduct(element.id);
                   }}
                 >
                   Delete
