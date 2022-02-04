@@ -35,7 +35,7 @@ const Products = ({ search }) => {
   };
   ////////////////////////////////////////////////////////
   const updateProduct = (id) => {
-    let updatedProduct = { name, description, price, category, image };
+    let updatedProduct = { title, description, price, image };
 
     axios
       .put(`http://localhost:5000/products/${id}`, updatedProduct)
