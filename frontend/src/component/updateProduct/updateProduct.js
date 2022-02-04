@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./updateProduct.css";
-import Swal from "sweetalert2";
+
 
 const Update = () => {
   const [title, setTitle] = useState("");
