@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState("");
+  
 
   const getAllProducts = () => {
     axios
@@ -41,7 +42,7 @@ const Products = () => {
             if (search === undefined) {
               return element;
             } else if (
-              element.name.toLowerCase().includes(search.toLowerCase()) ||
+              element.title.toLowerCase().includes(search.toLowerCase()) ||
               element.category.toLowerCase().includes(search.toLowerCase())
             ) {
               return element;
