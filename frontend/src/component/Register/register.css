@@ -1,0 +1,93 @@
+
+/* .register-inp{
+    width: 30%;
+    padding: 14.5px 0px 14.5px 30px;
+    border: 2px solid rgb(192, 33, 171);
+    appearance: unset;
+    -moz-appearance: unset;
+    -webkit-appearance: unset;
+    -o-appearance: unset;
+    -ms-appearance: unset;
+    outline: none;
+    -moz-outline: none;
+    -webkit-outline: none;
+    -o-outline: none;
+    -ms-outline: none;
+    border-radius: 27.5px;
+    -o-border-radius: 27.5px;
+    -ms-border-radius: 27.5px;
+    -moz-border-radius: 27.5px;
+    -webkit-border-radius: 27.5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.2);
+
+} */
+  
+/* .register_Submit{
+    background: #86258f;
+    border-radius: 25px;
+    -o-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    width: 180px;
+    height: 40px;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    -o-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    border: none;
+    margin: 20px 0 73px 35px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+} */
+
+/* .register_form{
+display: flex;
+flex-direction: column;
+align-items: center;
+height: 100%;
+box-shadow:10px 10px 10px; */
+
+
+
+
+
+
+/* } */
+
+/* .register_form1{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+} */
+
+
+.register-inp{
+    width: 25rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgb(117, 109, 116);
+    cursor: pointer;
+}
+
+.register_Submit{
+    background: #86258f;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 10rem;
+    height: 2.2rem;
+}
