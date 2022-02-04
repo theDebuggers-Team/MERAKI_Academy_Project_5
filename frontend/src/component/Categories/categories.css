@@ -1,0 +1,17 @@
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    color: #e0dede;
+    border-top: 1px solid #e0dede;
+    height: 10vh;
+    flex-wrap: nowrap
+  }
+.category{
+width: 33%;
+background-color: #dbd0f2;
+color: #000
+
+}
