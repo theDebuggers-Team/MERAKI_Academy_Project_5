@@ -23,7 +23,7 @@ const Login = () => {
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
   const notifyLoginSuccess = () => {
-    toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
+    toast.success("Login Successfully", { position: toast.POSITION.BOTTOM_CENTER });
     navigate("/products");
   };
 
