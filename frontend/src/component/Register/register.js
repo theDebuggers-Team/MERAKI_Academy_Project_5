@@ -30,19 +30,11 @@ const Register = () => {
     toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
     navigate("/login");
   };
-
+  
   const user = async () => {
     if (
-
-      (firstName &&
-        lastName &&
-        age &&
-        country &&
-        email &&
-        password &&
-        users_image,
+      (firstName && lastName && age && country && email && password && users_image,
         phone_Number)
-
     ) {
       const newUser = {
         firstName,
