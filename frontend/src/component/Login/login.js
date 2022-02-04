@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../reducer/login/index";
+import { login, logout } from "../";
 
 toast.configure();
 

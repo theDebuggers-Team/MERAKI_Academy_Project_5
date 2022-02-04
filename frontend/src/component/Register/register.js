@@ -40,8 +40,8 @@ const Register = () => {
         country &&
         email &&
         password &&
-        users_image,
-        phone_Number)
+        users_image
+       )
 
     ) {
       const newUser = {
