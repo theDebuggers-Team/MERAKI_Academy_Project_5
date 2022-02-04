@@ -15,7 +15,7 @@ const Login = () => {
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
-      isLoggedIn: state.isLoggedIn.isLoggedIn,
+      isLoggedIn: state.loginReducer.isLoggedIn,
     };
   });
 
@@ -42,7 +42,7 @@ const navigate = useNavigate()
         .then((response) => {
           if (response.data.success) {
             localStorage.setItem("token", response.data.token);
-            dispatch(login(result.data.token));
+            dispatch(login(response.data.token));
             notifyLoginSuccess();
           }
         })
@@ -59,7 +59,10 @@ const navigate = useNavigate()
 
   return (
     <div className="login-form">
-      <form onSubmit={loginFunction}>
+      <form onSubmit={(e)=>{
+        e.preventDefault()
+        loginFunction()
+      }}>
         <p className="title">Login</p>
         <div className="form-e">
           <input

@@ -8,17 +8,28 @@ import NewProduct from "./component/createNewProduct/createNewProduct";
 import Login from "./component/Login/login";
 
 function App() {
+  const [search, setSearch] = useState("");
   return (
     <div className="App">
-
-<Header/>
-     
+      <Header />
+      <input
+        placeholder="search"
+        className="search"
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+      ></input>
       <Routes>
         <Route path="/register" element={<Register />} />
+
         <Route path="/products" element={<Products />} />
         {/* <Route path="/header" element={<Header />} /> */}
         <Route path="/login" element={<Login />} />
+
+        <Route path="/products" element={<Products search={search} />} />
+
         <Route path="/NewProduct" element={<NewProduct />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       ;
     </div>

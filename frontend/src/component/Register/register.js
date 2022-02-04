@@ -30,7 +30,7 @@ const Register = () => {
     toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
     navigate("/login");
   };
-
+  
   const user = async () => {
     if (
 

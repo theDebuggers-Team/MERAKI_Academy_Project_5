@@ -1,4 +1,4 @@
-import loginReducer from "./login/index.js";
+import loginReducer from "./login/index";
 import { combineReducers, createStore } from "redux";
 
 // create main reducer
