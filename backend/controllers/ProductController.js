@@ -27,11 +27,15 @@ const createNewProduct = (req, res) => {
   });
 };
 
+//Select * from <table_name> LIMIT value_1, OFFSET value_2
+// value_2=(page-1)*value_1
+
 //create controller for getAllProducts
 const getAllProducts = (req, res) => {
-  const query = `select * from products where is_deleted = 0`;
-
-  connection.query(query, (err, result) => {
+  const { page, limit } = req.query;
+  const query = `select * from products LIMIT ?, OFFSET ? where is_deleted = 0`;
+  const data = [limit, (page - 1) * limit];
+  connection.query(query, data, (err, result) => {
     if (err) {
       res
         .status(404)
