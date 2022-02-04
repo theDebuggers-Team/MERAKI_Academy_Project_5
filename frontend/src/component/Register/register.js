@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useEffect } from "react-router-dom";
+import "./register.css";
 
 toast.configure();
 const Register = () => {
@@ -86,12 +87,13 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="register_form1">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           user();
         }}
+        className="register_form"
       >
         <h3 className="title-sign-up">Register</h3>
 
@@ -160,6 +162,7 @@ const Register = () => {
           }}
           required
         />
+        <br/>
         <input
           className="register-inp"
           placeholder="Phone Number"
@@ -182,7 +185,7 @@ const Register = () => {
         />
         <br />
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Sign Up" className = "register_Submit" />
         <br />
       </form>
     </div>
