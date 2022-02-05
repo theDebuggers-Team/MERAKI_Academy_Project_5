@@ -61,12 +61,14 @@ position: relative;
 bottom: 1rem;
 
 
+
 }
 
 .Register-form-div{
 width: 200%;
 height: 100%;
 display: flex;
+
 
 
 }
@@ -87,6 +89,8 @@ display: flex;
     border: 0.1 solid black;
     height:30rem;
     padding-bottom: -1rem;
+    
+    
     
 }
 

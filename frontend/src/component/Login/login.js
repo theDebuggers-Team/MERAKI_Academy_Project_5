@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
+import "./login.css"
 
 toast.configure();
 
@@ -58,12 +59,17 @@ const Login = () => {
   };
 
   return (
-    <div className="login-form">
+    <div className="Login_form1">
+        <div >
+        <img src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg" className="Register-image-login"/>
+      </div>
+      <div className="Login-form-div">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           loginFunction();
         }}
+        className="Login-form"
       >
         <p className="title">Login</p>
         <div className="form-e">
@@ -89,10 +95,11 @@ const Login = () => {
           <br />
         </div>
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className = "Login_Submit" />
 
         <br />
       </form>
+      </div>
     </div>
   );
 };
