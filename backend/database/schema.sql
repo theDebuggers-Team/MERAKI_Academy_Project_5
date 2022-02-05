@@ -72,11 +72,11 @@ USE  MERAKI_Academy_Project_5 ;
 -- PRIMARY KEY (id)
 -- );
 
--- insert into roles (role) values ("ADMIN");
--- insert into roles (role) values ("USER");
+insert into roles (role) values ("ADMIN");
+insert into roles (role) values ("USER");
 
+insert into users (firstName,lastName,age,country,email,phone_Number,password,role_id,users_image) values ("naser","Qasem",24,"jordan","naser5@gmail.com","0213216","123456",1,"https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg");
 
-
-insert into products (title, description, price, image,user_id,category) values ("avante","avante 4 sale ","8000","https://image-cdn.beforward.jp/large/201706/781633/BF657240_479612.jpg",3,"cars");
-insert into products (title, description, price, image,user_id,category) values ("mazda","mazda 4 sale ","8000","https://cdn.elwatannews.com/watan/543x295/14365937361579365330.jpg",2,"cars");
+insert into products (title, description, price, image,user_id,category) values ("avante","avante 4 sale ","8000","https://image-cdn.beforward.jp/large/201706/781633/BF657240_479612.jpg",1,"cars");
+insert into products (title, description, price, image,user_id,category) values ("mazda","mazda 4 sale ","8000","https://cdn.elwatannews.com/watan/543x295/14365937361579365330.jpg",1,"cars");
 insert into products (title, description, price, image,user_id,category) values ("sonata","sonata 4 sale ","8000","https://cdn.elwatannews.com/watan/543x295/14365937361579365330.jpg",1,"cars");
