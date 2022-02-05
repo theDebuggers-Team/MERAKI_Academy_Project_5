@@ -11,6 +11,9 @@ import Update from "./component/updateProduct/updateProduct";
 
 function App() {
   const [search, setSearch] = useState("");
+
+
+
   return (
     <div className="App">
       <Header />
@@ -31,9 +34,9 @@ function App() {
 
         <Route path="/login" element={<Login />} />
       </Routes>
-      ;
+     
     </div>
-  );
+  )
 }
 
 export default App;

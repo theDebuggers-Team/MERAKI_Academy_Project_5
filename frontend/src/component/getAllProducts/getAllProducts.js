@@ -39,10 +39,12 @@ const Products = ({ search }) => {
         console.log(err);
       });
   };
-  localStorage.setItem("function", JSON.stringify(getAllProducts()));
+ 
   useEffect(() => {
     getAllProducts();
   }, [page, limit]);
+
+  
   /////////////////////////////////////////////////
   const deleteProduct = (id) => {
     axios
