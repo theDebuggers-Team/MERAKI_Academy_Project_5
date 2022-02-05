@@ -95,7 +95,7 @@ const Login = () => {
           <br />
         </div>
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className = "Login_Submit" />
 
         <br />
       </form>
