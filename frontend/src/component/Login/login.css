@@ -1,0 +1,19 @@
+.Login_form1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 8rem;
+   
+    width: 50%;
+    padding-left: 25rem;
+    border: 0.1 solid black;
+    height:30rem;
+    padding-bottom: -1rem;
+}
+
+.Register-image-login{
+    height:17rem;
+ border-left:0.1rem solid rgb(92, 84, 84);
+ border-bottom:0.1rem solid rgb(92, 84, 84);
+}
