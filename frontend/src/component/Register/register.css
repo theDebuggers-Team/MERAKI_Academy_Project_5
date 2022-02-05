@@ -52,8 +52,21 @@
 display: flex;
 flex-direction: column;
 align-items: center;
+width: 50%;
+/* border-bottom:0.1rem solid black; */
+
+box-shadow: #17759C ;
+height: 29rem;
+position: relative;
+bottom: 1rem;
 
 
+}
+
+.Register-form-div{
+width: 200%;
+height: 100%;
+display: flex;
 
 
 }
@@ -61,26 +74,42 @@ align-items: center;
 
 /* } */
 
-/* .register_form1{
+.register_form1{
 
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 8rem;
+   
+    width: 50%;
+    padding-left: 25rem;
+    border: 0.1 solid black;
+    height:30rem;
+    padding-bottom: -1rem;
     
-} */
+}
+
+.Register-image{
+ height:17rem;
+ border-left:0.1rem solid rgb(92, 84, 84);
+ border-bottom:0.1rem solid rgb(92, 84, 84);
+}
 
 
 .register-inp{
     width: 25rem;
     height: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 0.1rem;
     border: 0.1rem solid rgb(117, 109, 116);
     cursor: pointer;
+    border-top: none;
+    border-right: none;
+    border-left: none;
 }
 
 .register_Submit{
-    background: #86258f;
+    /* background: #86258f;
     border-radius: 0.5rem;
     color: #fff;
     font-family: 'Nunito', sans-serif;
@@ -88,5 +117,47 @@ align-items: center;
     font-size: 1.5rem;
     cursor: pointer;
     width: 10rem;
-    height: 2.2rem;
+    height: 2.2rem; */
+    background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  text-decoration: none;
+  width: 50%;
+  border: 0;
+  height:3rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding-bottom: -1rem;
 }
+
+
+/* CSS */
+/* .button-43 {
+  background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  text-decoration: none;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+} */
+
+.register_Submit:hover {
+  background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+}
+

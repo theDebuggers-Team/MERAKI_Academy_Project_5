@@ -88,6 +88,10 @@ const Register = () => {
 
   return (
     <div className="register_form1">
+      <div >
+        <img src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg" className="Register-image"/>
+      </div>
+      <div className="Register-form-div">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -188,6 +192,7 @@ const Register = () => {
         <input type="submit" value="Sign Up" className = "register_Submit" />
         <br />
       </form>
+      </div>
     </div>
   );
 };
