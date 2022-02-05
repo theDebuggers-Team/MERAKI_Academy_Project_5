@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
-import "./login.css"
+import "./login.css";
 
 toast.configure();
 
@@ -24,7 +24,9 @@ const Login = () => {
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
   const notifyLoginSuccess = () => {
-    toast.success("Login Successfully", { position: toast.POSITION.BOTTOM_CENTER });
+    toast.success("Login Successfully", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
     navigate("/products");
   };
 
@@ -60,45 +62,48 @@ const Login = () => {
 
   return (
     <div className="Login_form1">
-        <div >
-        <img src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg" className="Register-image-login"/>
+      <div>
+        <img
+          src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg"
+          className="Register-image-login"
+        />
       </div>
       <div className="Login-form-div">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          loginFunction();
-        }}
-        className="Login-form"
-      >
-        <p className="title">Login</p>
-        <div className="form-e">
-          <input
-            className="login-inp"
-            placeholder="Email"
-            type="email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            required
-          />
-          <br />
-          <input
-            className="login-inp"
-            placeholder="Password"
-            type="password"
-            onChange={(e) => {
-              setpassword(e.target.value);
-            }}
-            required
-          />
-          <br />
-        </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            loginFunction();
+          }}
+          className="Login-form"
+        >
+          <p className="title">Login</p>
+          <div className="form-e">
+            <input
+              className="login-inp"
+              placeholder="Email"
+              type="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              required
+            />
+            <br />
+            <input
+              className="login-inp"
+              placeholder="Password"
+              type="password"
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
+              required
+            />
+            <br />
+          </div>
 
-        <input type="submit" value="Submit" className = "Login_Submit" />
+          <input type="submit" value="Login" className="Login_Submit" />
 
-        <br />
-      </form>
+          <br />
+        </form>
       </div>
     </div>
   );
