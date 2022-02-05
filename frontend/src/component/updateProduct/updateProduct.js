@@ -20,36 +20,25 @@ const Update = () => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
       token: state.loginReducer.token,
-      products: state.productReducer.products,
     };
   });
-  console.log(state.getallproduct);
-  const filter =
-    state.products &&
-    state.products.filter((ele) => {
-      return ele.id == id;
-    });
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
-  const [category, setcategory] = useState("");
+  const [category, setCategory] = useState("");
 
-  const updateProduct = () => {
-    let updatedProduct = { title, description, price, image, category };
-
-  const [title, setTitle] = useState(filter[0].title);
-  const [description, setDescription] = useState(filter[0].description);
-  const [price, setPrice] = useState(filter[0].price);
-  const [image, setImage] = useState(filter[0].image);
-  const [category, setCategory] = useState(filter[0].category);
-  // const [title, setTitle] = useState("")
-  // const [description, setDescription] = useState("");
-  // const [price, setPrice] = useState("");
-  // const [image, setImage] = useState("");
-  // const [category, setCategory] = useState("");
-
+  const getProductById = () => {
+    axios
+      .get(`http://localhost:5000/product/search_1?id=${id}`)
+      .then((response) => {
+        setTitle(response.data.results[0].title);
+        setDescription(response.data.results[0].description);
+        setPrice(response.data.results[0].price);
+        setImage(response.data.results[0].image);
+        setCategory(response.data.results[0].category);
+      });
+  };
   const updateProduct = (id) => {
     const updatedProduct = { title, description, price, image, category };
     axios
@@ -59,13 +48,16 @@ const Update = () => {
         },
       })
       .then((result) => {
-        // getAllProducts();
         dispatch(updateproduct({ ...updatedProduct, id }));
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  useEffect(() => {
+    getProductById();
+  }, []);
+  console.log(price);
 
   return (
     <div className="update-product">
@@ -75,7 +67,7 @@ const Update = () => {
       <input
         className="update-inp"
         placeholder="Title"
-        defaultValue={filter[0].title}
+        defaultValue={title}
         type="text"
         onChange={(e) => {
           setTitle(e.target.value);
@@ -85,7 +77,7 @@ const Update = () => {
       <input
         className="update-inp"
         placeholder="description"
-        defaultValue={filter[0].description}
+        defaultValue={description}
         type="text"
         onChange={(e) => {
           console.log();
@@ -96,7 +88,7 @@ const Update = () => {
       <input
         className="update-inp"
         placeholder="price"
-        defaultValue={filter[0].price - 0}
+        defaultValue={price}
         type="number"
         onChange={(e) => {
           setPrice(e.target.value);
@@ -106,7 +98,7 @@ const Update = () => {
       <input
         className="update-inp"
         placeholder="image"
-        defaultValue={filter[0].image}
+        defaultValue={image}
         type="text"
         onChange={(e) => {
           setImage(e.target.value);
@@ -116,7 +108,7 @@ const Update = () => {
       <input
         className="update-inp"
         placeholder="category"
-        defaultValue={filter[0].category}
+        defaultValue={category}
         type="text"
         onChange={(e) => {
           setCategory(e.target.value);
@@ -145,5 +137,6 @@ const Update = () => {
         Update
       </button>
     </div>
-
- 
+  );
+};
+export default Update;
