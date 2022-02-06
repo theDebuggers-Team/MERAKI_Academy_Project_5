@@ -64,7 +64,7 @@ const Update = () => {
     <div className="update-product">
        <div className="image-form">
       <div>
-        <img src="https://image.shutterstock.com/image-vector/system-update-vector-illustration-concept-600w-1253398390.jpg" className="image-update-comp"/>
+        <img src="https://www.crowdynews.com/wp-content/uploads/2016/03/Product-update.jpg" className="image-update-comp"/>
       </div>
       <div className="container-inputs-bottom">
         <div>
