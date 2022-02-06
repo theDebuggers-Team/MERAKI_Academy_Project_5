@@ -17,6 +17,7 @@ const Navigation = () => {
       token: state.loginReducer.token,
     };
   });
+  
   const token = state.token;
   const role = token && decode(token).role;
   const firstName = token && decode(token).firstName;
@@ -24,7 +25,7 @@ const Navigation = () => {
   const lastName2 = token && decode(token).family_name;
   const googleLogin = token && decode(token);
   console.log(googleLogin);
-
+  
   //////////////////////////
 
   return (

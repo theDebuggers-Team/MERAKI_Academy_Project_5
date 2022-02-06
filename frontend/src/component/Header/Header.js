@@ -3,12 +3,13 @@ import Navigation from "./Navigation";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { useSelector, useDispatch } from "react-redux";
 
 import decode from "jwt-decode";
 import { BsBag } from "react-icons/bs";
-import { useSelector, useDispatch } from "react-redux";
-
-
+import { Navbar } from "responsive-navbar-react/dist/index.modern";
+import "responsive-navbar-react/dist/index.css";
+import jwtDecode from "jwt-decode";
 
 const Header = () => {
   const state = useSelector((state) => {
@@ -17,6 +18,42 @@ const Header = () => {
       token: state.loginReducer.token,
     };
   });
+  
+  console.log(jwtDecode(state.token));
+  const [props, setprops] = useState({
+    items: [
+      {
+        text: "Home",
+        link: "/",
+      },
+      {
+        text: "Products",
+        link: "/products",
+      },
+      {
+        text: "Custom",
+        link: "#",
+      },
+      {
+        text: "Contact",
+        link: "#",
+      },
+    ],
+    logo: {
+      text: "",
+    },
+    style: {
+      barStyles: {
+        background: "#08678C",
+      },
+      sidebarStyles: {
+        background: "#08678C",
+        buttonColor: "white",
+      },
+    },
+  });
+
+  
 
   const [name, setName] = useState("");
 
@@ -79,7 +116,8 @@ const Header = () => {
         ) : null}
       </div>
 
-      <Navigation />
+      {/* <Navigation /> */}
+      <Navbar {...props} />
     </div>
   );
 };

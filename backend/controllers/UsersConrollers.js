@@ -68,6 +68,8 @@ const login = (req, res) => {
         console.log(result);
         const payload = {
           userId: result[0].id,
+          firstName: result[0].firstName,
+          lastName: result[0].lastName,
           country: result[0].country,
           role: result[0].role,
           phone_number: result[0].phone_Number,
