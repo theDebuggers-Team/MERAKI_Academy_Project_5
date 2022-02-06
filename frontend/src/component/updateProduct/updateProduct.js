@@ -10,6 +10,7 @@ import {
   deleteproduct,
 } from "../reducer/products/index";
 import Swal from "sweetalert2";
+import "./updateProduct.css"
 
 const Update = () => {
   const params = useParams();
@@ -61,9 +62,17 @@ const Update = () => {
 
   return (
     <div className="update-product">
-      <label for="chk" aria-hidden="true">
+       <div className="image-form">
+      <div>
+        <img src="https://www.crowdynews.com/wp-content/uploads/2016/03/Product-update.jpg" className="image-update-comp"/>
+      </div>
+      <div className="container-inputs-bottom">
+        <div>
+      <label for="chk" aria-hidden="true" className="text-update-comp">
         Update Product
       </label>
+      </div>
+      <br/>
       <input
         className="update-inp"
         placeholder="Title"
@@ -134,8 +143,10 @@ const Update = () => {
           });
         }}
       >
-        Update
+          Update
       </button>
+      </div>
+      </div>
     </div>
   );
 };
