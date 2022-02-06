@@ -62,9 +62,16 @@ const Update = () => {
 
   return (
     <div className="update-product">
-      <label for="chk" aria-hidden="true">
+       <div className="image-form">
+      <div>
+        <img src="https://image.shutterstock.com/image-vector/system-update-vector-illustration-concept-600w-1253398390.jpg" className="image-update-comp"/>
+      </div>
+      <div className="container-inputs-bottom">
+        <div>
+      <label for="chk" aria-hidden="true" className="text-update-comp">
         Update Product
       </label>
+      </div>
       <br/>
       <input
         className="update-inp"
@@ -138,6 +145,8 @@ const Update = () => {
       >
           Update
       </button>
+      </div>
+      </div>
     </div>
   );
 };

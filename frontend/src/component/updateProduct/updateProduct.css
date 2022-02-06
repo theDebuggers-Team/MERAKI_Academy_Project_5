@@ -4,14 +4,17 @@
     background-position: 10px 10px;
     /* background-repeat: no-repeat; */
     padding-left: 10px;
-    width: 30%;
+    min-width: 70%;
     min-height: 2rem;
     border-radius: 0.4rem;
   }
 
   .update-inp:focus{
-    background-color: rgb(71, 161, 194);
-    color: white;
+    
+    outline: none;
+    border-color: #00778c;
+    box-shadow: 0 0 0.3rem #008c80;
+  
     
     
   }
@@ -32,7 +35,7 @@
   font-weight: 700;
   line-height: 24px;
   /* margin: 0; */
-  height: 3.5rem;
+  height: 3rem;
   min-width: 100px;
   padding: 16px 20px;
   /* position: relative;
@@ -59,7 +62,39 @@
 
 .update-product{
     display:flex;  
-    flex-direction:column;
+    flex-direction:row;
     align-items:center;
     justify-content:center;
+    gap:2rem ;
+    width:100%;
+}
+
+.container-inputs-bottom{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+ min-width:20%;
+
+}
+
+.image-update-comp{
+ height: 19rem;
+ /* border-left: 0.1rem solid rgb(92, 84, 84); */
+ /* border-bottom: 0.1rem solid rgb(92, 84, 84); */
+ width: 30rem;
+}
+
+.image-form{
+border: 0.1rem solid black;
+/* display: flex;
+flex-direction: row; */
+min-width: 30%;
+
+}
+
+.text-update-comp{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:bold;
+    font-size:1.5rem
 }
