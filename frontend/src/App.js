@@ -17,13 +17,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <input
+      {/* <input
         placeholder="search"
         className="search"
         onChange={(e) => {
           setSearch(e.target.value);
         }}
-      ></input>
+      ></input> */}
       <Categories />
       <Routes>
         <Route path="/register" element={<Register />} />
