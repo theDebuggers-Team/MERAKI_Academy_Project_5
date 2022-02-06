@@ -10,6 +10,7 @@ import {
   deleteproduct,
 } from "../reducer/products/index";
 import Swal from "sweetalert2";
+import "./updateProduct.css"
 
 const Update = () => {
   const params = useParams();
@@ -64,6 +65,7 @@ const Update = () => {
       <label for="chk" aria-hidden="true">
         Update Product
       </label>
+      <br/>
       <input
         className="update-inp"
         placeholder="Title"
@@ -134,7 +136,7 @@ const Update = () => {
           });
         }}
       >
-        Update
+          Update
       </button>
     </div>
   );
