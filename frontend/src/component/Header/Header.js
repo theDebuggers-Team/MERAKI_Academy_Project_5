@@ -5,10 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 
+
 import decode from "jwt-decode";
 import { BsBag } from "react-icons/bs";
-import { Navbar } from "responsive-navbar-react/dist/index.modern";
-import "responsive-navbar-react/dist/index.css";
+
 import jwtDecode from "jwt-decode";
 
 const Header = () => {
