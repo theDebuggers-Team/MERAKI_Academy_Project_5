@@ -9,6 +9,7 @@ import { IoCartSharp } from "react-icons/io5";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { RiLoginBoxFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
+import {MdFavorite} from "react-icons/md"
 
 const Navigation = () => {
   const state = useSelector((state) => {
@@ -43,7 +44,7 @@ const Navigation = () => {
         </Link>
         {token ? (
           <Link to="/cart" className="link">
-            <IoCartSharp /> Favorite
+            <MdFavorite /> Favorite
           </Link>
         ) : null}
       </div>
