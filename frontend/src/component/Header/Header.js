@@ -18,42 +18,6 @@ const Header = () => {
       token: state.loginReducer.token,
     };
   });
-  
-  console.log(jwtDecode(state.token));
-  const [props, setprops] = useState({
-    items: [
-      {
-        text: "Home",
-        link: "/",
-      },
-      {
-        text: "Products",
-        link: "/products",
-      },
-      {
-        text: "Custom",
-        link: "#",
-      },
-      {
-        text: "Contact",
-        link: "#",
-      },
-    ],
-    logo: {
-      text: "",
-    },
-    style: {
-      barStyles: {
-        background: "#08678C",
-      },
-      sidebarStyles: {
-        background: "#08678C",
-        buttonColor: "white",
-      },
-    },
-  });
-
-  
 
   const [name, setName] = useState("");
 
@@ -116,8 +80,7 @@ const Header = () => {
         ) : null}
       </div>
 
-      {/* <Navigation /> */}
-      <Navbar {...props} />
+      <Navigation />
     </div>
   );
 };
