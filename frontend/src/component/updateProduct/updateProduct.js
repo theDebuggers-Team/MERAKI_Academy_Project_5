@@ -10,7 +10,7 @@ import {
   deleteproduct,
 } from "../reducer/products/index";
 import Swal from "sweetalert2";
-import "./updateProduct.css"
+import "./updateProduct.css";
 
 const Update = () => {
   const params = useParams();
@@ -62,90 +62,93 @@ const Update = () => {
 
   return (
     <div className="update-product">
-       <div className="image-form">
-      <div>
-        <img src="https://www.crowdynews.com/wp-content/uploads/2016/03/Product-update.jpg" className="image-update-comp"/>
-      </div>
-      <div className="container-inputs-bottom">
+      <div className="image-form">
         <div>
-      <label for="chk" aria-hidden="true" className="text-update-comp">
-        Update Product
-      </label>
-      </div>
-      <br/>
-      <input
-        className="update-inp"
-        placeholder="Title"
-        defaultValue={title}
-        type="text"
-        onChange={(e) => {
-          setTitle(e.target.value);
-        }}
-      ></input>
-      <br />
-      <input
-        className="update-inp"
-        placeholder="description"
-        defaultValue={description}
-        type="text"
-        onChange={(e) => {
-          console.log();
-          setDescription(e.target.value);
-        }}
-      ></input>
-      <br />
-      <input
-        className="update-inp"
-        placeholder="price"
-        defaultValue={price}
-        type="number"
-        onChange={(e) => {
-          setPrice(e.target.value);
-        }}
-      ></input>
-      <br />
-      <input
-        className="update-inp"
-        placeholder="image"
-        defaultValue={image}
-        type="text"
-        onChange={(e) => {
-          setImage(e.target.value);
-        }}
-      ></input>
-      <br />
-      <input
-        className="update-inp"
-        placeholder="category"
-        defaultValue={category}
-        type="text"
-        onChange={(e) => {
-          setCategory(e.target.value);
-        }}
-      ></input>
-      <br />
-      <button
-        className="update-btn"
-        onClick={() => {
-          Swal.fire({
-            title: "Do you want to save the changes?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Save",
-            denyButtonText: `Don't save`,
-          }).then((result) => {
-            if (result.isConfirmed) {
-              updateProduct(id);
-              Swal.fire("Saved!", "", "success");
-            } else if (result.isDenied) {
-              Swal.fire("Changes are not saved", "", "info");
-            }
-          });
-        }}
-      >
-          Update
-      </button>
-      </div>
+          <img
+            src="https://www.crowdynews.com/wp-content/uploads/2016/03/Product-update.jpg"
+            className="image-update-comp"
+          />
+        </div>
+        <div className="container-inputs-bottom">
+          <div>
+            <label for="chk" aria-hidden="true" className="text-update-comp">
+              Update Product
+            </label>
+          </div>
+          <br />
+          <input
+            className="update-inp"
+            placeholder="Title"
+            defaultValue={title}
+            type="text"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          ></input>
+          <br />
+          <input
+            className="update-inp"
+            placeholder="description"
+            defaultValue={description}
+            type="text"
+            onChange={(e) => {
+              console.log();
+              setDescription(e.target.value);
+            }}
+          ></input>
+          <br />
+          <input
+            className="update-inp"
+            placeholder="price"
+            defaultValue={price}
+            type="number"
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+          ></input>
+          <br />
+          <input
+            className="update-inp"
+            placeholder="image"
+            defaultValue={image}
+            type="text"
+            onChange={(e) => {
+              setImage(e.target.value);
+            }}
+          ></input>
+          <br />
+          <input
+            className="update-inp"
+            placeholder="category"
+            defaultValue={category}
+            type="text"
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+          ></input>
+          <br />
+          <button
+            className="update-btn"
+            onClick={() => {
+              Swal.fire({
+                title: "Do you want to save the changes?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Save",
+                denyButtonText: `Don't save`,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  updateProduct(id);
+                  Swal.fire("Saved!", "", "success");
+                } else if (result.isDenied) {
+                  Swal.fire("Changes are not saved", "", "info");
+                }
+              });
+            }}
+          >
+            Update
+          </button>
+        </div>
       </div>
     </div>
   );
