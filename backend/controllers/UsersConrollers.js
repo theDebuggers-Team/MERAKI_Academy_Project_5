@@ -139,7 +139,7 @@ const updateUserById = (req, res) => {
 
 const deleteUserById = (req, res) => {
   const userId = req.params.user_id;
-  const query = `UPDATE products SET is_deleted =1 where user_id=? and is_deleted =0`;
+  const query = `UPDATE users SET is_deleted =1 where id=? and is_deleted =0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -152,12 +152,12 @@ const deleteUserById = (req, res) => {
       if (!result.affectedRows) {
         return res.status(404).json({
           success: false,
-          message: `No products found with the indicated  user_id => ${userId}`,
+          message: `No users found with the indicated id => ${userId}`,
         });
       }
       res.status(200).json({
         success: true,
-        message: `The products with user_id was deleted=> ${userId} `,
+        message: `The users with user_id was deleted=> ${userId} `,
       });
     }
   });
