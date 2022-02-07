@@ -104,10 +104,29 @@ const deleteCommentByUserId = (req, res) => {
     });
   });
 };
+//////// create get all comment function/backend
+const getAllComments = (req,res)=>{
+  const productId = req.params.id
+  const query = `select firstName,comment,publish_date from comments inner join users on comments.user_id = users.id inner join products on comments.product_id = product.id where product.id =?`
+  const data = [productId]
+   connection.query(query, data, (err, result) => {
+      if (err) {
+        console.log(err);
+        res
+          .status(404)
+          .json({ success: false, message: "server error", err: err });
+      } else {
+        res
+          .status(200)
+          .json({ success: true, message: `All the comments`, results: result });
+      }
+    });
+  }
 
 module.exports = {
   createNewComment,
   updateCommentById,
   deleteCommentById,
   deleteCommentByUserId,
+  getAllComments,
 };

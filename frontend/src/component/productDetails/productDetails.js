@@ -31,7 +31,7 @@ const [commentsOnProduct,setcommentsOnProduct] =useState([])
 const [createComment,setcreateComment] = useState("")
  
 const {id} = useParams()
-
+//////////////////////////////
  const getProductById = axios.get(`http://localhost:5000/search_1?id=${id}`).then((response)=>{
     setproductDetails(response.data.results)
   }).catch((err)=>{
@@ -39,7 +39,7 @@ const {id} = useParams()
         position: toast.POSITION.BOTTOM_RIGHT,
       });
   })
-
+/////////////////////////////
   const getAllComment = axios.get(`http:localhost:5000/comment/product/${id}`).then((response)=>{
     setcommentsOnProduct(response.data.results)
   }).catch((err)=>{
@@ -55,11 +55,11 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
       Authorization: `Basic ${state.token}`,
     },
   })
-   
+/////////////////////
   useEffect(() => {
     getProductById()
   },[commentsOnProduct])
-
+///////////////////////////////
   const allComments = commentsOnProduct && commentsOnProduct.map((comment)=>{
       return(
          <div className="all-comments">
@@ -74,7 +74,7 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
 
 
 
-
+//////////////////////////////////
   const productDetailsToShow = productDetails&& productDetails.map((element)=>{
 return (
 <div className= "all-div-componenet">
@@ -157,7 +157,7 @@ createNewComment()
 )
     
 })
-
+///////////////////////////////
 return (
 
  <div>
@@ -168,7 +168,7 @@ return (
 
 
 )
-
+//////////////////////////////
 
 }
 
