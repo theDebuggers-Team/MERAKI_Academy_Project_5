@@ -16,6 +16,7 @@ const navigate = useNavigate();
 
 const [productDetails, setproductDetails] = useState([])
 const [showComment,setshowComment] = useState(false)
+const [commentsOnProduct,setcommentsOnProduct] =useState([])
  
 const {id} = useParams()
 
@@ -26,10 +27,34 @@ const {id} = useParams()
         position: toast.POSITION.BOTTOM_RIGHT,
       });
   })
+
+  axios.get(`http:localhost:5000/comment/product/${id}`).then((response)=>{
+    setcommentsOnProduct(response.data.results)
+  }).catch((err)=>{
+    toast.error(err.response.data.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+  })
    
+  
+  const allComments = commentsOnProduct.map((comment)=>{
+      return(
+         <div className="all-comments">
+             <div className="just-one-comment">
+             <p>{comment.name}</p>
+            <p>{comment.comment}</p>
+            <p>{comment.publishedDate}</p>
+          </div>
+         </div>
+      )
+  })
+
+
+
 
   const productDetailsToShow = productDetails.map((element)=>{
 return (
+<div className= "all-div-componenet">
 <div>
  <div className="product-image-description">
      <p>{element.title}</p>
@@ -76,18 +101,20 @@ return (
 </div>
 /////////////////
 
+</div>
+
+<div className="all-comment-div">
+
 { showComment? <div className="comment-reviews">
-   
+{allComments? allComments:toast.warn("No comment on this product", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })}
 
 </div>:null}
 
-
-
-
-
 </div>
 
-
+</div>
 
 
 )
