@@ -31,19 +31,16 @@ const Register = () => {
     toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
     navigate("/login");
   };
-  
+
   const user = async () => {
     if (
-
-      (firstName &&
-        lastName &&
-        age &&
-        country &&
-        email &&
-        password &&
-        users_image
-       )
-
+      firstName &&
+      lastName &&
+      age &&
+      country &&
+      email &&
+      password &&
+      users_image
     ) {
       const newUser = {
         firstName,
@@ -88,110 +85,113 @@ const Register = () => {
 
   return (
     <div className="register_form1">
-      <div >
-        <img src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg" className="Register-image"/>
+      <div>
+        <img
+          src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg"
+          className="Register-image"
+        />
       </div>
       <div className="Register-form-div">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          user();
-        }}
-        className="register_form"
-      >
-        <h3 className="title-sign-up">Register</h3>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            user();
+          }}
+          className="register_form"
+        >
+          <h3 className="title-sign-up">Register</h3>
 
-        <input
-          className="register-inp"
-          placeholder="First Name"
-          type="text"
-          value={firstName}
-          onChange={(e) => {
-            setfirstName(e.target.value);
-          }}
-          required
-        />
-        <br />
-        <input
-          className="register-inp"
-          placeholder="Last Name"
-          type="text"
-          value={lastName}
-          onChange={(e) => {
-            setlastName(e.target.value);
-          }}
-          required
-        />
-        <br />
-        <input
-          className="register-inp"
-          placeholder="Age"
-          type="number"
-          value={age}
-          onChange={(e) => {
-            setAge(e.target.value);
-          }}
-          required
-        />
-        <br />
-        <input
-          className="register-inp"
-          placeholder="Country"
-          type="text"
-          value={country}
-          onChange={(e) => {
-            setcountry(e.target.value);
-          }}
-          required
-        />
-        <br />
-        <input
-          className="register-inp"
-          placeholder="Email"
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          required
-        />
-        <br />
-        <input
-          className="register-inp"
-          placeholder="Password"
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          required
-        />
-        <br/>
-        <input
-          className="register-inp"
-          placeholder="Phone Number"
-          type="text"
-          value={phone_Number}
-          onChange={(e) => {
-            setphone_number(e.target.value);
-          }}
-        />
-        <br />
-        <input
-          className="register-inp"
-          placeholder="Profile Image"
-          type="text"
-          value={users_image}
-          onChange={(e) => {
-            setusers_Image(e.target.value);
-          }}
-          required
-        />
-        <br />
-        <br />
-        <input type="submit" value="Sign Up" className = "register_Submit" />
-        <br />
-      </form>
+          <input
+            className="register-inp"
+            placeholder="First Name"
+            type="text"
+            value={firstName}
+            onChange={(e) => {
+              setfirstName(e.target.value);
+            }}
+            required
+          />
+          <br />
+          <input
+            className="register-inp"
+            placeholder="Last Name"
+            type="text"
+            value={lastName}
+            onChange={(e) => {
+              setlastName(e.target.value);
+            }}
+            required
+          />
+          <br />
+          <input
+            className="register-inp"
+            placeholder="Age"
+            type="number"
+            value={age}
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+            required
+          />
+          <br />
+          <input
+            className="register-inp"
+            placeholder="Country"
+            type="text"
+            value={country}
+            onChange={(e) => {
+              setcountry(e.target.value);
+            }}
+            required
+          />
+          <br />
+          <input
+            className="register-inp"
+            placeholder="Email"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            required
+          />
+          <br />
+          <input
+            className="register-inp"
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            required
+          />
+          <br />
+          <input
+            className="register-inp"
+            placeholder="Phone Number"
+            type="text"
+            value={phone_Number}
+            onChange={(e) => {
+              setphone_number(e.target.value);
+            }}
+          />
+          <br />
+          <input
+            className="register-inp"
+            placeholder="Profile Image"
+            type="text"
+            value={users_image}
+            onChange={(e) => {
+              setusers_Image(e.target.value);
+            }}
+            required
+          />
+          <br />
+          <br />
+          <input type="submit" value="Sign Up" className="register_Submit" />
+          <br />
+        </form>
       </div>
     </div>
   );
