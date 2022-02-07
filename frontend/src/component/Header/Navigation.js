@@ -12,8 +12,51 @@ import { useSelector, useDispatch } from "react-redux";
 import { MdFavorite } from "react-icons/md";
 import { TiThMenu as MenuIcon } from "react-icons/ti";
 import { AiOutlineClose as CloseMenu } from "react-icons/ai";
+import { IoCarSportOutline } from "react-icons/io5";
+import { RiComputerLine } from "react-icons/ri";
+import { MdOutlineWorkOutline } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
+import { GiClothes } from "react-icons/gi";
+import { IoSearchOutline } from "react-icons/io5";
 
 const Navigation = () => {
+  const categoriesarr = [
+    {
+      name: "Cars",
+      image: <IoCarSportOutline />,
+    },
+    {
+      name: "Electronics",
+      image: <RiComputerLine />,
+    },
+    {
+      name: "Jobs",
+      image: <MdOutlineWorkOutline />,
+    },
+    {
+      name: "Real Estates",
+      image: <FaHome />,
+    },
+    {
+      name: "Fashoins",
+      image: <GiClothes />,
+    },
+    {
+      name: "Job Seeker",
+      image: <IoSearchOutline />,
+    },
+  ];
+  const mapOverCategories = categoriesarr.map((category) => {
+    return (
+      <>
+      <span className="category-list">
+         {category.name}
+      </span>
+   
+      </>
+
+    );
+  });
   const [click, setClick] = useState(false);
   const [clickCate, setClickCate] = useState(false);
 
@@ -73,18 +116,11 @@ const Navigation = () => {
               </Link>{" "}
             </li>
             {clickCate ? (
-              <div className="dropdown-menu"></div>
+              <div className="dropdown-menu1">{mapOverCategories}</div>
             ) : (
-              <div className="dropdown-menu1"><span>Cars</span>
-              <br/>
-              <span>Cars</span>
-              <br/>
-              <span>Cars</span>
-              <br/>
-              <span>Cars</span>
-              <br/>
-              <span>Cars</span>
-              <br/></div>
+              <div className="dropdown-menu">
+                 {/* {mapOverCategories} */}
+              </div>
             )}
           </div>
           {token ? (

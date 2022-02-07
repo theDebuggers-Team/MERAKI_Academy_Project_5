@@ -305,6 +305,18 @@ body {
   pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-  height: 150px;
+  height: 250px;
+  z-index: 1;
+  width: 180px;
   
+  
+}
+
+.category-list {
+  border-bottom: 0.1rem solid rgb(212, 211, 211);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1%;
+  margin:10px 0
 }

@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "./getAllProducts.css";
+// import "./getAllProducts.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
 
 toast.configure();
 const ProductDetails = () => {
@@ -32,19 +32,21 @@ const ProductDetails = () => {
 
   const { id } = useParams();
   //////////////////////////////
-  const getProductById = axios
-    .get(`http://localhost:5000/search_1?id=${id}`)
-    .then((response) => {
-      setproductDetails(response.data.results);
-    })
-    .catch((err) => {
-      toast.error(err.response.data.message, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+  const getProductById = () => {
+    axios
+      .get(`http://localhost:5000/product/search_1?id=${id}`)
+      .then((response) => {
+        setproductDetails(response.data.results);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       });
-    });
+  };
   /////////////////////////////
   const getAllComment = axios
-    .get(`http:localhost:5000/comment/product/${id}`)
+    .get(`http://localhost:5000/comment/product/${id}`)
     .then((response) => {
       setcommentsOnProduct(response.data.results);
     })
@@ -61,7 +63,7 @@ const ProductDetails = () => {
     product_id: id,
   };
   const createNewComment = axios.post(
-    `http:locahost:5000/comment/${id}`,
+    `http://locahost:5000/comment/${id}`,
     newComment,
     {
       headers: {
@@ -236,7 +238,7 @@ const ProductDetails = () => {
               </div>
               ////////////////
               <div className="product-add-comment-rate">
-                {state.token ? (
+                {/* {state.token ? (
                   <ReactStars
                     size={26}
                     count={5}
@@ -252,7 +254,7 @@ const ProductDetails = () => {
                       console.log(`Example 2: new value is ${newValue}`);
                     }}
                   />
-                ) : null}
+                ) : null} */}
                 <br />
 
                 <button
