@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-const users = () => {
+const Users = () => {
   const [users, setUsers] = useState([]);
   /////////////////////////////
   const getAllUsers = () => {
@@ -18,6 +18,23 @@ const users = () => {
         console.log(err);
       });
   };
+
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+  ////////////////////////////////////////
+  const deleteUser = (id) => {
+    axios
+      .delete(`http://localhost:5000/user/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((result) => {
+        getAllProducts();
+      })
+      .catch((error) => {});
+  };
 };
 
-export default users;
+export default Users;
