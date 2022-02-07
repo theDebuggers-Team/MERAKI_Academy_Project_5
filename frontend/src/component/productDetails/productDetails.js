@@ -29,6 +29,7 @@ const [productDetails, setproductDetails] = useState([])
 const [showComment,setshowComment] = useState(false)
 const [commentsOnProduct,setcommentsOnProduct] =useState([])
 const [createComment,setcreateComment] = useState("")
+const [updatedComment,setupdatedComment] = useState("")
  
 const {id} = useParams()
 //////////////////////////////
@@ -59,12 +60,30 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
   })
 //////////////// update comment by id
  const updateCommentById = (commentId)=>{
-       axios.put(`http:locahost:5000/comment/${commentId}`)
+       axios.put(`http://locahost:5000/comment/${commentId}`,{updatedComment},{
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      }).then((response) =>{
+          if(response.data.affectedRows ===1){
+            toast.success(response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+          }else{
+            toast.error(response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+          }
+      }).catch((err)=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+      })
  }
 
   //////////// delete Comment by user id
   const deleteComment = (commentId)=>{
-      axios.delete(`http:locahost:5000/comment/delete_1/${commentId}`).then((response)=>{
+      axios.delete(`http://locahost:5000/comment/delete_1/${commentId}`).then((response)=>{
           if(response.data.affectedRows ===1){
             toast.success(response.data.message, {
                 position: toast.POSITION.BOTTOM_RIGHT,
@@ -90,15 +109,21 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
          <div className="all-comments">
              <div className="just-one-comment">
              <p>{comment.firstName}</p>
-            <p>{comment.comment}</p>
+             <p>{comment.comment}</p>
+            ///// need to review
+            {<textarea onChange={(e)=>{
+                setupdatedComment(e.target.value)
+             }}/>} 
             <p>{comment.publish_date}</p>
-             {<textarea/>} 
+            
+             ////comments cruds
             {decode.userId == comment.user_id?<div><button onClick={(e)=>{
-                    
+                    updateCommentById(comment.id)
             }}>update comment</button>
             <button onClick={(e)=>{
-           deleteComment(comment.id)
+             deleteComment(comment.id)
             }}>Delete Comment</button></div>:null}
+
           </div>
          </div>
       )
