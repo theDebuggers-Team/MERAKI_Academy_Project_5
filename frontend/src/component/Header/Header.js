@@ -35,19 +35,20 @@ const Header = () => {
   // console.log(firstName2);
   return (
     <div className="main-header">
-      <div className="header">
-        <div className="logo">
+      <div className="header1">
+        <div className="logo1">
           <header>
             <h1>
               <span>Open Sooq</span>
             </h1>
           </header>
         </div>
+        {/* <div className="wrap">
         <div className="search">
           <input
             type="search"
             placeholder="Search here ..."
-            className="serach-inp"
+            className="searchTerm"
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -55,16 +56,17 @@ const Header = () => {
           {name ? (
             <Link to={`/search/${name}`}>
               {" "}
-              <button type="button" className="serach-btn">
+              <button type="button" className="searchButton">
                 <BsSearch />
               </button>
             </Link>
           ) : (
-            <button className="serach-btn">
+            <button className="searchButton">
               <BsSearch />
             </button>
           )}
         </div>
+        </div> */}
         {token ? (
           <span
             style={{

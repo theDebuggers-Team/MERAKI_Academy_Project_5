@@ -9,16 +9,27 @@ import { IoCartSharp } from "react-icons/io5";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { RiLoginBoxFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import {MdFavorite} from "react-icons/md"
+import { MdFavorite } from "react-icons/md";
+import { TiThMenu as MenuIcon } from "react-icons/ti";
+import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 
 const Navigation = () => {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => {
+    setClick(!click);
+  };
+
+  const closeMobileMenu = () => {
+    setClick(false);
+  };
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
       token: state.loginReducer.token,
     };
   });
-  
+
   const token = state.token;
   const role = token && decode(token).role;
   const firstName = token && decode(token).firstName;
@@ -26,38 +37,68 @@ const Navigation = () => {
   const lastName2 = token && decode(token).family_name;
   const googleLogin = token && decode(token);
   console.log(googleLogin);
-  
+
   //////////////////////////
 
   return (
-    <div className="nav">
-      <div className="nav-1">
-        <Link to="/" className="link">
-          {" "}
-          <AiFillHome /> Home
-        </Link>
-        <Link to="/products" className="link">
-          <AiFillAppstore /> Products
-        </Link>
-        <Link to="#" className="link">
-          <BiCategoryAlt /> Categories
-        </Link>
-        {token ? (
-          <Link to="/cart" className="link">
-            <MdFavorite /> Favorite
-          </Link>
-        ) : null}
+    <div className="header">
+      <div className="logo-nav">
+        <ul className={click ? "nav-options active" : "nav-options"}>
+          <li className="option" onClick={closeMobileMenu}>
+            {" "}
+            <Link to="/" className="link">
+              {" "}
+              <AiFillHome /> Home
+            </Link>{" "}
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <Link to="/products" className="link">
+              <AiFillAppstore /> Products
+            </Link>{" "}
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <Link to="#" className="link">
+              <BiCategoryAlt /> Categories
+            </Link>{" "}
+          </li>
+          {token ? (
+            <li className="option" onClick={closeMobileMenu}>
+              <Link to="/cart" className="link">
+                <MdFavorite /> Favorite
+              </Link>{" "}
+            </li>
+          ) : null}
+          {token ? null : (
+            <li className="option mobile-option" onClick={closeMobileMenu}>
+              <Link to="/login" className="link">
+                <MdLogin /> Login
+              </Link>{" "}
+            </li>
+          )}
+          {token ? null : (
+            <li className="option mobile-option" onClick={closeMobileMenu}>
+              <Link to="/register" className="link">
+                <RiLoginBoxFill /> Register
+              </Link>{" "}
+            </li>
+          )}
+        </ul>
       </div>
-      <div className="nav-2">
+      <div className="signin-up">
         {token ? null : (
-          <Link to="/login" className="link">
-            <MdLogin /> Login
-          </Link>
+          <li onClick={closeMobileMenu}>
+            <Link to="/login" className="link">
+              <MdLogin /> Login
+            </Link>{" "}
+          </li>
         )}
         {token ? null : (
-          <Link to="/register" className="link">
-            <RiLoginBoxFill /> Register
-          </Link>
+          <li onClick={closeMobileMenu}>
+            {" "}
+            <Link to="/register" className="link">
+              <RiLoginBoxFill /> Register
+            </Link>{" "}
+          </li>
         )}
         {role === "ADMIN" ? (
           <Link to="/create" className="link">
@@ -66,17 +107,26 @@ const Navigation = () => {
         ) : null}
 
         {token ? (
-          <Link
-            className="link"
-            to="/login"
-            onClick={() => {
-              localStorage.clear();
-              role = null;
-            }}
-          >
-            <MdLogout /> Log out
-          </Link>
+          <li onClick={closeMobileMenu}>
+            <Link
+              className="link"
+              to="/login"
+              onClick={() => {
+                localStorage.clear();
+                role = null;
+              }}
+            >
+              <MdLogout /> Log out
+            </Link>{" "}
+          </li>
         ) : null}
+      </div>
+      <div className="mobile-menu" onClick={handleClick}>
+        {click ? (
+          <CloseMenu className="menu-icon" />
+        ) : (
+          <MenuIcon className="menu-icon" />
+        )}
       </div>
     </div>
   );

@@ -1,18 +1,12 @@
-.header {
+.header1 {
   display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-
-  background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
-
-  color: #e0dede;
-
-  width: 100%;
-  border-bottom: solid 1px #e0dede;
-  height: 10vh;
-  gap: 20%;
-  padding-left: 1%;
+    background: rgb(212, 211, 211);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+    height: 80px;
+    width: 100%;
+    background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
 }
 .search {
   display: flex;
@@ -43,6 +37,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+
 }
 
 .serach-inp {
@@ -96,3 +91,179 @@ header {
   gap: 4%;
   width: 11%;
 }
+
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+} */
+
+ .searchTerm:focus{
+  color: #00B4CC;
+} 
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);}
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    display: flex;
+    background: rgb(212, 211, 211);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+    height: 80px;
+    background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
+    width: 100%
+  }
+  .logo-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+  .nav-options {
+    padding-right: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 50px;
+    list-style-type: none;
+  }
+  .mobile-option {
+    display: none;
+  }
+  
+  .option:hover {
+    color: white;
+  }
+  .signin-up {
+    display: flex;
+    padding: 0px 5px;
+    list-style-type: none;
+    justify-content: space-evenly;
+    width: 15%;
+   
+  }
+  .sign-in {
+    padding-right: 50px;
+    align-self: center;
+  }
+  .sign-in :hover {
+    color: white;
+  }
+  .signup-btn {
+    border-radius: 3px;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  .mobile-menu {
+    display: none;
+  }
+  
+  @media (max-width: 648px) {
+    .header {
+      padding: 0px 10px;
+      
+      
+    }
+    .logo {
+      width: 45px;
+      height: 45px;
+    }
+    .nav-options {
+      display: flex;
+      width: 25%;
+      height: 100%;
+      position: absolute;
+      top: 80px;
+      right: -100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+      flex-direction: column;
+      list-style-type: none;
+      grid-gap: 0px;
+    }
+    .nav-options.active {
+      background: #b3b4b9ce;
+      right: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+      align-content: center;
+      padding-right: 0px;
+      background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
+    }
+  
+    .menu-icon {
+      width: 30px;
+      height: 45px;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 10vw;
+      padding: 30px 0px;
+    }
+    .sign-up {
+      border-radius: 3px;
+      padding: 20px 0px;
+      align-self: center;
+      border-radius: 3px;
+    }
+  
+    .signin-up {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+  
