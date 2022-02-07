@@ -8,8 +8,7 @@ import NewProduct from "./component/createNewProduct/createNewProduct";
 import Login from "./component/Login/login";
 import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
-// import { Navbar } from 'responsive-navbar-react'
-// import "responsive-navbar-react/dist/index.css";
+
 import ProductDetails from "./component/productDetails/productDetails";
 
 function App() {
