@@ -26,8 +26,10 @@ function App() {
           setSearch(e.target.value);
         }}
       ></input> */}
-      <Categories />
+     
       <Routes>
+      <Route path="/" element={<Categories /> } />
+     
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products search={search} />} />
