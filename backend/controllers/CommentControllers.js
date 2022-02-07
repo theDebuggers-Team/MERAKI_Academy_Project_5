@@ -121,10 +121,9 @@ const getAllComments = (req, res) => {
         return res.status(404).json({
           success: false,
           message: `There is not comment on this product`,
-         
         });
       }
-      
+
       res
         .status(200)
         .json({ success: true, message: `All the comments`, results: result });
