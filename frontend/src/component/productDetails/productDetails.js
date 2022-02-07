@@ -164,7 +164,6 @@ const ProductDetails = () => {
   };
   /////////////////////
   useEffect(() => {
-    
     getAllComment();
   }, [sucesscomment]);
   useEffect(() => {
@@ -176,7 +175,7 @@ const ProductDetails = () => {
     commentsOnProduct.map((comment) => {
       return (
         <div className="all-comments" key={comment.id}>
-          <div className="just-one-comment" >
+          <div className="just-one-comment">
             <p>{comment.firstName}</p>
             <p>{comment.comment}</p>
 

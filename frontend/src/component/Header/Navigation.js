@@ -49,12 +49,8 @@ const Navigation = () => {
   const mapOverCategories = categoriesarr.map((category) => {
     return (
       <>
-      <span className="category-list">
-         {category.name}
-      </span>
-   
+        <span className="category-list">{category.name}</span>
       </>
-
     );
   });
   const [click, setClick] = useState(false);
@@ -117,11 +113,7 @@ const Navigation = () => {
             </li>
             {clickCate ? (
               <div className="dropdown-menu1">{mapOverCategories}</div>
-            ) : (
-              <div className="dropdown-menu">
-                 {/* {mapOverCategories} */}
-              </div>
-            )}
+            ) : null}
           </div>
           {token ? (
             <li className="option" onClick={closeMobileMenu}>

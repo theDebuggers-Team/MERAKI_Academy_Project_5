@@ -77,9 +77,13 @@ const Products = ({ search }) => {
           })
           .map((element) => {
             return (
-              <div className="single-product" key={element.id} onClick={(e)=>{
-                navigate(`/productDetails/${element.id}`)
-              }}>
+              <div
+                className="single-product"
+                key={element.id}
+                onClick={(e) => {
+                  navigate(`/productDetails/${element.id}`);
+                }}
+              >
                 <div>
                   <img src={element.image} className="img" />
                 </div>
