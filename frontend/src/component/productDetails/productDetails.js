@@ -48,6 +48,8 @@ const {id} = useParams()
       });
   })
 
+
+
   ///// function to create new comment
 const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
   const createNewComment = axios.post(`http:locahost:5000/comment/${id}`,newComment, {
@@ -55,6 +57,29 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
       Authorization: `Basic ${state.token}`,
     },
   })
+//////////////// update comment by id
+ const updateCommentById = (commentId)=>{
+       axios.put(`http:locahost:5000/comment/${commentId}`)
+ }
+
+  //////////// delete Comment by user id
+  const deleteComment = (commentId)=>{
+      axios.delete(`http:locahost:5000/comment/delete_1/${commentId}`).then((response)=>{
+          if(response.data.affectedRows ===1){
+            toast.success(response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+          }else{
+            toast.error(response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+          }
+      }).catch((err)=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+      })
+  }
 /////////////////////
   useEffect(() => {
     getProductById()
@@ -64,9 +89,16 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
       return(
          <div className="all-comments">
              <div className="just-one-comment">
-             <p>{comment.name}</p>
+             <p>{comment.firstName}</p>
             <p>{comment.comment}</p>
-            <p>{comment.publishedDate}</p>
+            <p>{comment.publish_date}</p>
+             {<textarea/>} 
+            {decode.userId == comment.user_id?<div><button onClick={(e)=>{
+                    
+            }}>update comment</button>
+            <button onClick={(e)=>{
+           deleteComment(comment.id)
+            }}>Delete Comment</button></div>:null}
           </div>
          </div>
       )
