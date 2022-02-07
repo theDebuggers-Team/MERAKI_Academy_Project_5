@@ -15,9 +15,13 @@ import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 
 const Navigation = () => {
   const [click, setClick] = useState(false);
+  const [clickCate, setClickCate] = useState(false);
 
   const handleClick = () => {
     setClick(!click);
+  };
+  const handleClickCate = () => {
+    setClickCate(!clickCate);
   };
 
   const closeMobileMenu = () => {
@@ -56,11 +60,33 @@ const Navigation = () => {
               <AiFillAppstore /> Products
             </Link>{" "}
           </li>
-          <li className="option" onClick={closeMobileMenu}>
-            <Link to="#" className="link">
-              <BiCategoryAlt /> Categories
-            </Link>{" "}
-          </li>
+          <div className="dropdown">
+            <li
+              className="option"
+              onClick={(e) => {
+                closeMobileMenu();
+                handleClickCate();
+              }}
+            >
+              <Link to="#" className="link">
+                <BiCategoryAlt /> Categories
+              </Link>{" "}
+            </li>
+            {clickCate ? (
+              <div className="dropdown-menu"></div>
+            ) : (
+              <div className="dropdown-menu1"><span>Cars</span>
+              <br/>
+              <span>Cars</span>
+              <br/>
+              <span>Cars</span>
+              <br/>
+              <span>Cars</span>
+              <br/>
+              <span>Cars</span>
+              <br/></div>
+            )}
+          </div>
           {token ? (
             <li className="option" onClick={closeMobileMenu}>
               <Link to="/cart" className="link">
