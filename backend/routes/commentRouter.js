@@ -11,6 +11,7 @@ const {
   updateCommentById,
   deleteCommentById,
   deleteCommentByUserId,
+  getAllComments,
 } = require("../controllers/CommentControllers");
 
 //create end point for create comment
@@ -26,6 +27,9 @@ commentRouter.put("/:id", authentication, updateCommentById);
 commentRouter.delete("/delete_1/:id", authentication, deleteCommentById);
 
 //create end point for delete comment by user_id
+
+commentRouter.get("/product/:id",getAllComments)
+
 
 commentRouter.delete(
   "/delete_2/:user_id",
