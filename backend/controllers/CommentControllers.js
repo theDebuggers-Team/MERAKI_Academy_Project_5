@@ -105,7 +105,7 @@ const deleteCommentByUserId = (req, res) => {
     });
   });
 };
-/// create get all comment function/backend
+///` create get all comment function/backend
 const getAllComments = (req, res) => {
   const productId = req.params.id;
   const query = `select firstName,comments.user_id,comments.id,comment,comments.publish_date from comments inner join users on comments.user_id = users.id inner join products on comments.product_id = products.id where products.id =? and comments.is_deleted= 0`;
@@ -118,9 +118,10 @@ const getAllComments = (req, res) => {
         .json({ success: false, message: "server error", err: err });
     } else {
       if (!result.length) {
-        return res.status(404).json({
+        return res.status(200).json({
           success: false,
           message: `There is not comment on this product`,
+          results: result,
         });
       }
 

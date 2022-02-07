@@ -164,6 +164,7 @@ const ProductDetails = () => {
   };
   /////////////////////
   useEffect(() => {
+    
     getAllComment();
   }, [sucesscomment]);
   useEffect(() => {
@@ -174,8 +175,8 @@ const ProductDetails = () => {
     commentsOnProduct &&
     commentsOnProduct.map((comment) => {
       return (
-        <div className="all-comments">
-          <div className="just-one-comment">
+        <div className="all-comments" key={comment.id}>
+          <div className="just-one-comment" >
             <p>{comment.firstName}</p>
             <p>{comment.comment}</p>
 
@@ -241,7 +242,7 @@ const ProductDetails = () => {
     productDetails &&
     productDetails.map((element) => {
       return (
-        <div className="all-div-componenet">
+        <div className="all-div-componenet" key={element.id}>
           <div>
             <div className="product-image-description">
               <p>{element.title}</p>
