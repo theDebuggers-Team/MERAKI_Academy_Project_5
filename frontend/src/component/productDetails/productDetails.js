@@ -29,8 +29,11 @@ const ProductDetails = () => {
   const [createComment, setcreateComment] = useState("");
   const [updatedComment, setupdatedComment] = useState("");
   const [isupdated, setisupdated] = useState(false);
-
+  const [sucesscomment, setsucesscomment] = useState(false);
+  const token = state.token;
   const { id } = useParams();
+  console.log(updatedComment);
+  // console.log(decode);
   //////////////////////////////
   const getProductById = () => {
     axios
@@ -45,38 +48,45 @@ const ProductDetails = () => {
       });
   };
   /////////////////////////////
-  const getAllComment = axios
-    .get(`http://localhost:5000/comment/product/${id}`)
-    .then((response) => {
-      setcommentsOnProduct(response.data.results);
-    })
-    .catch((err) => {
-      toast.error(err.response.data.message, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+  const getAllComment = () => {
+    axios
+      .get(`http://localhost:5000/comment/product/${id}`)
+      .then((response) => {
+        setcommentsOnProduct(response.data.results);
+        console.log(response.data);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       });
-    });
+  };
 
   ///// function to create new comment
   const newComment = {
     comment: createComment,
-    user_id: decode.userId,
+
     product_id: id,
   };
-  const createNewComment = axios.post(
-    `http://locahost:5000/comment/${id}`,
-    newComment,
-    {
-      headers: {
-        Authorization: `Basic ${state.token}`,
-      },
-    }
-  );
+  const createNewComment = () => {
+    axios
+      .post(`http://localhost:5000/comment/${id}`, newComment, {
+        headers: {
+          Authorization: `Basic ${token}`,
+        },
+      })
+      .then((result) => {
+        toast.success(result.data.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      });
+  };
   //////////////// update comment by id
   const updateCommentById = (commentId) => {
     axios
       .put(
-        `http://locahost:5000/comment/${commentId}`,
-        { updatedComment },
+        `http://localhost:5000/comment/${commentId}`,
+        { comment: updatedComment },
         {
           headers: {
             Authorization: `Basic ${state.token}`,
@@ -104,7 +114,11 @@ const ProductDetails = () => {
   //////////// delete Comment by user id
   const deleteComment = (commentId) => {
     axios
-      .delete(`http://locahost:5000/comment/delete_1/${commentId}`)
+      .delete(`http://localhost:5000/comment/delete_1/${commentId}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
       .then((response) => {
         if (response.data.affectedRows === 1) {
           toast.success(response.data.message, {
@@ -126,7 +140,11 @@ const ProductDetails = () => {
   //////////// Delete All the user Comment
   const deleteAllMyComments = (MyUserId) => {
     axios
-      .delete(`http://locahost:5000/comment/delete_2/${MyUserId}`)
+      .delete(`http://localhost:5000/comment/delete_2/${MyUserId}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
       .then((response) => {
         if (response.data.affectedRows === 1) {
           toast.success(response.data.message, {
@@ -146,8 +164,11 @@ const ProductDetails = () => {
   };
   /////////////////////
   useEffect(() => {
+    getAllComment();
+  }, [sucesscomment]);
+  useEffect(() => {
     getProductById();
-  }, [commentsOnProduct]);
+  }, []);
   ///////////////////////////////
   const allComments =
     commentsOnProduct &&
@@ -157,7 +178,7 @@ const ProductDetails = () => {
           <div className="just-one-comment">
             <p>{comment.firstName}</p>
             <p>{comment.comment}</p>
-            ///// need to review
+
             {isupdated ? (
               <div>
                 <textarea
@@ -171,6 +192,7 @@ const ProductDetails = () => {
                   onClick={(e) => {
                     updateCommentById(comment.id);
                     setisupdated(!isupdated);
+                    setsucesscomment(!sucesscomment);
                   }}
                 >
                   update comment
@@ -178,7 +200,7 @@ const ProductDetails = () => {
               </div>
             ) : null}
             <p>{comment.publish_date}</p>
-            ////comments cruds
+
             {decode.userId == comment.user_id ? (
               <div>
                 <button
@@ -191,6 +213,7 @@ const ProductDetails = () => {
                 <button
                   onClick={(e) => {
                     deleteComment(comment.id);
+                    setsucesscomment(!sucesscomment);
                   }}
                 >
                   Delete Comment
@@ -203,8 +226,12 @@ const ProductDetails = () => {
             className="btn-to-delete-all-my-comment"
             onClick={(e) => {
               deleteAllMyComments(comment.user_id);
+
+              setsucesscomment(!sucesscomment);
             }}
-          ></button>
+          >
+            Delete All Comment
+          </button>
         </div>
       );
     });
@@ -224,10 +251,9 @@ const ProductDetails = () => {
               <p>{element.description}</p>
               <br />
             </div>
-            ////////////
+
             <div className="container-chating-rate-reviews">
               <div className="product-seller-chat">
-                <img src="https://media.istockphoto.com/photos/live-chat-social-media-communication-message-picture-id691388370" />
                 <br />
                 <button
                   onClick={(e) => {
@@ -236,7 +262,7 @@ const ProductDetails = () => {
                 ></button>
                 <br />
               </div>
-              ////////////////
+
               <div className="product-add-comment-rate">
                 {/* {state.token ? (
                   <ReactStars
@@ -259,7 +285,7 @@ const ProductDetails = () => {
 
                 <button
                   onClick={(e) => {
-                    getAllComment();
+                    // getAllComment();
                     setshowComment(!showComment);
                   }}
                 >
@@ -267,9 +293,8 @@ const ProductDetails = () => {
                 </button>
               </div>
             </div>
-            /////////////////
           </div>
-          //////////////
+
           <div className="all-comment-div">
             {showComment ? (
               <div className="comment-reviews">
@@ -292,6 +317,7 @@ const ProductDetails = () => {
                       className="btn-to-create-comment"
                       onClick={(e) => {
                         createNewComment();
+                        setsucesscomment(!sucesscomment);
                       }}
                     >
                       {" "}

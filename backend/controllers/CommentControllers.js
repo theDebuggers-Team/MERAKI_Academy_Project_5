@@ -34,6 +34,7 @@ const updateCommentById = (req, res) => {
   const data = [comment, commentId];
   connection.query(query, data, (err, result) => {
     if (err) {
+      console.log(err);
       return res
         .status(500)
         .json({ success: false, message: `Server Error`, error: err });
@@ -105,23 +106,30 @@ const deleteCommentByUserId = (req, res) => {
   });
 };
 //////// create get all comment function/backend
-const getAllComments = (req,res)=>{
-  const productId = req.params.id
-  const query = `select firstName,comment,publish_date from comments inner join users on comments.user_id = users.id inner join products on comments.product_id = product.id where product.id =?`
-  const data = [productId]
-   connection.query(query, data, (err, result) => {
-      if (err) {
-        console.log(err);
-        res
-          .status(404)
-          .json({ success: false, message: "server error", err: err });
-      } else {
-        res
-          .status(200)
-          .json({ success: true, message: `All the comments`, results: result });
+const getAllComments = (req, res) => {
+  const productId = req.params.id;
+  const query = `select firstName,comments.user_id,comments.id,comment,comments.publish_date from comments inner join users on comments.user_id = users.id inner join products on comments.product_id = products.id where products.id =? and comments.is_deleted= 0`;
+  const data = [productId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(500)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      if (!result.length) {
+        return res.status(404).json({
+          success: false,
+          message: `There is not comment on this product`,
+         
+        });
       }
-    });
-  }
+      res
+        .status(200)
+        .json({ success: true, message: `All the comments`, results: result });
+    }
+  });
+};
 
 module.exports = {
   createNewComment,
