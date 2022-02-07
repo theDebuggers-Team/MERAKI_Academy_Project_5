@@ -30,16 +30,15 @@ body,
   min-width: 100%;
   overflow-x: hidden;
   margin: 0;
-
 }
 @media (max-width: 648px) {
   html,
-body,
-#app,
-#app > div {
-  min-height: 100%;
-  min-width: 100%;
-  overflow-x: hidden;
-  margin: 0;
-}
+  body,
+  #app,
+  #app > div {
+    min-height: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+  }
 }
