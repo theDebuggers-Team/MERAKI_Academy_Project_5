@@ -35,9 +35,9 @@ const Categories = () => {
       image: <IoSearchOutline />,
     },
   ];
-  const mapOverCategories = categoriesarr.map((category) => {
+  const mapOverCategories = categoriesarr.map((category, i) => {
     return (
-      <div className="category">
+      <div className="category" key={i}>
         {category.image} {category.name}
       </div>
     );
