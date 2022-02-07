@@ -44,7 +44,7 @@ const Categories = () => {
   });
   return (
     <>
-      <h3 className="label">Categories</h3>
+      <h2 className="label">Categories</h2>
       <div className="categories">{mapOverCategories}</div>
     </>
   );

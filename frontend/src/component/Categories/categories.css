@@ -50,4 +50,17 @@ gap:1%
   padding-top: 1%;
   padding-bottom: 1%;
   background-color: #37aee2;
+  color: rgb(212, 211, 211)
 }
+@media (max-width: 648px) {
+  .categories{
+    display: grid;
+    height: 60vh;
+  }
+    .category{
+      width: 100%;
+      padding:0.5em
+    }
+    
+  }
+
