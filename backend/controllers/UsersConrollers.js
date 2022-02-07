@@ -104,28 +104,35 @@ const login = (req, res) => {
 
 const updateUserById = (req, res) => {
   const userId = req.params.id;
-  const { title, description, price, image, category } = req.body;
+  const { firstName, lastName, age, country, email, password, phone_Number } =
+    req.body;
 
-  const query = `UPDATE products SET title=?,description=?,price=?,image=? ,category=? where id=?`;
-  const data = [title, description, price, image, category, productId];
+  const query = `UPDATE products SET firstName=?,lastName=?,age=?,country=? ,email=?,password=?,phone_Number=? where id=?`;
+  const data = [
+    firstName,
+    lastName,
+    age,
+    country,
+    email,
+    password,
+    phone_Number,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(404).json({
         success: false,
-        message: "The product with id: ${id} is not found",
+        message: "The User with id: ${id} is not found",
         err: err,
       });
     } else {
       res.status(200).json({
         success: true,
-        message: `Product with id :${productId} is updated`,
+        message: `User with id :${userId} is updated`,
         results: result,
       });
     }
   });
-
-
 };
 
 //create controller for deleteUserById
