@@ -10,7 +10,7 @@ import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
 // import { Navbar } from 'responsive-navbar-react'
 // import "responsive-navbar-react/dist/index.css";
-import ProductDetails from "./component/productDetails/productDetails"
+import ProductDetails from "./component/productDetails/productDetails";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -27,10 +27,10 @@ function App() {
           setSearch(e.target.value);
         }}
       ></input> */}
-     
+
       <Routes>
-      <Route path="/" element={<Categories /> } />
-     
+        <Route path="/" element={<Categories />} />
+
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products search={search} />} />
@@ -38,11 +38,6 @@ function App() {
         <Route path="/update/:id" element={<Update />} />
 
         <Route path="/login" element={<Login />} />
-
-
-
-
-
 
         <Route path="/productDetails/:id" element={<ProductDetails />} />
       </Routes>
