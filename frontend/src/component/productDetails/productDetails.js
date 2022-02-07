@@ -30,6 +30,7 @@ const [showComment,setshowComment] = useState(false)
 const [commentsOnProduct,setcommentsOnProduct] =useState([])
 const [createComment,setcreateComment] = useState("")
 const [updatedComment,setupdatedComment] = useState("")
+const [isupdated,setisupdated] = useState(false)
  
 const {id} = useParams()
 //////////////////////////////
@@ -99,6 +100,26 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
           });
       })
   }
+
+
+  //////////// Delete All the user Comment
+  const deleteAllMyComments = (MyUserId)=>{
+      axios.delete(`http://locahost:5000/comment/delete_2/${MyUserId}`).then((response)=>{
+          if(response.data.affectedRows ===1){
+            toast.success(response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              }); 
+          }else{
+            toast.error(response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              }); 
+          }
+      }).catch((err)=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+      })
+  } 
 /////////////////////
   useEffect(() => {
     getProductById()
@@ -107,24 +128,32 @@ const newComment = {comment: createComment,user_id:decode.userId,product_id:id}
   const allComments = commentsOnProduct && commentsOnProduct.map((comment)=>{
       return(
          <div className="all-comments">
+
              <div className="just-one-comment">
              <p>{comment.firstName}</p>
              <p>{comment.comment}</p>
             ///// need to review
-            {<textarea onChange={(e)=>{
+            { isupdated? <div><textarea className="update-comment-inp" onChange={(e)=>{
                 setupdatedComment(e.target.value)
-             }}/>} 
+             }}/> <br/><button onClick={(e)=>{
+                updateCommentById(comment.id)
+                setisupdated(!isupdated)
+        }}>update comment</button></div>:null} 
             <p>{comment.publish_date}</p>
             
              ////comments cruds
             {decode.userId == comment.user_id?<div><button onClick={(e)=>{
-                    updateCommentById(comment.id)
-            }}>update comment</button>
+                   setisupdated(!isupdated)
+            }}>Modify comment</button>
             <button onClick={(e)=>{
              deleteComment(comment.id)
             }}>Delete Comment</button></div>:null}
+            </div>
 
-          </div>
+          <button className="btn-to-delete-all-my-comment"onClick={(e)=>{
+           deleteAllMyComments(comment.user_id)
+          }}></button>
+
          </div>
       )
   })
@@ -185,7 +214,7 @@ return (
 /////////////////
 
 </div>
-
+//////////////
 <div className="all-comment-div">
 
 { showComment? <div className="comment-reviews">
@@ -196,7 +225,7 @@ return (
 
 { state.token ?<div><textarea onChange={(e)=>{
        setcreateComment(e.target.value);
-   }} className="text-area"/>
+   }} className="text-area-comment"/>
    <br/>   
  <button className="btn-to-create-comment" onClick={(e)=>{
 createNewComment()
