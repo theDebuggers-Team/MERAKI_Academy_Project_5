@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 const ProductDetails = ()=>{ 
 
-    const [productDetails, setproductDetails] = useState([])
+const [productDetails, setproductDetails] = useState([])
  
 const {id} = useParams()
 
@@ -22,6 +22,33 @@ const {id} = useParams()
     toast.error(err.response.data.message, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
+  })
+   
+
+  const productDetailsToShow = productDetails.map((element)=>{
+return (
+<div>
+ <div className="product-image-description">
+
+</div>
+////////////
+
+<div className="product-seller-chat">
+
+</div> 
+////////////////
+<div className="product-add-comment-rate">
+
+</div>
+/////////////////
+</div>
+
+
+
+
+)
+    
+
   })
 
 
