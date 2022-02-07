@@ -30,6 +30,7 @@ body,
   min-width: 100%;
   overflow-x: hidden;
   margin: 0;
+
 }
 @media (max-width: 648px) {
   html,
