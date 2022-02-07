@@ -163,4 +163,27 @@ const deleteUserById = (req, res) => {
   });
 };
 
-module.exports = { register, login, updateUserById, deleteUserById };
+const getAllUsers = (req, res) => {
+  const query = `select * from products  where is_deleted = 0`;
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: `All the users`, results: result });
+    }
+  });
+};
+
+module.exports = {
+  register,
+  login,
+  updateUserById,
+  deleteUserById,
+  getAllUsers,
+};
