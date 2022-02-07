@@ -8,7 +8,6 @@ import NewProduct from "./component/createNewProduct/createNewProduct";
 import Login from "./component/Login/login";
 import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
-
 import ProductDetails from "./component/productDetails/productDetails";
 
 function App() {
@@ -35,9 +34,7 @@ function App() {
         <Route path="/products" element={<Products search={search} />} />
         <Route path="/NewProduct" element={<NewProduct />} />
         <Route path="/update/:id" element={<Update />} />
-
         <Route path="/login" element={<Login />} />
-
         <Route path="/productDetails/:id" element={<ProductDetails />} />
       </Routes>
     </div>
