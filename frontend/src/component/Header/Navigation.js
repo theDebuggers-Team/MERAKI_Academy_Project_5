@@ -113,9 +113,7 @@ const Navigation = () => {
             </li>
             {clickCate ? (
               <div className="dropdown-menu1">{mapOverCategories}</div>
-            ) : (
-             null
-            )}
+            ) : null}
           </div>
           {token ? (
             <li className="option" onClick={closeMobileMenu}>
