@@ -102,7 +102,31 @@ const login = (req, res) => {
 
 //create controller for updateUserById
 
-const updateUserById = (req, res) => {};
+const updateUserById = (req, res) => {
+  const userId = req.params.id;
+  const { title, description, price, image, category } = req.body;
+
+  const query = `UPDATE products SET title=?,description=?,price=?,image=? ,category=? where id=?`;
+  const data = [title, description, price, image, category, productId];
+
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res.status(404).json({
+        success: false,
+        message: "The product with id: ${id} is not found",
+        err: err,
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: `Product with id :${productId} is updated`,
+        results: result,
+      });
+    }
+  });
+
+
+};
 
 //create controller for deleteUserById
 
