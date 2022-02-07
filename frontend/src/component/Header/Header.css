@@ -308,8 +308,6 @@ body {
   height: 250px;
   z-index: 1;
   width: 180px;
-  
-  
 }
 
 .category-list {
@@ -318,5 +316,5 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 1%;
-  margin:10px 0
+  margin: 10px 0;
 }
