@@ -8,13 +8,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import loginReducer from "../reducer/login";
 
 const Footer = ({ search }) => {
   /////////////////////////////////////////////////
 
   return (
     <div className="footer">
-      <p>hello</p>
+      <p>About</p>
+      <p>How to use site?</p>
+      <p>Payment Methods</p>
+      <p>Advertising Products</p>
     </div>
   );
 };
