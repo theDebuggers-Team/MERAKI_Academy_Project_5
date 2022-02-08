@@ -318,3 +318,12 @@ body {
   gap: 1%;
   margin: 10px 0;
 }
+
+/* drop down list  for user*/
+.dropdown-user {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}

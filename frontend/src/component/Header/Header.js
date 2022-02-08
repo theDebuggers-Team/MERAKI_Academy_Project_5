@@ -65,7 +65,7 @@ const Header = () => {
         </div>
         </div> */}
         {token ? (
-          <div className="dropdown">
+          <div className="dropdown-user">
             <span
               style={{
                 display: "flex",
