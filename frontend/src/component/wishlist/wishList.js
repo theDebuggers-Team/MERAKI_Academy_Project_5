@@ -20,11 +20,25 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 const WishList = ()=>{ 
+
+
+    const state = useSelector((state) => {
+        return {
+          isLoggedIn: state.loginReducer.isLoggedIn,
+          token: state.loginReducer.token,
+          products: state.productReducer.products,
+        };
+      });
+
 const [wishList,setwishList] = useState([])
 const [successDelete,setsuccessDelete] = useState(false)
 
 const getMyWishList = ()=>{
-    axios.get("http://localhost:5000/wishlist").then((response)=>{
+    axios.get("http://localhost:5000/wishlist",{
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      }).then((response)=>{
         setwishList(response.data.results)
 
     }).catch((err)=>{
@@ -36,7 +50,11 @@ const getMyWishList = ()=>{
 }
 
 const deleteProductFromWishList = (id)=>{
-    axios.delete(`http://localhost:5000/wishlist/delete/${id}`).then((response)=>{
+    axios.delete(`http://localhost:5000/wishlist/delete/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      }).then((response)=>{
         toast.success(response.data.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
@@ -116,3 +134,6 @@ return(
 )
 
 }
+
+
+export default WishList
