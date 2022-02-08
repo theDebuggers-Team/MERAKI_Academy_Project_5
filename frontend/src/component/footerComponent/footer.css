@@ -33,10 +33,11 @@
 
 .contact {
   display: flex;
+  justify-content: center;
   position: relative;
-
-  height: 50px;
+  height: 100px;
   clear: both;
   background-color: #1e95c86e;
   border-bottom: 2px;
+  gap: 30px;
 }
