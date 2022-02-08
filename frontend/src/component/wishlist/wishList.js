@@ -32,8 +32,12 @@ const getMyWishList = ()=>{
             position: toast.POSITION.TOP_RIGHT,
           });
     })
-    
+
 }
+
+useEffect =(()=>{
+    getMyWishList()
+},[])
 
 
 
