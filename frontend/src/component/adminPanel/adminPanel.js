@@ -8,7 +8,7 @@ import Users from "../usersComponent/usersComponent";
 import ProductsAdmin from "../productsComponent/productsComponent";
 
 const Panel = () => {
-  const [usersList, setUsersList] = useState(false);
+  const [usersList, setUsersList] = useState(true);
   const [productList, setProductList] = useState(false);
   const [addProduct, setAddProduct] = useState(false);
   return (
