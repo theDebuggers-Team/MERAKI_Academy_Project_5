@@ -1,0 +1,23 @@
+.allProducts {
+  display: flex;
+  margin: auto;
+  gap: 20px;
+  justify-content: center;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+table {
+  border-collapse: collapse;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  border: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
+thead th {
+  width: 25%;
+}

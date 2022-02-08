@@ -6,6 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 const ProductsAdmin = () => {
+  const [products, setProducts] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(3);
   const state = useSelector((state) => {
     return {
       products: state.productReducer.products,
@@ -16,10 +19,8 @@ const ProductsAdmin = () => {
     axios
       .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
       .then((response) => {
-        // console.log(response.data.products);
-        // setProducts(response.data.results);
-        dispatch(setproducts(response.data.results));
-        console.log(state.products);
+        console.log(products);
+        setProducts(response.data.results);
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +34,7 @@ const ProductsAdmin = () => {
 
   return (
     <div className="allProducts">
-      {console.log(state.products)}
+      {console.log(products)}
       <table>
         <caption>Products List</caption>
         <thead>
@@ -47,12 +48,12 @@ const ProductsAdmin = () => {
           </tr>
         </thead>
         <tbody>
-          {state.products.map((element) => {
+          {products.map((element) => {
             return (
               <tr key={element.id} className="productPanel">
                 <th>{element.id}</th>
                 <td>{element.id}</td>
-                <td>{element.Title}</td>
+                <td>{element.title}</td>
                 <td>{element.user_id}</td>
                 <td>{element.Price}</td>
                 <td>{element.publish_date}</td>
