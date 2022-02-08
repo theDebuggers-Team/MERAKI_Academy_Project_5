@@ -12,7 +12,7 @@ import loginReducer from "../reducer/login";
 
 const Footer = ({ search }) => {
   /////////////////////////////////////////////////
-
+  const navigate = useNavigate();
   return (
     <>
       <div className="footer">
@@ -27,10 +27,18 @@ const Footer = ({ search }) => {
           <p className="about">Real Estate</p>
         </div>
         <div className="aboutDev">
-          <p className="about">About</p>
-          <p className="about">How to use site?</p>
-          <p className="about">Payment Methods</p>
-          <p className="about">Advertising Products</p>
+          <Link to="/about" className="about">
+            About
+          </Link>
+          <Link to="/about" className="about">
+            How to use site?
+          </Link>
+          <Link to="/about" className="about">
+            Payment Methods
+          </Link>
+          <Link to="/about" className="about">
+            Advertising Products
+          </Link>
         </div>
         <div className="aboutDev">
           <p className="about">help</p>
