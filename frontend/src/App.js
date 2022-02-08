@@ -12,6 +12,7 @@ import ProductDetails from "./component/productDetails/productDetails";
 import Users from "./component/usersComponent/usersComponent";
 import UserProfile from "./component/User Profile/UserProfile"
 import Panel from "./component/adminPanel/adminPanel";
+import Footer from "./component/footerComponent/footer";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       {/* <Navbar {...props} /> */}
 
       {/* <input
@@ -43,6 +45,7 @@ function App() {
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/panel" element={<Panel />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
