@@ -37,11 +37,17 @@ const Footer = ({ search }) => {
           <p className="about">Safety Tips</p>
         </div>
       </div>
+      {/* //////////////////////////////////////////// */}
       <div className="contact">
-        <p>
+        <h4>Email Address</h4>
+        <h4>Phone</h4>
+        <h4>Whatsapp</h4>
+        <h4>Contact Sales</h4>
+        <h4>Help Center</h4>
+        {/* <p>
           Copyright © 2022 OpenSooq.com. All rights reserved All right reserved
           to OpenSooq © 2022
-        </p>
+        </p> */}
       </div>
     </>
   );
