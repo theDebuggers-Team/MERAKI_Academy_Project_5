@@ -12,12 +12,14 @@ import loginReducer from "../reducer/login";
 
 const Footer = ({ search }) => {
   /////////////////////////////////////////////////
-
+  const navigate = useNavigate();
   return (
     <>
       <div className="footer">
         <div className="aboutDev">
-          <p className="about">home</p>
+          <Link to="/" className="about">
+            home
+          </Link>
           <p className="about">Electronics</p>
           <p className="about">Cars</p>
           <p className="about">Jobs</p>
@@ -25,10 +27,18 @@ const Footer = ({ search }) => {
           <p className="about">Real Estate</p>
         </div>
         <div className="aboutDev">
-          <p className="about">About</p>
-          <p className="about">How to use site?</p>
-          <p className="about">Payment Methods</p>
-          <p className="about">Advertising Products</p>
+          <Link to="/about" className="about">
+            About
+          </Link>
+          <Link to="/about" className="about">
+            How to use site?
+          </Link>
+          <Link to="/about" className="about">
+            Payment Methods
+          </Link>
+          <Link to="/about" className="about">
+            Advertising Products
+          </Link>
         </div>
         <div className="aboutDev">
           <p className="about">help</p>
@@ -37,11 +47,26 @@ const Footer = ({ search }) => {
           <p className="about">Safety Tips</p>
         </div>
       </div>
-      <div className="contact">
-        <p>
-          Copyright © 2022 OpenSooq.com. All rights reserved All right reserved
-          to OpenSooq © 2022
-        </p>
+      {/* //////////////////////////////////////////// */}
+      <div>
+        <div className="contact">
+          <div>
+            <h4>Email Address</h4>
+            <p>obenSooq@gmail.com</p>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <p>+962 7900 000</p>
+          </div>
+          <div>
+            <h4>Whatsapp</h4>
+            <p>+962 7900 333</p>
+          </div>
+          <div>
+            <h4>Help Center</h4>
+            <p>Help?</p>
+          </div>
+        </div>
       </div>
     </>
   );

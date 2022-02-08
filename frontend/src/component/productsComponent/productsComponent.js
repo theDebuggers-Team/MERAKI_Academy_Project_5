@@ -11,6 +11,8 @@ const ProductsAdmin = () => {
   const [limit, setLimit] = useState(4);
   const state = useSelector((state) => {
     return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
       products: state.productReducer.products,
     };
   });
@@ -41,6 +43,19 @@ const ProductsAdmin = () => {
     }
   };
   ///////////////////////////////////////////
+  const deleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:5000/product/delete_1/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((result) => {
+        getAllProducts();
+      })
+      .catch((error) => {});
+  };
+  //////////////////////////////////////////////
 
   return (
     <div className="allProducts">
@@ -71,6 +86,14 @@ const ProductsAdmin = () => {
 
                   <td>
                     <svg
+                      onClick={(e) => {
+                        if (
+                          window.confirm(
+                            "Are you sure you wish to delete this item?"
+                          )
+                        )
+                          deleteProduct(element.id);
+                      }}
                       stroke="currentColor"
                       fill="currentColor"
                       stroke-width="0"
