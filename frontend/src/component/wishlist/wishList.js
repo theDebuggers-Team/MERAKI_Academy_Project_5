@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 const WishList = ()=>{ 
 const [wishList,setwishList] = useState([])
+const [successDelete,setsuccessDelete] = useState(false)
 
 const getMyWishList = ()=>{
     axios.get("http://localhost:5000/wishlist").then((response)=>{
@@ -34,6 +35,19 @@ const getMyWishList = ()=>{
     })
 
 }
+
+const deleteProductFromWishList = (id)=>{
+    axios.delete(`http://localhost:5000/wishlist/delete/${id}`).then((response)=>{
+        toast.success(response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+    }).catch((err)=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+    })
+}
+
 
 useEffect =(()=>{
     getMyWishList()
