@@ -265,9 +265,11 @@ const ProductDetails = () => {
               <br />
               <img src={element.image} />
               <br />
-              <p>{element.description}</p>
+              <p> Description : {element.description}</p>
               <br/>
-              <p></p>
+              <p> Price : {element.price}</p>
+              <br/>
+              <p>Category : {element.category}</p>
               <br />
             </div>
 
