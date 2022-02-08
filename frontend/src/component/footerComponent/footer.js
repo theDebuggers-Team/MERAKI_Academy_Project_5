@@ -17,7 +17,9 @@ const Footer = ({ search }) => {
     <>
       <div className="footer">
         <div className="aboutDev">
-          <p className="about">home</p>
+          <Link to="/" className="about">
+            home
+          </Link>
           <p className="about">Electronics</p>
           <p className="about">Cars</p>
           <p className="about">Jobs</p>
@@ -38,16 +40,25 @@ const Footer = ({ search }) => {
         </div>
       </div>
       {/* //////////////////////////////////////////// */}
-      <div className="contact">
-        <h4>Email Address</h4>
-        <h4>Phone</h4>
-        <h4>Whatsapp</h4>
-        <h4>Contact Sales</h4>
-        <h4>Help Center</h4>
-        {/* <p>
-          Copyright © 2022 OpenSooq.com. All rights reserved All right reserved
-          to OpenSooq © 2022
-        </p> */}
+      <div>
+        <div className="contact">
+          <div>
+            <h4>Email Address</h4>
+            <p>obenSooq@gmail.com</p>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <p>+962 7900 000</p>
+          </div>
+          <div>
+            <h4>Whatsapp</h4>
+            <p>+962 7900 333</p>
+          </div>
+          <div>
+            <h4>Help Center</h4>
+            <p>Help?</p>
+          </div>
+        </div>
       </div>
     </>
   );

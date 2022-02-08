@@ -10,10 +10,10 @@ import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
 import ProductDetails from "./component/productDetails/productDetails";
 import Users from "./component/usersComponent/usersComponent";
-import UserProfile from "./component/User Profile/UserProfile"
+import UserProfile from "./component/User Profile/UserProfile";
 import Panel from "./component/adminPanel/adminPanel";
 import Footer from "./component/footerComponent/footer";
-
+import About from "./component/About/about";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -44,6 +44,7 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/panel" element={<Panel />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </div>
