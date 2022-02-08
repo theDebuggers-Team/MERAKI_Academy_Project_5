@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Users from "../usersComponent/usersComponent";
+import ProductsAdmin from "../productsComponent/productsComponent";
 
 const Panel = () => {
   const [usersList, setUsersList] = useState(false);
@@ -16,19 +17,25 @@ const Panel = () => {
         <p
           onClick={() => {
             setUsersList(!usersList);
+            setProductList(false);
+            setAddProduct(false);
           }}
         >
           Users List
         </p>
         <p
           onClick={() => {
+            setUsersList(false);
             setProductList(!productList);
+            setAddProduct(false);
           }}
         >
           Products List
         </p>
         <p
           onClick={() => {
+            setUsersList(false);
+            setProductList(false);
             setAddProduct(!addProduct);
           }}
         >
@@ -37,6 +44,7 @@ const Panel = () => {
       </div>
 
       {usersList ? <Users /> : ""}
+      {productList ? <ProductsAdmin /> : ""}
     </div>
   );
 };

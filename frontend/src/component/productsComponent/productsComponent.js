@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "./usersComponent.css";
+import "./productsComponent.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,7 +13,7 @@ import {
 } from "../reducer/products/index";
 
 const ProductsAdmin = () => {
-  const [users, setUsers] = useState([]);
+  //   const [users, setUsers] = useState([]);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -61,20 +61,22 @@ const ProductsAdmin = () => {
           <tr>
             <th></th>
             <th>Product ID</th>
-            <th>Name</th>
+            <th>Title</th>
             <th>User</th>
             <th>price</th>
-            <th>Date</th>
+            <th>Published Date</th>
           </tr>
         </thead>
         <tbody>
           {state.products.map((element) => {
             return (
-              <tr key={element.id} className="user">
+              <tr key={element.id} className="productPanel">
                 <th>{element.id}</th>
                 <td>{element.id}</td>
-                <td>{element.firstName}</td>
-                <td>{element.email}</td>
+                <td>{element.Title}</td>
+                <td>{element.user_id}</td>
+                <td>{element.Price}</td>
+                <td>{element.publish_date}</td>
                 <td>
                   <svg
                     stroke="currentColor"
@@ -97,4 +99,4 @@ const ProductsAdmin = () => {
   );
 };
 
-export default Users;
+export default ProductsAdmin;
