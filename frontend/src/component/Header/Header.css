@@ -330,7 +330,7 @@ body {
 .dropdown-menu1-user {
   position: absolute;
   right: 0;
-  top:100%;
+  top: 100%;
   background-color: #37aee2;
   padding: 0.75rem;
   border-radius: 0.2rem;
@@ -364,12 +364,11 @@ body {
   gap: 1%;
   margin: 10px 0;
   font-size: 1rem;
-
 }
-.link-user{
+.link-user {
   text-decoration: none;
   color: white;
 }
-.user-button{
+.user-button {
   cursor: pointer;
 }
