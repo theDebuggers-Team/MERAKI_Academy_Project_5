@@ -126,3 +126,6 @@
     height: 3rem;
 }
 
+.product-image-description p {
+    text-align:left;
+}

@@ -261,7 +261,7 @@ const ProductDetails = () => {
         <div  key={element.id}>
           <div className="all-div-componenet" >
             <div className="product-image-description">
-              <p>{element.title}</p>
+            <span>{element.title}</span>
               <br />
               <img src={element.image} />
               <br />
