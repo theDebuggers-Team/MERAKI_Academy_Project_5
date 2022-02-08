@@ -12,7 +12,7 @@ const {
   updateUserById,
   deleteUserById,
   getAllUsers,
-  getUserById
+  getUserById,
 } = require("../controllers/UsersConrollers");
 
 //create end points
@@ -27,13 +27,13 @@ userRouter.post("/login", login);
 
 //3- create end points for update user
 
-userRouter.put("/:id", authentication, updateUserById);
+userRouter.put("/updateprofile", authentication, updateUserById);
 
 //4- create end points for delete user
 
-userRouter.delete("/:id", authentication, deleteUserById);
+userRouter.delete("/deleteprofile", authentication, deleteUserById);
 
 userRouter.get("/", getAllUsers);
-userRouter.get("/profile", authentication,getUserById);
+userRouter.get("/profile", authentication, getUserById);
 
 module.exports = { userRouter };

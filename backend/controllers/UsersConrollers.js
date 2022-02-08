@@ -103,33 +103,30 @@ const login = (req, res) => {
 //create controller for updateUserById
 
 const updateUserById = (req, res) => {
-  const userId = req.params.id;
+  const userId = req.token.userId;
   const { firstName, lastName, age, country, email, password, phone_Number } =
     req.body;
 
-  const query = `UPDATE products SET firstName=?,lastName=?,age=?,country=? ,email=?,password=?,phone_Number=? where id=?`;
-  const data = [
-    firstName,
-    lastName,
-    age,
-    country,
-    email,
-    password,
-    phone_Number,
-  ];
+  const query = `UPDATE users SET firstName=?,lastName=?,age=?,country=? ,email=?,phone_Number=? where id=? and is_deleted =0`;
+  const data = [firstName, lastName, age, country, email, phone_Number];
 
   connection.query(query, data, (err, result) => {
     if (err) {
-      res.status(404).json({
+      res.status(500).json({
         success: false,
-        message: "The User with id: ${id} is not found",
+        message: "Server Error",
         err: err,
       });
     } else {
+      if (!result.affectedRows) {
+        return res.status(200).json({
+          success: false,
+          message: `No user found with the indicated id => ${userId}`,
+        });
+      }
       res.status(200).json({
         success: true,
-        message: `User with id :${userId} is updated`,
-        results: result,
+        message: `The user with user_id was updated => ${userId} `,
       });
     }
   });
@@ -138,7 +135,7 @@ const updateUserById = (req, res) => {
 //create controller for deleteUserById
 
 const deleteUserById = (req, res) => {
-  const userId = req.params.user_id;
+  const userId = req.token.userId;
   const query = `UPDATE users SET is_deleted =1 where id=? and is_deleted =0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
@@ -179,11 +176,11 @@ const getAllUsers = (req, res) => {
     }
   });
 };
-const getUserById = (req,res) => {
+const getUserById = (req, res) => {
   const userId = req.token.userId;
-  const query = `select * from users  where id = ? AND is_deleted = 0`
-  const data = [userId]
-  connection.query(query,data, (err, result) => {
+  const query = `select * from users  where id = ? AND is_deleted = 0`;
+  const data = [userId];
+  connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
         success: false,
@@ -204,12 +201,12 @@ const getUserById = (req,res) => {
       });
     }
   });
-}
+};
 module.exports = {
   register,
   login,
   updateUserById,
   deleteUserById,
   getAllUsers,
-  getUserById
+  getUserById,
 };
