@@ -12,7 +12,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 import jwtDecode from "jwt-decode";
 
-const Header = () => {
+const Header = ({ setSearch }) => {
   const [clickUser, setClickUser] = useState(false);
   const handleClickUser = () => {
     setClickUser(!clickUser);
@@ -49,9 +49,8 @@ const Header = () => {
       token: state.loginReducer.token,
     };
   });
- 
 
-  // const [name, setName] = useState("");
+  // const [search, setSearch] = useState("");
 
   const token = state.token;
 
@@ -71,30 +70,42 @@ const Header = () => {
             </h1>
           </header>
         </div>
-        {/* <div className="wrap">
-        <div className="search">
-          <input
-            type="search"
-            placeholder="Search here ..."
-            className="searchTerm"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          {name ? (
-            <Link to={`/search/${name}`}>
-              {" "}
-              <button type="button" className="searchButton">
-                <BsSearch />
-              </button>
-            </Link>
-          ) : (
-            <button className="searchButton">
-              <BsSearch />
-            </button>
-          )}
+        <div className="container">
+          <div className="box">
+            <div className="search-bar">
+              <form
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="Search here ..."
+                  className="searchTerm"
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                />
+
+                <button type="button" className="searchButton">
+                  <BsSearch />
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-        </div> */}
+
+        {/* <div class="container">
+  <div class="box">
+    <div class="search-bar">
+      <form>
+        <input type="text" placeholder="Search">
+        <button><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+</div> */}
+
         {token ? (
           <div className="dropdown-user">
             <span
@@ -106,7 +117,8 @@ const Header = () => {
                 // width: "16%",
                 fontSize: "1.1rem",
               }}
-              onClick={(e) => handleClickUser()}
+              onMouseEnter={handleClickUser}
+              // onMouseLeave={handleClickUser}
             >
               {/* <img
               src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
@@ -118,7 +130,11 @@ const Header = () => {
               <IoMdArrowDropdown />
             </span>
             {clickUser ? (
-              <div className="dropdown-menu1-user ">
+              <div
+                className="dropdown-menu1-user "
+                // onMouseEnter={handleClickUser}
+                onMouseLeave={handleClickUser}
+              >
                 <span className="user-list">
                   <Link to="#" className="link-user">
                     Show your profile

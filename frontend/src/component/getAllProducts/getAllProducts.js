@@ -4,6 +4,8 @@ import "./getAllProducts.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import {
   setproducts,
   addproduct,
@@ -15,10 +17,11 @@ import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 
-const Products = ({ search }) => {
+const Products = ({ search}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [products, setProducts] = useState("");
+  // const { search } = useParams();
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
   const state = useSelector((state) => {
@@ -33,8 +36,6 @@ const Products = ({ search }) => {
     axios
       .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
       .then((response) => {
-        // console.log(response.data.products);
-        // setProducts(response.data.results);
         dispatch(setproducts(response.data.results));
         console.log(state.products);
       })
@@ -66,11 +67,11 @@ const Products = ({ search }) => {
       {state.products &&
         state.products
           .filter((element) => {
-            if (search === undefined) {
+            if (search == undefined) {
               return element;
             } else if (
               element.title.toLowerCase().includes(search.toLowerCase()) ||
-              element.category.toLowerCase().includes(search.toLowerCase())
+             element.category&& element.category.toLowerCase().includes(search.toLowerCase())
             ) {
               return element;
             }
@@ -92,7 +93,7 @@ const Products = ({ search }) => {
                     {element.title.substring(-1, 30) + "..."}
                   </span>
 
-                  <p >{element.description.substring(-1, 70) + "..."}</p>
+                  <p>{element.description.substring(-1, 70) + "..."}</p>
                   <span className="price">Price : {element.price} J.D</span>
                   <div className="productes-btn">
                     <Link
@@ -104,12 +105,7 @@ const Products = ({ search }) => {
                     >
                       <BiShowAlt /> Show Product
                     </Link>
-                    <Link
-                      to="#"
-                      onClick={(e) => {
-                        // console.log(cart);
-                      }}
-                    >
+                    <Link to="#" onClick={(e) => {}}>
                       {" "}
                       <MdOutlineFavoriteBorder /> Favorite
                     </Link>
