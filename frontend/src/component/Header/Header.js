@@ -50,7 +50,7 @@ const Header = () => {
     };
   });
 
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
 
   const token = state.token;
 
