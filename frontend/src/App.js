@@ -11,6 +11,7 @@ import Update from "./component/updateProduct/updateProduct";
 import ProductDetails from "./component/productDetails/productDetails";
 import Users from "./component/usersComponent/usersComponent";
 import Panel from "./component/adminPanel/adminPanel";
+import Footer from "./component/footerComponent/footer";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       {/* <Navbar {...props} /> */}
 
       {/* <input
@@ -41,6 +43,7 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/panel" element={<Panel />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
