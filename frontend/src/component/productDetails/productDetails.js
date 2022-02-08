@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ReactStars from "react-rating-stars-component";
+import "./productDetails.css"
 
 toast.configure();
 const ProductDetails = () => {
@@ -176,12 +177,19 @@ const ProductDetails = () => {
       return (
         <div className="all-comments" key={comment.id}>
           <div className="just-one-comment">
-            <p>{comment.firstName}</p>
-            <p>{comment.comment}</p>
+          <div className="firstName">
+            <p> commenter : {comment.firstName}</p>
+          <p> comment : {comment.comment}</p>
+          {/* <p>{comment.publish_date}</p> */}
+          </div>
+             
+            <div clasName="all-comment-Details">
+            
 
             {isupdated ? (
-              <div>
+              <div className="comment-updated-btn">
                 <textarea
+                placeholder="update your comment ..."
                   className="update-comment-inp"
                   onChange={(e) => {
                     setupdatedComment(e.target.value);
@@ -189,49 +197,58 @@ const ProductDetails = () => {
                 />{" "}
                 <br />
                 <button
+                 className="btn-update-single-comment"
                   onClick={(e) => {
+                   
                     updateCommentById(comment.id);
                     setisupdated(!isupdated);
                     setsucesscomment(!sucesscomment);
                   }}
                 >
-                  update comment
+                  update 
                 </button>
               </div>
             ) : null}
-            <p>{comment.publish_date}</p>
+            
 
             {decode.userId == comment.user_id ? (
-              <div>
+              <div className="delet-and-update-btuns">
                 <button
+                className="btn-update-single-comment"
                   onClick={(e) => {
+                    
                     setisupdated(!isupdated);
                   }}
                 >
-                  Modify comment
+                  Modify
                 </button>
                 <button
+                 className="btn-delete-single-comment"
                   onClick={(e) => {
+                     
                     deleteComment(comment.id);
                     setsucesscomment(!sucesscomment);
                   }}
                 >
-                  Delete Comment
+                  Delete 
                 </button>
               </div>
             ) : null}
+            </div>
           </div>
 
-          <button
+          {/* <button
             className="btn-to-delete-all-my-comment"
             onClick={(e) => {
+                
               deleteAllMyComments(comment.user_id);
 
               setsucesscomment(!sucesscomment);
             }}
           >
             Delete All Comment
-          </button>
+            
+          </button> */}
         </div>
       );
     });
@@ -241,8 +258,8 @@ const ProductDetails = () => {
     productDetails &&
     productDetails.map((element) => {
       return (
-        <div className="all-div-componenet" key={element.id}>
-          <div>
+        <div  key={element.id}>
+          <div className="all-div-componenet" >
             <div className="product-image-description">
               <p>{element.title}</p>
               <br />
@@ -256,10 +273,12 @@ const ProductDetails = () => {
               <div className="product-seller-chat">
                 <br />
                 <button
+                className="btn-btn-chating"
                   onClick={(e) => {
                     //   navigate("/chat")
+                    
                   }}
-                ></button>
+                >Contact the Seller</button>
                 <br />
               </div>
 
@@ -284,6 +303,7 @@ const ProductDetails = () => {
                 <br />
 
                 <button
+                 className="btn-btn-chating"
                   onClick={(e) => {
                     // getAllComment();
                     setshowComment(!showComment);
@@ -305,12 +325,14 @@ const ProductDetails = () => {
                     })}
 
                 {state.token ? (
-                  <div>
+                  <div className="add-comment-textarea-div">
                     <textarea
+                    placeholder="Add Comment Here ...."
                       onChange={(e) => {
                         setcreateComment(e.target.value);
                       }}
                       className="text-area-comment"
+                      
                     />
                     <br />
                     <button
@@ -333,7 +355,7 @@ const ProductDetails = () => {
       );
     });
   ///////////////////////////////
-  return <div>{productDetailsToShow ? productDetailsToShow : null}</div>;
+  return <div className="container-all-div">{productDetailsToShow ? productDetailsToShow : null}</div>;
   //////////////////////////////
 };
 
