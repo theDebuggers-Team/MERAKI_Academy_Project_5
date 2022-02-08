@@ -14,18 +14,31 @@ import {
 import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
+toast.configure();
 const WishList = ()=>{ 
+const [wishList,setwishList] = useState([])
 
+const getMyWishList = ()=>{
+    axios.get("http://localhost:5000/wishlist").then((response)=>{
+        setwishList(response.data.results)
 
-
-
-
-
-
-
-
+    }).catch((err)=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+    })
     
+}
+
+
+
+
+
+
+
 }
