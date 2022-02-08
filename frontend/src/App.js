@@ -13,7 +13,9 @@ import Users from "./component/usersComponent/usersComponent";
 import UserProfile from "./component/User Profile/UserProfile";
 import Panel from "./component/adminPanel/adminPanel";
 import Footer from "./component/footerComponent/footer";
+import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
+
 
 function App() {
   const [search, setSearch] = useState("");
@@ -37,7 +39,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products search={search} />} />
-
         <Route path="/NewProduct" element={<NewProduct />} />
         <Route path="/update/:id" element={<Update />} />
         <Route path="/login" element={<Login />} />
@@ -45,7 +46,9 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/panel" element={<Panel />} />
+        <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
+
       </Routes>
       <Footer />
     </div>

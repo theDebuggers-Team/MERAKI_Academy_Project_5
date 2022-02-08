@@ -16,8 +16,15 @@ import {
 import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
+toast.configure();
+
 
 const Products = ({ search}) => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [products, setProducts] = useState("");
@@ -43,6 +50,23 @@ const Products = ({ search}) => {
         console.log(err);
       });
   };
+
+  /////// add Product to wish List Naser
+  const addToWishList = (id)=>{
+    axios.post(`http://localhost:5000/wishlist/add/${id}`, {
+      headers: {
+        Authorization: `Basic ${state.token}`,
+      },
+    }).then((response)=>{
+      toast.success(response.data.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }).catch((err)=>{
+      toast.error(err.response.data.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    })
+  }
 
   useEffect(() => {
     getAllProducts();
@@ -105,7 +129,11 @@ const Products = ({ search}) => {
                     >
                       <BiShowAlt /> Show Product
                     </Link>
-                    <Link to="#" onClick={(e) => {}}>
+
+                    <Link to="#" onClick={() => {
+                        addToWishList(element.id)
+                      }}}>
+
                       {" "}
                       <MdOutlineFavoriteBorder /> Favorite
                     </Link>

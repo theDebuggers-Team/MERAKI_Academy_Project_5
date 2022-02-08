@@ -18,6 +18,7 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
 import { IoSearchOutline } from "react-icons/io5";
+import {  useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const categoriesarr = [
@@ -56,6 +57,13 @@ const Navigation = () => {
 
   const [click, setClick] = useState(false);
   const [clickCate, setClickCate] = useState(false);
+  const navigate = useNavigate()
+
+   
+//////////////////
+
+
+/////////////////
 
   const handleClick = () => {
     setClick(!click);
@@ -118,8 +126,11 @@ const Navigation = () => {
           </div>
           {token ? (
             <li className="option" onClick={closeMobileMenu}>
-              <Link to="/cart" className="link">
+              <Link to="/wishList" className="link"   >
                 <MdFavorite /> Favorite
+               
+                 
+
               </Link>{" "}
             </li>
           ) : null}
