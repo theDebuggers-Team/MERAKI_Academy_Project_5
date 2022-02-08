@@ -107,7 +107,7 @@ const Products = ({ search }) => {
                     <Link
                       to="#"
                       onClick={(e) => {
-                        // console.log(cart);
+                        
                       }}
                     >
                       {" "}

@@ -49,9 +49,8 @@ const Header = () => {
       token: state.loginReducer.token,
     };
   });
- 
 
-  // const [name, setName] = useState("");
+  const [name, setName] = useState("");
 
   const token = state.token;
 
@@ -71,30 +70,46 @@ const Header = () => {
             </h1>
           </header>
         </div>
-        {/* <div className="wrap">
-        <div className="search">
-          <input
-            type="search"
-            placeholder="Search here ..."
-            className="searchTerm"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          {name ? (
-            <Link to={`/search/${name}`}>
-              {" "}
-              <button type="button" className="searchButton">
-                <BsSearch />
-              </button>
-            </Link>
-          ) : (
-            <button className="searchButton">
-              <BsSearch />
-            </button>
-          )}
+        <div className="container">
+          <div className="box">
+            <div className="search-bar">
+              <form>
+                <input
+                  type="text"
+                  placeholder="Search here ..."
+                  className="searchTerm"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                {name ? (
+                  <Link to={`/search/${name}`}>
+                    {" "}
+                    <button type="button" className="searchButton">
+                      <BsSearch />
+                    </button>
+                  </Link>
+                ) : (
+                  <button className="searchButton">
+                    <BsSearch />
+                  </button>
+                )}
+              </form>
+            </div>
+          </div>
         </div>
-        </div> */}
+
+        {/* <div class="container">
+  <div class="box">
+    <div class="search-bar">
+      <form>
+        <input type="text" placeholder="Search">
+        <button><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+</div> */}
+
         {token ? (
           <div className="dropdown-user">
             <span
