@@ -48,11 +48,32 @@ const Users = () => {
         <thead>
           <tr>
             <th></th>
-            <th>October</th>
-            <th>November</th>
-            <th>December</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Delete</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>$820,180</td>
+            <td>$841,640</td>
+            <td>$732,270</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>$850,730</td>
+            <td>$892,580</td>
+            <td>$801,240</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>83%</td>
+            <td>90%</td>
+            <td>75%</td>
+          </tr>
+        </tbody>
       </table>
       \ /////////////////////////////////////////////
       {users.map((element) => {
