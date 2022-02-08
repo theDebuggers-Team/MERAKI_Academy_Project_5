@@ -135,6 +135,7 @@ const updateUserById = (req, res) => {
 //create controller for deleteUserById
 
 const deleteUserById = (req, res) => {
+
   const userId = req.token.userId;
   const query = `UPDATE users SET is_deleted =1 where id=? and is_deleted =0`;
   const data = [userId];
