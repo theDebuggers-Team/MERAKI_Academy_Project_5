@@ -41,27 +41,37 @@ const Users = () => {
 
   return (
     <div className="allUsers">
-      <p>Users List</p>
-      ////////////////////////////////////////////////
+      {/* <p>Users List</p> */}
+      {/* //////////////////////////////////////////////// */}
       <table>
-        <caption>2019 Fourth Quarter Report</caption>
+        <caption>Users List</caption>
         <thead>
           <tr>
             <th></th>
             <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Delete</th>
+            <th>delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {users.map((element) => {
+            return (
+              <tr key={element.id} className="user">
+                <th>{element.id}</th>
+                <td>{element.firstName}</td>
+                <td>{element.email}</td>
+                <td>Delete</td>
+              </tr>
+            );
+          })}
+          {/* <tr>
             <th>1</th>
             <td>$820,180</td>
             <td>$841,640</td>
             <td>$732,270</td>
-          </tr>
-          <tr>
+          </tr> */}
+          {/* <tr>
             <th>2</th>
             <td>$850,730</td>
             <td>$892,580</td>
@@ -72,11 +82,11 @@ const Users = () => {
             <td>83%</td>
             <td>90%</td>
             <td>75%</td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
-      \ /////////////////////////////////////////////
-      {users.map((element) => {
+      {/* \ ///////////////////////////////////////////// */}
+      {/* {users.map((element) => {
         return (
           <div key={element.id} className="user">
             <p>{element.id}</p>
@@ -85,7 +95,7 @@ const Users = () => {
             <p>Delete</p>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
