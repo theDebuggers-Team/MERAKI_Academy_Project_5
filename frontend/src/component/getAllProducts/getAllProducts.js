@@ -92,7 +92,7 @@ const Products = ({ search }) => {
                     {element.title.substring(-1, 30) + "..."}
                   </span>
 
-                  <p>{element.description.substring(-1, 70) + "..."}</p>
+                  <p >{element.description.substring(-1, 70) + "..."}</p>
                   <span className="price">Price : {element.price} J.D</span>
                   <div className="productes-btn">
                     <Link
