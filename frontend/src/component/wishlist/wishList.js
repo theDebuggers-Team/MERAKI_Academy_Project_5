@@ -34,7 +34,7 @@ const [wishList,setwishList] = useState([])
 const [successDelete,setsuccessDelete] = useState(false)
 
 const getMyWishList = ()=>{
-    axios.get("http://localhost:5000/wishlist",{
+    axios.get("http://localhost:5000/wishlist/",{
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -45,6 +45,7 @@ const getMyWishList = ()=>{
         toast.error(err.response.data.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
+          console.log(err.response.data.message);
     })
 
 }

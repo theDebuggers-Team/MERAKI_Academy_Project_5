@@ -47,7 +47,6 @@ const Products = ({ search }) => {
   };
 
   /////// add Product to wish List Naser
-
   const addToWishList = (id)=>{
     axios.post(`http://localhost:5000/wishlist/add/${id}`, {
       headers: {
@@ -127,7 +126,7 @@ const Products = ({ search }) => {
                     </Link>
                     <Link
                       to="#"
-                      onClick={(e) => {
+                      onClick={() => {
                         addToWishList(element.id)
                       }}
                     >

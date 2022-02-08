@@ -60,7 +60,10 @@ const Navigation = () => {
   const navigate = useNavigate()
 
    
+//////////////////
 
+
+/////////////////
 
   const handleClick = () => {
     setClick(!click);
@@ -123,10 +126,7 @@ const Navigation = () => {
           </div>
           {token ? (
             <li className="option" onClick={closeMobileMenu}>
-              <Link to="/cart" className="link"   onClick={()=>{
-
-                     navigate("/wishList")
-                  }} >
+              <Link to="/wishList" className="link"   >
                 <MdFavorite /> Favorite
                
                  
