@@ -170,7 +170,7 @@ const getAllUsers = (req, res) => {
     if (err) {
       console.log(err);
       res
-        .status(404)
+        .status(500)
         .json({ success: false, message: "server error", err: err });
     } else {
       res
@@ -179,11 +179,37 @@ const getAllUsers = (req, res) => {
     }
   });
 };
-
+const getUserById = (req,res) => {
+  const userId = req.params.id
+  const query = `select * from users  where id = ? AND is_deleted = 0`
+  const data = [userId]
+  connection.query(query,data, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    } else {
+      if (!result.length) {
+        return res.status(404).json({
+          success: false,
+          message: `users found with the indicated  id => ${userId}`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `The user id=> ${userId} `,
+        results: result,
+      });
+    }
+  });
+}
 module.exports = {
   register,
   login,
   updateUserById,
   deleteUserById,
   getAllUsers,
+  getUserById
 };

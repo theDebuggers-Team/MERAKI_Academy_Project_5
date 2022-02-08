@@ -12,6 +12,7 @@ const {
   updateUserById,
   deleteUserById,
   getAllUsers,
+  getUserById
 } = require("../controllers/UsersConrollers");
 
 //create end points
@@ -33,5 +34,6 @@ userRouter.put("/:id", authentication, updateUserById);
 userRouter.delete("/:id", authentication, deleteUserById);
 
 userRouter.get("/", getAllUsers);
+userRouter.get("/:id", getUserById);
 
 module.exports = { userRouter };
