@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import {logout} from "../reducer/login/index"
+import { logout } from "../reducer/login/index";
 const UserProfile = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
   const [updated, setUpdated] = useState(false);
@@ -66,7 +66,7 @@ const UserProfile = () => {
             deleteUserByID();
 
             localStorage.clear();
-          dispatch(logout())
+            dispatch(logout());
             navigate("/login");
           }}
         >
