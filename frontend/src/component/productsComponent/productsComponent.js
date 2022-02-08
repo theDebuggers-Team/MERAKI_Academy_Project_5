@@ -88,9 +88,13 @@ const ProductsAdmin = () => {
         </tbody>
       </table>
       <div className="productsPanelPagination">
-        <button onClick={previous}>Previous</button>
-        <button>{page}</button>
-        <button onClick={next}>Next</button>
+        <button className="Pagin" onClick={previous}>
+          Previous
+        </button>
+        <button className="Pagin1">{page}</button>
+        <button className="Pagin" onClick={next}>
+          Next
+        </button>
       </div>
     </div>
   );

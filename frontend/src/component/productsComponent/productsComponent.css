@@ -59,3 +59,17 @@ tbody tr:nth-child(even) th {
 .pd {
   width: 50px;
 }
+
+.Pagin {
+  width: 70px;
+  height: 20px;
+  background-color: #1e95c89c;
+  border-radius: 10%;
+}
+
+.Pagin1 {
+  width: 15px;
+  height: 20px;
+  background-color: #1e95c89c;
+  border-radius: 10%;
+}
