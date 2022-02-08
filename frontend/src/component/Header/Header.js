@@ -50,7 +50,7 @@ const Header = () => {
     };
   });
 
-  const [name, setName] = useState("");
+  const [search, setSearch] = useState("");
 
   const token = state.token;
 
@@ -73,17 +73,17 @@ const Header = () => {
         <div className="container">
           <div className="box">
             <div className="search-bar">
-              <form>
+              <form onClick={(e)=>{e.preventDefault()}}>
                 <input
                   type="text"
                   placeholder="Search here ..."
                   className="searchTerm"
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setSearch(e.target.value);
                   }}
                 />
-                {name ? (
-                  <Link to={`/search/${name}`}>
+                {search ? (
+                  <Link to={`/products/${search}`}>
                     {" "}
                     <button type="button" className="searchButton">
                       <BsSearch />
@@ -121,7 +121,7 @@ const Header = () => {
                 // width: "16%",
                 fontSize: "1.1rem",
               }}
-              onClick={(e) => handleClickUser()}
+              onHover={handleClickUser}
             >
               {/* <img
               src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"

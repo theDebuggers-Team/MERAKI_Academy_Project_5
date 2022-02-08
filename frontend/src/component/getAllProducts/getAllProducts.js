@@ -4,6 +4,8 @@ import "./getAllProducts.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import {
   setproducts,
   addproduct,
@@ -15,10 +17,11 @@ import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 
-const Products = ({ search }) => {
+const Products = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [products, setProducts] = useState("");
+  const { search } = useParams();
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
   const state = useSelector((state) => {

@@ -302,7 +302,7 @@ body {
   border-radius: 0.2rem;
   box-shadow: 0 2px 5px e Orgba(0, e, e, 0.1);
   opacity: 1;
-  pointer-events: none;
+  /* pointer-events: none; */
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   height: 250px;
@@ -336,7 +336,7 @@ body {
   border-radius: 0.2rem;
   box-shadow: 0 2px 5px e Orgba(0, e, e, 0.1);
   opacity: 1;
-  pointer-events: none;
+  /* pointer-events: none; */
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   height: 150px;
@@ -352,7 +352,7 @@ body {
   border-radius: 0.2rem;
   box-shadow: 0 2px 5px e Orgba(0, e, e, 0.1);
   opacity: 0;
-  pointer-events: none;
+  /* pointer-events: none; */
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
