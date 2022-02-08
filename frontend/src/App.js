@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header setSearch={setSearch} />
 
       {/* <Navbar {...props} /> */}
 
@@ -36,8 +36,7 @@ function App() {
         <Route path="/" element={<Categories />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/products/:search" element={<Products search={search} />} /> */}
-        <Route path="/products/:search" element={<Products/>} />
+        <Route path="/products" element={<Products search={search} />} />
 
         <Route path="/NewProduct" element={<NewProduct />} />
         <Route path="/update/:id" element={<Update />} />

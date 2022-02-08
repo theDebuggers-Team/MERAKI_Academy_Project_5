@@ -12,7 +12,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 import jwtDecode from "jwt-decode";
 
-const Header = () => {
+const Header = ({ setSearch }) => {
   const [clickUser, setClickUser] = useState(false);
   const handleClickUser = () => {
     setClickUser(!clickUser);
@@ -50,7 +50,7 @@ const Header = () => {
     };
   });
 
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
   const token = state.token;
 
@@ -73,7 +73,11 @@ const Header = () => {
         <div className="container">
           <div className="box">
             <div className="search-bar">
-              <form onClick={(e)=>{e.preventDefault()}}>
+              <form
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <input
                   type="text"
                   placeholder="Search here ..."
@@ -82,18 +86,10 @@ const Header = () => {
                     setSearch(e.target.value);
                   }}
                 />
-                {search ? (
-                  <Link to={`/products/${search}`}>
-                    {" "}
-                    <button type="button" className="searchButton">
-                      <BsSearch />
-                    </button>
-                  </Link>
-                ) : (
-                  <button className="searchButton">
-                    <BsSearch />
-                  </button>
-                )}
+
+                <button type="button" className="searchButton">
+                  <BsSearch />
+                </button>
               </form>
             </div>
           </div>
@@ -121,7 +117,8 @@ const Header = () => {
                 // width: "16%",
                 fontSize: "1.1rem",
               }}
-              onHover={handleClickUser}
+              onMouseEnter={handleClickUser}
+              // onMouseLeave={handleClickUser}
             >
               {/* <img
               src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
@@ -133,7 +130,11 @@ const Header = () => {
               <IoMdArrowDropdown />
             </span>
             {clickUser ? (
-              <div className="dropdown-menu1-user ">
+              <div
+                className="dropdown-menu1-user "
+                // onMouseEnter={handleClickUser}
+                onMouseLeave={handleClickUser}
+              >
                 <span className="user-list">
                   <Link to="#" className="link-user">
                     Show your profile

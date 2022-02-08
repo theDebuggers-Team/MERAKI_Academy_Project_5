@@ -17,11 +17,11 @@ import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 
-const Products = () => {
+const Products = ({ search}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [products, setProducts] = useState("");
-  const { search } = useParams();
+  // const { search } = useParams();
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
   const state = useSelector((state) => {
@@ -67,11 +67,11 @@ const Products = () => {
       {state.products &&
         state.products
           .filter((element) => {
-            if (search === undefined) {
+            if (search == undefined) {
               return element;
             } else if (
               element.title.toLowerCase().includes(search.toLowerCase()) ||
-              element.category.toLowerCase().includes(search.toLowerCase())
+             element.category&& element.category.toLowerCase().includes(search.toLowerCase())
             ) {
               return element;
             }
