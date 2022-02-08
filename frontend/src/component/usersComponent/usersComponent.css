@@ -30,8 +30,8 @@ caption {
 }
 
 thead {
-  background-color: #333;
-  color: white;
+  background-color: #1e95c836;
+  color: black;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 2%;
@@ -45,7 +45,10 @@ tbody tr:nth-child(even) {
   background-color: #eee;
 }
 tbody th {
-  background-color: #36c;
+  background-color: #1e95c89c;
   color: #fff;
   text-align: left;
+}
+tbody tr:nth-child(even) th {
+  background-color: #1e95c8;
 }
