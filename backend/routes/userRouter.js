@@ -34,6 +34,6 @@ userRouter.put("/:id", authentication, updateUserById);
 userRouter.delete("/:id", authentication, deleteUserById);
 
 userRouter.get("/", getAllUsers);
-userRouter.get("/:id", getUserById);
+userRouter.get("/profile", authentication,getUserById);
 
 module.exports = { userRouter };

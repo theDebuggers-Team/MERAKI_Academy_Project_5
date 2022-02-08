@@ -9,7 +9,7 @@ const UserProfile = () => {
 const {id} =useParams();
 
 const getUserByID = () =>{
-axios.get("http://localhost:5000/user")
+axios.get(`http://localhost:5000/user/${id}`)
 }
   return <div></div>;
 };
