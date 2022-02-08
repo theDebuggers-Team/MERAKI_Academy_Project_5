@@ -41,6 +41,20 @@ const Users = () => {
 
   return (
     <div className="allUsers">
+      <p>Users List</p>
+      ////////////////////////////////////////////////
+      <table>
+        <caption>2019 Fourth Quarter Report</caption>
+        <thead>
+          <tr>
+            <th></th>
+            <th>October</th>
+            <th>November</th>
+            <th>December</th>
+          </tr>
+        </thead>
+      </table>
+      \ /////////////////////////////////////////////
       {users.map((element) => {
         return (
           <div key={element.id} className="user">
