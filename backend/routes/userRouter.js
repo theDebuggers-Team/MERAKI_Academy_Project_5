@@ -31,7 +31,7 @@ userRouter.put("/updateprofile", authentication, updateUserById);
 
 //4- create end points for delete user
 
-userRouter.delete("/deleteprofile", authentication, deleteUserById);
+userRouter.delete("/:id", authentication, deleteUserById);
 
 userRouter.get("/", getAllUsers);
 userRouter.get("/profile", authentication, getUserById);
