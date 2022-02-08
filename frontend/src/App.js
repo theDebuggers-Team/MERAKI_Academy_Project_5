@@ -10,7 +10,7 @@ import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
 import ProductDetails from "./component/productDetails/productDetails";
 import Users from "./component/usersComponent/usersComponent";
-
+import UserProfile from "./component/User Profile/UserProfile"
 function App() {
   const [search, setSearch] = useState("");
 
@@ -38,6 +38,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/profile" element={<UserProfile />} />
+
       </Routes>
     </div>
   );
