@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
-
+import {logout} from "../reducer/login/index"
 const UserProfile = () => {
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [user, setUser] = useState([]);
+  const [updated, setUpdated] = useState(false);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -16,6 +17,7 @@ const UserProfile = () => {
       products: state.productReducer.products,
     };
   });
+
   const token = state.token;
   const getUserByID = () => {
     axios
@@ -41,7 +43,7 @@ const UserProfile = () => {
   };
   const deleteUserByID = () => {
     axios
-      .put(`http://localhost:5000/user/deleteprofile`, {
+      .delete(`http://localhost:5000/user/deleteprofile`, {
         headers: {
           Authorization: `Basic ${token}`,
         },
@@ -59,10 +61,17 @@ const UserProfile = () => {
         <p>{user.country}</p>
         <p>{user.email}</p>
         <p>{user.phone_Number}</p>
-        <button onClick={(e)=>{
-            deleteUserByID()
-            navigate("/")
-        }}>delete</button>
+        <button
+          onClick={(e) => {
+            deleteUserByID();
+
+            localStorage.clear();
+          dispatch(logout())
+            navigate("/login");
+          }}
+        >
+          delete
+        </button>
         <button>update</button>
       </div>
     );
@@ -71,11 +80,7 @@ const UserProfile = () => {
   useEffect(() => {
     getUserByID();
   }, []);
-  return (
-    <div>
-     {mapOverUsers}
-    </div>
-  );
+  return <div>{mapOverUsers}</div>;
 };
 
 export default UserProfile;
