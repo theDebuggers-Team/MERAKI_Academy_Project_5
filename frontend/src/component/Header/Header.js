@@ -13,6 +13,37 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import jwtDecode from "jwt-decode";
 
 const Header = () => {
+  
+  const [clickUser, setClickUser] = useState(false);
+  const handleClickUser = () => {
+    setClickUser(!clickUser);
+  };
+  const categoriesarr = [
+    {
+      name: "Cars",
+      // image: <IoCarSportOutline />,
+    },
+    {
+      name: "Electronics",
+      // image: <RiComputerLine />,
+    },
+    {
+      name: "Jobs",
+      // image: <MdOutlineWorkOutline />,
+    },
+    {
+      name: "Real Estates",
+      // image: <FaHome />,
+    },
+    {
+      name: "Fashoins",
+      // image: <GiClothes />,
+    },
+    {
+      name: "Job Seeker",
+      // image: <IoSearchOutline />,
+    },
+  ];
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -23,11 +54,13 @@ const Header = () => {
   const [name, setName] = useState("");
 
   const token = state.token;
+  // console.log(decode(token));
 
   const lastName = token && decode(token).lastName;
   const firstName = token && decode(token).firstName;
   const firstName2 = token && decode(token).given_name;
   const lastName2 = token && decode(token).family_name;
+  const role = token && decode(token).role
 
   // console.log(firstName2);
   return (
@@ -67,6 +100,7 @@ const Header = () => {
         {token ? (
           <div className="dropdown-user">
             <span
+            className="user-button"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -74,7 +108,7 @@ const Header = () => {
                 // width: "16%",
                 fontSize: "1.1rem",
               }}
-            >
+            onClick={(e) =>handleClickUser()}>
               {/* <img
               src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
               style={{ width: "10%", height: "10%" }}
@@ -84,7 +118,14 @@ const Header = () => {
               <p>{lastName ? lastName : lastName2}</p>
               <IoMdArrowDropdown />
             </span>
-            <div className="dropdown-menu"></div>
+            {clickUser?<div className="dropdown-menu1-user ">
+            <span className="user-list"><Link to="#" className="link-user" >Show your profile</Link></span>
+            {role==1?<span className="user-list"><Link to="#" className="link-user">Show admin panel</Link></span>:null}
+            {state.isLoggedIn?<span className="user-list"><Link to="#" className="link-user">Logout</Link></span>:<span className="user-list"><Link to="#" className="link-user">Login</Link></span>}
+            
+            
+
+            </div>:null}
           </div>
         ) : null}
       </div>
