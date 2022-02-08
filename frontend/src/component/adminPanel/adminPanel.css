@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   gap: 5%;
+  background-color: burlywood;
+  margin-bottom: 20px;
 }
 
 .adminPanel:hover {

@@ -41,7 +41,6 @@ const Users = () => {
 
   return (
     <div className="allUsers">
-    
       <table>
         <caption>Users List</caption>
         <thead>
@@ -63,6 +62,14 @@ const Users = () => {
                 <td>{element.email}</td>
                 <td>
                   <svg
+                    onClick={(e) => {
+                      if (
+                        window.confirm(
+                          "Are you sure you wish to delete this item?"
+                        )
+                      )
+                        deleteUser(element.id);
+                    }}
                     stroke="currentColor"
                     fill="currentColor"
                     stroke-width="0"
