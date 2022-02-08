@@ -50,7 +50,7 @@ const deleteProductFromWishList = (id)=>{
 
 useEffect =(()=>{
     getMyWishList()
-},[])
+},[successDelete])
 
 
 const myWishList = wishList && wishList.map((element)=>{
@@ -93,7 +93,10 @@ const myWishList = wishList && wishList.map((element)=>{
               <MdOutlineFavoriteBorder /> Favorite
             </Link> */}
           
-            
+            <button className="btn-btn-remove-wishlist"onClick={(e) =>{
+           deleteProductFromWishList(element.id)
+            setsuccessDelete(!successDelete)
+            }}>Rmove</button>
           </div>
         </div>
       </div>  
@@ -103,6 +106,13 @@ const myWishList = wishList && wishList.map((element)=>{
 })
 
 
+return(
+<>
+ {myWishList? myWishList:toast.warn("WishList is empty", {
+            position: toast.POSITION.TOP_RIGHT,
+          })}
+</>
 
+)
 
 }
