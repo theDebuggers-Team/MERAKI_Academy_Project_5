@@ -41,8 +41,7 @@ const Users = () => {
 
   return (
     <div className="allUsers">
-      {/* <p>Users List</p> */}
-      {/* //////////////////////////////////////////////// */}
+    
       <table>
         <caption>Users List</caption>
         <thead>
@@ -78,37 +77,8 @@ const Users = () => {
               </tr>
             );
           })}
-          {/* <tr>
-            <th>1</th>
-            <td>$820,180</td>
-            <td>$841,640</td>
-            <td>$732,270</td>
-          </tr> */}
-          {/* <tr>
-            <th>2</th>
-            <td>$850,730</td>
-            <td>$892,580</td>
-            <td>$801,240</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>83%</td>
-            <td>90%</td>
-            <td>75%</td>
-          </tr> */}
         </tbody>
       </table>
-      {/* \ ///////////////////////////////////////////// */}
-      {/* {users.map((element) => {
-        return (
-          <div key={element.id} className="user">
-            <p>{element.id}</p>
-            <p>{element.firstName}</p>
-            <p>{element.email}</p>
-            <p>Delete</p>
-          </div>
-        );
-      })} */}
     </div>
   );
 };
