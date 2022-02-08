@@ -42,7 +42,7 @@ const ProductsAdmin = () => {
             <th>Title</th>
             <th>User</th>
             <th>price</th>
-            <th>Published Date</th>
+            <th className="pd">Published Date</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -56,7 +56,7 @@ const ProductsAdmin = () => {
                   <td>{element.title}</td>
                   <td>{element.user_id}</td>
                   <td>{element.price}</td>
-                  <td className="pd">{element.publish_date}</td>
+                  <td>{element.publish_date}</td>
 
                   <td>
                     <svg
@@ -77,9 +77,9 @@ const ProductsAdmin = () => {
         </tbody>
       </table>
       <div className="productsPanelPagination">
-        <button>Previous</button>
+        <button onClick={() => setPage(page - 1)}>Previous</button>
         <button>{page}</button>
-        <button>Next</button>
+        <button onClick={() => setPage(page + 1)}>Next</button>
       </div>
     </div>
   );
