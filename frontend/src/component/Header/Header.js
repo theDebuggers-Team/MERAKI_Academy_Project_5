@@ -13,7 +13,6 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import jwtDecode from "jwt-decode";
 
 const Header = () => {
-  
   const [clickUser, setClickUser] = useState(false);
   const handleClickUser = () => {
     setClickUser(!clickUser);
@@ -59,7 +58,7 @@ const Header = () => {
   const firstName = token && decode(token).firstName;
   const firstName2 = token && decode(token).given_name;
   const lastName2 = token && decode(token).family_name;
-  const role = token && decode(token).role
+  const role = token && decode(token).role;
 
   return (
     <div className="main-header">
@@ -98,7 +97,7 @@ const Header = () => {
         {token ? (
           <div className="dropdown-user">
             <span
-            className="user-button"
+              className="user-button"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -106,7 +105,8 @@ const Header = () => {
                 // width: "16%",
                 fontSize: "1.1rem",
               }}
-            onClick={(e) =>handleClickUser()}>
+              onClick={(e) => handleClickUser()}
+            >
               {/* <img
               src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
               style={{ width: "10%", height: "10%" }}
@@ -116,14 +116,35 @@ const Header = () => {
               <p>{lastName ? lastName : lastName2}</p>
               <IoMdArrowDropdown />
             </span>
-            {clickUser?<div className="dropdown-menu1-user ">
-            <span className="user-list"><Link to="#" className="link-user" >Show your profile</Link></span>
-            {role==1?<span className="user-list"><Link to="#" className="link-user">Show admin panel</Link></span>:null}
-            {state.isLoggedIn?<span className="user-list"><Link to="#" className="link-user">Logout</Link></span>:<span className="user-list"><Link to="#" className="link-user">Login</Link></span>}
-            
-            
-
-            </div>:null}
+            {clickUser ? (
+              <div className="dropdown-menu1-user ">
+                <span className="user-list">
+                  <Link to="#" className="link-user">
+                    Show your profile
+                  </Link>
+                </span>
+                {role == 1 ? (
+                  <span className="user-list">
+                    <Link to="#" className="link-user">
+                      Show admin panel
+                    </Link>
+                  </span>
+                ) : null}
+                {state.isLoggedIn ? (
+                  <span className="user-list">
+                    <Link to="#" className="link-user">
+                      Logout
+                    </Link>
+                  </span>
+                ) : (
+                  <span className="user-list">
+                    <Link to="#" className="link-user">
+                      Login
+                    </Link>
+                  </span>
+                )}
+              </div>
+            ) : null}
           </div>
         ) : null}
       </div>
