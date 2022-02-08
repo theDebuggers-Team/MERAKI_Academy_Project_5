@@ -7,6 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+      products: state.productReducer.products,
+    };
+  });
   /////////////////////////////
   const getAllUsers = () => {
     console.log("get");
@@ -29,9 +36,9 @@ const Users = () => {
   const deleteUser = (id) => {
     axios
       .delete(`http://localhost:5000/user/${id}`, {
-        // headers: {
-        //   Authorization: `Basic ${state.token}`,
-        // },
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
       })
       .then((result) => {
         getAllUsers();
