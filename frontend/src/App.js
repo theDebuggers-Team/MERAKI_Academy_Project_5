@@ -37,6 +37,7 @@ function App() {
         <Route path="/update/:id" element={<Update />} />
         <Route path="/login" element={<Login />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </div>
   );

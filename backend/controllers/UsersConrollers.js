@@ -164,7 +164,7 @@ const deleteUserById = (req, res) => {
 };
 
 const getAllUsers = (req, res) => {
-  const query = `select * from products  where is_deleted = 0`;
+  const query = `select * from users  where is_deleted = 0`;
 
   connection.query(query, (err, result) => {
     if (err) {
