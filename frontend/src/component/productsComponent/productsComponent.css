@@ -1,0 +1,61 @@
+.allProducts {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-right: 10%;
+  margin-left: 10%;
+  gap: 20px;
+  justify-content: center;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+table {
+  border-collapse: collapse;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  border: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
+/* thead th {
+  width: 50%;
+} */
+caption {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+thead {
+  background-color: #1e95c836;
+  color: black;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 2%;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+tbody th {
+  background-color: #1e95c89c;
+  color: #fff;
+  text-align: left;
+}
+tbody tr:nth-child(even) th {
+  background-color: #1e95c8;
+}
+
+.pd {
+  width: 20%;
+}
