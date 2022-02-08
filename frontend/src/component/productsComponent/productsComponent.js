@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 const ProductsAdmin = () => {
   const [products, setProducts] = useState("");
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(222);
+  const [limit, setLimit] = useState(4);
   const state = useSelector((state) => {
     return {
       products: state.productReducer.products,
@@ -56,8 +56,8 @@ const ProductsAdmin = () => {
                   <td>{element.title}</td>
                   <td>{element.user_id}</td>
                   <td>{element.price}</td>
+                  <td className="pd">{element.publish_date}</td>
 
-                  <td>Delete</td>
                   <td>
                     <svg
                       stroke="currentColor"
@@ -76,6 +76,11 @@ const ProductsAdmin = () => {
             })}
         </tbody>
       </table>
+      <div className="productsPanelPagination">
+        <button>Previous</button>
+        <button>{page}</button>
+        <button>Next</button>
+      </div>
     </div>
   );
 };

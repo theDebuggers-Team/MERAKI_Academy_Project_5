@@ -17,7 +17,7 @@ const Panel = () => {
         <p
           className="adminPanel"
           onClick={() => {
-            setUsersList(!usersList);
+            setUsersList(true);
             setProductList(false);
             setAddProduct(false);
           }}
@@ -28,7 +28,7 @@ const Panel = () => {
           className="adminPanel"
           onClick={() => {
             setUsersList(false);
-            setProductList(!productList);
+            setProductList(true);
             setAddProduct(false);
           }}
         >
@@ -39,7 +39,7 @@ const Panel = () => {
           onClick={() => {
             setUsersList(false);
             setProductList(false);
-            setAddProduct(!addProduct);
+            setAddProduct(true);
           }}
         >
           Add New Product

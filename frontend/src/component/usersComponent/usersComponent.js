@@ -56,6 +56,7 @@ const Users = () => {
             <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Member Since</th>
             <th>delete</th>
           </tr>
         </thead>
@@ -67,6 +68,7 @@ const Users = () => {
                 <td>{element.id}</td>
                 <td>{element.firstName}</td>
                 <td>{element.email}</td>
+                <td>{element.publish_date}</td>
                 <td>
                   <svg
                     onClick={(e) => {

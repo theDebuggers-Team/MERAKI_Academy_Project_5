@@ -1,6 +1,9 @@
 .allProducts {
   display: flex;
+  flex-direction: column;
   margin: auto;
+  margin-right: 10%;
+  margin-left: 10%;
   gap: 20px;
   justify-content: center;
 }
@@ -18,9 +21,9 @@ table {
   text-align: center;
   vertical-align: middle;
 }
-thead th {
+/* thead th {
   width: 50%;
-}
+} */
 caption {
   font-weight: bold;
   font-size: 24px;
@@ -51,4 +54,8 @@ tbody th {
 }
 tbody tr:nth-child(even) th {
   background-color: #1e95c8;
+}
+
+.pd {
+  width: 20%;
 }
