@@ -180,7 +180,7 @@ const getAllUsers = (req, res) => {
   });
 };
 const getUserById = (req,res) => {
-  const userId = req.params.id
+  const userId = req.token.userId;
   const query = `select * from users  where id = ? AND is_deleted = 0`
   const data = [userId]
   connection.query(query,data, (err, result) => {
