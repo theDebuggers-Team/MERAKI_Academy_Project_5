@@ -41,7 +41,65 @@ const Users = () => {
 
   return (
     <div className="allUsers">
-      {users.map((element) => {
+      {/* <p>Users List</p> */}
+      {/* //////////////////////////////////////////////// */}
+      <table>
+        <caption>Users List</caption>
+        <thead>
+          <tr>
+            <th></th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((element) => {
+            return (
+              <tr key={element.id} className="user">
+                <th>{element.id}</th>
+                <td>{element.id}</td>
+                <td>{element.firstName}</td>
+                <td>{element.email}</td>
+                <td>
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 1024 1024"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M864 144H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm0 400H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zM464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm0 400H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16z"></path>
+                  </svg>
+                </td>
+              </tr>
+            );
+          })}
+          {/* <tr>
+            <th>1</th>
+            <td>$820,180</td>
+            <td>$841,640</td>
+            <td>$732,270</td>
+          </tr> */}
+          {/* <tr>
+            <th>2</th>
+            <td>$850,730</td>
+            <td>$892,580</td>
+            <td>$801,240</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>83%</td>
+            <td>90%</td>
+            <td>75%</td>
+          </tr> */}
+        </tbody>
+      </table>
+      {/* \ ///////////////////////////////////////////// */}
+      {/* {users.map((element) => {
         return (
           <div key={element.id} className="user">
             <p>{element.id}</p>
@@ -50,7 +108,7 @@ const Users = () => {
             <p>Delete</p>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
