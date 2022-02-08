@@ -59,6 +59,7 @@ const Users = () => {
             return (
               <tr key={element.id} className="user">
                 <th>{element.id}</th>
+                <td>{element.id}</td>
                 <td>{element.firstName}</td>
                 <td>{element.email}</td>
                 <td>Delete</td>

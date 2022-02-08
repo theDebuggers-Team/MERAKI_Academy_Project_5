@@ -1,6 +1,11 @@
-.user {
+.allUsers {
   display: flex;
   margin: auto;
   gap: 20px;
   justify-content: center;
+}
+
+th,
+td {
+  border: 1px solid black;
 }
