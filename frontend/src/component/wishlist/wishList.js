@@ -20,7 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 const WishList = ()=>{ 
-
+const navigate = useNavigate()
 
     const state = useSelector((state) => {
         return {
@@ -40,7 +40,7 @@ const getMyWishList = ()=>{
         },
       }).then((response)=>{
         setwishList(response.data.results)
-
+         console.log(response.data);
     }).catch((err)=>{
         toast.error(err.response.data.message, {
             position: toast.POSITION.TOP_RIGHT,
