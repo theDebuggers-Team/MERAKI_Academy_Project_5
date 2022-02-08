@@ -1,31 +1,28 @@
 .all-div-componenet{
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap:15rem;
-    border: 1px solid black;
-   min-width: 70%;
+    min-width:100%;
     min-height: 100%;
+    justify-content: space-evenly;
+    gap:5rem;
+    /* border: 1px solid black; */
+   
+    /* box-shadow: rgba(142, 173, 214, 0.4) 5px 5px, rgba(46, 137, 240, 0.3) 10px 10px, rgba(96, 197, 223, 0.2) 15px 15px, rgba(167, 216, 238, 0.1) 20px 20px, rgba(37, 101, 131, 0.05) 25px 25px; */
+   
 }
-
-/* .container-all-div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
 
 .product-image-description{
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap:1rem;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
 .container-chating-rate-reviews{
     display: flex;
     flex-direction: column;
     gap:10rem;
+    justify-content: space-evenly;
 }
 
 .delet-and-update-btuns{
@@ -34,6 +31,7 @@
     gap:2rem;
     justify-content:flex-end;
     padding-right:2rem ;
+    padding-bottom: 1rem;
 
 }
 .btn-to-delete-all-my-comment,.btn-delete-single-comment,.btn-update-single-comment{
@@ -52,13 +50,17 @@
   justify-content: flex-end;
    gap:2rem;
    padding-top: 3rem;
+   padding-right: 2rem;
+
 }
 
 .text-area-comment{
     width: 30%;
- 
-}
    
+}
+.text-area-comment:focus{
+    box-shadow: 0 0 0.3rem #008c80;
+}
 
 .firstName{
     display: flex;
@@ -103,8 +105,9 @@
     display: flex;
     flex-direction: column;
     gap:2rem;
-    border: 1px solid black;
-    
+   
+    /* border-bottom:0.1rem solid rgb(185, 182, 182); */
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     
 }
 
@@ -123,4 +126,31 @@
     width: 30%;
     height: 3rem;
 }
+
+.product-image-description p {
+    text-align:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size:1rem;
+}
+
+/* .product-image-description{
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+} */
+
+/* .all-div-componene{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+} */
+
+.container-all-div{
+    display: flex;
+    flex-direction: row;
+   
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150%;
+    gap: 5rem;
+}
+
 

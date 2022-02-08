@@ -175,7 +175,9 @@ const ProductDetails = () => {
     commentsOnProduct &&
     commentsOnProduct.map((comment) => {
       return (
+          <div className="all-comments">
         <div className="all-comments" key={comment.id}>
+
           <div className="just-one-comment">
           <div className="firstName">
             <p> commenter : {comment.firstName}</p>
@@ -250,6 +252,7 @@ const ProductDetails = () => {
             
           </button> */}
         </div>
+        </div>
       );
     });
 
@@ -261,11 +264,15 @@ const ProductDetails = () => {
         <div  key={element.id}>
           <div className="all-div-componenet" >
             <div className="product-image-description">
-              <p>{element.title}</p>
+            <span>{element.title}</span>
               <br />
               <img src={element.image} />
               <br />
-              <p>{element.description}</p>
+              <p> Description : {element.description}</p>
+              <br/>
+              <p> Price : {element.price}</p>
+              <br/>
+              <p>Category : {element.category}</p>
               <br />
             </div>
 
