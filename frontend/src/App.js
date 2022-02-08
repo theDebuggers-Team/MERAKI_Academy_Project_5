@@ -10,7 +10,9 @@ import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
 import ProductDetails from "./component/productDetails/productDetails";
 import Users from "./component/usersComponent/usersComponent";
+import UserProfile from "./component/User Profile/UserProfile"
 import Panel from "./component/adminPanel/adminPanel";
+
 
 function App() {
   const [search, setSearch] = useState("");
@@ -30,7 +32,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Categories />} />
-
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products search={search} />} />
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/panel" element={<Panel />} />
       </Routes>
     </div>
