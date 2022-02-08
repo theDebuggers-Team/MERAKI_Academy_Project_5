@@ -29,6 +29,17 @@ const ProductsAdmin = () => {
   useEffect(() => {
     getAllProducts();
   }, [page, limit]);
+
+  const next = () => {
+    if (page < 3) {
+      setPage(page + 1);
+    }
+  };
+  const previous = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
   ///////////////////////////////////////////
 
   return (
@@ -77,9 +88,9 @@ const ProductsAdmin = () => {
         </tbody>
       </table>
       <div className="productsPanelPagination">
-        <button onClick={() => setPage(page - 1)}>Previous</button>
+        <button onClick={previous}>Previous</button>
         <button>{page}</button>
-        <button onClick={() => setPage(page + 1)}>Next</button>
+        <button onClick={next}>Next</button>
       </div>
     </div>
   );
