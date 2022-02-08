@@ -4,57 +4,36 @@ import "./productsComponent.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setproducts,
-  addproduct,
-  updateproduct,
-  deleteproduct,
-  getproductsByState,
-} from "../reducer/products/index";
 
 const ProductsAdmin = () => {
-  //   const [users, setUsers] = useState([]);
   const state = useSelector((state) => {
     return {
-      isLoggedIn: state.loginReducer.isLoggedIn,
-      token: state.loginReducer.token,
       products: state.productReducer.products,
     };
   });
-  /////////////////////////////
-  //   const getAllUsers = () => {
-  //     console.log("get");
-  //     axios
-  //       .get(`http://localhost:5000/user`)
-  //       .then((response) => {
-  //         console.log(response.data.results);
-  //         setUsers(response.data.results);
-  //         console.log(users);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+  /////////////////////////////////////////////////////////
+  const getAllProducts = () => {
+    axios
+      .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
+      .then((response) => {
+        // console.log(response.data.products);
+        // setProducts(response.data.results);
+        dispatch(setproducts(response.data.results));
+        console.log(state.products);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  //   useEffect(() => {
-  //     getAllUsers();
-  //   }, []);
-  ////////////////////////////////////////
-  //   const deleteUser = (id) => {
-  //     axios
-  //       .delete(`http://localhost:5000/user/${id}`, {
-  //         // headers: {
-  //         //   Authorization: `Basic ${state.token}`,
-  //         // },
-  //       })
-  //       .then((result) => {
-  //         getAllUsers();
-  //       })
-  //       .catch((error) => {});
-  //   };
+  useEffect(() => {
+    getAllProducts();
+  }, [page, limit]);
+  ///////////////////////////////////////////
 
   return (
     <div className="allProducts">
+      {console.log(state.products)}
       <table>
         <caption>Products List</caption>
         <thead>

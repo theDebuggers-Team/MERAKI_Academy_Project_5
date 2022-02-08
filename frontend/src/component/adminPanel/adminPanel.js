@@ -15,6 +15,7 @@ const Panel = () => {
     <div>
       <div className="panel">
         <p
+          className="adminPanel"
           onClick={() => {
             setUsersList(!usersList);
             setProductList(false);
@@ -24,6 +25,7 @@ const Panel = () => {
           Users List
         </p>
         <p
+          className="adminPanel"
           onClick={() => {
             setUsersList(false);
             setProductList(!productList);
@@ -33,6 +35,7 @@ const Panel = () => {
           Products List
         </p>
         <p
+          className="adminPanel"
           onClick={() => {
             setUsersList(false);
             setProductList(false);
