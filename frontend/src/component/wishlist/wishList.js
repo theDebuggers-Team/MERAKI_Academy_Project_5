@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "./getAllProducts.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -54,7 +53,54 @@ useEffect =(()=>{
 },[])
 
 
+const myWishList = wishList && wishList.map((element)=>{
+    return(
+          
+        <div
+        className="single-product"
+        key={element.id}
+        onClick={(e) => {
+          navigate(`/productDetails/${element.id}`);
+        }}
+      >
+        <div>
+          <img src={element.image} className="img" />
+        </div>
+        <div className="product-description">
+          <span className="title">
+            {element.title.substring(-1, 30) + "..."}
+          </span>
 
+          <p >{element.description.substring(-1, 70) + "..."}</p>
+          <span className="price">Price : {element.price} J.D</span>
+          <div className="productes-btn">
+            {/* <Link
+              to="#"
+              style={{
+                borderRight: "1px solid rgb(211, 206, 206)",
+                paddingLeft: "10%",
+              }}
+            >
+              <BiShowAlt /> Show Product
+            </Link>
+            <Link
+              to="#"
+              onClick={(e) => {
+                // console.log(cart);
+              }}
+            >
+              {" "}
+              <MdOutlineFavoriteBorder /> Favorite
+            </Link> */}
+          
+            
+          </div>
+        </div>
+      </div>  
+
+
+    )
+})
 
 
 
