@@ -54,7 +54,6 @@ const Header = () => {
   const [name, setName] = useState("");
 
   const token = state.token;
-  // console.log(decode(token));
 
   const lastName = token && decode(token).lastName;
   const firstName = token && decode(token).firstName;
@@ -62,7 +61,6 @@ const Header = () => {
   const lastName2 = token && decode(token).family_name;
   const role = token && decode(token).role
 
-  // console.log(firstName2);
   return (
     <div className="main-header">
       <div className="header1">
