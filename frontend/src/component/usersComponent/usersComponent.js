@@ -26,12 +26,12 @@ const Users = () => {
   const deleteUser = (id) => {
     axios
       .delete(`http://localhost:5000/user/${id}`, {
-        headers: {
-          Authorization: `Basic ${state.token}`,
-        },
+        // headers: {
+        //   Authorization: `Basic ${state.token}`,
+        // },
       })
       .then((result) => {
-        getAllProducts();
+        getAllUsers();
       })
       .catch((error) => {});
   };

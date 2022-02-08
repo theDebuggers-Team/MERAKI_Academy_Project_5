@@ -9,6 +9,7 @@ import Login from "./component/Login/login";
 import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
 import ProductDetails from "./component/productDetails/productDetails";
+import Users from "./component/usersComponent/usersComponent";
 
 function App() {
   const [search, setSearch] = useState("");
