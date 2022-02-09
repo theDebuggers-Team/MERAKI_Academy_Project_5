@@ -136,6 +136,7 @@ const Products = ({ search }) => {
                         addToWishList(element.id);
                       }}
                     >
+
                       {" "}
                       <MdOutlineFavoriteBorder /> Favorite
                     </Link>
