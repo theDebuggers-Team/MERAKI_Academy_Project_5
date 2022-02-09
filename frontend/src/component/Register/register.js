@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useEffect } from "react-router-dom";
 import "./register.css";
-import Cloudinary from "../Cloudinary/Cloudinary.js";
+import Cloudinary from "../Cloudinary/Cloudinary";
 
 toast.configure();
 const Register = () => {

@@ -162,11 +162,10 @@ const Navigation = () => {
             </Link>{" "}
           </li>
         )}
-        {role === "ADMIN" ? (
-          <Link to="/create" className="link">
-            <IoIosCreate /> Create Product
-          </Link>
-        ) : null}
+
+        <Link to="/create" className="link">
+          <IoIosCreate /> Create Product
+        </Link>
 
         {token ? (
           <li onClick={closeMobileMenu}>
