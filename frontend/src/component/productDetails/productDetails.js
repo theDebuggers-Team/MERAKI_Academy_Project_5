@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ReactStars from "react-rating-stars-component";
-import "./productDetails.css"
+import "./productDetails.css";
 
 toast.configure();
 const ProductDetails = () => {
@@ -175,71 +175,64 @@ const ProductDetails = () => {
     commentsOnProduct &&
     commentsOnProduct.map((comment) => {
       return (
-          <div className="all-comments">
-        <div className="all-comments" key={comment.id}>
-
-          <div className="just-one-comment">
-          <div className="firstName">
-            <p> commenter : {comment.firstName}</p>
-          <p> comment : {comment.comment}</p>
-          {/* <p>{comment.publish_date}</p> */}
-          </div>
-             
-            <div clasName="all-comment-Details">
-            
-
-            {isupdated ? (
-              <div className="comment-updated-btn">
-                <textarea
-                placeholder="update your comment ..."
-                  className="update-comment-inp"
-                  onChange={(e) => {
-                    setupdatedComment(e.target.value);
-                  }}
-                />{" "}
-                <br />
-                <button
-                 className="btn-update-single-comment"
-                  onClick={(e) => {
-                   
-                    updateCommentById(comment.id);
-                    setisupdated(!isupdated);
-                    setsucesscomment(!sucesscomment);
-                  }}
-                >
-                  update 
-                </button>
+        <div className="all-comments">
+          <div className="all-comments" key={comment.id}>
+            <div className="just-one-comment">
+              <div className="firstName">
+                <p> commenter : {comment.firstName}</p>
+                <p> comment : {comment.comment}</p>
+                {/* <p>{comment.publish_date}</p> */}
               </div>
-            ) : null}
-            
 
-            {decode.userId == comment.user_id ? (
-              <div className="delet-and-update-btuns">
-                <button
-                className="btn-update-single-comment"
-                  onClick={(e) => {
-                    
-                    setisupdated(!isupdated);
-                  }}
-                >
-                  Modify
-                </button>
-                <button
-                 className="btn-delete-single-comment"
-                  onClick={(e) => {
-                     
-                    deleteComment(comment.id);
-                    setsucesscomment(!sucesscomment);
-                  }}
-                >
-                  Delete 
-                </button>
+              <div clasName="all-comment-Details">
+                {isupdated ? (
+                  <div className="comment-updated-btn">
+                    <textarea
+                      placeholder="update your comment ..."
+                      className="update-comment-inp"
+                      onChange={(e) => {
+                        setupdatedComment(e.target.value);
+                      }}
+                    />{" "}
+                    <br />
+                    <button
+                      className="btn-update-single-comment"
+                      onClick={(e) => {
+                        updateCommentById(comment.id);
+                        setisupdated(!isupdated);
+                        setsucesscomment(!sucesscomment);
+                      }}
+                    >
+                      update
+                    </button>
+                  </div>
+                ) : null}
+
+                {decode.userId == comment.user_id ? (
+                  <div className="delet-and-update-btuns">
+                    <button
+                      className="btn-update-single-comment"
+                      onClick={(e) => {
+                        setisupdated(!isupdated);
+                      }}
+                    >
+                      Modify
+                    </button>
+                    <button
+                      className="btn-delete-single-comment"
+                      onClick={(e) => {
+                        deleteComment(comment.id);
+                        setsucesscomment(!sucesscomment);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ) : null}
               </div>
-            ) : null}
             </div>
-          </div>
 
-          {/* <button
+            {/* <button
             className="btn-to-delete-all-my-comment"
             onClick={(e) => {
                 
@@ -251,7 +244,7 @@ const ProductDetails = () => {
             Delete All Comment
             
           </button> */}
-        </div>
+          </div>
         </div>
       );
     });
@@ -261,17 +254,17 @@ const ProductDetails = () => {
     productDetails &&
     productDetails.map((element) => {
       return (
-        <div  key={element.id}>
-          <div className="all-div-componenet" >
+        <div key={element.id}>
+          <div className="all-div-componenet">
             <div className="product-image-description">
-            <span>{element.title}</span>
+              <span>{element.title}</span>
               <br />
               <img src={element.image} />
               <br />
               <p> Description : {element.description}</p>
-              <br/>
+              <br />
               <p> Price : {element.price}</p>
-              <br/>
+              <br />
               <p>Category : {element.category}</p>
               <br />
             </div>
@@ -280,12 +273,13 @@ const ProductDetails = () => {
               <div className="product-seller-chat">
                 <br />
                 <button
-                className="btn-btn-chating"
+                  className="btn-btn-chating"
                   onClick={(e) => {
                     //   navigate("/chat")
-                    
                   }}
-                >Contact the Seller</button>
+                >
+                  Contact the Seller
+                </button>
                 <br />
               </div>
 
@@ -310,7 +304,7 @@ const ProductDetails = () => {
                 <br />
 
                 <button
-                 className="btn-btn-chating"
+                  className="btn-btn-chating"
                   onClick={(e) => {
                     // getAllComment();
                     setshowComment(!showComment);
@@ -334,12 +328,11 @@ const ProductDetails = () => {
                 {state.token ? (
                   <div className="add-comment-textarea-div">
                     <textarea
-                    placeholder="Add Comment Here ...."
+                      placeholder="Add Comment Here ...."
                       onChange={(e) => {
                         setcreateComment(e.target.value);
                       }}
                       className="text-area-comment"
-                      
                     />
                     <br />
                     <button
@@ -362,7 +355,11 @@ const ProductDetails = () => {
       );
     });
   ///////////////////////////////
-  return <div className="container-all-div">{productDetailsToShow ? productDetailsToShow : null}</div>;
+  return (
+    <div className="container-all-div">
+      {productDetailsToShow ? productDetailsToShow : null}
+    </div>
+  );
   //////////////////////////////
 };
 
