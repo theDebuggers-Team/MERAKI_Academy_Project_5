@@ -78,11 +78,11 @@ const WishList = () => {
         <div
           className="single-product"
           key={element.id}
-          onClick={(e) => {
-            navigate(`/productDetails/${element.id}`);
-          }}
+          
         >
-          <div>
+          <div onClick={(e) => {
+            navigate(`/productDetails/${element.id}`);
+          }} >
             <img src={element.image} className="img" />
           </div>
           <div className="product-description">
