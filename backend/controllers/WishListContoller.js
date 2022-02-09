@@ -15,7 +15,7 @@ const getWishListByUserId = (req, res) => {
   INNER JOIN
     users
   ON
-    users.id=wishlist.user_id where users.id = ? and is_deleted =0`;
+    users.id=wishlist.user_id where users.id = ? and users.is_deleted =0 and wishlist.is_deleted=0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
