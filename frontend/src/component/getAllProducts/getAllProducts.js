@@ -19,12 +19,9 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 toast.configure();
 
-
-const Products = ({ search}) => {
-
+const Products = ({ search }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [products, setProducts] = useState("");
@@ -38,7 +35,7 @@ const Products = ({ search}) => {
       products: state.productReducer.products,
     };
   });
-
+  const token = state.token;
   const getAllProducts = () => {
     axios
       .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
@@ -52,21 +49,25 @@ const Products = ({ search}) => {
   };
 
   /////// add Product to wish List Naser
-  const addToWishList = (id)=>{
-    axios.post(`http://localhost:5000/wishlist/add/${id}`, {
-      headers: {
-        Authorization: `Basic ${state.token}`,
-      },
-    }).then((response)=>{
-      toast.success(response.data.message, {
-        position: toast.POSITION.TOP_RIGHT,
+  const addToWishList = (productId) => {
+    axios
+      .post(`http://localhost:5000/wishlist/add/${productId}`,{}, {
+        headers: {
+          Authorization: `Basic ${token}`,
+        },
+      })
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        console.log(err);
       });
-    }).catch((err)=>{
-      toast.error(err.response.data.message, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    })
-  }
+  };
 
   useEffect(() => {
     getAllProducts();
@@ -95,21 +96,20 @@ const Products = ({ search}) => {
               return element;
             } else if (
               element.title.toLowerCase().includes(search.toLowerCase()) ||
-             element.category&& element.category.toLowerCase().includes(search.toLowerCase())
+              (element.category &&
+                element.category.toLowerCase().includes(search.toLowerCase()))
             ) {
               return element;
             }
           })
           .map((element) => {
             return (
-              <div
-                className="single-product"
-                key={element.id}
-                onClick={(e) => {
-                  navigate(`/productDetails/${element.id}`);
-                }}
-              >
-                <div>
+              <div className="single-product" key={element.id}>
+                <div
+                  onClick={(e) => {
+                    navigate(`/productDetails/${element.id}`);
+                  }}
+                >
                   <img src={element.image} className="img" />
                 </div>
                 <div className="product-description">
@@ -130,9 +130,12 @@ const Products = ({ search}) => {
                       <BiShowAlt /> Show Product
                     </Link>
 
-                    <Link to="#" onClick={() => {
-                        addToWishList(element.id)
-                      }}>
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        addToWishList(element.id);
+                      }}
+                    >
 
                       {" "}
                       <MdOutlineFavoriteBorder /> Favorite
