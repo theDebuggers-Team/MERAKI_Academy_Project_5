@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useEffect } from "react-router-dom";
 import "./register.css";
+import Cloudinary from "../Cloudinary/Cloudinary.js";
 
 toast.configure();
 const Register = () => {
@@ -18,6 +19,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [users_image, setusers_Image] = useState("");
+
   const [phone_Number, setphone_number] = useState("");
 
   /// create a notify function to tell the user if any of this felds is empty
@@ -177,7 +179,7 @@ const Register = () => {
             }}
           />
           <br />
-          <input
+          {/* <input
             className="register-inp"
             placeholder="Profile Image"
             type="text"
@@ -186,7 +188,8 @@ const Register = () => {
               setusers_Image(e.target.value);
             }}
             required
-          />
+          /> */}
+          <Cloudinary setImage={setusers_Image} />
           <br />
           <br />
           <input type="submit" value="Sign Up" className="register_Submit" />

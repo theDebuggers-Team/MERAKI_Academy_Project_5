@@ -31,6 +31,8 @@ const NewProduct = () => {
         console.log(err.message);
       });
   };
+  ////////////////////////////////////////////cloudinary////////////////////////////////
+
   return (
     <div>
       <input
