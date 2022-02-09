@@ -39,9 +39,7 @@ const WishList = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setwishList(response.data.results);
-        
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
