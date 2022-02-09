@@ -75,14 +75,12 @@ const WishList = () => {
     wishList &&
     wishList.map((element) => {
       return (
-        <div
-          className="single-product"
-          key={element.id}
-          
-        >
-          <div onClick={(e) => {
-            navigate(`/productDetails/${element.id}`);
-          }} >
+        <div className="single-product" key={element.id}>
+          <div
+            onClick={(e) => {
+              navigate(`/productDetails/${element.id}`);
+            }}
+          >
             <img src={element.image} className="img" />
           </div>
           <div className="product-description">
