@@ -45,7 +45,6 @@ const WishList = () => {
         toast.error(err.response.data.message, {
           position: toast.POSITION.TOP_RIGHT,
         });
-        console.log(err);
       });
   };
 
