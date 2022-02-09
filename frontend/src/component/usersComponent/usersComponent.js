@@ -4,6 +4,7 @@ import "./usersComponent.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { BiTrash } from "react-icons/bi";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -70,7 +71,7 @@ const Users = () => {
                 <td>{element.email}</td>
                 <td>{element.publish_date}</td>
                 <td>
-                  <svg
+                  <p
                     onClick={(e) => {
                       if (
                         window.confirm(
@@ -79,16 +80,9 @@ const Users = () => {
                       )
                         deleteUser(element.id);
                     }}
-                    stroke="currentColor"
-                    fill="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 1024 1024"
-                    height="1em"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M864 144H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm0 400H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zM464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm0 400H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16z"></path>
-                  </svg>
+                    <BiTrash />
+                  </p>
                 </td>
               </tr>
             );

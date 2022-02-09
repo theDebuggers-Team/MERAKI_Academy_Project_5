@@ -14,6 +14,7 @@ import {
   BiPhoneCall,
   BiHelpCircle,
   BsWhatsapp,
+  BiMessageDetail,
 } from "react-icons/bi";
 //BiMailSend,BiPhoneCall,,BiHelpCircle
 const Footer = ({ search }) => {
@@ -95,7 +96,11 @@ const Footer = ({ search }) => {
             <p>+962 7900 000</p>
           </div>
           <div>
-            <h4>Whatsapp</h4>
+            <h4>
+              {" "}
+              <BiMessageDetail />
+              Whatsapp
+            </h4>
             <p>+962 7900 333</p>
           </div>
           <div>
