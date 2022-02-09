@@ -142,7 +142,7 @@ const Header = ({ setSearch }) => {
                 </span>
                 {role == 1 ? (
                   <span className="user-list">
-                    <Link to="#" className="link-user">
+                    <Link to="/panel" className="link-user">
                       Show admin panel
                     </Link>
                   </span>

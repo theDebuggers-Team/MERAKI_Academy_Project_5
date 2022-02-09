@@ -6,6 +6,7 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Users from "../usersComponent/usersComponent";
 import ProductsAdmin from "../productsComponent/productsComponent";
+import Charts from "../Charts/charts";
 
 const Panel = () => {
   const [usersList, setUsersList] = useState(true);
@@ -42,12 +43,13 @@ const Panel = () => {
             setAddProduct(true);
           }}
         >
-          Add New Product
+          Charts
         </p>
       </div>
 
       {usersList ? <Users /> : ""}
       {productList ? <ProductsAdmin /> : ""}
+      {addProduct ? <Charts /> : ""}
     </div>
   );
 };

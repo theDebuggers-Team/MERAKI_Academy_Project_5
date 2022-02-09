@@ -6,9 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 const About = () => {
+ 
   return (
     <div className="aboutUs">
-      <h3>About Us</h3>
+      <h3 >About Us</h3>
       <h2>Open Sooq</h2>
       <p>
         OpenSooq is the number one Arabic classifieds platform in the Middle
