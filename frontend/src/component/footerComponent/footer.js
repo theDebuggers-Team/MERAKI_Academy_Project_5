@@ -9,7 +9,13 @@ import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import loginReducer from "../reducer/login";
-
+import {
+  BiMailSend,
+  BiPhoneCall,
+  BiHelpCircle,
+  BsWhatsapp,
+} from "react-icons/bi";
+//BiMailSend,BiPhoneCall,,BiHelpCircle
 const Footer = ({ search }) => {
   const scrollTop = () => {
     window.scrollTo({
@@ -26,42 +32,66 @@ const Footer = ({ search }) => {
           <Link to="/" className="about" onClick={scrollTop}>
             home
           </Link>
-          <p className="about">Electronics</p>
-          <p className="about">Cars</p>
-          <p className="about">Jobs</p>
-          <p className="about">Fashion</p>
-          <p className="about">Real Estate</p>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Electronics
+          </Link>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Cars
+          </Link>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Jobs
+          </Link>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Fashion
+          </Link>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Real Estate
+          </Link>
         </div>
         <div className="aboutDev">
           <Link to="/about" className="about" onClick={scrollTop}>
             About
           </Link>
-          <Link to="/about" className="about">
+          <Link to="/about" className="about" onClick={scrollTop}>
             How to use site?
           </Link>
-          <Link to="/about" className="about">
+          <Link to="/about" className="about" onClick={scrollTop}>
             Payment Methods
           </Link>
-          <Link to="/about" className="about">
+          <Link to="/about" className="about" onClick={scrollTop}>
             Advertising Products
           </Link>
         </div>
         <div className="aboutDev">
-          <p className="about">help</p>
-          <p className="about">Terms Of Use</p>
-          <p className="about">Privacy Policy</p>
-          <p className="about">Safety Tips</p>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            help
+          </Link>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Terms Of Use
+          </Link>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Privacy Policy
+          </Link>
+          <Link to="/about" className="about" onClick={scrollTop}>
+            Safety Tips
+          </Link>
         </div>
       </div>
       {/* //////////////////////////////////////////// */}
       <div>
         <div className="contact">
           <div>
-            <h4>Email Address</h4>
+            <h4>
+              <BiMailSend />
+              Email Address
+            </h4>
             <p>obenSooq@gmail.com</p>
           </div>
           <div>
-            <h4>Phone</h4>
+            <h4>
+              <BiPhoneCall />
+              Phone
+            </h4>
             <p>+962 7900 000</p>
           </div>
           <div>
@@ -69,7 +99,10 @@ const Footer = ({ search }) => {
             <p>+962 7900 333</p>
           </div>
           <div>
-            <h4>Help Center</h4>
+            <h4>
+              <BiHelpCircle />
+              Help Center
+            </h4>
             <p>Help?</p>
           </div>
         </div>
