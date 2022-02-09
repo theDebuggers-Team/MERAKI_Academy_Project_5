@@ -9,6 +9,7 @@ import { GiClothes } from "react-icons/gi";
 import { IoSearchOutline } from "react-icons/io5";
 
 const Categories = () => {
+  const navigate = useNavigate();
   const categoriesarr = [
     {
       name: "Cars",
@@ -37,7 +38,9 @@ const Categories = () => {
   ];
   const mapOverCategories = categoriesarr.map((category, i) => {
     return (
-      <div className="category" key={i}>
+      <div className="category" key={i}  onClick={(e)=>{
+        navigate(`/getAllProductByCAtegory/${category}`)
+      }} >
         {category.image} {category.name}
       </div>
     );

@@ -16,6 +16,8 @@ import Footer from "./component/footerComponent/footer";
 import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
 
+import GetProductsByCategory from './component/getProductByCategory/AllProductByCategory'
+
 function App() {
   const [search, setSearch] = useState("");
 
@@ -47,6 +49,10 @@ function App() {
         <Route path="/panel" element={<Panel />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
+
+
+
+        <Route path="/getAllProductByCAtegory/:category" element={<GetProductsByCategory/>}/>
       </Routes>
       <Footer />
     </div>
