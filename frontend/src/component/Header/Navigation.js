@@ -18,7 +18,7 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
 import { IoSearchOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const categoriesarr = [
@@ -57,11 +57,13 @@ const Navigation = () => {
 
   const [click, setClick] = useState(false);
   const [clickCate, setClickCate] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  //////////////////
+   
+//////////////////
 
-  /////////////////
+
+/////////////////
 
   const handleClick = () => {
     setClick(!click);
@@ -106,26 +108,29 @@ const Navigation = () => {
               <AiFillAppstore /> Products
             </Link>{" "}
           </li>
-          <div className="dropdown">
+          <div className="dropdown" >
             <li
               className="option"
               onClick={(e) => {
                 closeMobileMenu();
-                handleClickCate();
+                
               }}
-            >
-              <Link to="#" className="link">
+              >
+              <Link to="#" className="link" onMouseEnter={handleClickCate}>
                 <BiCategoryAlt /> Categories
               </Link>{" "}
             </li>
             {clickCate ? (
-              <div className="dropdown-menu1">{mapOverCategories}</div>
+              <div className="dropdown-menu1" onMouseLeave={handleClickCate}>{mapOverCategories}</div>
             ) : null}
           </div>
           {token ? (
             <li className="option" onClick={closeMobileMenu}>
-              <Link to="/wishList" className="link">
+              <Link to="/wishList" className="link"   >
                 <MdFavorite /> Favorite
+               
+                 
+
               </Link>{" "}
             </li>
           ) : null}
