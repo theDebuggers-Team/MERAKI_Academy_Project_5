@@ -132,7 +132,7 @@ const Products = ({ search}) => {
 
                     <Link to="#" onClick={() => {
                         addToWishList(element.id)
-                      }}}>
+                      }}>
 
                       {" "}
                       <MdOutlineFavoriteBorder /> Favorite
