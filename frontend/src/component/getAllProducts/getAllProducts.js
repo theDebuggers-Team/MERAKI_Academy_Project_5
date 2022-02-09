@@ -125,8 +125,8 @@ const Products = ({ search }) => {
 
                   <p>{element.description.substring(-1, 70) + "..."}</p>
                   <span className="price">Price : {element.price} J.D</span>
-                  <div className="productes-btn">
-                    <Link
+                  <div className="button-58">
+                    {/* <Link
                       to="#"
                       style={{
                         borderRight: "1px solid rgb(211, 206, 206)",
@@ -134,7 +134,7 @@ const Products = ({ search }) => {
                       }}
                     >
                       <BiShowAlt /> Show Product
-                    </Link>
+                    </Link> */}
 
                     <Link
                       to="#"

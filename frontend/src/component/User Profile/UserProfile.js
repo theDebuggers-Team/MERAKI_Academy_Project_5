@@ -54,8 +54,73 @@ const UserProfile = () => {
   };
   const mapOverUsers = user.map((user) => {
     return (
-      <div>
-        <p>{user.firstName}</p>
+      <div className="divContainer">
+        <div className="user-image">
+          <img className="image-user" src={user.users_image} />
+          <span className="image-data">
+            {user.firstName + " " + user.lastName}
+          </span>
+          <span className="image-data">{user.email}</span>
+        </div>
+        <div className="detailes">
+          <div className="personal-detailes">
+            <div className="info-div">
+              <label className="label-user">First Name</label>
+              <br />
+              <input
+                type="text"
+                Placeholder="First Name"
+                defaultValue={user.firstName}
+              />
+            </div>
+            <div className="info-div">
+              <label className="label-user">Last Name</label>
+              <br />
+              <input
+                type="text"
+                Placeholder="Last Name"
+                defaultValue={user.lastName}
+              />
+            </div>
+            <div className="info-div">
+              <label className="label-user">Email</label>
+              <br />
+              <input
+                type="text"
+                Placeholder="Email"
+                defaultValue={user.email}
+              />
+            </div>
+            <div className="info-div">
+              <label className="label-user">Mobile Phone</label>
+              <br />
+              <input
+                type="text"
+                Placeholder="Mobile Phone"
+                defaultValue={user.phone_Number}
+              />
+            </div>
+          </div>
+
+          <div className="Address">
+            <div className="info-div">
+              <label className="label-user">Country</label>
+              <br />
+              <input
+                type="text"
+                Placeholder="Country"
+                defaultValue={user.country}
+              />
+            </div>
+            <div className="info-div">
+              <label className="label-user">Mobile Phone</label>
+              <br />
+              <input type="text" Placeholder="Mobile Phone" />
+            </div>
+          </div>
+        </div>
+
+        {/* <p>{user.firstName}</p>
         <p>{user.lastName}</p>
         <p>{user.age}</p>
         <p>{user.country}</p>
@@ -72,7 +137,7 @@ const UserProfile = () => {
         >
           delete
         </button>
-        <button>update</button>
+        <button>update</button> */}
       </div>
     );
   });
