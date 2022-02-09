@@ -11,13 +11,19 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import loginReducer from "../reducer/login";
 
 const Footer = ({ search }) => {
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   /////////////////////////////////////////////////
   const navigate = useNavigate();
   return (
     <>
       <div className="footer">
         <div className="aboutDev">
-          <Link to="/" className="about">
+          <Link to="/" className="about" onClick={scrollTop}>
             home
           </Link>
           <p className="about">Electronics</p>
@@ -27,7 +33,7 @@ const Footer = ({ search }) => {
           <p className="about">Real Estate</p>
         </div>
         <div className="aboutDev">
-          <Link to="/about" className="about">
+          <Link to="/about" className="about" onClick={scrollTop}>
             About
           </Link>
           <Link to="/about" className="about">
