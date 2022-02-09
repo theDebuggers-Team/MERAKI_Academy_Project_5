@@ -120,7 +120,6 @@ const Products = ({ search }) => {
                 <div className="product-description">
                   <span className="title">
                     {/* {element.title.substring(-1, 30) + "..."} */}
-
                     {element.title}
                   </span>
 
