@@ -16,7 +16,6 @@ import Footer from "./component/footerComponent/footer";
 import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
 
-
 function App() {
   const [search, setSearch] = useState("");
 
@@ -48,7 +47,6 @@ function App() {
         <Route path="/panel" element={<Panel />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
-
       </Routes>
       <Footer />
     </div>

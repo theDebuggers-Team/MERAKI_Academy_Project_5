@@ -296,7 +296,7 @@ body {
 .dropdown-menu1 {
   position: absolute;
   left: 0;
-  top: calc(100% +0.5rem);
+  top: 111%;
   background-color: #37aee2;
   padding: 0.75rem;
   border-radius: 0.2rem;

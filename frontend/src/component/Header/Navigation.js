@@ -111,15 +111,16 @@ const Navigation = () => {
               className="option"
               onClick={(e) => {
                 closeMobileMenu();
-                handleClickCate();
               }}
             >
-              <Link to="#" className="link">
+              <Link to="#" className="link" onMouseEnter={handleClickCate}>
                 <BiCategoryAlt /> Categories
               </Link>{" "}
             </li>
             {clickCate ? (
-              <div className="dropdown-menu1">{mapOverCategories}</div>
+              <div className="dropdown-menu1" onMouseLeave={handleClickCate}>
+                {mapOverCategories}
+              </div>
             ) : null}
           </div>
           {token ? (
