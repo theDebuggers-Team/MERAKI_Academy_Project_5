@@ -49,7 +49,6 @@ const WishList = () => {
   };
 
   const deleteProductFromWishList = (productId) => {
-    // console.log(id);
     axios
       .delete(`http://localhost:5000/wishlist/delete/${productId}`, {
         headers: {
