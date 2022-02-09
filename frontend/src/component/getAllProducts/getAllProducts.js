@@ -48,6 +48,8 @@ const Products = ({ search }) => {
       });
   };
 
+  //// counter to add one product from the same product list
+  
   /////// add Product to wish List Naser
   const addToWishList = (productId) => {
     axios
@@ -60,6 +62,7 @@ const Products = ({ search }) => {
         toast.success(response.data.message, {
           position: toast.POSITION.TOP_RIGHT,
         });
+        
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -133,7 +136,12 @@ const Products = ({ search }) => {
                     <Link
                       to="#"
                       onClick={() => {
-                        addToWishList(element.id);
+                        
+                           
+    
+                          addToWishList(element.id);
+                        
+                       
                       }}
                     >
 

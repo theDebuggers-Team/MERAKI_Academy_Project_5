@@ -15,6 +15,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./wishList.css"
 
 toast.configure();
 const WishList = () => {
@@ -75,22 +76,23 @@ const WishList = () => {
     wishList &&
     wishList.map((element) => {
       return (
-        <div className="single-product" key={element.id}>
+        
+        <div className="single-product-wishList" key={element.id}>
           <div
             onClick={(e) => {
               navigate(`/productDetails/${element.id}`);
             }}
           >
-            <img src={element.image} className="img" />
+            <img src={element.image} className="img-wishlist" />
           </div>
-          <div className="product-description">
+          <div className="product-description-wish">
             <span className="title">
               {element.title.substring(-1, 30) + "..."}
             </span>
 
             <p>{element.description.substring(-1, 70) + "..."}</p>
             <span className="price">Price : {element.price} J.D</span>
-            <div className="productes-btn">
+            <div className="productes-btn-wish">
               {/* <Link
               to="#"
               style={{
@@ -122,17 +124,18 @@ const WishList = () => {
             </div>
           </div>
         </div>
+    
       );
     });
 
   return (
-    <>
+    <div className="all-products1">
       {myWishList
         ? myWishList
         : toast.warn("WishList is empty", {
             position: toast.POSITION.TOP_RIGHT,
           })}
-    </>
+    </div>
   );
 };
 
