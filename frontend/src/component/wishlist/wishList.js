@@ -117,7 +117,7 @@ const WishList = () => {
                   setsuccessDelete(!successDelete);
                 }}
               >
-                Rmove
+                Remove
               </button>
             </div>
           </div>
