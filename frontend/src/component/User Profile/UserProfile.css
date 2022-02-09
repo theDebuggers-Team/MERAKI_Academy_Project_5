@@ -1,0 +1,38 @@
+.image-user {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.divContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 34vh;
+  gap: 4%;
+}
+.user-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content:center ; */
+  height: 100%;
+}
+.detailes {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10%;
+}
+
+.personal-detailes {
+  display: flex;
+  flex-wrap: wrap;
+}
+.info-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1%;
+  width: 50%;
+}

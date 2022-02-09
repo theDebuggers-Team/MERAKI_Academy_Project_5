@@ -27,7 +27,7 @@ const Products = ({ search }) => {
   // const [products, setProducts] = useState("");
   // const { search } = useParams();
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(5);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -53,11 +53,15 @@ const Products = ({ search }) => {
   /////// add Product to wish List Naser
   const addToWishList = (productId) => {
     axios
-      .post(`http://localhost:5000/wishlist/add/${productId}`,{}, {
-        headers: {
-          Authorization: `Basic ${token}`,
-        },
-      })
+      .post(
+        `http://localhost:5000/wishlist/add/${productId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${token}`,
+          },
+        }
+      )
       .then((response) => {
         toast.success(response.data.message, {
           position: toast.POSITION.TOP_RIGHT,
@@ -109,6 +113,7 @@ const Products = ({ search }) => {
             return (
               <div className="single-product" key={element.id}>
                 <div
+                  className="image"
                   onClick={(e) => {
                     navigate(`/productDetails/${element.id}`);
                   }}
@@ -117,13 +122,14 @@ const Products = ({ search }) => {
                 </div>
                 <div className="product-description">
                   <span className="title">
-                    {element.title.substring(-1, 30) + "..."}
+                    {/* {element.title.substring(-1, 30) + "..."} */}
+                    {element.title}
                   </span>
 
                   <p>{element.description.substring(-1, 70) + "..."}</p>
                   <span className="price">Price : {element.price} J.D</span>
-                  <div className="productes-btn">
-                    <Link
+                  <div className="button-58">
+                    {/* <Link
                       to="#"
                       style={{
                         borderRight: "1px solid rgb(211, 206, 206)",
@@ -131,7 +137,7 @@ const Products = ({ search }) => {
                       }}
                     >
                       <BiShowAlt /> Show Product
-                    </Link>
+                    </Link> */}
 
                     <Link
                       to="#"
@@ -144,7 +150,6 @@ const Products = ({ search }) => {
                        
                       }}
                     >
-
                       {" "}
                       <MdOutlineFavoriteBorder /> Favorite
                     </Link>
