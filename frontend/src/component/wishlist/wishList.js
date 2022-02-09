@@ -16,84 +16,87 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-
 toast.configure();
-const WishList = ()=>{ 
-const navigate = useNavigate()
+const WishList = () => {
+  const navigate = useNavigate();
 
-    const state = useSelector((state) => {
-        return {
-          isLoggedIn: state.loginReducer.isLoggedIn,
-          token: state.loginReducer.token,
-          products: state.productReducer.products,
-        };
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+      products: state.productReducer.products,
+    };
+  });
+
+  const [wishList, setwishList] = useState([]);
+  const [successDelete, setsuccessDelete] = useState(false);
+
+  const getMyWishList = () => {
+    axios
+      .get("http://localhost:5000/wishlist/", {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        setwishList(response.data.results);
+        console.log(response.data);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        console.log(err);
       });
+  };
 
-const [wishList,setwishList] = useState([])
-const [successDelete,setsuccessDelete] = useState(false)
-
-const getMyWishList = ()=>{
-    axios.get("http://localhost:5000/wishlist/",{
+  const deleteProductFromWishList = (productId) => {
+    // console.log(id);
+    axios
+      .delete(`http://localhost:5000/wishlist/delete/${productId}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
-      }).then((response)=>{
-        setwishList(response.data.results)
-         console.log(response.data);
-    }).catch((err)=>{
-        toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-          console.log(err.response.data.message);
-    })
-
-}
-
-const deleteProductFromWishList = (id)=>{
-    axios.delete(`http://localhost:5000/wishlist/delete/${id}`, {
-        headers: {
-          Authorization: `Basic ${state.token}`,
-        },
-      }).then((response)=>{
+      })
+      .then((response) => {
         toast.success(response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-    }).catch((err)=>{
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
         toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-    })
-}
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
 
+  useEffect(() => {
+    getMyWishList();
+  }, [successDelete]);
 
-useEffect =(()=>{
-    getMyWishList()
-},[successDelete])
-
-
-const myWishList = wishList && wishList.map((element)=>{
-    return(
-          
+  const myWishList =
+    wishList &&
+    wishList.map((element) => {
+      return (
         <div
-        className="single-product"
-        key={element.id}
-        onClick={(e) => {
-          navigate(`/productDetails/${element.id}`);
-        }}
-      >
-        <div>
-          <img src={element.image} className="img" />
-        </div>
-        <div className="product-description">
-          <span className="title">
-            {element.title.substring(-1, 30) + "..."}
-          </span>
+          className="single-product"
+          key={element.id}
+          onClick={(e) => {
+            navigate(`/productDetails/${element.id}`);
+          }}
+        >
+          <div>
+            <img src={element.image} className="img" />
+          </div>
+          <div className="product-description">
+            <span className="title">
+              {element.title.substring(-1, 30) + "..."}
+            </span>
 
-          <p >{element.description.substring(-1, 70) + "..."}</p>
-          <span className="price">Price : {element.price} J.D</span>
-          <div className="productes-btn">
-            {/* <Link
+            <p>{element.description.substring(-1, 70) + "..."}</p>
+            <span className="price">Price : {element.price} J.D</span>
+            <div className="productes-btn">
+              {/* <Link
               to="#"
               style={{
                 borderRight: "1px solid rgb(211, 206, 206)",
@@ -111,30 +114,31 @@ const myWishList = wishList && wishList.map((element)=>{
               {" "}
               <MdOutlineFavoriteBorder /> Favorite
             </Link> */}
-          
-            <button className="btn-btn-remove-wishlist"onClick={(e) =>{
-           deleteProductFromWishList(element.id)
-            setsuccessDelete(!successDelete)
-            }}>Rmove</button>
+
+              <button
+                className="btn-btn-remove-wishlist"
+                onClick={(e) => {
+                  deleteProductFromWishList(element.id);
+                  setsuccessDelete(!successDelete);
+                }}
+              >
+                Rmove
+              </button>
+            </div>
           </div>
         </div>
-      </div>  
+      );
+    });
 
-
-    )
-})
-
-
-return(
-<>
- {myWishList? myWishList:toast.warn("WishList is empty", {
+  return (
+    <>
+      {myWishList
+        ? myWishList
+        : toast.warn("WishList is empty", {
             position: toast.POSITION.TOP_RIGHT,
           })}
-</>
+    </>
+  );
+};
 
-)
-
-}
-
-
-export default WishList
+export default WishList;
