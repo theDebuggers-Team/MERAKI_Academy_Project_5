@@ -3,6 +3,8 @@
   margin: auto;
   gap: 20px;
   justify-content: center;
+  height: 100%;
+  margin-bottom: 4%;
 }
 
 th,
