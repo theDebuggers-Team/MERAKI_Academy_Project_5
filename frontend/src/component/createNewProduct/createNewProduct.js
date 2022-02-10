@@ -114,7 +114,6 @@ const NewProduct = () => {
           }}
         ></textarea>
 
-
         <div className="product-price">
           <input
             type="number"
@@ -158,7 +157,7 @@ const NewProduct = () => {
         <label for="tac">OpenSooq take 30% from your total sell</label>
 
         <div className="buttons">
-          <button className="btn" id="add-btn"  onClick={createNewProduct}>
+          <button className="btn" id="add-btn" onClick={createNewProduct}>
             add product
           </button>
           <button className="btn" id="save-btn">
