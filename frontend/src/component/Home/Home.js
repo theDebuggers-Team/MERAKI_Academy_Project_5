@@ -6,6 +6,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import {BsChatText} from "react-icons/bs"
 import {
   setproducts,
   addproduct,
@@ -13,12 +14,14 @@ import {
   deleteproduct,
   getproductsByState,
 } from "../reducer/products/index";
+import ChatBotCom from "../ChatBot/ChatBot"
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 const Home = () => {
+    const [chatbot, setChatbot] = useState(false)
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -73,7 +76,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Carousel autoPlay={true} showArrows={false}>
+      <Carousel autoPlay={true} >
         <div>
           <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
         </div>
@@ -125,6 +128,15 @@ const Home = () => {
       </div>
 
       <Categories />
+     <div className="chat-div">
+      <button
+      className="btn-chat" 
+      onClick={()=>{
+          setChatbot(!chatbot)
+      }}><BsChatText/> need help ?</button>
+</div>
+      {chatbot?<div><ChatBotCom/></div>:null}
+
     </div>
   );
 };

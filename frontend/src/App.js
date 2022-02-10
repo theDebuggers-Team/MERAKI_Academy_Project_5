@@ -16,7 +16,9 @@ import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
 import Home from "./component/Home/Home"
 
+
 import GetProductsByCategory from './component/getProductByCategory/AllProductByCategory'
+
 
 function App() {
   const [search, setSearch] = useState("");
@@ -34,6 +36,7 @@ function App() {
           setSearch(e.target.value);
         }}
       ></input> */}
+      
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -54,6 +57,7 @@ function App() {
 
         <Route path="/getAllProductByCAtegory/:category" element={<GetProductsByCategory/>}/>
       </Routes>
+     
       <Footer />
     </div>
   );
