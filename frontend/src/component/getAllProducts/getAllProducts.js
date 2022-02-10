@@ -126,7 +126,10 @@ const Products = ({ search }) => {
                   </span>
 
                   <span className="price"> {element.price} $</span>
-                  <span>{element.description.substring(-1, 20) }<p style={{color: 'gray'}}>...more</p></span>
+                  <span>
+                    {element.description.substring(-1, 20)}
+                    <p style={{ color: "gray" }}>...more</p>
+                  </span>
                   <div className="button-58">
                     {/* <Link
                       to="#"
@@ -142,7 +145,6 @@ const Products = ({ search }) => {
                       to="#"
                       className="link"
                       onClick={() => {
-                        
                         addToWishList(element.id);
                       }}
                     >
