@@ -54,8 +54,14 @@
   flex-direction: column;
   /* justify-content: flex-start; */
   align-items: flex-start;
+ 
 }
 .form-inp-but-emailjs {
   width: 30rem;
   height: 2rem;
+}
+
+
+.form-inp-but-emailjs:focus{
+    box-shadow: 0 0 0.3rem #ce4886;
 }
