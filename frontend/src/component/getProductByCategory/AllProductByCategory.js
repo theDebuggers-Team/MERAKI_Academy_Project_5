@@ -17,51 +17,38 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
 
-
 toast.configure();
-const GetProductsByCategory = ()=>{
-    const [products,setproducts] = useState([])
+const GetProductsByCategory = () => {
+  const [products, setproducts] = useState([]);
 
-   const {category} = useParams();
+  const { category } = useParams();
 
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-   const getProductsByCategory = ()=>{
-       axios.get(`http://localhost:5000/search_2?category=${category}`).then((response)=>{
-        setproducts(response.data.results)
-       }).catch((err)=>{
+  const getProductsByCategory = () => {
+    axios
+      .get(`http://localhost:5000/search_2?category=${category}`)
+      .then((response) => {
+        setproducts(response.data.results);
+      })
+      .catch((err) => {
         toast.error(err.response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          });
-       })
-   }
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      });
+  };
 
-useEffect(() => {
-    getProductsByCategory()
-},[])
+  useEffect(() => {
+    getProductsByCategory();
+  }, []);
 
+  const getAllProductsCategories =
+    products &&
+    products.map((element) => {
+      return <div className="single-product-category"></div>;
+    });
 
-  const getAllProductsCategories = products && products.map((element)=>{
-      return (
-          <div className="single-product-category">
+  return <div className="multi-products-category"></div>;
+};
 
-
-          </div>
- 
-
-      )
-  })
-
-
-
-
-return (
-       <div className="multi-products-category">
-
-       </div>
-
-)
-
-}
-
-export default GetProductsByCategory
+export default GetProductsByCategory;
