@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import "./Cloudinar.css";
 const Cloudinary = ({ setImage }) => {
   const [file, setFile] = useState();
   const [filelink, setFilelink] = useState("Choose File");
@@ -29,6 +30,7 @@ const Cloudinary = ({ setImage }) => {
         type="file"
       ></input>
       <button
+        className="btn"
         onClick={() => {
           imageUpload(file);
         }}
@@ -36,7 +38,7 @@ const Cloudinary = ({ setImage }) => {
         Upload
       </button>
       <br />
-      {/* <img className="upload" src={filelink} alt="" /> */}
+      <img className="upload" src={filelink} alt="" />
     </div>
   );
 };

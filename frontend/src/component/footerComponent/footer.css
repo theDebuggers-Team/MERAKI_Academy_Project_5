@@ -4,8 +4,10 @@
   margin-top: 100px;
   height: 250px;
   clear: both;
-  background-color: #1e95c8;
+  background-image: linear-gradient(-180deg, #4267B3 0%, #466ebe 100%);
+
   border-bottom: 2px;
+ 
 }
 .wrapper {
   min-height: 100%;
@@ -17,6 +19,10 @@
 .about {
   margin: 5px;
   justify-content: center;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  color: #e0dede;
+align-items: center;
 }
 
 .footerCategories {
@@ -37,7 +43,10 @@
   position: relative;
   height: 100px;
   clear: both;
-  background-color: #1e95c86e;
+  background-color: #8b9dc3 ;
   border-bottom: 2px;
   gap: 30px;
+}
+h4{
+  color: #fff;
 }

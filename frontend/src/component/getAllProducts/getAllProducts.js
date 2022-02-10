@@ -27,7 +27,7 @@ const Products = ({ search }) => {
   // const [products, setProducts] = useState("");
   // const { search } = useParams();
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(8);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -125,8 +125,11 @@ const Products = ({ search }) => {
                     {element.title}
                   </span>
 
-                  <p>{element.description.substring(-1, 70) + "..."}</p>
-                  <span className="price">Price : {element.price} J.D</span>
+                  <span className="price"> {element.price} $</span>
+                  <span>
+                    {element.description.substring(-1, 20)}
+                    <p style={{ color: "gray" }}>...more</p>
+                  </span>
                   <div className="button-58">
                     {/* <Link
                       to="#"
@@ -140,6 +143,7 @@ const Products = ({ search }) => {
 
                     <Link
                       to="#"
+                      className="link"
                       onClick={() => {
                         addToWishList(element.id);
                       }}

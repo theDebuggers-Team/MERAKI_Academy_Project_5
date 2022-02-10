@@ -38,9 +38,13 @@ const Categories = () => {
   ];
   const mapOverCategories = categoriesarr.map((category, i) => {
     return (
-      <div className="category" key={i}  onClick={(e)=>{
-        navigate(`/getAllProductByCAtegory/${category}`)
-      }} >
+      <div
+        className="category"
+        key={i}
+        onClick={(e) => {
+          navigate(`/getAllProductByCAtegory/${category}`);
+        }}
+      >
         {category.image} {category.name}
       </div>
     );
