@@ -149,12 +149,15 @@ const Header = ({ setSearch }) => {
                 ) : null}
                 {state.isLoggedIn ? (
                   <span className="user-list">
-                    <Link to="#" className="link-user"
-                    to="/login"
-                    onClick={() => {
-                      localStorage.clear();
-                      role = null;
-                    }}>
+                    <Link
+                      to="#"
+                      className="link-user"
+                      to="/login"
+                      onClick={() => {
+                        localStorage.clear();
+                        role = null;
+                      }}
+                    >
                       Logout
                     </Link>
                   </span>
