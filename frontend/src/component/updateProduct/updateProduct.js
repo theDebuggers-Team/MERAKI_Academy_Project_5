@@ -153,83 +153,80 @@ const Update = () => {
     //   </div>
     // </div>
     <>
-    {/* <img src="img/dark-logo.png" className="logo" alt=""/> */}
-    <span className="create">Update Product</span>
+      {/* <img src="img/dark-logo.png" className="logo" alt=""/> */}
+      <span className="create">Update Product</span>
 
-    <div className="form">
-      <input
-        type="text"
-        defaultValue={title}
-        id="product-name"
-        placeholder="product name"
-        className="inputprod"
-        onChange={(e) => {
-          setTitle(e.target.value);
-        }}
-      />
-      <input
-
-        type="text"
-        id="short-des"
-        placeholder="short line about the product"
-        className="inputprod"
-      />
-      <textarea
-      className="text-area"
-        id="des"
-        defaultValue={description}
-        placeholder="detail description"
-        onChange={(e) => {
-          setDescription(e.target.value);
-        }}
-      ></textarea>
-
-      <div className="product-price">
+      <div className="form">
         <input
-          type="number"
-          defaultValue={price}
-          id="actual-price"
-          placeholder="actual price"
+          type="text"
+          defaultValue={title}
+          id="product-name"
+          placeholder="product name"
           className="inputprod"
           onChange={(e) => {
-            setPrice(e.target.value);
+            setTitle(e.target.value);
           }}
         />
         <input
-          type="number"
-          id="discount"
-          placeholder="discount percentage"
+          type="text"
+          id="short-des"
+          placeholder="short line about the product"
           className="inputprod"
         />
-      </div>
+        <textarea
+          className="text-area"
+          id="des"
+          defaultValue={description}
+          placeholder="detail description"
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+        ></textarea>
 
-      <input
-        type="number"
-        id="stock"
-        min="20"
-        placeholder="item in stocks"
-        className="inputprod"
-      />
+        <div className="product-price">
+          <input
+            type="number"
+            defaultValue={price}
+            id="actual-price"
+            placeholder="actual price"
+            className="inputprod"
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+          />
+          <input
+            type="number"
+            id="discount"
+            placeholder="discount percentage"
+            className="inputprod"
+          />
+        </div>
 
-      <textarea
-      className="text-area"
-        id="tags"
-        defaultValue={category}
-        placeholder="Enter categories here, for example - cars, Electonics, Clothes, "
-        onChange={(e) => {
-          setCategory(e.target.value);
-        }}
-      ></textarea>
-      <div className="product-info">
-        <p className="text">upload image</p>
+        <input
+          type="number"
+          id="stock"
+          min="20"
+          placeholder="item in stocks"
+          className="inputprod"
+        />
 
-        <Cloudinary setImage={setImage} defaultValue={image}/>
-      </div>
+        <textarea
+          className="text-area"
+          id="tags"
+          defaultValue={category}
+          placeholder="Enter categories here, for example - cars, Electonics, Clothes, "
+          onChange={(e) => {
+            setCategory(e.target.value);
+          }}
+        ></textarea>
+        <div className="product-info">
+          <p className="text">upload image</p>
 
-      
+          <Cloudinary setImage={setImage} defaultValue={image} />
+        </div>
 
-      <div className="buttons">
-      <button
+        <div className="buttons">
+          <button
             className="btn"
             onClick={() => {
               Swal.fire({
@@ -249,14 +246,14 @@ const Update = () => {
               });
             }}
           >
-          update product
-        </button>
-        <button className="btn" id="save-btn">
-          save draft
-        </button>
+            update product
+          </button>
+          <button className="btn" id="save-btn">
+            save draft
+          </button>
+        </div>
       </div>
-    </div>
-  </>
+    </>
   );
 };
 export default Update;
