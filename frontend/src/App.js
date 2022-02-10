@@ -49,11 +49,7 @@ function App() {
         <Route path="/panel" element={<Panel />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
-
-        <Route
-          path="/getAllProductByCAtegory/:category"
-          element={<GetProductsByCategory />}
-        />
+        <Route path="/getAllProductByCategory/:category" element={<GetProductsByCategory/>}/>
       </Routes>
 
       <Footer />
