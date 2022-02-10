@@ -28,25 +28,25 @@ const ContactUs = () => {
       <form onSubmit={sendEmail} >
         <div className="form-input-emailjs">
           <div className="form-name-emailjs">
-              <label>Your Name</label>
+              <label>Your Name :</label>
               
             <input type="text" placeholder="Your Name" name="name" className="form-inp-but-emailjs" required/>
             <br/>
           </div>
           <div className="form-email-emailjs">
-          <label>Email Address</label>
+          <label>Email Address :</label>
               
             <input type="text" placeholder="Email Address" name="email" className="form-inp-but-emailjs" required />
             <br/>
           </div>
           <div className="form-subject-emailjs">
-          <label>Subject</label>
+          <label>Subject :</label>
               
-            <input type="text" placeholder="Subject" name="subject" className="form-inp-but-emailjs"/>
+            <input type="text" placeholder="Subject (Optional)" name="subject" className="form-inp-but-emailjs"/>
             <br/>
           </div>
           <div className="form-textarea2-emailjs">
-          <label>Message</label>
+          <label>Message :</label>
               
             <textarea type="text" placeholder="Your Message" className="form-textarea-emailjs" name="message" required/>
             <br/>
