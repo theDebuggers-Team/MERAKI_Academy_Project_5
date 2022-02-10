@@ -1,7 +1,7 @@
 import React from "react";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
-import "./ChatBot.css"
+import "./ChatBot.css";
 const theme = {
   background: "#f5f8fb",
   fontFamily: "Helvetica Neue",
@@ -12,33 +12,32 @@ const theme = {
   botFontColor: "#fff",
   userBubbleColor: "#fff",
   userFontColor: "#4a4a4a",
-  zIndex:"2147483!important",
-
+  zIndex: "2147483!important",
 };
 
 const ChatBotCom = () => {
-  const steps=[
+  const steps = [
     {
-      id: '1',
-      message: 'What is your name?',
-      trigger: '2',
+      id: "1",
+      message: "What is your name?",
+      trigger: "2",
     },
     {
-      id: '2',
+      id: "2",
       user: true,
-      trigger: '3',
+      trigger: "3",
     },
     {
-      id: '3',
-      message: 'Hi {previousValue}, nice to meet you!',
+      id: "3",
+      message: "Hi {previousValue}, nice to meet you!",
       end: true,
     },
-  ]
+  ];
   return (
-      <div className="chatbot">
-    <ThemeProvider theme={theme}>
-      <ChatBot steps={steps} />
-    </ThemeProvider>
+    <div className="chatbot">
+      <ThemeProvider theme={theme}>
+        <ChatBot steps={steps} />
+      </ThemeProvider>
     </div>
   );
 };
