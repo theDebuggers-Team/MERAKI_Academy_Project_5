@@ -96,9 +96,10 @@ const getAnProductByCategory = (req, res) => {
       });
     } else {
       if (!result.length) {
-        return res.status(404).json({
+        return res.status(200).json({
           success: false,
           message: "No products found with the indicated category",
+          results:result
         });
       }
       res.status(200).json({

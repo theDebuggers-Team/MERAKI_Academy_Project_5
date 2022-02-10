@@ -42,7 +42,7 @@ const Categories = () => {
         className="category"
         key={i}
         onClick={(e) => {
-          navigate(`/getAllProductByCAtegory/${category}`);
+          navigate(`/getAllProductByCategory/${category.name}`);
         }}
       >
         {category.image} {category.name}

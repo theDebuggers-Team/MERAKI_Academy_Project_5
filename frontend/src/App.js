@@ -52,7 +52,7 @@ function App() {
 
 
 
-        <Route path="/getAllProductByCAtegory/:category" element={<GetProductsByCategory/>}/>
+        <Route path="/getAllProductByCategory/:category" element={<GetProductsByCategory/>}/>
       </Routes>
       <Footer />
     </div>

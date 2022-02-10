@@ -16,6 +16,7 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
+import "./AllProductByCategory.css"
 
 toast.configure();
 const GetProductsByCategory = () => {
@@ -33,11 +34,9 @@ const GetProductsByCategory = () => {
     };
   });
 
-
-
   const getProductsByCategory = () => {
     axios
-      .get(`http://localhost:5000/search_2?category=${category}`)
+      .get(`http://localhost:5000/product/search_2?category=${category}`)
       .then((response) => {
         setproducts(response.data.results);
       })
@@ -47,7 +46,6 @@ const GetProductsByCategory = () => {
         });
       });
   };
-
 
   const addToWishList = (productId) => {
     axios
@@ -73,7 +71,6 @@ const GetProductsByCategory = () => {
       });
   };
 
-
   useEffect(() => {
     getProductsByCategory();
   }, []);
@@ -83,27 +80,27 @@ const GetProductsByCategory = () => {
     products.map((element) => {
       return (
         <div className="single-product" key={element.id}>
-        <div
-          className="image"
-          onClick={(e) => {
-            navigate(`/productDetails/${element.id}`);
-          }}
-        >
-          <img src={element.image} className="img" />
-        </div>
-        <div className="product-description">
-          <span className="title">
-            {/* {element.title.substring(-1, 30) + "..."} */}
-            {element.title}
-          </span>
+          <div
+            className="image"
+            onClick={(e) => {
+              navigate(`/productDetails/${element.id}`);
+            }}
+          >
+            <img src={element.image} className="img" />
+          </div>
+          <div className="product-description">
+            <span className="title">
+              {/* {element.title.substring(-1, 30) + "..."} */}
+              {element.title}
+            </span>
 
-          <span className="price"> {element.price} $</span>
-          <span>
-            {element.description.substring(-1, 20)}
-            <p style={{ color: "gray" }}>...more</p>
-          </span>
-          <div className="button-58">
-            {/* <Link
+            <span className="price"> {element.price} $</span>
+            <span>
+              {element.description.substring(-1, 20)}
+              <p style={{ color: "gray" }}>...more</p>
+            </span>
+            <div className="button-58">
+              {/* <Link
               to="#"
               style={{
                 borderRight: "1px solid rgb(211, 206, 206)",
@@ -113,20 +110,20 @@ const GetProductsByCategory = () => {
               <BiShowAlt /> Show Product
             </Link> */}
 
-            <Link
-              to="#"
-              className="link"
-              onClick={() => {
-                addToWishList(element.id);
-              }}
-            >
-              {" "}
-              <MdOutlineFavoriteBorder /> Favorite
-            </Link>
+              <Link
+                to="#"
+                className="link"
+                onClick={() => {
+                  addToWishList(element.id);
+                }}
+              >
+                {" "}
+                <MdOutlineFavoriteBorder /> Favorite
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* <button
+          {/* <button
           className="add"
           onClick={(e) => {
             if (
@@ -146,11 +143,15 @@ const GetProductsByCategory = () => {
         >
           Update
         </button> */}
-      </div>
+        </div>
       );
     });
 
-  return <div className="multi-products-category"></div>;
+  return (
+    <div className="multi-products-category">
+      {getAllProductsCategories ? getAllProductsCategories : null}
+    </div>
+  );
 };
 
 export default GetProductsByCategory;
