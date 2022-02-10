@@ -14,11 +14,9 @@ import Panel from "./component/adminPanel/adminPanel";
 import Footer from "./component/footerComponent/footer";
 import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
-import Home from "./component/Home/Home"
+import Home from "./component/Home/Home";
 
-
-import GetProductsByCategory from './component/getProductByCategory/AllProductByCategory'
-
+import GetProductsByCategory from "./component/getProductByCategory/AllProductByCategory";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -36,7 +34,6 @@ function App() {
           setSearch(e.target.value);
         }}
       ></input> */}
-      
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -53,11 +50,12 @@ function App() {
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
 
-
-
-        <Route path="/getAllProductByCAtegory/:category" element={<GetProductsByCategory/>}/>
+        <Route
+          path="/getAllProductByCAtegory/:category"
+          element={<GetProductsByCategory />}
+        />
       </Routes>
-     
+
       <Footer />
     </div>
   );
