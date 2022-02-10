@@ -6,7 +6,6 @@ import Register from "./component/Register/register";
 import Products from "./component/getAllProducts/getAllProducts";
 import NewProduct from "./component/createNewProduct/createNewProduct";
 import Login from "./component/Login/login";
-import Categories from "./component/Categories/categories";
 import Update from "./component/updateProduct/updateProduct";
 import ProductDetails from "./component/productDetails/productDetails";
 import Users from "./component/usersComponent/usersComponent";
@@ -15,6 +14,7 @@ import Panel from "./component/adminPanel/adminPanel";
 import Footer from "./component/footerComponent/footer";
 import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
+import Home from "./component/Home/Home"
 
 import GetProductsByCategory from './component/getProductByCategory/AllProductByCategory'
 
@@ -36,7 +36,7 @@ function App() {
       ></input> */}
 
       <Routes>
-        <Route path="/" element={<Categories />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products search={search} />} />

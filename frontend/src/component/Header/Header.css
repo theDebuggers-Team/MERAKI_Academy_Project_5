@@ -341,7 +341,7 @@ body {
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   height: 150px;
-  /* z-index: 1; */
+  z-index: 1;
   width: 180px;
 }
 .dropdown-menu-user {
