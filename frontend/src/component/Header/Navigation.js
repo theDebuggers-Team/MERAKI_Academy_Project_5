@@ -163,7 +163,7 @@ const Navigation = () => {
           </li>
         )}
 
-        <Link to="/create" className="link">
+        <Link to="/NewProduct" className="link">
           <IoIosCreate /> Create Product
         </Link>
 

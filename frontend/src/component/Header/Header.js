@@ -136,7 +136,7 @@ const Header = ({ setSearch }) => {
                 onMouseLeave={handleClickUser}
               >
                 <span className="user-list">
-                  <Link to="#" className="link-user">
+                  <Link to="/profile" className="link-user">
                     Show your profile
                   </Link>
                 </span>
@@ -149,7 +149,12 @@ const Header = ({ setSearch }) => {
                 ) : null}
                 {state.isLoggedIn ? (
                   <span className="user-list">
-                    <Link to="#" className="link-user">
+                    <Link to="#" className="link-user"
+                    to="/login"
+                    onClick={() => {
+                      localStorage.clear();
+                      role = null;
+                    }}>
                       Logout
                     </Link>
                   </span>

@@ -1,0 +1,32 @@
+.btnUpload{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 8%;
+      bottom: 51%;
+      font-size: 16px;
+    
+  }
+  .upload{
+    position: relative;
+    
+    width: 90px;
+    height: 90px;
+    
+    gap: 1%;
+  }
+  .btn{
+    padding: 10px 30px;
+    text-transform: capitalize;
+    color: #fff;
+    background: #466ebe;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+    cursor: pointer;
+}

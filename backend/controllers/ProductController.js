@@ -15,7 +15,7 @@ const createNewProduct = (req, res) => {
     if (err) {
       return res.status(500).json({
         success: false,
-        message: `Some thing went wrong While creating product`,
+        message: `Something went wrong While creating product`,
         err: err,
       });
     }
