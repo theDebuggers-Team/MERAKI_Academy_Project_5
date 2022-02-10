@@ -13,7 +13,7 @@ import {
 import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
-import {RiDeleteBin5Line} from "react-icons/ri"
+import { RiDeleteBin5Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./wishList.css";
@@ -129,24 +129,27 @@ const WishList = () => {
         //   </div>
         // </div>
         <div className="single-product" key={element.id}>
-                <div
-                  className="image"
-                  onClick={(e) => {
-                    navigate(`/productDetails/${element.id}`);
-                  }}
-                >
-                  <img src={element.image} className="img" />
-                </div>
-                <div className="product-description">
-                  <span className="title">
-                    {/* {element.title.substring(-1, 30) + "..."} */}
-                    {element.title}
-                  </span>
+          <div
+            className="image"
+            onClick={(e) => {
+              navigate(`/productDetails/${element.id}`);
+            }}
+          >
+            <img src={element.image} className="img" />
+          </div>
+          <div className="product-description">
+            <span className="title">
+              {/* {element.title.substring(-1, 30) + "..."} */}
+              {element.title}
+            </span>
 
-                  <span className="price"> {element.price} $</span>
-                  <span>{element.description.substring(-1, 20) }<p style={{color: 'gray'}}>...more</p></span>
-                  <div className="button-58">
-                    {/* <Link
+            <span className="price"> {element.price} $</span>
+            <span>
+              {element.description.substring(-1, 20)}
+              <p style={{ color: "gray" }}>...more</p>
+            </span>
+            <div className="button-58">
+              {/* <Link
                       to="#"
                       style={{
                         borderRight: "1px solid rgb(211, 206, 206)",
@@ -156,21 +159,21 @@ const WishList = () => {
                       <BiShowAlt /> Show Product
                     </Link> */}
 
-                    <Link
-                      to="#"
-                      className="link"
-                      onClick={(e) => {
-                               deleteProductFromWishList(element.id);
-                                setsuccessDelete(!successDelete);
-                             }}
-                    >
-                      {" "}
-                      <RiDeleteBin5Line /> Remove
-                    </Link>
-                  </div>
-                </div>
+              <Link
+                to="#"
+                className="link"
+                onClick={(e) => {
+                  deleteProductFromWishList(element.id);
+                  setsuccessDelete(!successDelete);
+                }}
+              >
+                {" "}
+                <RiDeleteBin5Line /> Remove
+              </Link>
+            </div>
+          </div>
 
-                {/* <button
+          {/* <button
                   className="add"
                   onClick={(e) => {
                     if (
@@ -190,9 +193,8 @@ const WishList = () => {
                 >
                   Update
                 </button> */}
-              </div>
-            );
-      
+        </div>
+      );
     });
 
   return <div className="all-products1">{myWishList ? myWishList : null}</div>;
