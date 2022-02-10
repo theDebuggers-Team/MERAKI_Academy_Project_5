@@ -27,7 +27,7 @@ const Products = ({ search }) => {
   // const [products, setProducts] = useState("");
   // const { search } = useParams();
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(9);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
