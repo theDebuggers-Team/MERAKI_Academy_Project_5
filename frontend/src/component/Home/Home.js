@@ -1,11 +1,11 @@
+import "./Home.css";
+import Categories from "../Categories/categories";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "./getAllProducts.css";
-import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-
 import {
   setproducts,
   addproduct,
@@ -13,24 +13,13 @@ import {
   deleteproduct,
   getproductsByState,
 } from "../reducer/products/index";
-import { BiShowAlt } from "react-icons/bi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
-
-const Products = ({ search }) => {
+const Home = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const [products, setProducts] = useState("");
-  // const { search } = useParams();
-  const [page, setPage] = useState(1);
-
-
-  const [limit, setLimit] = useState(9);
-
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -38,7 +27,10 @@ const Products = ({ search }) => {
       products: state.productReducer.products,
     };
   });
+  const products = state.products && state.products.slice(0, 4);
   const token = state.token;
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(3);
   const getAllProducts = () => {
     axios
       .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
@@ -50,10 +42,7 @@ const Products = ({ search }) => {
         console.log(err);
       });
   };
-
-  //// counter to add one product from the same product list
-
-  /////// add Product to wish List Naser
+  const navigate = useNavigate();
   const addToWishList = (productId) => {
     axios
       .post(
@@ -80,38 +69,25 @@ const Products = ({ search }) => {
 
   useEffect(() => {
     getAllProducts();
-  }, [page, limit]);
-
-  /////////////////////////////////////////////////
-  const deleteProduct = (id) => {
-    axios
-      .delete(`http://localhost:5000/product/delete_1/${id}`, {
-        headers: {
-          Authorization: `Basic ${state.token}`,
-        },
-      })
-      .then((result) => {
-        getAllProducts();
-      })
-      .catch((error) => {});
-  };
+  }, []);
 
   return (
-    <div className="all-products">
-      {state.products &&
-        state.products
-          .filter((element) => {
-            if (search == undefined) {
-              return element;
-            } else if (
-              element.title.toLowerCase().includes(search.toLowerCase()) ||
-              (element.category &&
-                element.category.toLowerCase().includes(search.toLowerCase()))
-            ) {
-              return element;
-            }
-          })
-          .map((element) => {
+    <div className="home">
+      <Carousel autoPlay={true} showArrows={false}>
+        <div>
+          <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
+        </div>
+        <div>
+          <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
+        </div>
+        <div>
+          <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
+        </div>
+      </Carousel>
+      <h2 className="label">Latest Products</h2>
+      <div className="latest-products">
+        {products &&
+          products.map((element) => {
             return (
               <div className="single-product" key={element.id}>
                 <div
@@ -123,10 +99,7 @@ const Products = ({ search }) => {
                   <img src={element.image} className="img" />
                 </div>
                 <div className="product-description">
-                  <span className="title">
-                    {/* {element.title.substring(-1, 30) + "..."} */}
-                    {element.title}
-                  </span>
+                  <span className="title">{element.title}</span>
 
                   <span className="price"> {element.price} $</span>
                   <span>
@@ -134,16 +107,6 @@ const Products = ({ search }) => {
                     <p style={{ color: "gray" }}>...more</p>
                   </span>
                   <div className="button-58">
-                    {/* <Link
-                      to="#"
-                      style={{
-                        borderRight: "1px solid rgb(211, 206, 206)",
-                        paddingLeft: "10%",
-                      }}
-                    >
-                      <BiShowAlt /> Show Product
-                    </Link> */}
-
                     <Link
                       to="#"
                       className="link"
@@ -156,32 +119,14 @@ const Products = ({ search }) => {
                     </Link>
                   </div>
                 </div>
-
-                {/* <button
-                  className="add"
-                  onClick={(e) => {
-                    if (
-                      window.confirm(
-                        "Are you sure you wish to delete this item?"
-                      )
-                    )
-                      deleteProduct(element.id);
-                  }}
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={(e) => {
-                    navigate(`/update/${element.id}`);
-                  }}
-                >
-                  Update
-                </button> */}
               </div>
             );
           })}
+      </div>
+
+      <Categories />
     </div>
   );
 };
 
-export default Products;
+export default Home;
