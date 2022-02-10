@@ -25,7 +25,6 @@ const Cloudinary = ({ setImage }) => {
   return (
     <div className="upload">
       <input
-
         onChange={(event) => {
           setFile(event.target.files[0]);
         }}
