@@ -45,7 +45,73 @@ const GetProductsByCategory = () => {
   const getAllProductsCategories =
     products &&
     products.map((element) => {
-      return <div className="single-product-category"></div>;
+      return (
+        <div className="single-product" key={element.id}>
+        <div
+          className="image"
+          onClick={(e) => {
+            navigate(`/productDetails/${element.id}`);
+          }}
+        >
+          <img src={element.image} className="img" />
+        </div>
+        <div className="product-description">
+          <span className="title">
+            {/* {element.title.substring(-1, 30) + "..."} */}
+            {element.title}
+          </span>
+
+          <span className="price"> {element.price} $</span>
+          <span>
+            {element.description.substring(-1, 20)}
+            <p style={{ color: "gray" }}>...more</p>
+          </span>
+          <div className="button-58">
+            {/* <Link
+              to="#"
+              style={{
+                borderRight: "1px solid rgb(211, 206, 206)",
+                paddingLeft: "10%",
+              }}
+            >
+              <BiShowAlt /> Show Product
+            </Link> */}
+
+            <Link
+              to="#"
+              className="link"
+              onClick={() => {
+                addToWishList(element.id);
+              }}
+            >
+              {" "}
+              <MdOutlineFavoriteBorder /> Favorite
+            </Link>
+          </div>
+        </div>
+
+        {/* <button
+          className="add"
+          onClick={(e) => {
+            if (
+              window.confirm(
+                "Are you sure you wish to delete this item?"
+              )
+            )
+              deleteProduct(element.id);
+          }}
+        >
+          Delete
+        </button>
+        <button
+          onClick={(e) => {
+            navigate(`/update/${element.id}`);
+          }}
+        >
+          Update
+        </button> */}
+      </div>
+      );
     });
 
   return <div className="multi-products-category"></div>;
