@@ -15,6 +15,7 @@ import Footer from "./component/footerComponent/footer";
 import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
 import Home from "./component/Home/Home";
+import ContactUs from "./component/emailjs/emailjs"
 
 import GetProductsByCategory from "./component/getProductByCategory/AllProductByCategory";
 
@@ -50,6 +51,10 @@ function App() {
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
         <Route path="/getAllProductByCategory/:category" element={<GetProductsByCategory/>}/>
+
+
+
+        <Route path="/contactUs" element={<ContactUs/>}/>
       </Routes>
 
       <Footer />

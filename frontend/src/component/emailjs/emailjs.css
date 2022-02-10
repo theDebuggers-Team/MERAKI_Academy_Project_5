@@ -1,0 +1,49 @@
+.form-input-emailjs{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+  
+    width:100%;
+    height:100%;
+    gap: 2rem;
+}
+
+.form-textarea-emailjs{
+    max-width:100%;
+    height: 100%;
+}
+
+.form-btn-emailjs{
+    padding: 10px 30px;
+    text-transform: capitalize;
+    color: #fff;
+    background: #466ebe;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.container-emailjs form {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.container-emailjs{
+    display: flex;
+    justify-content: center;
+}
+
+.form-input-emailjs div{
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+}
+
+.form-name-emailjs{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+}
