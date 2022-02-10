@@ -1,15 +1,31 @@
 .latest-products {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    /* margin-left: 6%; */
-    padding-top: 1%;
-    /* padding-bottom: 1%; */
-    /* padding-left: 10px; */
-    /* padding-right: 86px; */
-    height: 60vh;
-    gap: 5%;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  /* margin-left: 6%; */
+  padding-top: 1%;
+  /* padding-bottom: 1%; */
+  /* padding-left: 10px; */
+  /* padding-right: 86px; */
+  height: 60vh;
+  gap: 5%;
+  width: 100%;
+}
+.btn-chat {
+  padding: 10px 30px;
+  text-transform: capitalize;
+  color: #fff;
+  background: #466ebe;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.chat-div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem;
+}
