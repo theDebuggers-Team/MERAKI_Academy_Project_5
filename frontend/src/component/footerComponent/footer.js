@@ -82,32 +82,32 @@ const Footer = ({ search }) => {
       <div>
         <div className="contact">
           <div>
-            <h4>
+            <Link to="/contactUs" className="about">
               <BiMailSend />
               Email Address
-            </h4>
+            </Link>
             <p>obenSooq@gmail.com</p>
           </div>
           <div>
-            <h4>
+            <Link to="#" className="about">
               <BiPhoneCall />
               Phone
-            </h4>
+            </Link>
             <p>+962 7900 000</p>
           </div>
           <div>
-            <h4>
+            <Link to="#" className="about">
               {" "}
               <BiMessageDetail />
               Whatsapp
-            </h4>
+            </Link>
             <p>+962 7900 333</p>
           </div>
           <div>
-            <h4>
+            <Link to="#" className="about">
               <BiHelpCircle />
               Help Center
-            </h4>
+            </Link>
             <p>Help?</p>
           </div>
         </div>

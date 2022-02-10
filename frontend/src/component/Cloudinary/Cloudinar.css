@@ -18,9 +18,9 @@
 
   gap: 1%; */
   /* gap: 1%; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btn {
   padding: 10px 30px;
