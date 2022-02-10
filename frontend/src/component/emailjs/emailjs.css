@@ -36,7 +36,10 @@
 .container-emailjs {
   display: flex;
   justify-content: center;
+  height: 100%;
+    padding: 2%;
 }
+
 
 .form-input-emailjs div {
   display: flex;
