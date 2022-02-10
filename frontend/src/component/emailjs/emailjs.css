@@ -41,7 +41,7 @@ flex-direction: column;
 justify-content: flex-start;
 }
 
-.form-name-emailjs,.form-email-emailjs,.form-subject-emailjs{
+.form-name-emailjs,.form-email-emailjs,.form-subject-emailjs,.form-textarea2-emailjs{
     display: flex;
     flex-direction: column;
     /* justify-content: flex-start; */

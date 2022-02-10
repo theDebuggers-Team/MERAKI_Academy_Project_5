@@ -42,7 +42,7 @@ const ContactUs = () => {
               <br/>
             <input type="text" placeholder="Subject" name="subject"/>
           </div>
-          <div >
+          <div className="form-textarea2-emailjs">
           <label>Message</label>
               <br/>
             <textarea type="text" placeholder="Your Message" className="form-textarea-emailjs" name="message" required/>
