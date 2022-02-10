@@ -25,6 +25,16 @@ const GetProductsByCategory = () => {
 
   const navigate = useNavigate();
 
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+      products: state.productReducer.products,
+    };
+  });
+
+
+
   const getProductsByCategory = () => {
     axios
       .get(`http://localhost:5000/search_2?category=${category}`)
@@ -37,6 +47,32 @@ const GetProductsByCategory = () => {
         });
       });
   };
+
+
+  const addToWishList = (productId) => {
+    axios
+      .post(
+        `http://localhost:5000/wishlist/add/${productId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        console.log(err);
+      });
+  };
+
 
   useEffect(() => {
     getProductsByCategory();
