@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./createNewProduct.css";
+import Swal from "sweetalert2";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -107,6 +108,7 @@ const NewProduct = () => {
           className="inputprod"
         />
         <textarea
+          className="text-area"
           id="des"
           placeholder="detail description"
           onChange={(e) => {
@@ -141,6 +143,7 @@ const NewProduct = () => {
         />
 
         <textarea
+          className="text-area"
           id="tags"
           placeholder="Enter categories here, for example - cars, Electonics, Clothes, "
           onChange={(e) => {
@@ -157,7 +160,27 @@ const NewProduct = () => {
         <label for="tac">OpenSooq take 30% from your total sell</label>
 
         <div className="buttons">
-          <button className="btn" id="add-btn" onClick={createNewProduct}>
+          <button
+            className="btn"
+            id="add-btn"
+            onClick={() => {
+              Swal.fire({
+                title: "Do you want to save the changes?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Save",
+                confirmButtonColor: "#4267b3",
+                denyButtonText: `Don't save`,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  createNewProduct();
+                  Swal.fire("Saved!", "", "success");
+                } else if (result.isDenied) {
+                  Swal.fire("Changes are not saved", "", "info");
+                }
+              });
+            }}
+          >
             add product
           </button>
           <button className="btn" id="save-btn">

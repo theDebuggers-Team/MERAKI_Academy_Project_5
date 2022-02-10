@@ -38,8 +38,8 @@ const Cloudinary = ({ setImage }) => {
       >
         Upload
       </button>
-      <br />
-      <img className="upload" src={filelink} alt="" />
+      {/* <br /> */}
+      {/* <img className="upload" src={filelink} alt="" /> */}
     </div>
   );
 };

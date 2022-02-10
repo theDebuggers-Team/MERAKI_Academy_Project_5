@@ -76,7 +76,12 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Carousel autoPlay={true}>
+      <Carousel
+        autoPlay={true}
+        infiniteLoop={true}
+        interval={2500}
+        showThumbs={false}
+      >
         <div>
           <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
         </div>
