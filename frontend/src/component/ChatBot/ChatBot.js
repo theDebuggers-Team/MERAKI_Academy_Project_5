@@ -14,6 +14,7 @@ const theme = {
   userBubbleColor: "#fff",
   userFontColor: "#4a4a4a",
   zIndex: "2147483!important",
+  // top:"-120%"
 };
 
 const ChatBotCom = () => {
