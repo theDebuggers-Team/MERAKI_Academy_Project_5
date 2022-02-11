@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Users from "../usersComponent/usersComponent";
 import ProductsAdmin from "../productsComponent/productsComponent";
 import Charts from "../Charts/charts";
+import PieRechartComponent from "../Charts/Pchart";
 
 const Panel = () => {
   const [usersList, setUsersList] = useState(true);
@@ -49,7 +50,7 @@ const Panel = () => {
 
       {usersList ? <Users /> : ""}
       {productList ? <ProductsAdmin /> : ""}
-      {addProduct ? <Charts /> : ""}
+      {addProduct ? <PieRechartComponent /> : ""}
     </div>
   );
 };
