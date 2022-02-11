@@ -116,57 +116,31 @@ const Products = ({ search }) => {
   };
 
   return (
-
-    <div className="all-products">
-      {state.products &&
-        state.products
-          .filter((element) => {
-            if (search == undefined) {
-              return element;
-            } else if (
-              element.title.toLowerCase().includes(search.toLowerCase()) ||
-              (element.category &&
-                element.category.toLowerCase().includes(search.toLowerCase()))
-            ) {
-              return element;
-            }
-          })
-          .map((element) => {
-            return (
-              <div className="single-product" key={element.id}>
-                <div
-                  className="image"
-                  onClick={(e) => {
-                    navigate(`/productDetails/${element.id}`);
-                  }}
-                >
-                  <img src={element.image} className="img" />
-                </div>
-                <div className="product-description">
-                  <span className="title">
-                    {/* {element.title.substring(-1, 30) + "..."} */}
-                    {element.title}
-                  </span>
-
-                  <span className="price"> {element.price} $</span>
-                  <span>
-                    {element.description.substring(-1, 20)}
-                    <p style={{ color: "gray" }}>...more</p>
-                  </span>
-                  <div className="stars">
-                    <ReactStars
-                      count={5}
-                      // onChange={ratingChanged}
-                      size={24}
-                      value={element.rating / element.counter}
-                      half={true}
-                      emptyIcon={<i className="far fa-star"></i>}
-                      halfIcon={<i className="fa fa-star-half-alt"></i>}
-                      fullIcon={<i className="fa fa-star"></i>}
-                      color2={"#fbb034"}
-                      edit={false}
-                    />
-
+    <>
+      <div className="all-products">
+        {state.products &&
+          state.products
+            .filter((element) => {
+              if (search == undefined) {
+                return element;
+              } else if (
+                element.title.toLowerCase().includes(search.toLowerCase()) ||
+                (element.category &&
+                  element.category.toLowerCase().includes(search.toLowerCase()))
+              ) {
+                return element;
+              }
+            })
+            .map((element) => {
+              return (
+                <div className="single-product" key={element.id}>
+                  <div
+                    className="image"
+                    onClick={(e) => {
+                      navigate(`/productDetails/${element.id}`);
+                    }}
+                  >
+                    <img src={element.image} className="img" />
                   </div>
                   <div className="product-description">
                     <span className="title">
@@ -184,15 +158,16 @@ const Products = ({ search }) => {
                         count={5}
                         // onChange={ratingChanged}
                         size={24}
-                        value={element.price / 10}
+                        value={element.rating / element.counter}
                         half={true}
                         emptyIcon={<i className="far fa-star"></i>}
                         halfIcon={<i className="fa fa-star-half-alt"></i>}
                         fullIcon={<i className="fa fa-star"></i>}
-                        color2={"#ffd700"}
+                        color2={"#fbb034"}
                         edit={false}
                       />
                     </div>
+
                     <div className="button-58">
                       <Link
                         to="#"
