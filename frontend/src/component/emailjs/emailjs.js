@@ -28,8 +28,7 @@ const ContactUs = () => {
           );
         },
         (error) => {
-          
-            console.log(error.text);
+          console.log(error.text);
         }
       );
 
