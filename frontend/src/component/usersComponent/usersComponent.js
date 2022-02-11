@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { BiTrash } from "react-icons/bi";
-
+import Swal from "sweetalert2";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const state = useSelector((state) => {
@@ -73,12 +73,29 @@ const Users = () => {
                 <td>
                   <p
                     onClick={(e) => {
-                      if (
-                        window.confirm(
-                          "Are you sure you wish to delete this item?"
-                        )
-                      )
-                        deleteUser(element.id);
+                      // if (
+                      //   window.confirm(
+                      //     "Are you sure you wish to delete this item?"
+                      //   )
+                      // )
+                      Swal.fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!",
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          Swal.fire(
+                            "Deleted!",
+                            "the user has been deleted.",
+                            "success"
+                          );
+                          deleteUser(element.id);
+                        }
+                      });
                     }}
                   >
                     <BiTrash />
@@ -94,3 +111,5 @@ const Users = () => {
 };
 
 export default Users;
+
+// d
