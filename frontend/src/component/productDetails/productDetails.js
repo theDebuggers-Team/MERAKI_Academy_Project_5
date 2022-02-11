@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import ReactStars from "react-rating-stars-component";
 import "./productDetails.css";
 import ReactStars from "react-rating-stars-component";
+import Swal from "sweetalert2";
 
 toast.configure();
 const ProductDetails = () => {
@@ -243,8 +244,28 @@ const ProductDetails = () => {
                     <button
                       className="btn-delete-single-comment"
                       onClick={(e) => {
-                        deleteComment(comment.id);
-                        setsucesscomment(!sucesscomment);
+                        Swal.fire({
+                          title: "Are you sure?",
+                          text: "You won't be able to revert this!",
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#3085d6",
+                          cancelButtonColor: "#d33",
+                          confirmButtonText: "Yes, delete it!",
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                            Swal.fire(
+                              "Deleted!",
+                              "Your comment has been deleted.",
+                              "success"
+                            );
+                            deleteComment(comment.id);
+                            setsucesscomment(!sucesscomment);
+                          }
+                        });
+
+                        // deleteComment(comment.id);
+                        // setsucesscomment(!sucesscomment);
                       }}
                     >
                       Delete

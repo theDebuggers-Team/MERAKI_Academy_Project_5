@@ -28,7 +28,6 @@ const Footer = ({ search }) => {
   const navigate = useNavigate();
   return (
     <>
-    <div className="footer-container">
       <div className="footer">
         <div className="aboutDev">
           <Link to="/" className="about" onClick={scrollTop}>
@@ -68,7 +67,7 @@ const Footer = ({ search }) => {
           <Link to="/about" className="about" onClick={scrollTop}>
             help
           </Link>
-          <Link to="/about" className="about" onClick={scrollTop}>
+          <Link to="/terms" className="about" onClick={scrollTop}>
             Terms Of Use
           </Link>
           <Link to="/about" className="about" onClick={scrollTop}>
@@ -82,37 +81,38 @@ const Footer = ({ search }) => {
       {/* //////////////////////////////////////////// */}
       <div>
         <div className="contact">
-          <div>
-            <Link to="/contactUs" className="about">
+          <div className="cont">
+            <Link to="/contactUs" className="about" onClick={scrollTop}>
               <BiMailSend />
               Email Address
             </Link>
-            <p>obenSooq@gmail.com</p>
+            <Link to="/contactUs" onClick={scrollTop}>
+              obenSooq@gmail.com
+            </Link>
           </div>
-          <div>
+          <div className="cont">
             <Link to="#" className="about">
               <BiPhoneCall />
               Phone
             </Link>
-            <p>+962 7900 000</p>
+            <Link to="/contactUs">+962 7900 000</Link>
           </div>
-          <div>
+          <div className="cont">
             <Link to="#" className="about">
               {" "}
               <BiMessageDetail />
               Whatsapp
             </Link>
-            <p>+962 7900 333</p>
+            <Link to="/contactUs">+962 7900 333</Link>
           </div>
-          <div>
+          <div className="cont">
             <Link to="#" className="about">
               <BiHelpCircle />
               Help Center
             </Link>
-            <p>Help?</p>
+            <Link to="/contactUs">Help?</Link>
           </div>
         </div>
-      </div>
       </div>
     </>
   );

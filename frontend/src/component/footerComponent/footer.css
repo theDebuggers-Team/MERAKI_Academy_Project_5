@@ -3,14 +3,17 @@
   left: 0;
   right: 0;
   width: 100%;
+  margin-top: 40px;
 }
 
 .footer {
   display: flex;
   height: 250px;
+
   background-image: linear-gradient(-180deg, #4267b3 0%, #466ebe 100%);
 
   border-bottom: 2px;
+  margin-top: 30px;
 }
 .wrapper {
   min-height: 100%;
@@ -52,4 +55,9 @@
 }
 h4 {
   color: #fff;
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
 }
