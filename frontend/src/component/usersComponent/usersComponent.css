@@ -47,10 +47,10 @@ tbody tr:nth-child(even) {
   background-color: #eee;
 }
 tbody th {
-  background-color: #1e95c89c;
+  background-color: #1e96c8;
   color: #fff;
   text-align: left;
 }
 tbody tr:nth-child(even) th {
-  background-color: #1e95c8;
+  background-color: #1e95c85e;
 }

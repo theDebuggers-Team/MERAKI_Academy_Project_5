@@ -7,7 +7,7 @@ class PieRechartComponent extends React.Component {
   pieData = [
     {
       name: "Cars",
-      value: 68.85,
+      value: 25.85,
     },
     {
       name: "Electronics",
@@ -18,7 +18,7 @@ class PieRechartComponent extends React.Component {
       value: 6.85,
     },
     {
-      name: "Internet Explorer",
+      name: "Jobs",
       value: 6.14,
     },
     {
@@ -59,6 +59,7 @@ class PieRechartComponent extends React.Component {
           outerRadius={120}
           fill="#8884d8"
         >
+          {/* <p>Products Percentage</p> */}
           {this.pieData.map((entry, index) => (
             <Cell
               key={`cell-${index}`}

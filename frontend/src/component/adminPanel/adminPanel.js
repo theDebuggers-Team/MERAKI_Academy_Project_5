@@ -51,6 +51,7 @@ const Panel = () => {
       {usersList ? <Users /> : ""}
       {productList ? <ProductsAdmin /> : ""}
       {addProduct ? <PieRechartComponent /> : ""}
+      {addProduct ? <Charts /> : ""}
     </div>
   );
 };
