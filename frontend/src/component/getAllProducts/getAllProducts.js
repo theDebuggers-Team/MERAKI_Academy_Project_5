@@ -29,7 +29,7 @@ const Products = ({ search }) => {
   // const { search } = useParams();
   const [page, setPage] = useState(1);
 
-  const [limit, setLimit] = useState(12);
+  const [limit, setLimit] = useState(4);
   const [likes, setLikes] = useState(9);
 
   const state = useSelector((state) => {
@@ -60,7 +60,16 @@ const Products = ({ search }) => {
         console.log(err);
       });
   };
-
+  const next = () => {
+    if (page < 3) {
+      setPage(page + 1);
+    }
+  };
+  const previous = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
   //// counter to add one product from the same product list
 
   /////// add Product to wish List Naser
@@ -158,16 +167,6 @@ const Products = ({ search }) => {
                     />
                   </div>
                   <div className="button-58">
-                    {/* <Link
-                      to="#"
-                      style={{
-                        borderRight: "1px solid rgb(211, 206, 206)",
-                        paddingLeft: "10%",
-                      }}
-                    >
-                      <BiShowAlt /> Show Product
-                    </Link> */}
-
                     <Link
                       to="#"
                       className="link"
@@ -180,30 +179,19 @@ const Products = ({ search }) => {
                     </Link>
                   </div>
                 </div>
-
-                {/* <button
-                  className="add"
-                  onClick={(e) => {
-                    if (
-                      window.confirm(
-                        "Are you sure you wish to delete this item?"
-                      )
-                    )
-                      deleteProduct(element.id);
-                  }}
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={(e) => {
-                    navigate(`/update/${element.id}`);
-                  }}
-                >
-                  Update
-                </button> */}
+               
               </div>
             );
           })}
+           <div className="productsPanelPagination">
+                  <button className="Pagin" onClick={previous}>
+                    Previous
+                  </button>
+                  <button className="Pagin1">{page}</button>
+                  <button className="Pagin" onClick={next}>
+                    Next
+                  </button>
+                </div>
     </div>
   );
 };
