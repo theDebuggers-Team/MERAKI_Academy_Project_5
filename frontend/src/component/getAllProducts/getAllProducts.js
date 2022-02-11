@@ -29,7 +29,7 @@ const Products = ({ search }) => {
   // const { search } = useParams();
   const [page, setPage] = useState(1);
 
-  const [limit, setLimit] = useState(12);
+  const [limit, setLimit] = useState(4);
   const [likes, setLikes] = useState(9);
 
   const state = useSelector((state) => {
@@ -60,7 +60,16 @@ const Products = ({ search }) => {
         console.log(err);
       });
   };
-
+  const next = () => {
+    if (page < 3) {
+      setPage(page + 1);
+    }
+  };
+  const previous = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
   //// counter to add one product from the same product list
 
   /////// add Product to wish List Naser
@@ -107,104 +116,84 @@ const Products = ({ search }) => {
   };
 
   return (
-    <div className="all-products">
-      {state.products &&
-        state.products
-          .filter((element) => {
-            if (search == undefined) {
-              return element;
-            } else if (
-              element.title.toLowerCase().includes(search.toLowerCase()) ||
-              (element.category &&
-                element.category.toLowerCase().includes(search.toLowerCase()))
-            ) {
-              return element;
-            }
-          })
-          .map((element) => {
-            return (
-              <div className="single-product" key={element.id}>
-                <div
-                  className="image"
-                  onClick={(e) => {
-                    navigate(`/productDetails/${element.id}`);
-                  }}
-                >
-                  <img src={element.image} className="img" />
-                </div>
-                <div className="product-description">
-                  <span className="title">
-                    {/* {element.title.substring(-1, 30) + "..."} */}
-                    {element.title}
-                  </span>
-
-                  <span className="price"> {element.price} $</span>
-                  <span>
-                    {element.description.substring(-1, 20)}
-                    <p style={{ color: "gray" }}>...more</p>
-                  </span>
-                  <div className="stars">
-                    <ReactStars
-                      count={5}
-                      // onChange={ratingChanged}
-                      size={24}
-                      value={element.price / 10}
-                      half={true}
-                      emptyIcon={<i className="far fa-star"></i>}
-                      halfIcon={<i className="fa fa-star-half-alt"></i>}
-                      fullIcon={<i className="fa fa-star"></i>}
-                      color2={"#ffd700"}
-                      edit={false}
-                    />
+    <>
+      <div className="all-products">
+        {state.products &&
+          state.products
+            .filter((element) => {
+              if (search == undefined) {
+                return element;
+              } else if (
+                element.title.toLowerCase().includes(search.toLowerCase()) ||
+                (element.category &&
+                  element.category.toLowerCase().includes(search.toLowerCase()))
+              ) {
+                return element;
+              }
+            })
+            .map((element) => {
+              return (
+                <div className="single-product" key={element.id}>
+                  <div
+                    className="image"
+                    onClick={(e) => {
+                      navigate(`/productDetails/${element.id}`);
+                    }}
+                  >
+                    <img src={element.image} className="img" />
                   </div>
-                  <div className="button-58">
-                    {/* <Link
-                      to="#"
-                      style={{
-                        borderRight: "1px solid rgb(211, 206, 206)",
-                        paddingLeft: "10%",
-                      }}
-                    >
-                      <BiShowAlt /> Show Product
-                    </Link> */}
+                  <div className="product-description">
+                    <span className="title">
+                      {/* {element.title.substring(-1, 30) + "..."} */}
+                      {element.title}
+                    </span>
 
-                    <Link
-                      to="#"
-                      className="link"
-                      onClick={() => {
-                        addToWishList(element.id);
-                      }}
-                    >
-                      {" "}
-                      <MdOutlineFavoriteBorder /> Favorite
-                    </Link>
+                    <span className="price"> {element.price} $</span>
+                    <span>
+                      {element.description.substring(-1, 20)}
+                      <p style={{ color: "gray" }}>...more</p>
+                    </span>
+                    <div className="stars">
+                      <ReactStars
+                        count={5}
+                        // onChange={ratingChanged}
+                        size={24}
+                        value={element.price / 10}
+                        half={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        color2={"#ffd700"}
+                        edit={false}
+                      />
+                    </div>
+                    <div className="button-58">
+                      <Link
+                        to="#"
+                        className="link"
+                        onClick={() => {
+                          addToWishList(element.id);
+                        }}
+                      >
+                        {" "}
+                        <MdOutlineFavoriteBorder /> Favorite
+                      </Link>
+                    </div>
                   </div>
                 </div>
-
-                {/* <button
-                  className="add"
-                  onClick={(e) => {
-                    if (
-                      window.confirm(
-                        "Are you sure you wish to delete this item?"
-                      )
-                    )
-                      deleteProduct(element.id);
-                  }}
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={(e) => {
-                    navigate(`/update/${element.id}`);
-                  }}
-                >
-                  Update
-                </button> */}
-              </div>
-            );
-          })}
-    </div>
+              );
+            })}
+      </div>
+      <div className="productsPanelPagination">
+        <button className="Pagin" onClick={previous}>
+          Previous
+        </button>
+        <button className="Pagin1">{page}</button>
+        <button className="Pagin" onClick={next}>
+          Next
+        </button>
+      </div>
+    </>
   );
 };
 

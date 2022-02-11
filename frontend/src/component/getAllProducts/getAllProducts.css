@@ -142,5 +142,10 @@
 }
 .stars {
   display: flex;
-  justify-content:center;
+  justify-content: center;
+}
+
+.productsPanelPagination {
+  margin: auto;
+  margin-top: 20px;
 }
