@@ -140,3 +140,7 @@
   height: 80px;
   align-items: center;
 }
+.stars {
+  display: flex;
+  justify-content:center;
+}

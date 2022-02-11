@@ -18,7 +18,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+// import "./styles.css";
+import ReactStars from "react-rating-stars-component";
 toast.configure();
 
 const Products = ({ search }) => {
@@ -28,8 +29,8 @@ const Products = ({ search }) => {
   // const { search } = useParams();
   const [page, setPage] = useState(1);
 
-
-  const [limit, setLimit] = useState(9);
+  const [limit, setLimit] = useState(12);
+  const [likes, setLikes] = useState(9);
 
   const state = useSelector((state) => {
     return {
@@ -38,6 +39,15 @@ const Products = ({ search }) => {
       products: state.productReducer.products,
     };
   });
+  // const stars = {
+  //   size: 30,
+  //   value: {0},
+  //   isHalf: true,
+  //   edit: false,
+  //   onChange: (newValue) => {
+  //     console.log(`Example 2: new value is ${newValue}`);
+  //   },
+  // };
   const token = state.token;
   const getAllProducts = () => {
     axios
@@ -133,6 +143,20 @@ const Products = ({ search }) => {
                     {element.description.substring(-1, 20)}
                     <p style={{ color: "gray" }}>...more</p>
                   </span>
+                  <div className="stars">
+                    <ReactStars
+                      count={5}
+                      // onChange={ratingChanged}
+                      size={24}
+                      value={element.price / 10}
+                      half={true}
+                      emptyIcon={<i className="far fa-star"></i>}
+                      halfIcon={<i className="fa fa-star-half-alt"></i>}
+                      fullIcon={<i className="fa fa-star"></i>}
+                      color2={"#ffd700"}
+                      edit={false}
+                    />
+                  </div>
                   <div className="button-58">
                     {/* <Link
                       to="#"
