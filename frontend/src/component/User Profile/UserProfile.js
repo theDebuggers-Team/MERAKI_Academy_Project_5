@@ -66,7 +66,7 @@ const UserProfile = () => {
           <div className="personal-detailes">
             <div className="info-div">
               <label className="label-user">First Name</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="First Name"
@@ -75,7 +75,7 @@ const UserProfile = () => {
             </div>
             <div className="info-div">
               <label className="label-user">Last Name</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Last Name"
@@ -84,7 +84,7 @@ const UserProfile = () => {
             </div>
             <div className="info-div">
               <label className="label-user">Email</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Email"
@@ -93,7 +93,7 @@ const UserProfile = () => {
             </div>
             <div className="info-div">
               <label className="label-user">Mobile Phone</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Mobile Phone"
@@ -105,7 +105,7 @@ const UserProfile = () => {
           <div className="Address">
             <div className="info-div">
               <label className="label-user">Country</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Country"
@@ -114,7 +114,7 @@ const UserProfile = () => {
             </div>
             <div className="info-div">
               <label className="label-user">Mobile Phone</label>
-              <br />
+
               <input type="text" Placeholder="Mobile Phone" />
             </div>
           </div>
