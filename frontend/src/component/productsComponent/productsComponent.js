@@ -87,6 +87,7 @@ const ProductsAdmin = () => {
 
                   <td>
                     <p
+                    
                       onClick={(e) => {
                         // if (
                         //   window.confirm(
@@ -113,7 +114,7 @@ const ProductsAdmin = () => {
                         });
                       }}
                     >
-                      <BiTrash />
+                      <BiTrash className="delete-prod-admin"/>
                     </p>
                   </td>
                 </tr>

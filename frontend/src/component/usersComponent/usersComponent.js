@@ -98,7 +98,7 @@ const Users = () => {
                       });
                     }}
                   >
-                    <BiTrash />
+                    <BiTrash className="delete-use-admin" />
                   </p>
                 </td>
               </tr>

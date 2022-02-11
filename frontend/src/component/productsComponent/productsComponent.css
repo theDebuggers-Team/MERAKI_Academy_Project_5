@@ -73,3 +73,8 @@ tbody tr:nth-child(even) th {
   background-color: #1e95c89c;
   border-radius: 10%;
 }
+
+
+.delete-prod-admin{
+  cursor: pointer;
+}

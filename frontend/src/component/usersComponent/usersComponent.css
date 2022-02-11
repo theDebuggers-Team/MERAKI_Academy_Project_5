@@ -54,3 +54,8 @@ tbody th {
 tbody tr:nth-child(even) th {
   background-color: #1e95c8;
 }
+
+
+.delete-use-admin{
+  cursor: pointer;
+}
