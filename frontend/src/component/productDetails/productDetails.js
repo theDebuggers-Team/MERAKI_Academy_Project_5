@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ReactStars from "react-rating-stars-component";
 import "./productDetails.css";
-
+import Swal from "sweetalert2";
 toast.configure();
 const ProductDetails = () => {
   const state = useSelector((state) => {

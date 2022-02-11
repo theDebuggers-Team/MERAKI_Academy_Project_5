@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { BiTrash } from "react-icons/bi";
-
+import Swal from "sweetalert2";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const state = useSelector((state) => {
