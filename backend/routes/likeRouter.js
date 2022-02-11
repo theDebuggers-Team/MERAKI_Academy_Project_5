@@ -9,7 +9,7 @@ const likeRouter = express.Router();
 // import like controllers from "likeControllers"
 
 //end point for create like
-likeRouter.post("/", addLike);
+likeRouter.put("/:id", addLike);
 
 //end point for create like
 likeRouter.delete("/", deletelike);

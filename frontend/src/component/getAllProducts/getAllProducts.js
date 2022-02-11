@@ -148,12 +148,12 @@ const Products = ({ search }) => {
                       count={5}
                       // onChange={ratingChanged}
                       size={24}
-                      value={element.price / 10}
+                      value={element.rating / element.counter}
                       half={true}
                       emptyIcon={<i className="far fa-star"></i>}
                       halfIcon={<i className="fa fa-star-half-alt"></i>}
                       fullIcon={<i className="fa fa-star"></i>}
-                      color2={"#ffd700"}
+                      color2={"#fbb034"}
                       edit={false}
                     />
                   </div>
