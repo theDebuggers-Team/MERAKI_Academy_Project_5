@@ -28,7 +28,7 @@ const Footer = ({ search }) => {
   const navigate = useNavigate();
   return (
     <>
-    <div className="footer-container">
+  
       <div className="footer">
         <div className="aboutDev">
           <Link to="/" className="about" onClick={scrollTop}>
@@ -113,7 +113,7 @@ const Footer = ({ search }) => {
           </div>
         </div>
       </div>
-      </div>
+    
     </>
   );
 };
