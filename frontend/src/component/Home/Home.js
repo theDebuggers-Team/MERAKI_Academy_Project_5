@@ -14,6 +14,7 @@ import {
   deleteproduct,
   getproductsByState,
 } from "../reducer/products/index";
+import { Chat } from "../Chat/Chat";
 import ChatBotCom from "../ChatBot/ChatBot";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
@@ -131,9 +132,8 @@ const Home = () => {
             );
           })}
       </div>
-
       <Categories />
-      <div className="chat-div">
+      {/* <div className="chat-div">
         <button
           className="btn-chat"
           onClick={() => {
@@ -142,12 +142,15 @@ const Home = () => {
         >
           <BsChatText /> need help ?
         </button>
-      </div>
-      {chatbot ? (
+      </div> */}
+      {/* {chatbot ? (
         <div>
           <ChatBotCom />
         </div>
-      ) : null}
+      ) : null} */}
+      <div className="chat">
+      <Chat />{" "}
+      </div>
     </div>
   );
 };
