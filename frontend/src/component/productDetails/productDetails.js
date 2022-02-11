@@ -9,7 +9,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ReactStars from "react-rating-stars-component";
 import "./productDetails.css";
+import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
+
 toast.configure();
 const ProductDetails = () => {
   const state = useSelector((state) => {
@@ -31,6 +33,9 @@ const ProductDetails = () => {
   const [updatedComment, setupdatedComment] = useState("");
   const [isupdated, setisupdated] = useState(false);
   const [sucesscomment, setsucesscomment] = useState(false);
+  ////////////////////////////////
+  const [rating, setRating] = useState(0);
+  console.log(rating);
   const token = state.token;
   const { id } = useParams();
   console.log(updatedComment);
@@ -41,6 +46,7 @@ const ProductDetails = () => {
       .get(`http://localhost:5000/product/search_1?id=${id}`)
       .then((response) => {
         setproductDetails(response.data.results);
+        console.log(response.data.results);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -163,7 +169,24 @@ const ProductDetails = () => {
         });
       });
   };
-  /////////////////////
+  /////////////////////add rating functi
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    setRating(newRating);
+  };
+
+  const addLike = (id) => {
+    axios
+      .put(`http://localhost:5000/like/${id}`, { value: rating - 0 })
+      .then((result) => {
+        console.log(result.message);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  //////////////////////////////////////////
   useEffect(() => {
     getAllComment();
   }, [sucesscomment]);
@@ -332,6 +355,24 @@ const ProductDetails = () => {
                 >
                   Show reviews
                 </button>
+                {token ? (
+                  <div className="stars">
+                    <ReactStars
+                      count={5}
+                      onChange={ratingChanged}
+                      // onClick={(e) => {
+                      //   addLike(element.id);
+                      // }}
+                      size={24}
+                      half={true}
+                      emptyIcon={<i className="far fa-star"></i>}
+                      halfIcon={<i className="fa fa-star-half-alt"></i>}
+                      fullIcon={<i className="fa fa-star"></i>}
+                      color2={"#fbb034"}
+                      edit={true}
+                    />
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
