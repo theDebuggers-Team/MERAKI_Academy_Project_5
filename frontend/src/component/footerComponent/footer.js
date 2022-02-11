@@ -67,7 +67,7 @@ const Footer = ({ search }) => {
           <Link to="/about" className="about" onClick={scrollTop}>
             help
           </Link>
-          <Link to="/about" className="about" onClick={scrollTop}>
+          <Link to="/terms" className="about" onClick={scrollTop}>
             Terms Of Use
           </Link>
           <Link to="/about" className="about" onClick={scrollTop}>
@@ -82,11 +82,13 @@ const Footer = ({ search }) => {
       <div>
         <div className="contact">
           <div className="cont">
-            <Link to="/contactUs" className="about">
+            <Link to="/contactUs" className="about" onClick={scrollTop}>
               <BiMailSend />
               Email Address
             </Link>
-            <Link to="/contactUs">obenSooq@gmail.com</Link>
+            <Link to="/contactUs" onClick={scrollTop}>
+              obenSooq@gmail.com
+            </Link>
           </div>
           <div className="cont">
             <Link to="#" className="about">

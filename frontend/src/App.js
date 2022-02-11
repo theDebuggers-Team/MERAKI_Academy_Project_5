@@ -14,6 +14,7 @@ import Panel from "./component/adminPanel/adminPanel";
 import Footer from "./component/footerComponent/footer";
 import WishList from "./component/wishlist/wishList";
 import About from "./component/About/about";
+import Terms from "./component/Terms/terms";
 import Home from "./component/Home/Home";
 import ContactUs from "./component/emailjs/emailjs";
 
@@ -56,6 +57,7 @@ function App() {
         />
 
         <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
 
       <Footer />
