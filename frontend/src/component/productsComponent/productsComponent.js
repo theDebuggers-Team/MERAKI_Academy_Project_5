@@ -87,6 +87,7 @@ const ProductsAdmin = () => {
 
                   <td>
                     <p
+                    className="delete-prod-admin"
                       onClick={(e) => {
                         // if (
                         //   window.confirm(
