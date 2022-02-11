@@ -28,7 +28,6 @@ const Footer = ({ search }) => {
   const navigate = useNavigate();
   return (
     <>
-  
       <div className="footer">
         <div className="aboutDev">
           <Link to="/" className="about" onClick={scrollTop}>
@@ -82,38 +81,37 @@ const Footer = ({ search }) => {
       {/* //////////////////////////////////////////// */}
       <div>
         <div className="contact">
-          <div>
+          <div className="cont">
             <Link to="/contactUs" className="about">
               <BiMailSend />
               Email Address
             </Link>
-            <p>obenSooq@gmail.com</p>
+            <Link to="/contactUs">obenSooq@gmail.com</Link>
           </div>
-          <div>
+          <div className="cont">
             <Link to="#" className="about">
               <BiPhoneCall />
               Phone
             </Link>
-            <p>+962 7900 000</p>
+            <Link to="/contactUs">+962 7900 000</Link>
           </div>
-          <div>
+          <div className="cont">
             <Link to="#" className="about">
               {" "}
               <BiMessageDetail />
               Whatsapp
             </Link>
-            <p>+962 7900 333</p>
+            <Link to="/contactUs">+962 7900 333</Link>
           </div>
-          <div>
+          <div className="cont">
             <Link to="#" className="about">
               <BiHelpCircle />
               Help Center
             </Link>
-            <p>Help?</p>
+            <Link to="/contactUs">Help?</Link>
           </div>
         </div>
       </div>
-    
     </>
   );
 };

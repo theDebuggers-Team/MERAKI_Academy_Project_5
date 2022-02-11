@@ -56,3 +56,8 @@
 h4 {
   color: #fff;
 }
+
+.cont {
+  display: flex;
+  flex-direction: column;
+}
