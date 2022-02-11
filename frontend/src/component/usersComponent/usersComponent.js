@@ -90,7 +90,7 @@ const Users = () => {
                         if (result.isConfirmed) {
                           Swal.fire(
                             'Deleted!',
-                            'Your file has been deleted.',
+                            'the user has been deleted.',
                             'success'
                           )
                           deleteUser(element.id);  
