@@ -14,6 +14,7 @@
 .form-textarea-emailjs {
   width: 35rem;
   height: 15rem;
+  border:0.1rem solid black;
 }
 
 .form-btn-emailjs {
@@ -62,4 +63,9 @@
 
 .form-inp-but-emailjs:focus {
   box-shadow: 0 0 0.3rem #ce4886;
+  
+}
+
+.form-inp-but-emailjs{
+    border:0.1rem solid black;
 }
