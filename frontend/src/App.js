@@ -23,6 +23,8 @@ import GetProductsByCategory from "./component/getProductByCategory/AllProductBy
 
 function App() {
   const [search, setSearch] = useState("");
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
 
   return (
     <div className="App">
@@ -52,7 +54,17 @@ function App() {
         <Route path="/panel" element={<Panel />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
-        <Route path="/geolocation" element={<GeoLocate />} />
+        <Route
+          path="/geolocation"
+          element={
+            <GeoLocate
+              lat={lat}
+              setLat={setLat}
+              long={long}
+              setLong={setLong}
+            />
+          }
+        />
         <Route
           path="/getAllProductByCategory/:category"
           element={<GetProductsByCategory />}
