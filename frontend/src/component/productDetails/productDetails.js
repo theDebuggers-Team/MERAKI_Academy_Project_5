@@ -1,17 +1,16 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-// import "./getAllProducts.css";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import ReactStars from "react-rating-stars-component";
 import "./productDetails.css";
 import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
-
+import ReactImageMagnify from "react-image-magnify";
+import { FaEllipsisH } from "react-icons/fa";
 toast.configure();
 const ProductDetails = () => {
   const state = useSelector((state) => {
@@ -194,175 +193,95 @@ const ProductDetails = () => {
     getProductById();
   }, []);
   ///////////////////////////////
-  const allComments =
-    commentsOnProduct &&
-    commentsOnProduct.map((comment) => {
-      return (
-        <div className="all-comments">
-          <div className="all-comments" key={comment.id}>
-            <div className="just-one-comment">
-              <div className="firstName">
-                <p> commenter : {comment.firstName}</p>
-                <p> comment : {comment.comment}</p>
-                {/* <p>{comment.publish_date}</p> */}
-              </div>
-
-              <div clasName="all-comment-Details">
-                {isupdated ? (
-                  <div className="comment-updated-btn">
-                    <textarea
-                      placeholder="update your comment ..."
-                      className="update-comment-inp"
-                      onChange={(e) => {
-                        setupdatedComment(e.target.value);
-                      }}
-                    />{" "}
-                    <br />
-                    <button
-                      className="btn-update-single-comment"
-                      onClick={(e) => {
-                        updateCommentById(comment.id);
-                        setisupdated(!isupdated);
-                        setsucesscomment(!sucesscomment);
-                      }}
-                    >
-                      update
-                    </button>
-                  </div>
-                ) : null}
-
-                {decode.userId == comment.user_id ? (
-                  <div className="delet-and-update-btuns">
-                    <button
-                      className="btn-update-single-comment"
-                      onClick={(e) => {
-                        setisupdated(!isupdated);
-                      }}
-                    >
-                      Modify
-                    </button>
-                    <button
-                      className="btn-delete-single-comment"
-                      onClick={(e) => {
-                        Swal.fire({
-                          title: "Are you sure?",
-                          text: "You won't be able to revert this!",
-                          icon: "warning",
-                          showCancelButton: true,
-                          confirmButtonColor: "#3085d6",
-                          cancelButtonColor: "#d33",
-                          confirmButtonText: "Yes, delete it!",
-                        }).then((result) => {
-                          if (result.isConfirmed) {
-                            Swal.fire(
-                              "Deleted!",
-                              "Your comment has been deleted.",
-                              "success"
-                            );
-                            deleteComment(comment.id);
-                            setsucesscomment(!sucesscomment);
-                          }
-                        });
-
-                        // deleteComment(comment.id);
-                        // setsucesscomment(!sucesscomment);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                ) : null}
-              </div>
-            </div>
-
-            {/* <button
-            className="btn-to-delete-all-my-comment"
-            onClick={(e) => {
-                
-              deleteAllMyComments(comment.user_id);
-
-              setsucesscomment(!sucesscomment);
-            }}
-          >
-            Delete All Comment
-            
-          </button> */}
-          </div>
-        </div>
-      );
-    });
+  const allComments = commentsOnProduct.length
+    ? commentsOnProduct.map((comment) => {
+        return <div></div>;
+      })
+    : null;
 
   //////////////////////////////////
   const productDetailsToShow =
     productDetails &&
     productDetails.map((element) => {
       return (
-        <div key={element.id}>
-          <div className="all-div-componenet">
-            <div className="product-image-description">
-              <span>{element.title}</span>
-              <br />
-              <img src={element.image} />
-              <br />
-              <p> Description : {element.description}</p>
-              <br />
-              <p> Price : {element.price}</p>
-              <br />
-              <p>Category : {element.category}</p>
-              <br />
-            </div>
-
-            <div className="container-chating-rate-reviews">
-              <div className="product-seller-chat">
-                <br />
-                <button
-                  className="btn-btn-chating"
-                  onClick={(e) => {
-                    //   navigate("/chat")
-                  }}
-                >
-                  Contact the Seller
-                </button>
-                <br />
-              </div>
-
-              <div className="product-add-comment-rate">
-                {/* {state.token ? (
-                  <ReactStars
-                    size={26}
-                    count={5}
-                    color="black"
-                    activeColor="red"
-                    value={7.5}
-                    a11y={true}
-                    isHalf={true}
-                    emptyIcon={<i className="far fa-star" />}
-                    halfIcon={<i className="fa fa-star-half-alt" />}
-                    filledIcon={<i className="fa fa-star" />}
-                    onChange={(newValue) => {
-                      console.log(`Example 2: new value is ${newValue}`);
+        <div className="card-wrapper">
+          <div className="card">
+            <div className="product-imgs">
+              <div className="img-display">
+                <div className="img-showcase">
+                  <ReactImageMagnify
+                    {...{
+                      smallImage: {
+                        alt: "Wristwatch by Ted Baker London",
+                        isFluidWidth: true,
+                        src: element.image,
+                        srcSet: [
+                          // `${element.image} 687w`,
+                          // `${element.image} 770w`,
+                          // `${element.image} 861w`,
+                          // `${element.image} 955w`,
+                        ].join(", "),
+                        sizes: "(min-width: 480px) 30vw, 80vw",
+                      },
+                      largeImage: {
+                        alt: "",
+                        src: element.image,
+                        width: 1000,
+                        height: 1800,
+                      },
                     }}
                   />
-                ) : null} */}
-                <br />
+                </div>
+              </div>
+              <div className="img-select">
+                <div className="img-item">
+                  <a href="#" data-id="1">
+                    <img
+                      src={element.image}
+                      alt={element.category + " image"}
+                      alt="shoe image"
+                    />
+                  </a>
+                </div>
+                <div className="img-item">
+                  <a href="#" data-id="2">
+                    <img
+                      src={element.image}
+                      alt={element.category + " image"}
+                    />
+                  </a>
+                </div>
+                <div className="img-item">
+                  <a href="#" data-id="3">
+                    <img
+                      src={element.image}
+                      alt={element.category + " image"}
+                    />
+                  </a>
+                </div>
+                <div className="img-item">
+                  <a href="#" data-id="4">
+                    <img
+                      src={element.image}
+                      alt={element.category + " image"}
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
 
-                <button
-                  className="btn-btn-chating"
-                  onClick={(e) => {
-                    // getAllComment();
-                    setshowComment(!showComment);
-                  }}
-                >
-                  Show reviews
-                </button>
+            <div className="product-content">
+              <div className="title">
+                <h2 className="product-title">{element.title}</h2>
+                <FaEllipsisH />
+              </div>
+
+              <div className="product-rating">
                 {token ? (
                   <div className="stars">
                     <ReactStars
                       count={5}
                       onChange={ratingChanged}
-                      // onClick={(e) => {
-                      //   addLike(element.id);
-                      // }}
                       size={24}
                       half={true}
                       emptyIcon={<i className="far fa-star"></i>}
@@ -373,55 +292,92 @@ const ProductDetails = () => {
                     />
                   </div>
                 ) : null}
+                <span>
+                  {element.rating || 0}({element.counter || 0})
+                </span>
+              </div>
+
+              <div className="product-price">
+                <p className="last-price">
+                  Old Price: <span>{element.price}</span>
+                </p>
+                <p className="new-price">
+                  New Price:{" "}
+                  <span>${element.price - element.price * 0.05} (5%)</span>
+                </p>
+              </div>
+
+              <div className="product-detail">
+                <h2>about this item: </h2>
+                <p>{element.description}</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequatur, perferendis eius. Dignissimos, labore suscipit.
+                  Unde.
+                </p>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>Available:{" "}
+                    <span>in stock</span>
+                  </li>
+                  <li>
+                    Category: <span>{element.category}</span>
+                  </li>
+                  <li>
+                    Shipping Area: <span>All over the world</span>
+                  </li>
+                  <li>
+                    Payment Method: <span>Visa or Cash</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="purchase-info">
+                <button type="button" className="btn">
+                  Add to favorite
+                </button>
+                <button type="button" className="btn">
+                  edit
+                </button>
+                <button type="button" className="btn">
+                  delete
+                </button>
+              </div>
+
+              <div className="social-links">
+                <p>Share At: </p>
+                <a href="#">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                  <i className="fab fa-whatsapp"></i>
+                </a>
+                <a href="#">
+                  <i className="fab fa-pinterest"></i>
+                </a>
               </div>
             </div>
-          </div>
-
-          <div className="all-comment-div">
-            {showComment ? (
-              <div className="comment-reviews">
-                {allComments
-                  ? allComments
-                  : toast.warn("No comment on this product", {
-                      position: toast.POSITION.BOTTOM_RIGHT,
-                    })}
-
-                {state.token ? (
-                  <div className="add-comment-textarea-div">
-                    <textarea
-                      placeholder="Add Comment Here ...."
-                      onChange={(e) => {
-                        setcreateComment(e.target.value);
-                      }}
-                      className="text-area-comment"
-                    />
-                    <br />
-                    <button
-                      className="btn-to-create-comment"
-                      onClick={(e) => {
-                        createNewComment();
-                        setsucesscomment(!sucesscomment);
-                      }}
-                    >
-                      {" "}
-                      Add Comment
-                    </button>{" "}
-                  </div>
-                ) : null}
-                <br />
-              </div>
-            ) : null}
           </div>
         </div>
       );
     });
   ///////////////////////////////
   return (
-    <div className="container-all-div">
-      {productDetailsToShow ? productDetailsToShow : null}
-    </div>
+    <>
+      <div className="container-all-div">
+        {productDetailsToShow
+          ? productDetailsToShow
+          : "There is No Comments yet"}
+        {allComments}
+      </div>
+    </>
   );
-  //////////////////////////////
 };
 
 export default ProductDetails;
