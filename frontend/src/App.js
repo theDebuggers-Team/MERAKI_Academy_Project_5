@@ -17,6 +17,7 @@ import About from "./component/About/about";
 import Terms from "./component/Terms/terms";
 import Home from "./component/Home/Home";
 import ContactUs from "./component/emailjs/emailjs";
+import GeoLocate from "./component/Geolocate/geoLocate";
 
 import GetProductsByCategory from "./component/getProductByCategory/AllProductByCategory";
 
@@ -36,7 +37,7 @@ function App() {
           setSearch(e.target.value);
         }}
       ></input> */}
-
+      {/* <GeoLocate /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
@@ -51,6 +52,7 @@ function App() {
         <Route path="/panel" element={<Panel />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
+        <Route path="/geolocation" element={<GeoLocate />} />
         <Route
           path="/getAllProductByCategory/:category"
           element={<GetProductsByCategory />}
