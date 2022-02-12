@@ -5,6 +5,9 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../reducer/login/index";
+import { BsFacebook, BsTwitter, BsLinkedin } from "react-icons/bs";
+import Swal from "sweetalert2";
+
 const UserProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -56,17 +59,24 @@ const UserProfile = () => {
     return (
       <div className="divContainer">
         <div className="user-image">
+          <div className="user-twit">
           <img className="image-user" src={user.users_image} />
           <span className="image-data">
             {user.firstName + " " + user.lastName}
           </span>
           <span className="image-data">{user.email}</span>
+          </div>
+          <div className="icons-user-prof">
+            <BsFacebook className="icon-prof-f" />
+            <BsTwitter className="icon-prof-t" />
+            <BsLinkedin className="icon-prof-l" />
+          </div>
         </div>
         <div className="detailes">
           <div className="personal-detailes">
             <div className="info-div">
               <label className="label-user">First Name</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="First Name"
@@ -75,7 +85,7 @@ const UserProfile = () => {
             </div>
             <div className="info-div">
               <label className="label-user">Last Name</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Last Name"
@@ -84,7 +94,7 @@ const UserProfile = () => {
             </div>
             <div className="info-div">
               <label className="label-user">Email</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Email"
@@ -93,7 +103,7 @@ const UserProfile = () => {
             </div>
             <div className="info-div">
               <label className="label-user">Mobile Phone</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Mobile Phone"
@@ -105,18 +115,69 @@ const UserProfile = () => {
           <div className="Address">
             <div className="info-div">
               <label className="label-user">Country</label>
-              <br />
+
               <input
                 type="text"
                 Placeholder="Country"
                 defaultValue={user.country}
               />
             </div>
-            <div className="info-div">
+            {/* <div className="info-div">
               <label className="label-user">Mobile Phone</label>
-              <br />
+
               <input type="text" Placeholder="Mobile Phone" />
-            </div>
+             
+            </div> */}
+          </div>
+          <div className="div-btn-user-profile-update">
+            <button
+              className="btin-prof"
+              onClick={(e) => {
+                Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, update my profile",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    updateUserByID();
+                    Swal.fire(
+                      "Updated!",
+                      "Your profile has been updated.",
+                      "success"
+                    );
+                  }
+                });
+              }}
+            >
+              Update
+            </button>
+            <button
+            className="btin-prof2"
+              onClick={(e) => {
+                Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete my profile",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    deleteUserByID();
+                    Swal.fire(
+                      "Updated!",
+                      "Your profile has been deleted.",
+                      "success"
+                    );
+                  }
+                });
+              }}
+            >Delete</button>
           </div>
         </div>
 
@@ -145,7 +206,7 @@ const UserProfile = () => {
   useEffect(() => {
     getUserByID();
   }, []);
-  return <div>{mapOverUsers}</div>;
+  return <div className="container-usr-profile-5">{mapOverUsers}</div>;
 };
 
 export default UserProfile;
