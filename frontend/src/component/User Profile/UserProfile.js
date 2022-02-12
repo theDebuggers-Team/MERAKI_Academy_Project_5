@@ -9,6 +9,16 @@ import { BsFacebook, BsTwitter, BsLinkedin } from "react-icons/bs";
 import Swal from "sweetalert2";
 
 const UserProfile = () => {
+
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [age, setAge] = useState(0);
+  const [country, setcountry] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [users_image, setusers_Image] = useState("");
+  const [phone_Number, setphone_number] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
@@ -35,7 +45,7 @@ const UserProfile = () => {
   };
   const updateUserByID = () => {
     axios
-      .put(`http://localhost:5000/user/updateprofile`, {
+      .put(`http://localhost:5000/user/updateprofile`,{firstName,lastName,age,country,phone_Number}, {
         headers: {
           Authorization: `Basic ${token}`,
         },
@@ -82,6 +92,9 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="First Name"
                 defaultValue={user.firstName}
+                onChange={(e)=>{
+                  setfirstName(e.target.value)
+                }}
               />
             </div>
             <div className="info-div">
@@ -91,6 +104,9 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="Last Name"
                 defaultValue={user.lastName}
+                onClick={(e) => {
+                  setlastName(e.target.value)
+                }}
               />
             </div>
             <div className="info-div">
@@ -100,6 +116,9 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="Email"
                 defaultValue={user.email}
+                onChange={(e)=>{
+                  setEmail(e.target.value)
+                }}
               />
             </div>
             <div className="info-div">
@@ -109,6 +128,9 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="Mobile Phone"
                 defaultValue={user.phone_Number}
+                onChange={(e)=>{
+                  setphone_number(e.target.value)
+                }}
               />
             </div>
           </div>
@@ -121,14 +143,19 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="Country"
                 defaultValue={user.country}
+                 onChange={(e)=>{
+                  setcountry(e.target.value)
+                 }}
               />
             </div>
-            {/* <div className="info-div">
-              <label className="label-user">Mobile Phone</label>
+            <div className="info-div">
+              <label className="label-user">Age</label>
 
-              <input type="text" Placeholder="Mobile Phone" />
+              <input defaultValue={user.age} type="text" Placeholder="Age" onChange={(e)=>{
+                setAge(e.target.value)
+              }} />
              
-            </div> */}
+            </div>
           </div>
           <div className="div-btn-user-profile-update">
             <button
