@@ -52,7 +52,8 @@ const UserProfile = () => {
         },
       })
       .then((result) => {
-        console.log(result);
+        localStorage.clear()
+        navigate("/register")
       });
   };
   const mapOverUsers = user.map((user) => {
