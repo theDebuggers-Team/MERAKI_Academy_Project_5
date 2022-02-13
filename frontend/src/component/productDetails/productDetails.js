@@ -283,7 +283,7 @@ const ProductDetails = () => {
                             <button
                               className="btn"
                               onClick={(e) => {
-                                updateCommentById();
+                                updateCommentById(comment.id);
                                 setsucesscomment(!sucesscomment);
                               }}
                             >
