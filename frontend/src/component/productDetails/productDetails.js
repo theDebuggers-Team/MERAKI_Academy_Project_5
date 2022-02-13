@@ -208,6 +208,23 @@ const ProductDetails = () => {
   };
 
   //////////////////////////////////////////
+
+  /////////////////////////
+  
+  const deleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:5000/product/delete_1/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((result) => {
+        getAllProducts();
+      })
+      .catch((error) => {});
+  };
+
+  //////////////////////
   useEffect(() => {
     getAllComment();
   }, [sucesscomment]);
@@ -450,6 +467,9 @@ const ProductDetails = () => {
                 ) : null}
                 {element.user_id == decode.userId ? (
                   <button type="button" className="btn">
+                    onClick={(e)=>{
+
+                    }}
                     delete
                   </button>
                 ) : null}
