@@ -11,8 +11,8 @@ class Demo1 extends Component {
     super();
     this.state = {
       name: "React",
-      latitude: "",
-      longitude: "",
+      latitude: "0",
+      longitude: "0",
     };
   }
 

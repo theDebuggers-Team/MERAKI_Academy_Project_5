@@ -4,11 +4,12 @@ const { connection } = require("../database/db.js");
 //create controller for create New product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, image, category, latitude, longitude } =
+  const { title, description, price, image, category, latitude1, longitude1 } =
     req.body;
   console.log(req.token);
+  console.log(typeof req.body.longitude1);
   const user_id = req.token.userId;
-  const query = `insert into products (title, description, price, image,user_id,category,latitude,longitude) values (?,?,?,?,?,?,?,?)`;
+  const query = `insert into products (title, description, price, image,user_id,category,latitude1,longitude1) values (?,?,?,?,?,?,?,?)`;
 
   const data = [
     title,
@@ -17,8 +18,8 @@ const createNewProduct = (req, res) => {
     image,
     user_id,
     category,
-    latitude,
-    longitude,
+    latitude1,
+    longitude1,
   ];
 
   connection.query(query, data, (err, result) => {
