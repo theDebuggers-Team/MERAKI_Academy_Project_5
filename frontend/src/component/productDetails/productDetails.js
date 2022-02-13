@@ -182,7 +182,54 @@ const ProductDetails = () => {
       });
   };
 
+  ////////////////////////////////////////////////////////////
+  const addToWishList = () => {
+    axios
+      .post(
+        `http://localhost:5000/wishlist/add/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        console.log(err);
+      });
+  };
+
   //////////////////////////////////////////
+
+  /////////////////////////
+
+  const deleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:5000/product/delete_1/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((result) => {
+        toast.success(result.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //////////////////////
   useEffect(() => {
     getAllComment();
   }, [sucesscomment]);
@@ -213,7 +260,13 @@ const ProductDetails = () => {
                         class="fa fa-edit"
                         onClick={(e) => setUpdating(!updating)}
                       ></i>
-                      <i class="fa fa-trash"></i>
+                      <i
+                        class="fa fa-trash"
+                        onClick={(e) => {
+                          deleteComment(comment.id);
+                          setsucesscomment(!sucesscomment);
+                        }}
+                      ></i>
                     </div>
                     <div class="comment-content">
                       {updating ? (
@@ -222,10 +275,28 @@ const ProductDetails = () => {
                             className="comment-body"
                             placeholder="Write Your Commment ..."
                             defaultValue={comment.comment}
+                            onChange={(e) => {
+                              setupdatedComment(e.target.value);
+                            }}
                           />
                           <div class="comment-btns">
-                            <button className="btn">Update</button>
-                            <button className="btn">Cancel</button>
+                            <button
+                              className="btn"
+                              onClick={(e) => {
+                                updateCommentById();
+                                setsucesscomment(!sucesscomment);
+                              }}
+                            >
+                              Update
+                            </button>
+                            <button
+                              className="btn"
+                              onClick={(e) => {
+                                setUpdating(!updating);
+                              }}
+                            >
+                              Cancel
+                            </button>
                           </div>
                         </div>
                       ) : (
@@ -379,15 +450,53 @@ const ProductDetails = () => {
               </div>
 
               <div className="purchase-info">
-                <button type="button" className="btn">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={(e) => {
+                    addToWishList();
+                  }}
+                >
                   Add to favorite
                 </button>
-                <button type="button" className="btn">
-                  edit
-                </button>
-                <button type="button" className="btn">
-                  delete
-                </button>
+                {element.user_id == decode.userId ? (
+                  <button
+                    type="button"
+                    className="btn"
+                    onClick={(e) => {
+                      navigate(`/update/${id}`);
+                    }}
+                  >
+                    edit
+                  </button>
+                ) : null}
+                {element.user_id == decode.userId ? (
+                  <button type="button" className="btn">
+                    onClick=
+                    {(e) => {
+                      Swal.fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, Delete my Product",
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          deleteProduct();
+                          Swal.fire(
+                            "Deleted!",
+                            "Your Product has been Deleted.",
+                            "success"
+                          );
+                        }
+                      });
+                    }}
+                    delete
+                  </button>
+                ) : null}
+                <button className="btn">Contact Seller</button>
               </div>
 
               <div className="social-links">
@@ -439,9 +548,26 @@ const ProductDetails = () => {
                     <textarea
                       className="comment-body"
                       placeholder="Write Your Commment ..."
+                      onChange={(e) => {
+                        setcreateComment(e.target.value);
+                      }}
                     />
                     <div class="comment-btns">
-                      <button className="btn">Post</button>
+                      <button
+                        className="btn"
+                        onClick={(e) => {
+                          if (!createComment) {
+                            toast.error("No comment written to post", {
+                              position: toast.POSITION.BOTTOM_RIGHT,
+                            });
+                          } else {
+                            createNewComment();
+                            setsucesscomment(!sucesscomment);
+                          }
+                        }}
+                      >
+                        Post
+                      </button>
                       <button className="btn">Cancel</button>
                     </div>
                   </div>

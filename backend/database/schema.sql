@@ -81,10 +81,14 @@ USE  MERAKI_Academy_Project_5 ;
 -- insert into products (title, description, price, image,user_id,category) values ("mazda","mazda 4 sale ","8000","https://cdn.elwatannews.com/watan/543x295/14365937361579365330.jpg",1,"cars");
 -- insert into products (title, description, price, image,user_id,category) values ("sonata","sonata 4 sale ","8000","https://cdn.elwatannews.com/watan/543x295/14365937361579365330.jpg",1,"cars");
 
--- ALTER TABLE products ADD counter INT DEFAULT 0;
+ALTER TABLE products ADD counter INT DEFAULT 0;
 
--- ALTER TABLE products ADD rating INT DEFAULT 0;
+
+ALTER TABLE products ADD rating INT DEFAULT 0;
 
 ALTER TABLE products ADD latitude1 VARCHAR(255);
 
 ALTER TABLE products ADD longitude1 VARCHAR(255);
+
+ALTER TABLE products ADD rating INT DEFAULT 0;
+
