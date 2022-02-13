@@ -219,9 +219,14 @@ const ProductDetails = () => {
         },
       })
       .then((result) => {
-        getAllProducts();
+        toast.success(result.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        navigate("/")
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   //////////////////////
