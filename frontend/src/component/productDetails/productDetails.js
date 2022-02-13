@@ -182,6 +182,32 @@ const ProductDetails = () => {
       });
   };
 
+
+  ////////////////////////////////////////////////////////////
+  const addToWishList = () => {
+    axios
+      .post(
+        `http://localhost:5000/wishlist/add/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        console.log(err);
+      });
+  };
+
   //////////////////////////////////////////
   useEffect(() => {
     getAllComment();
@@ -403,7 +429,9 @@ const ProductDetails = () => {
               </div>
 
               <div className="purchase-info">
-                <button type="button" className="btn">
+                <button type="button" className="btn" onClick={(e)=>{
+                  addToWishList()
+                }}>
                   Add to favorite
                 </button>
                 <button type="button" className="btn">
