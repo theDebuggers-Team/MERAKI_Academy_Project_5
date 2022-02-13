@@ -182,7 +182,54 @@ const ProductDetails = () => {
       });
   };
 
+  ////////////////////////////////////////////////////////////
+  const addToWishList = () => {
+    axios
+      .post(
+        `http://localhost:5000/wishlist/add/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        console.log(err);
+      });
+  };
+
   //////////////////////////////////////////
+
+  /////////////////////////
+
+  const deleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:5000/product/delete_1/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((result) => {
+        toast.success(result.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //////////////////////
   useEffect(() => {
     getAllComment();
   }, [sucesscomment]);
@@ -403,15 +450,53 @@ const ProductDetails = () => {
               </div>
 
               <div className="purchase-info">
-                <button type="button" className="btn">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={(e) => {
+                    addToWishList();
+                  }}
+                >
                   Add to favorite
                 </button>
-                <button type="button" className="btn">
-                  edit
-                </button>
-                <button type="button" className="btn">
-                  delete
-                </button>
+                {element.user_id == decode.userId ? (
+                  <button
+                    type="button"
+                    className="btn"
+                    onClick={(e) => {
+                      navigate(`/update/${id}`);
+                    }}
+                  >
+                    edit
+                  </button>
+                ) : null}
+                {element.user_id == decode.userId ? (
+                  <button type="button" className="btn">
+                    onClick=
+                    {(e) => {
+                      Swal.fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, Delete my Product",
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          deleteProduct();
+                          Swal.fire(
+                            "Deleted!",
+                            "Your Product has been Deleted.",
+                            "success"
+                          );
+                        }
+                      });
+                    }}
+                    delete
+                  </button>
+                ) : null}
+                <button className="btn">Contact Seller</button>
               </div>
 
               <div className="social-links">
