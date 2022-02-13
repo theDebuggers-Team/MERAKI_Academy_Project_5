@@ -22,8 +22,8 @@ class Demo1 extends Component {
           zoom={14}
           style={mapStyles}
           initialCenter={{
-            lat: YOUR_LATITUDE,
-            lng: YOUR_LONGITUDE,
+            lat: "32.0616892",
+            lng: "36.060849",
           }}
         >
           <Marker onClick={this.onMarkerClick} name={"This is test name"} />
@@ -34,5 +34,5 @@ class Demo1 extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "API_KEY",
+  apiKey: "AIzaSyDefbz9TCU1s5nXCQVTyqYz2XH6X3ug0LQ",
 })(Demo1);

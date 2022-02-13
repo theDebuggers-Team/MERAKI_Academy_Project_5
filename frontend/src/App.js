@@ -18,6 +18,7 @@ import Terms from "./component/Terms/terms";
 import Home from "./component/Home/Home";
 import ContactUs from "./component/emailjs/emailjs";
 import GeoLocate from "./component/Geolocate/geoLocate";
+import Demo1 from "./component/Maps/maps";
 
 import GetProductsByCategory from "./component/getProductByCategory/AllProductByCategory";
 
@@ -54,6 +55,12 @@ function App() {
         <Route path="/panel" element={<Panel />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/about" element={<About />} />
+        <Route
+          path="/map"
+          element={
+            <Demo1 lat={lat} setLat={setLat} long={long} setLong={setLong} />
+          }
+        />
         <Route
           path="/geolocation"
           element={
