@@ -11,10 +11,32 @@ class Demo1 extends Component {
     super();
     this.state = {
       name: "React",
+      latitude: "",
+      longitude: "",
     };
   }
 
+  // this.setState({count: this.state.count + 1});
+
   render() {
+    if ("geolocation" in navigator) {
+      console.log("geolocation available");
+      console.log("PROPS: ", this.props);
+
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+        //   location = position;
+        // setLat(position.coords.latitude);
+        // setLong(position.coords.longitude);
+        this.state.latitude = position.coords.latitude;
+        this.state.longitude = position.coords.longitude;
+        console.log(this.state.latitude);
+      });
+    } else {
+      console.log("geolocation not available");
+    }
+    console.log("PROPS: ", this.props);
+    // console.log(latitude);
     return (
       <div>
         <Map
@@ -22,8 +44,8 @@ class Demo1 extends Component {
           zoom={14}
           style={mapStyles}
           initialCenter={{
-            lat: "32.0616892",
-            lng: "36.060849",
+            lat: this.props.lat,
+            lng: this.props.long,
           }}
         >
           <Marker onClick={this.onMarkerClick} name={"This is test name"} />

@@ -6,13 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cloudinary from "../Cloudinary/Cloudinary";
-const NewProduct = () => {
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+const NewProduct = ({ lat, setLat, long, setLong }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState();
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
+
   // const [token, setToken] = useState("");
   const state = useSelector((state) => {
     return {
@@ -45,6 +47,25 @@ const NewProduct = () => {
         });
       });
   };
+  /////////////////////////////////////GeoLocation////////////////////////////////////
+
+  const geoLocate = () => {
+    if ("geolocation" in navigator) {
+      console.log("geolocation available");
+
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+        //   location = position;
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+    } else {
+      console.log("geolocation not available");
+    }
+    console.log(lat);
+    return <p>{lat}</p>;
+  };
+
   ////////////////////////////////////////////cloudinary////////////////////////////////
 
   // return (
@@ -187,6 +208,7 @@ const NewProduct = () => {
             save draft
           </button>
         </div>
+        <button onClick={geoLocate}>Take Current Location</button>
       </div>
     </>
   );
