@@ -467,25 +467,26 @@ const ProductDetails = () => {
                 ) : null}
                 {element.user_id == decode.userId ? (
                   <button type="button" className="btn">
-                    onClick={(e)=>{
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, Delete my Product",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      deleteProduct()
-      Swal.fire(
-        "Deleted!",
-        "Your Product has been Deleted.",
-        "success"
-      );
-    }
-  });
+                    onClick=
+                    {(e) => {
+                      Swal.fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, Delete my Product",
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          deleteProduct();
+                          Swal.fire(
+                            "Deleted!",
+                            "Your Product has been Deleted.",
+                            "success"
+                          );
+                        }
+                      });
                     }}
                     delete
                   </button>
