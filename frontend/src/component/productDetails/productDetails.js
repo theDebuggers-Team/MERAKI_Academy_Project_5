@@ -182,7 +182,6 @@ const ProductDetails = () => {
       });
   };
 
-
   ////////////////////////////////////////////////////////////
   const addToWishList = () => {
     axios
@@ -429,19 +428,31 @@ const ProductDetails = () => {
               </div>
 
               <div className="purchase-info">
-                <button type="button" className="btn" onClick={(e)=>{
-                  addToWishList()
-                }}>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={(e) => {
+                    addToWishList();
+                  }}
+                >
                   Add to favorite
                 </button>
-                { element.user_id == decode.userId ?<button type="button" className="btn" onClick={(e)=>{
-                     navigate(`/update/${id}`)
-                }}>
-                  edit
-                </button>:null}
-                { element.user_id == decode.userId ?<button type="button" className="btn">
-                  delete
-                </button> :null}
+                {element.user_id == decode.userId ? (
+                  <button
+                    type="button"
+                    className="btn"
+                    onClick={(e) => {
+                      navigate(`/update/${id}`);
+                    }}
+                  >
+                    edit
+                  </button>
+                ) : null}
+                {element.user_id == decode.userId ? (
+                  <button type="button" className="btn">
+                    delete
+                  </button>
+                ) : null}
               </div>
 
               <div className="social-links">
