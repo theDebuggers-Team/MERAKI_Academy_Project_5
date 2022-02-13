@@ -222,7 +222,7 @@ const ProductDetails = () => {
         toast.success(result.data.message, {
           position: toast.POSITION.TOP_RIGHT,
         });
-        navigate("/")
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
