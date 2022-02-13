@@ -434,7 +434,9 @@ const ProductDetails = () => {
                 }}>
                   Add to favorite
                 </button>
-                { element.user_id == decode.userId ?<button type="button" className="btn">
+                { element.user_id == decode.userId ?<button type="button" className="btn" onClick={(e)=>{
+                     navigate(`/update/${id}`)
+                }}>
                   edit
                 </button>:null}
                 { element.user_id == decode.userId ?<button type="button" className="btn">
