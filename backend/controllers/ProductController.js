@@ -4,12 +4,22 @@ const { connection } = require("../database/db.js");
 //create controller for create New product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, image, category } = req.body;
+  const { title, description, price, image, category, latitude, longitude } =
+    req.body;
   console.log(req.token);
   const user_id = req.token.userId;
-  const query = `insert into products (title, description, price, image,user_id,category) values (?,?,?,?,?,?)`;
+  const query = `insert into products (title, description, price, image,user_id,category,latitude,longitude) values (?,?,?,?,?,?,?,?)`;
 
-  const data = [title, description, price, image, user_id, category];
+  const data = [
+    title,
+    description,
+    price,
+    image,
+    user_id,
+    category,
+    latitude,
+    longitude,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -99,7 +109,7 @@ const getAnProductByCategory = (req, res) => {
         return res.status(200).json({
           success: false,
           message: "No products found with the indicated category",
-          results:result
+          results: result,
         });
       }
       res.status(200).json({
