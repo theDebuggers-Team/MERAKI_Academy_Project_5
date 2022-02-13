@@ -496,6 +496,7 @@ const ProductDetails = () => {
                     delete
                   </button>
                 ) : null}
+                <button className="btn">Contact Seller</button>
               </div>
 
               <div className="social-links">
