@@ -434,12 +434,12 @@ const ProductDetails = () => {
                 }}>
                   Add to favorite
                 </button>
-                <button type="button" className="btn">
+                { element.user_id == decode.userId ?<button type="button" className="btn">
                   edit
-                </button>
-                <button type="button" className="btn">
+                </button>:null}
+                { element.user_id == decode.userId ?<button type="button" className="btn">
                   delete
-                </button>
+                </button> :null}
               </div>
 
               <div className="social-links">
