@@ -19,23 +19,23 @@ class Demo1 extends Component {
   // this.setState({count: this.state.count + 1});
 
   render() {
-    if ("geolocation" in navigator) {
-      console.log("geolocation available");
-      console.log("PROPS: ", this.props);
+    // if ("geolocation" in navigator) {
+    //   console.log("geolocation available");
+    //   console.log("PROPS: ", this.props);
 
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
-        //   location = position;
-        // setLat(position.coords.latitude);
-        // setLong(position.coords.longitude);
-        this.state.latitude = position.coords.latitude;
-        this.state.longitude = position.coords.longitude;
-        console.log(this.state.latitude);
-      });
-    } else {
-      console.log("geolocation not available");
-    }
-    console.log("PROPS: ", this.props);
+    //   navigator.geolocation.getCurrentPosition((position) => {
+    //     console.log(position);
+    //     //   location = position;
+    //     // setLat(position.coords.latitude);
+    //     // setLong(position.coords.longitude);
+    //     this.state.latitude = position.coords.latitude;
+    //     this.state.longitude = position.coords.longitude;
+    //     console.log(this.state.latitude);
+    //   });
+    // } else {
+    //   console.log("geolocation not available");
+    // }
+    // console.log("PROPS: ", this.props);
     // console.log(latitude);
     return (
       <div>

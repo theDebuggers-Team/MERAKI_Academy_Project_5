@@ -49,19 +49,15 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
   };
   /////////////////////////////////////GeoLocation////////////////////////////////////
 
-  const geoLocate = () => {
-    if ("geolocation" in navigator) {
-      console.log("geolocation available");
+  const geoLocate = async () => {
 
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
+      await navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude);
         //   location = position;
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
       });
-    } else {
-      console.log("geolocation not available");
-    }
+    
     console.log(lat);
     return <p>{lat}</p>;
   };
