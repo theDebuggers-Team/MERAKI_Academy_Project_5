@@ -83,4 +83,12 @@ USE  MERAKI_Academy_Project_5 ;
 
 ALTER TABLE products ADD counter INT DEFAULT 0;
 
+
 ALTER TABLE products ADD rating INT DEFAULT 0;
+
+ALTER TABLE products ADD latitude1 VARCHAR(255);
+
+ALTER TABLE products ADD longitude1 VARCHAR(255);
+
+ALTER TABLE products ADD rating INT DEFAULT 0;
+

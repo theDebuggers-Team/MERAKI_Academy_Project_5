@@ -6,13 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cloudinary from "../Cloudinary/Cloudinary";
-const NewProduct = () => {
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+const NewProduct = ({ lat, setLat, long, setLong }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState();
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
+
   // const [token, setToken] = useState("");
   const state = useSelector((state) => {
     return {
@@ -27,7 +29,15 @@ const NewProduct = () => {
     axios
       .post(
         "http://localhost:5000/product/",
-        { title, description, price, image, category },
+        {
+          title,
+          description,
+          price,
+          image,
+          category,
+          latitude1: lat,
+          longitude1: long,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -45,6 +55,19 @@ const NewProduct = () => {
         });
       });
   };
+  /////////////////////////////////////GeoLocation////////////////////////////////////
+
+  const geoLocate = async () => {
+    await navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.coords.latitude);
+      //   location = position;
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+
+    console.log(lat);
+  };
+
   ////////////////////////////////////////////cloudinary////////////////////////////////
 
   // return (
@@ -115,7 +138,6 @@ const NewProduct = () => {
             setDescription(e.target.value);
           }}
         ></textarea>
-
         <div className="product-price">
           <input
             type="number"
@@ -133,7 +155,6 @@ const NewProduct = () => {
             className="inputprod"
           />
         </div>
-
         <input
           type="number"
           id="stock"
@@ -141,7 +162,6 @@ const NewProduct = () => {
           placeholder="item in stocks"
           className="inputprod"
         />
-
         <textarea
           className="text-area"
           id="tags"
@@ -155,10 +175,8 @@ const NewProduct = () => {
 
           <Cloudinary setImage={setImage} />
         </div>
-
         <input type="checkbox" className="checkbox" id="tac" checked />
         <label for="tac">OpenSooq take 30% from your total sell</label>
-
         <div className="buttons">
           <button
             className="btn"
@@ -187,6 +205,9 @@ const NewProduct = () => {
             save draft
           </button>
         </div>
+        <button onClick={geoLocate}>Take Current Location</button>
+        <p>{lat}</p>
+        <p>{long}</p>
       </div>
     </>
   );

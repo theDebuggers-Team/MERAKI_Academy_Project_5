@@ -19,6 +19,7 @@ import Home from "./component/Home/Home";
 import ContactUs from "./component/emailjs/emailjs";
 import GeoLocate from "./component/Geolocate/geoLocate";
 import Demo1 from "./component/Maps/maps";
+import CustomMap from "./component/customMap/custom-map";
 
 import GetProductsByCategory from "./component/getProductByCategory/AllProductByCategory";
 
@@ -30,7 +31,12 @@ function App() {
   return (
     <div className="App">
       <Header setSearch={setSearch} />
-
+      <Link to="/geolocation" className="about">
+        Geolocate
+      </Link>
+      <Link to="/map" className="about">
+        Map
+      </Link>
       {/* <Navbar {...props} /> */}
 
       {/* <input
@@ -46,7 +52,17 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products search={search} />} />
-        <Route path="/NewProduct" element={<NewProduct />} />
+        <Route
+          path="/NewProduct"
+          element={
+            <NewProduct
+              lat={lat}
+              setLat={setLat}
+              long={long}
+              setLong={setLong}
+            />
+          }
+        />
         <Route path="/update/:id" element={<Update />} />
         <Route path="/login" element={<Login />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
@@ -79,6 +95,7 @@ function App() {
 
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/custommap" element={<CustomMap />} />
       </Routes>
 
       <Footer />
