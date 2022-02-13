@@ -23,6 +23,7 @@ const ProductDetails = () => {
 
   //// decode tokenizer
   const decode = state.token && jwt_decode(state.token);
+  console.log(decode);
   const navigate = useNavigate();
 
   const [productDetails, setproductDetails] = useState([]);
@@ -32,13 +33,12 @@ const ProductDetails = () => {
   const [updatedComment, setupdatedComment] = useState("");
   const [isupdated, setisupdated] = useState(false);
   const [sucesscomment, setsucesscomment] = useState(false);
+  const [updating, setUpdating] = useState(false);
   ////////////////////////////////
   const [rating, setRating] = useState(0);
-  console.log(rating);
   const token = state.token;
   const { id } = useParams();
   console.log(updatedComment);
-  // console.log(decode);
   //////////////////////////////
   const getProductById = () => {
     axios
@@ -169,16 +169,13 @@ const ProductDetails = () => {
       });
   };
   /////////////////////add rating functi
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
+  const ratingChanged = (newRating, id) => {
     setRating(newRating);
-  };
 
-  const addLike = (id) => {
     axios
-      .put(`http://localhost:5000/like/${id}`, { value: rating - 0 })
+      .put(`http://localhost:5000/like/${id}`, { value: newRating - 0 })
       .then((result) => {
-        console.log(result.message);
+        console.log(result);
       })
       .catch((error) => {
         console.log(error.message);
@@ -191,11 +188,56 @@ const ProductDetails = () => {
   }, [sucesscomment]);
   useEffect(() => {
     getProductById();
-  }, []);
+  }, [rating]);
   ///////////////////////////////
   const allComments = commentsOnProduct.length
     ? commentsOnProduct.map((comment) => {
-        return <div></div>;
+        return (
+          <>
+            <h1>Comments</h1>
+
+            <ul id="comments-list" class="comments-list">
+              <li>
+                <div class="comment-main-level">
+                  <div class="comment-avatar">
+                    <img src={comment.users_image} alt="" />
+                  </div>
+
+                  <div class="comment-box">
+                    <div class="comment-head">
+                      <h6 class="comment-name">
+                        {comment.firstName + " " + comment.lastName}
+                      </h6>
+                      <span>{comment.publish_date}</span>
+                      <i
+                        class="fa fa-edit"
+                        onClick={(e) => setUpdating(!updating)}
+                      ></i>
+                      <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="comment-content">
+                      {updating ? (
+                        <div class="comment-content">
+                          <textarea
+                            className="comment-body"
+                            placeholder="Write Your Commment ..."
+                            defaultValue={comment.comment}
+                          />
+                          <div class="comment-btns">
+                            <button className="btn">Update</button>
+                            <button className="btn">Cancel</button>
+                          </div>
+                        </div>
+                      ) : (
+                        comment.comment
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </>
+        );
       })
     : null;
 
@@ -280,8 +322,11 @@ const ProductDetails = () => {
                 {token ? (
                   <div className="stars">
                     <ReactStars
+                      value={element.rating / element.counter}
                       count={5}
-                      onChange={ratingChanged}
+                      onChange={(newRate, id) => {
+                        ratingChanged(newRate, element.id);
+                      }}
                       size={24}
                       half={true}
                       emptyIcon={<i className="far fa-star"></i>}
@@ -293,7 +338,8 @@ const ProductDetails = () => {
                   </div>
                 ) : null}
                 <span>
-                  {element.rating || 0}({element.counter || 0})
+                  {element.rating / element.counter || 0}({element.counter || 0}
+                  )
                 </span>
               </div>
 
@@ -374,7 +420,36 @@ const ProductDetails = () => {
         {productDetailsToShow
           ? productDetailsToShow
           : "There is No Comments yet"}
-        {allComments}
+        <div class="comments-container">
+          {allComments}
+          <ul id="comments-list" class="comments-list">
+            <li>
+              <div class="comment-main-level">
+                <div class="comment-avatar">
+                  <img src={decode.image} alt="" />
+                </div>
+
+                <div class="comment-box">
+                  <div class="comment-head">
+                    <h6 class="comment-name">
+                      {decode.firstName + " " + decode.lastName}
+                    </h6>
+                  </div>
+                  <div class="comment-content">
+                    <textarea
+                      className="comment-body"
+                      placeholder="Write Your Commment ..."
+                    />
+                    <div class="comment-btns">
+                      <button className="btn">Post</button>
+                      <button className="btn">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );

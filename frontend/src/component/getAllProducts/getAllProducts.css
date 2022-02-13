@@ -77,6 +77,10 @@
     flex-direction: column;
     width: 100%;
   }
+  .single-product{
+    min-width: 100%;
+    min-height: 60vh;
+  }
 }
 .image {
   width: 100%;

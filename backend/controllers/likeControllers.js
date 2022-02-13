@@ -4,6 +4,7 @@ const { connection } = require("../database/db");
 //create controller for create add like
 const addLike = (req, res) => {
   const productId = req.params.id;
+
   const { value } = req.body;
   // const user_id = req.token.userId;
   const query = `UPDATE products SET rating=rating+? ,counter=counter+1  where id=? `;

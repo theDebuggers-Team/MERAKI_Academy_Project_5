@@ -73,6 +73,7 @@ const login = (req, res) => {
           country: result[0].country,
           role: result[0].role_id,
           phone_number: result[0].phone_Number,
+          image:result[0].users_image
         };
 
         const options = {
