@@ -213,7 +213,13 @@ const ProductDetails = () => {
                         class="fa fa-edit"
                         onClick={(e) => setUpdating(!updating)}
                       ></i>
-                      <i class="fa fa-trash"></i>
+                      <i
+                        class="fa fa-trash"
+                        onClick={(e) => {
+                          deleteComment(comment.id);
+                          setsucesscomment(!sucesscomment);
+                        }}
+                      ></i>
                     </div>
                     <div class="comment-content">
                       {updating ? (
@@ -222,10 +228,28 @@ const ProductDetails = () => {
                             className="comment-body"
                             placeholder="Write Your Commment ..."
                             defaultValue={comment.comment}
+                            onChange={(e) => {
+                              setupdatedComment(e.target.value);
+                            }}
                           />
                           <div class="comment-btns">
-                            <button className="btn">Update</button>
-                            <button className="btn">Cancel</button>
+                            <button
+                              className="btn"
+                              onClick={(e) => {
+                                updateCommentById();
+                                setsucesscomment(!sucesscomment);
+                              }}
+                            >
+                              Update
+                            </button>
+                            <button
+                              className="btn"
+                              onClick={(e) => {
+                                setUpdating(!updating);
+                              }}
+                            >
+                              Cancel
+                            </button>
                           </div>
                         </div>
                       ) : (
@@ -439,9 +463,26 @@ const ProductDetails = () => {
                     <textarea
                       className="comment-body"
                       placeholder="Write Your Commment ..."
+                      onChange={(e) => {
+                        setcreateComment(e.target.value);
+                      }}
                     />
                     <div class="comment-btns">
-                      <button className="btn">Post</button>
+                      <button
+                        className="btn"
+                        onClick={(e) => {
+                          if (!createComment) {
+                            toast.error("No comment written to post", {
+                              position: toast.POSITION.BOTTOM_RIGHT,
+                            });
+                          } else {
+                            createNewComment();
+                            setsucesscomment(!sucesscomment);
+                          }
+                        }}
+                      >
+                        Post
+                      </button>
                       <button className="btn">Cancel</button>
                     </div>
                   </div>
