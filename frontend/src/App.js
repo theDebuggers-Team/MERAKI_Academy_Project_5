@@ -65,7 +65,17 @@ function App() {
         />
         <Route path="/update/:id" element={<Update />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/productDetails/:id" element={<ProductDetails />} />
+        <Route
+          path="/productDetails/:id"
+          element={
+            <ProductDetails
+              lat={lat}
+              setLat={setLat}
+              long={long}
+              setLong={setLong}
+            />
+          }
+        />
         <Route path="/users" element={<Users />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/panel" element={<Panel />} />

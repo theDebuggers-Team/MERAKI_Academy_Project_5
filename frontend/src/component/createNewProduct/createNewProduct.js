@@ -35,8 +35,8 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
           price,
           image,
           category,
-          latitude1: lat,
-          longitude1: long,
+          latitude: lat,
+          longitude: long,
         },
         {
           headers: {
