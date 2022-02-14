@@ -11,6 +11,7 @@ import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import ReactImageMagnify from "react-image-magnify";
 import { FaEllipsisH } from "react-icons/fa";
+import Demo1 from "../Maps/maps";
 toast.configure();
 const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const state = useSelector((state) => {
@@ -45,7 +46,11 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       .get(`http://localhost:5000/product/search_1?id=${id}`)
       .then((response) => {
         setproductDetails(response.data.results);
+        setLat("" + response.data.results[0].latitude);
+        setLong("" + response.data.results[0].longitude);
         console.log(response.data.results);
+        console.log(lat);
+        console.log(long);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -228,6 +233,10 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         console.log(error);
       });
   };
+  //////////////////////////////////////////////
+  //set location
+
+  const setLocation = (id) => {};
 
   //////////////////////
   useEffect(() => {
@@ -575,6 +584,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
               </div>
             </li>
           </ul>
+          <Demo1 />
         </div>
       </div>
     </>
