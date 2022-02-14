@@ -34,7 +34,7 @@ const Users = () => {
       });
   };
 
-  /////////////////////////////
+  ///////////////////////////// this function is to delete all comments reated to the user we need to delete from admin panel
   const deleteAllMyComments = (MyUserId) => {
     axios
       .delete(`http://localhost:5000/comment/delete_2/${MyUserId}`, {
@@ -60,7 +60,7 @@ const Users = () => {
       });
   };
 
-  ////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////// this function to delete all product related to the user we need to delete
 
   const deleteAnProductByUserId = (MyUserId) => {
     axios
