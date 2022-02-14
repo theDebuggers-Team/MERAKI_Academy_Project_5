@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 const mapStyles = {
-  width: "20%",
-  height: "20%",
+  width: "100%",
+  height: "100%",
 };
 
 class Demo1 extends Component {
@@ -44,8 +44,8 @@ class Demo1 extends Component {
           zoom={14}
           style={mapStyles}
           initialCenter={{
-            lat: "32",
-            lng: "36",
+            lat: this.props.lat,
+            lng: this.props.long,
           }}
         >
           <Marker onClick={this.onMarkerClick} name={"This is test name"} />

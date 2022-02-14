@@ -46,11 +46,13 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       .get(`http://localhost:5000/product/search_1?id=${id}`)
       .then((response) => {
         setproductDetails(response.data.results);
-        setLat("" + response.data.results[0].latitude);
-        setLong("" + response.data.results[0].longitude);
+        setLat(response.data.results[0].latitude);
+        setLong(response.data.results[0].longitude);
         console.log(response.data.results);
         console.log(lat);
         console.log(long);
+        console.log(typeof lat);
+        console.log(typeof long);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -58,6 +60,8 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         });
       });
   };
+
+  const location = () => {};
   /////////////////////////////
   const getAllComment = () => {
     axios
@@ -235,8 +239,6 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   };
   //////////////////////////////////////////////
   //set location
-
-  const setLocation = (id) => {};
 
   //////////////////////
   useEffect(() => {
@@ -507,7 +509,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                 ) : null}
                 <button className="btn">Contact Seller</button>
               </div>
-
+              <Link to="/map">see location</Link>
               <div className="social-links">
                 <p>Share At: </p>
                 <a href="#">
@@ -584,7 +586,8 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
               </div>
             </li>
           </ul>
-          <Demo1 />
+
+          {/* <Demo1 /> */}
         </div>
       </div>
     </>
