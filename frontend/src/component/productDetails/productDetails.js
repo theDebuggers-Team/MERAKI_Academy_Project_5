@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 import ReactImageMagnify from "react-image-magnify";
 import { FaEllipsisH } from "react-icons/fa";
 toast.configure();
-const ProductDetails = () => {
+const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
