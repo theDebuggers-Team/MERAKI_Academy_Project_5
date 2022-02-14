@@ -16,8 +16,8 @@ const Panel = () => {
   return (
     <div>
       <div className="panel">
-        <p
-          className="adminPanel"
+        <button
+          className="btn"
           onClick={() => {
             setUsersList(true);
             setProductList(false);
@@ -25,9 +25,9 @@ const Panel = () => {
           }}
         >
           Users List
-        </p>
-        <p
-          className="adminPanel"
+        </button>
+        <button
+          className="btn"
           onClick={() => {
             setUsersList(false);
             setProductList(true);
@@ -35,9 +35,9 @@ const Panel = () => {
           }}
         >
           Products List
-        </p>
-        <p
-          className="adminPanel"
+        </button>
+        <button
+          className="btn"
           onClick={() => {
             setUsersList(false);
             setProductList(false);
@@ -45,7 +45,7 @@ const Panel = () => {
           }}
         >
           Charts
-        </p>
+        </button>
       </div>
 
       {usersList ? <Users /> : ""}
