@@ -34,8 +34,6 @@ const Users = () => {
       });
   };
 
-
-
   /////////////////////////////
   const deleteAllMyComments = (MyUserId) => {
     axios
@@ -89,11 +87,7 @@ const Users = () => {
       });
   };
 
-
-
   ////////////////////////////////////////////////////////////////
-
-
 
   //////////////////////
 
@@ -109,10 +103,9 @@ const Users = () => {
         },
       })
       .then((result) => {
-        deleteAllMyComments(id)
-        deleteAnProductByUserId(id)
+        deleteAllMyComments(id);
+        deleteAnProductByUserId(id);
         getAllUsers();
-        
       })
       .catch((error) => {});
   };
@@ -149,7 +142,8 @@ const Users = () => {
                       //   )
                       // )
                       Swal.fire({
-                        title: "Are you sure? this action will lead to delete all comments and products posted by this user",
+                        title:
+                          "Are you sure? this action will lead to delete all comments and products posted by this user",
                         text: "You won't be able to revert this!",
                         icon: "warning",
                         showCancelButton: true,
