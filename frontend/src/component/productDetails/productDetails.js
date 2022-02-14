@@ -495,7 +495,7 @@ const ProductDetails = () => {
                     Delete
                   </button>
                 ) : null}
-               <a href="https://wa.me/+962777141659" target="_blank"> <button className="btn">Contact Seller</button></a>
+               <a href="https://wa.me/+962795706569" target="_blank"> <button className="btn">Contact Seller</button></a>
               </div>
 
               <div className="social-links">
