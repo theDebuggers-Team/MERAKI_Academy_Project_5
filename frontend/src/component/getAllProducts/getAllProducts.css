@@ -168,3 +168,14 @@
   margin-right: 10px;
   cursor: pointer;
 }
+
+
+.link:hover{
+   color: black;
+   background: transparent
+}
+
+.button-58:hover{
+  
+   background:rgb(163, 104, 104) 
+}

@@ -536,3 +536,21 @@ ul {
   justify-content: flex-start;
   padding-left: 1%;
 }
+
+.btn9 {
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 25px;
+  text-align: center;
+  padding: 0.45rem 0.8rem;
+  color: white;
+  outline: 0;
+  background-color: rgb(190, 18, 18);
+  margin-right: 0.2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.btn9:hover{
+  color: #000;
+  background-color:whitesmoke;
+}

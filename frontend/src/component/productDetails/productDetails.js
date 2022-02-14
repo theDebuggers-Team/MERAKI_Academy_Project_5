@@ -35,6 +35,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const [isupdated, setisupdated] = useState(false);
   const [sucesscomment, setsucesscomment] = useState(false);
   const [updating, setUpdating] = useState(false);
+  const [ usePhone,setusePhone] = useState([]);
   ////////////////////////////////
   const [rating, setRating] = useState(0);
   const token = state.token;
@@ -61,7 +62,13 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       });
   };
 
-  const location = () => {};
+
+ 
+
+
+
+  
+
   /////////////////////////////
   const getAllComment = () => {
     axios
@@ -76,6 +83,17 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         });
       });
   };
+  /////////////////////////////
+ // function for whatsapp.com
+  // const generateURL = (element)=>{
+  //   // 1] create element [a]
+  //   // 2] a.href = `whatsapp.com/`${}`
+  //   // 3] append
+  //   let a = document.getElementById("whatsapp");
+  //   console.log(a.href);
+  //   a.href = "www.google.com";
+  // }
+  // generateUrl()
 
   ///// function to create new comment
   const newComment = {
@@ -246,7 +264,12 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   }, [sucesscomment]);
   useEffect(() => {
     getProductById();
+    
   }, [rating]);
+
+  // useEffect(() => {
+  //   getUserByID()
+  // },[])
   ///////////////////////////////
   const allComments = commentsOnProduct.length
     ? commentsOnProduct.map((comment) => {
@@ -482,8 +505,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   </button>
                 ) : null}
                 {element.user_id == decode.userId ? (
-                  <button type="button" className="btn">
-                    onClick=
+                  <button type="button" className="btn9">
                     {(e) => {
                       Swal.fire({
                         title: "Are you sure?",
@@ -504,10 +526,10 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                         }
                       });
                     }}
-                    delete
+                    Delete
                   </button>
                 ) : null}
-                <button className="btn">Contact Seller</button>
+                <button className="btn" >Contact Seller</button>
               </div>
               <Link to="/map">see location</Link>
               <div className="social-links">
