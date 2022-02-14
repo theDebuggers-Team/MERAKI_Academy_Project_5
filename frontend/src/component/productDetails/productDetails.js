@@ -526,7 +526,7 @@ const ProductDetails = () => {
                     Delete
                   </button>
                 ) : null}
-                <button className="btn" onClick={generateURL}>Contact Seller</button>
+                <button className="btn" >Contact Seller</button>
               </div>
 
               <div className="social-links">
