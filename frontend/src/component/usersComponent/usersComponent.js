@@ -45,17 +45,17 @@ const Users = () => {
       .then((response) => {
         if (response.data.affectedRows === 1) {
           toast.success(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         } else {
           toast.error(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         }
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
@@ -72,17 +72,17 @@ const Users = () => {
       .then((response) => {
         if (response.data.affectedRows === 1) {
           toast.success(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         } else {
           toast.error(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         }
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
