@@ -30,6 +30,39 @@ const Users = () => {
       });
   };
 
+
+
+  /////////////////////////////
+  const deleteAllMyComments = (MyUserId) => {
+    axios
+      .delete(`http://localhost:5000/comment/delete_2/${MyUserId}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.affectedRows === 1) {
+          toast.success(response.data.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      });
+  };
+
+
+
+
+  //////////////////////
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -42,7 +75,9 @@ const Users = () => {
         },
       })
       .then((result) => {
+        deleteAllMyComments(id)
         getAllUsers();
+        
       })
       .catch((error) => {});
   };
@@ -79,7 +114,7 @@ const Users = () => {
                       //   )
                       // )
                       Swal.fire({
-                        title: "Are you sure?",
+                        title: "Are you sure? this action will lead to delete all comments and products posted by this user",
                         text: "You won't be able to revert this!",
                         icon: "warning",
                         showCancelButton: true,
