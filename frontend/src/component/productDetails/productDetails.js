@@ -472,7 +472,6 @@ const ProductDetails = () => {
                 ) : null}
                 {element.user_id == decode.userId ? (
                   <button type="button" className="btn">
-                    onClick=
                     {(e) => {
                       Swal.fire({
                         title: "Are you sure?",
