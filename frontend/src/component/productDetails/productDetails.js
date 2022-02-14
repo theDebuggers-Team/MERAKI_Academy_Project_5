@@ -471,7 +471,7 @@ const ProductDetails = () => {
                   </button>
                 ) : null}
                 {element.user_id == decode.userId ? (
-                  <button type="button" className="btn">
+                  <button type="button" className="btn9">
                     {(e) => {
                       Swal.fire({
                         title: "Are you sure?",
@@ -492,7 +492,7 @@ const ProductDetails = () => {
                         }
                       });
                     }}
-                    delete
+                    Delete
                   </button>
                 ) : null}
                 <button className="btn">Contact Seller</button>
