@@ -77,7 +77,7 @@
     flex-direction: column;
     width: 100%;
   }
-  .single-product{
+  .single-product {
     min-width: 100%;
     min-height: 60vh;
   }
@@ -153,4 +153,18 @@
 .productsPanelPagination {
   margin: auto;
   margin-top: 20px;
+}
+
+.btn2 {
+  padding: 10px 30px;
+  text-transform: capitalize;
+  color: rgb(8, 8, 8);
+  font-weight: bold;
+  font-size: 0.9rem;
+  background: #466ebe transparent;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+  cursor: pointer;
 }

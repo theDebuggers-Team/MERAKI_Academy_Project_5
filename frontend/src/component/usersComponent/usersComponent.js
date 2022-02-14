@@ -6,6 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { BiTrash } from "react-icons/bi";
 import Swal from "sweetalert2";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const Users = () => {
   const [users, setUsers] = useState([]);
   const state = useSelector((state) => {
@@ -30,6 +34,63 @@ const Users = () => {
       });
   };
 
+  ///////////////////////////// this function is to delete all comments reated to the user we need to delete from admin panel
+  const deleteAllMyComments = (MyUserId) => {
+    axios
+      .delete(`http://localhost:5000/comment/delete_2/${MyUserId}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.affectedRows === 1) {
+          toast.success(response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
+
+  //////////////////////////////////////////////////////////////////////////// this function to delete all product related to the user we need to delete
+
+  const deleteAnProductByUserId = (MyUserId) => {
+    axios
+      .delete(`http://localhost:5000/product/delete_2/${MyUserId}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.affectedRows === 1) {
+          toast.success(response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
+
+  ////////////////////////////////////////////////////////////////
+
+  //////////////////////
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -42,6 +103,8 @@ const Users = () => {
         },
       })
       .then((result) => {
+        deleteAllMyComments(id);
+        deleteAnProductByUserId(id);
         getAllUsers();
       })
       .catch((error) => {});
@@ -79,7 +142,8 @@ const Users = () => {
                       //   )
                       // )
                       Swal.fire({
-                        title: "Are you sure?",
+                        title:
+                          "Are you sure? this action will lead to delete all comments and products posted by this user",
                         text: "You won't be able to revert this!",
                         icon: "warning",
                         showCancelButton: true,

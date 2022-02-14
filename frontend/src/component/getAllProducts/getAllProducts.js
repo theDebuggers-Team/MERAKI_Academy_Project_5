@@ -186,11 +186,11 @@ const Products = ({ search }) => {
             })}
       </div>
       <div className="productsPanelPagination">
-        <button className="Pagin" onClick={previous}>
-          Previous
+        <button className="btn" onClick={previous}>
+          Back
         </button>
-        <button className="Pagin1">{page}</button>
-        <button className="Pagin" onClick={next}>
+        <button className="btn2">{page}</button>
+        <button className="btn" onClick={next}>
           Next
         </button>
       </div>
