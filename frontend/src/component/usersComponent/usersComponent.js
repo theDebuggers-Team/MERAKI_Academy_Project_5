@@ -6,6 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { BiTrash } from "react-icons/bi";
 import Swal from "sweetalert2";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const Users = () => {
   const [users, setUsers] = useState([]);
   const state = useSelector((state) => {
@@ -58,6 +62,36 @@ const Users = () => {
       });
   };
 
+  ////////////////////////////////////////////////////////////////////////////
+
+  const deleteAnProductByUserId = (MyUserId) => {
+    axios
+      .delete(`http://localhost:5000/product/delete_2/${MyUserId}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.affectedRows === 1) {
+          toast.success(response.data.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      });
+  };
+
+
+
+  ////////////////////////////////////////////////////////////////
 
 
 
@@ -76,6 +110,7 @@ const Users = () => {
       })
       .then((result) => {
         deleteAllMyComments(id)
+        deleteAnProductByUserId(id)
         getAllUsers();
         
       })
