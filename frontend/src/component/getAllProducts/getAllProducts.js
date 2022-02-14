@@ -32,7 +32,7 @@ const Products = ({ search }) => {
   const [limit, setLimit] = useState(4);
   const [likes, setLikes] = useState(9);
 
-  const [more,setmore]=useState(false);
+  const [more, setmore] = useState(false);
 
   const state = useSelector((state) => {
     return {
@@ -153,10 +153,15 @@ const Products = ({ search }) => {
                     <span className="price"> {element.price} $</span>
                     <span>
                       {element.description.substring(-1, 20)}
-                      <p style={{ color: "gray", cursor:"pointer"}} onClick={(e) =>{
-                        setmore(!more)
-                      }}>...more</p>
-                      { more? <p>{element.description}</p>:null}
+                      <p
+                        style={{ color: "gray", cursor: "pointer" }}
+                        onClick={(e) => {
+                          setmore(!more);
+                        }}
+                      >
+                        ...more
+                      </p>
+                      {more ? <p>{element.description}</p> : null}
                     </span>
                     <div className="stars">
                       <ReactStars
