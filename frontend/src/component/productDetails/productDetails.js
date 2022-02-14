@@ -34,6 +34,7 @@ const ProductDetails = () => {
   const [isupdated, setisupdated] = useState(false);
   const [sucesscomment, setsucesscomment] = useState(false);
   const [updating, setUpdating] = useState(false);
+  const [ usePhone,setusePhone] = useState([]);
   ////////////////////////////////
   const [rating, setRating] = useState(0);
   const token = state.token;
@@ -53,6 +54,20 @@ const ProductDetails = () => {
         });
       });
   };
+
+  //////////// get user by id
+  const getUserByID = () => {
+    axios
+      .get(`http://localhost:5000/user/profile`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((result) => {
+        setusePhone(result.data.results);
+      });
+  };
+
   /////////////////////////////
   const getAllComment = () => {
     axios
@@ -67,6 +82,17 @@ const ProductDetails = () => {
         });
       });
   };
+  /////////////////////////////
+ // function for whatsapp.com
+  // const generateURL = (element)=>{
+  //   // 1] create element [a]
+  //   // 2] a.href = `whatsapp.com/`${}`
+  //   // 3] append
+  //   let a = document.getElementById("whatsapp");
+  //   console.log(a.href);
+  //   a.href = "www.google.com";
+  // }
+  // generateUrl()
 
   ///// function to create new comment
   const newComment = {
@@ -235,7 +261,12 @@ const ProductDetails = () => {
   }, [sucesscomment]);
   useEffect(() => {
     getProductById();
+    
   }, [rating]);
+
+  // useEffect(() => {
+  //   getUserByID()
+  // },[])
   ///////////////////////////////
   const allComments = commentsOnProduct.length
     ? commentsOnProduct.map((comment) => {
@@ -495,7 +526,7 @@ const ProductDetails = () => {
                     Delete
                   </button>
                 ) : null}
-               <a href="https://wa.me/+962795706569" target="_blank"> <button className="btn">Contact Seller</button></a>
+                <button className="btn" onClick={generateURL}>Contact Seller</button>
               </div>
 
               <div className="social-links">
