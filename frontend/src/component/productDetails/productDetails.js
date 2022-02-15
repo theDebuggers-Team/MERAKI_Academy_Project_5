@@ -84,13 +84,14 @@ const ProductDetails = () => {
   };
   /////////////////////////////
  // function for whatsapp.com
-  // const generateURL = (element)=>{
-  //   // 1] create element [a]
+  // const generateURL = (phone_number)=>{
+  //   const a = document.createElement("a")
+  //   a.href = "https://wa.me/"+`${phone_number}`
+  //   const btn = getElementById("whats")
+  //   btn.appendChild(a)
   //   // 2] a.href = `whatsapp.com/`${}`
   //   // 3] append
-  //   let a = document.getElementById("whatsapp");
-  //   console.log(a.href);
-  //   a.href = "www.google.com";
+   
   // }
   // generateUrl()
 
@@ -526,7 +527,7 @@ const ProductDetails = () => {
                     Delete
                   </button>
                 ) : null}
-                <button className="btn" >Contact Seller</button>
+                <button className="btn" id="whats">Contact Seller</button>
               </div>
 
               <div className="social-links">
