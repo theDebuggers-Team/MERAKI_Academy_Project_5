@@ -85,8 +85,9 @@ const ProductDetails = () => {
   /////////////////////////////
   //  function for whatsapp.com
   const generateURL = (phone_number) => {
+    phone_number = phone_number.slice(1)
     const a = document.getElementById("whats2");
-    a.href = "https://wa.me/" + `${phone_number}`;
+    a.href = "https://wa.me/" +"+962"+`${phone_number}`;
     a.target = "_blank";
   };
 
