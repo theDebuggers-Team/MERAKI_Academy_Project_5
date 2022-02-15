@@ -21,11 +21,8 @@
   display: flex;
   flex-direction: column;
   width: 20%;
-  /* gap: 2%; */
   align-items: center;
-  /* padding: 10px; */
-  /* box-shadow: 1px 1px 1px 1px grey; */
-  /* border: solid rgb(223, 215, 215) 1px; */
+  
   height: 50vh;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   background-color: white;
@@ -76,6 +73,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10%;
+    gap: 10px;
+    height: 100%;
   }
   .single-product {
     min-width: 100%;
@@ -152,8 +154,14 @@
 
 .productsPanelPagination {
   margin: auto;
-  margin-top: 20px;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
+  
+
 
 .btn2 {
   padding: 10px 30px;
