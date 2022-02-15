@@ -175,6 +175,26 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
 
           <Cloudinary setImage={setImage} />
         </div>
+        <div className="location">
+          <p>Insert product location</p>
+          <input
+            placeholder="Latitude"
+            value={lat}
+            onChange={(e) => {
+              setLat(e.target.value);
+            }}
+          />
+          <input
+            placeholder="Longitude"
+            value={long}
+            onChange={(e) => {
+              setLong(e.target.value);
+            }}
+          />
+          <button onClick={geoLocate} className="btn">
+            Take Current Location
+          </button>
+        </div>
         <input type="checkbox" className="checkbox" id="tac" checked />
         <label for="tac">OpenSooq take 30% from your total sell</label>
         <div className="buttons">
