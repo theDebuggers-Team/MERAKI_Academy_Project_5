@@ -98,7 +98,7 @@ const Footer = ({ search }) => {
             <Link to="/contactUs">+962 7900 000</Link>
           </div>
           <div className="cont">
-            <Link to="#" className="about">
+            <Link to="https://wa.me/+962797447936" className="about">
               {" "}
               <BiMessageDetail />
               Whatsapp
