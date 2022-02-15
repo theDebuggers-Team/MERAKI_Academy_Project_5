@@ -23,6 +23,8 @@
 }
 .category:hover {
   cursor: pointer;
+  background-color: rgb(172, 131, 180) ;
+  color:black;
 }
 .label {
   padding-top: 1%;

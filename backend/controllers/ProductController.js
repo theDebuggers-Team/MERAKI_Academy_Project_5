@@ -65,7 +65,9 @@ const getAllProducts = (req, res) => {
 
 const getAnProductById = (req, res) => {
   const productId = req.query.id;
-  const query = `SELECT title,rating,counter,products.id,description,latitude,longitude,firstName,user_id, users.users_image,products.image,price,category FROM users INNER JOIN products ON users.id=products.user_id where products.id = ? and products.is_deleted =0 and products.is_deleted =0 and users.is_deleted = 0`;
+
+  const query = `SELECT title,rating,counter,products.id,description,phone_Number,firstName,user_id, users.users_image,products.image,price,category FROM users INNER JOIN products ON users.id=products.user_id where products.id = ? and products.is_deleted =0 and products.is_deleted =0 and users.is_deleted = 0`;
+
   const data = [productId];
   connection.query(query, data, (err, result) => {
     if (err) {

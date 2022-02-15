@@ -35,7 +35,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const [isupdated, setisupdated] = useState(false);
   const [sucesscomment, setsucesscomment] = useState(false);
   const [updating, setUpdating] = useState(false);
-  const [ usePhone,setusePhone] = useState([]);
+  const [usePhone, setusePhone] = useState([]);
   ////////////////////////////////
   const [rating, setRating] = useState(0);
   const token = state.token;
@@ -84,16 +84,12 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       });
   };
   /////////////////////////////
- // function for whatsapp.com
-  // const generateURL = (element)=>{
-  //   // 1] create element [a]
-  //   // 2] a.href = `whatsapp.com/`${}`
-  //   // 3] append
-  //   let a = document.getElementById("whatsapp");
-  //   console.log(a.href);
-  //   a.href = "www.google.com";
-  // }
-  // generateUrl()
+  //  function for whatsapp.com
+  const generateURL = (phone_number) => {
+    const a = document.getElementById("whats2");
+    a.href = "https://wa.me/" + `${phone_number}`;
+    a.target = "_blank";
+  };
 
   ///// function to create new comment
   const newComment = {
@@ -264,7 +260,6 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   }, [sucesscomment]);
   useEffect(() => {
     getProductById();
-    
   }, [rating]);
 
   // useEffect(() => {
@@ -529,7 +524,17 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                     Delete
                   </button>
                 ) : null}
-                <button className="btn" >Contact Seller</button>
+                <a id="whats2">
+                  <button
+                    className="btn"
+                    id="whats"
+                    onClick={(e) => {
+                      generateURL(element.phone_Number);
+                    }}
+                  >
+                    Contact Seller
+                  </button>
+                </a>
               </div>
               <Link to="/map">see location</Link>
               <div className="social-links">
