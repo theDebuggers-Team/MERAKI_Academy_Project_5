@@ -11,8 +11,9 @@ import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import ReactImageMagnify from "react-image-magnify";
 import { FaEllipsisH } from "react-icons/fa";
+import Demo1 from "../Maps/maps";
 toast.configure();
-const ProductDetails = () => {
+const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -46,7 +47,13 @@ const ProductDetails = () => {
       .get(`http://localhost:5000/product/search_1?id=${id}`)
       .then((response) => {
         setproductDetails(response.data.results);
+        setLat(response.data.results[0].latitude);
+        setLong(response.data.results[0].longitude);
         console.log(response.data.results);
+        console.log(lat);
+        console.log(long);
+        console.log(typeof lat);
+        console.log(typeof long);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -55,18 +62,12 @@ const ProductDetails = () => {
       });
   };
 
-  //////////// get user by id
-  const getUserByID = () => {
-    axios
-      .get(`http://localhost:5000/user/profile`, {
-        headers: {
-          Authorization: `Basic ${state.token}`,
-        },
-      })
-      .then((result) => {
-        setusePhone(result.data.results);
-      });
-  };
+
+ 
+
+
+
+  
 
   /////////////////////////////
   const getAllComment = () => {
@@ -250,6 +251,8 @@ const ProductDetails = () => {
         console.log(error);
       });
   };
+  //////////////////////////////////////////////
+  //set location
 
   //////////////////////
   useEffect(() => {
@@ -533,7 +536,7 @@ const ProductDetails = () => {
                   </button>
                 </a>
               </div>
-
+              <Link to="/map">see location</Link>
               <div className="social-links">
                 <p>Share At: </p>
                 <a href="#">
@@ -610,6 +613,8 @@ const ProductDetails = () => {
               </div>
             </li>
           </ul>
+
+          {/* <Demo1 /> */}
         </div>
       </div>
     </>

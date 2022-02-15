@@ -4,12 +4,12 @@ const { connection } = require("../database/db.js");
 //create controller for create New product
 
 const createNewProduct = (req, res) => {
-  const { title, description, price, image, category, latitude1, longitude1 } =
+  const { title, description, price, image, category, latitude, longitude } =
     req.body;
   console.log(req.token);
   console.log(typeof req.body.longitude1);
   const user_id = req.token.userId;
-  const query = `insert into products (title, description, price, image,user_id,category,latitude1,longitude1) values (?,?,?,?,?,?,?,?)`;
+  const query = `insert into products (title, description, price, image,user_id,category,latitude,longitude) values (?,?,?,?,?,?,?,?)`;
 
   const data = [
     title,
@@ -18,8 +18,8 @@ const createNewProduct = (req, res) => {
     image,
     user_id,
     category,
-    latitude1,
-    longitude1,
+    latitude,
+    longitude,
   ];
 
   connection.query(query, data, (err, result) => {
@@ -65,7 +65,9 @@ const getAllProducts = (req, res) => {
 
 const getAnProductById = (req, res) => {
   const productId = req.query.id;
+
   const query = `SELECT title,rating,counter,products.id,description,phone_Number,firstName,user_id, users.users_image,products.image,price,category FROM users INNER JOIN products ON users.id=products.user_id where products.id = ? and products.is_deleted =0 and products.is_deleted =0 and users.is_deleted = 0`;
+
   const data = [productId];
   connection.query(query, data, (err, result) => {
     if (err) {
