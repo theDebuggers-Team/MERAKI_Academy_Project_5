@@ -34,7 +34,7 @@ const ProductDetails = () => {
   const [isupdated, setisupdated] = useState(false);
   const [sucesscomment, setsucesscomment] = useState(false);
   const [updating, setUpdating] = useState(false);
-  const [ usePhone,setusePhone] = useState([]);
+  const [usePhone, setusePhone] = useState([]);
   ////////////////////////////////
   const [rating, setRating] = useState(0);
   const token = state.token;
@@ -83,15 +83,12 @@ const ProductDetails = () => {
       });
   };
   /////////////////////////////
-//  function for whatsapp.com
-  const generateURL = (phone_number)=>{
-    const a = document.getElementById("whats2")
-    a.href = "https://wa.me/"+`${phone_number}`
-    a.target = "_blank"
-    
-   
-  }
-  
+  //  function for whatsapp.com
+  const generateURL = (phone_number) => {
+    const a = document.getElementById("whats2");
+    a.href = "https://wa.me/" + `${phone_number}`;
+    a.target = "_blank";
+  };
 
   ///// function to create new comment
   const newComment = {
@@ -260,7 +257,6 @@ const ProductDetails = () => {
   }, [sucesscomment]);
   useEffect(() => {
     getProductById();
-    
   }, [rating]);
 
   // useEffect(() => {
@@ -525,10 +521,17 @@ const ProductDetails = () => {
                     Delete
                   </button>
                 ) : null}
-                <a id="whats2"><button className="btn" id="whats" onClick={(e)=>{
-                  
-                        generateURL(element.phone_Number)
-                }}>Contact Seller</button></a>
+                <a id="whats2">
+                  <button
+                    className="btn"
+                    id="whats"
+                    onClick={(e) => {
+                      generateURL(element.phone_Number);
+                    }}
+                  >
+                    Contact Seller
+                  </button>
+                </a>
               </div>
 
               <div className="social-links">
