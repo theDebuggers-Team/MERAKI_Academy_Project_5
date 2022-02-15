@@ -225,9 +225,6 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
             save draft
           </button>
         </div>
-        <button onClick={geoLocate}>Take Current Location</button>
-        <p>{lat}</p>
-        <p>{long}</p>
       </div>
     </>
   );
