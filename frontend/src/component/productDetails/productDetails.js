@@ -83,17 +83,15 @@ const ProductDetails = () => {
       });
   };
   /////////////////////////////
- // function for whatsapp.com
-  // const generateURL = (phone_number)=>{
-  //   const a = document.createElement("a")
-  //   a.href = "https://wa.me/"+`${phone_number}`
-  //   const btn = getElementById("whats")
-  //   btn.appendChild(a)
-  //   // 2] a.href = `whatsapp.com/`${}`
-  //   // 3] append
+//  function for whatsapp.com
+  const generateURL = (phone_number)=>{
+    const a = document.getElementById("whats2")
+    a.href = "https://wa.me/"+`${phone_number}`
+    a.target = "_blank"
+    
    
-  // }
-  // generateUrl()
+  }
+  
 
   ///// function to create new comment
   const newComment = {
@@ -527,7 +525,10 @@ const ProductDetails = () => {
                     Delete
                   </button>
                 ) : null}
-                <button className="btn" id="whats">Contact Seller</button>
+                <a id="whats2"><button className="btn" id="whats" onClick={(e)=>{
+                  
+                        generateURL(element.phone_Number)
+                }}>Contact Seller</button></a>
               </div>
 
               <div className="social-links">
