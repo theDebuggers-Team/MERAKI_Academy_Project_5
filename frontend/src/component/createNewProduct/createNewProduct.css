@@ -178,3 +178,7 @@ textarea {
   border-right: none;
   border-left: none;
 }
+
+.location {
+  gap: 20px;
+}
