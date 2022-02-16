@@ -93,15 +93,15 @@ const Register = () => {
           className="Register-image"
         />
       </div> */}
-     
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            user();
-          }}
-          className="register_form"
-        >
-           <div className="Register-form-div">
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          user();
+        }}
+        className="register_form"
+      >
+        <div className="Register-form-div">
           <h3 className="title-sign-up">Register</h3>
 
           <input
@@ -192,16 +192,15 @@ const Register = () => {
             required
           /> */}
           <abale>Choose Profile Image</abale>
-          <br/>
+          <br />
           <Cloudinary setImage={setusers_Image} />
-          
+
           <br />
           <br />
           <input type="submit" value="Sign Up" className="register_Submit" />
           <br />
-          </div>
-        </form>
-      
+        </div>
+      </form>
     </div>
   );
 };
