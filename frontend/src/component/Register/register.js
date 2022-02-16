@@ -177,6 +177,7 @@ const Register = () => {
             onChange={(e) => {
               setphone_number(e.target.value);
             }}
+            required
           />
           <br />
           {/* <input
