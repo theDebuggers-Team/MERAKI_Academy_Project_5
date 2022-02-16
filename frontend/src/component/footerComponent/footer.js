@@ -156,7 +156,7 @@ const Footer = ({ search }) => {
           <li>
             <a href="https://wa.me/+962797447936" target="_blank">
               <i class="fab fa-whatsapp"></i>
-              </a>
+            </a>
           </li>
         </ul>
       </div>
