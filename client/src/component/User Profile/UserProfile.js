@@ -9,7 +9,6 @@ import { BsFacebook, BsTwitter, BsLinkedin } from "react-icons/bs";
 import Swal from "sweetalert2";
 
 const UserProfile = () => {
-
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [age, setAge] = useState(0);
@@ -34,7 +33,7 @@ const UserProfile = () => {
   const token = state.token;
   const getUserByID = () => {
     axios
-      .get(`http://localhost:5000/user/profile`, {
+      .get(`/user/profile`, {
         headers: {
           Authorization: `Basic ${token}`,
         },
@@ -45,25 +44,29 @@ const UserProfile = () => {
   };
   const updateUserByID = () => {
     axios
-      .put(`http://localhost:5000/user/updateprofile`,{firstName,lastName,age,country,phone_Number}, {
-        headers: {
-          Authorization: `Basic ${token}`,
-        },
-      })
+      .put(
+        `/user/updateprofile`,
+        { firstName, lastName, age, country, phone_Number },
+        {
+          headers: {
+            Authorization: `Basic ${token}`,
+          },
+        }
+      )
       .then((result) => {
         console.log(result);
       });
   };
   const deleteUserByID = () => {
     axios
-      .delete(`http://localhost:5000/user/deleteprofile`, {
+      .delete(`/user/deleteprofile`, {
         headers: {
           Authorization: `Basic ${token}`,
         },
       })
       .then((result) => {
-        localStorage.clear()
-        navigate("/register")
+        localStorage.clear();
+        navigate("/register");
       });
   };
   const mapOverUsers = user.map((user) => {
@@ -71,11 +74,11 @@ const UserProfile = () => {
       <div className="divContainer">
         <div className="user-image">
           <div className="user-twit">
-          <img className="image-user" src={user.users_image} />
-          <span className="image-data">
-            {user.firstName + " " + user.lastName}
-          </span>
-          <span className="image-data">{user.email}</span>
+            <img className="image-user" src={user.users_image} />
+            <span className="image-data">
+              {user.firstName + " " + user.lastName}
+            </span>
+            <span className="image-data">{user.email}</span>
           </div>
           <div className="icons-user-prof">
             <BsFacebook className="icon-prof-f" />
@@ -92,8 +95,8 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="First Name"
                 defaultValue={user.firstName}
-                onChange={(e)=>{
-                  setfirstName(e.target.value)
+                onChange={(e) => {
+                  setfirstName(e.target.value);
                 }}
               />
             </div>
@@ -105,7 +108,7 @@ const UserProfile = () => {
                 Placeholder="Last Name"
                 defaultValue={user.lastName}
                 onClick={(e) => {
-                  setlastName(e.target.value)
+                  setlastName(e.target.value);
                 }}
               />
             </div>
@@ -116,8 +119,8 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="Email"
                 defaultValue={user.email}
-                onChange={(e)=>{
-                  setEmail(e.target.value)
+                onChange={(e) => {
+                  setEmail(e.target.value);
                 }}
               />
             </div>
@@ -128,8 +131,8 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="Mobile Phone"
                 defaultValue={user.phone_Number}
-                onChange={(e)=>{
-                  setphone_number(e.target.value)
+                onChange={(e) => {
+                  setphone_number(e.target.value);
                 }}
               />
             </div>
@@ -143,18 +146,22 @@ const UserProfile = () => {
                 type="text"
                 Placeholder="Country"
                 defaultValue={user.country}
-                 onChange={(e)=>{
-                  setcountry(e.target.value)
-                 }}
+                onChange={(e) => {
+                  setcountry(e.target.value);
+                }}
               />
             </div>
             <div className="info-div">
               <label className="label-user">Age</label>
 
-              <input defaultValue={user.age} type="text" Placeholder="Age" onChange={(e)=>{
-                setAge(e.target.value)
-              }} />
-             
+              <input
+                defaultValue={user.age}
+                type="text"
+                Placeholder="Age"
+                onChange={(e) => {
+                  setAge(e.target.value);
+                }}
+              />
             </div>
           </div>
           <div className="div-btn-user-profile-update">
@@ -184,7 +191,7 @@ const UserProfile = () => {
               Update
             </button>
             <button
-            className="btin-prof2"
+              className="btin-prof2"
               onClick={(e) => {
                 Swal.fire({
                   title: "Are you sure?",
@@ -205,7 +212,9 @@ const UserProfile = () => {
                   }
                 });
               }}
-            >Delete</button>
+            >
+              Delete
+            </button>
           </div>
         </div>
 

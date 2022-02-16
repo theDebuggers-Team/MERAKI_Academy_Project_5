@@ -53,7 +53,7 @@ const Products = ({ search }) => {
   const token = state.token;
   const getAllProducts = () => {
     axios
-      .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
+      .get(`/product?page=${page}&limit=${limit}`)
       .then((response) => {
         dispatch(setproducts(response.data.results));
         console.log(state.products);
@@ -78,7 +78,7 @@ const Products = ({ search }) => {
   const addToWishList = (productId) => {
     axios
       .post(
-        `http://localhost:5000/wishlist/add/${productId}`,
+        `/wishlist/add/${productId}`,
         {},
         {
           headers: {
@@ -106,7 +106,7 @@ const Products = ({ search }) => {
   /////////////////////////////////////////////////
   const deleteProduct = (id) => {
     axios
-      .delete(`http://localhost:5000/product/delete_1/${id}`, {
+      .delete(`/product/delete_1/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -119,7 +119,7 @@ const Products = ({ search }) => {
 
   return (
     <div className="all">
-     <h2 className="label">All Products</h2>
+      <h2 className="label">All Products</h2>
       <div className="all-products">
         {state.products &&
           state.products
@@ -179,18 +179,20 @@ const Products = ({ search }) => {
                       />
                     </div>
 
-                   { state.token?<div className="button-58">
-                      <Link
-                        to="#"
-                        className="link"
-                        onClick={() => {
-                          addToWishList(element.id);
-                        }}
-                      >
-                        {" "}
-                        <MdOutlineFavoriteBorder /> Favorite
-                      </Link>
-                    </div>:null}
+                    {state.token ? (
+                      <div className="button-58">
+                        <Link
+                          to="#"
+                          className="link"
+                          onClick={() => {
+                            addToWishList(element.id);
+                          }}
+                        >
+                          {" "}
+                          <MdOutlineFavoriteBorder /> Favorite
+                        </Link>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               );

@@ -31,20 +31,18 @@ const Update = () => {
   const [category, setCategory] = useState("");
 
   const getProductById = () => {
-    axios
-      .get(`http://localhost:5000/product/search_1?id=${id}`)
-      .then((response) => {
-        setTitle(response.data.results[0].title);
-        setDescription(response.data.results[0].description);
-        setPrice(response.data.results[0].price);
-        setImage(response.data.results[0].image);
-        setCategory(response.data.results[0].category);
-      });
+    axios.get(`/product/search_1?id=${id}`).then((response) => {
+      setTitle(response.data.results[0].title);
+      setDescription(response.data.results[0].description);
+      setPrice(response.data.results[0].price);
+      setImage(response.data.results[0].image);
+      setCategory(response.data.results[0].category);
+    });
   };
   const updateProduct = (id) => {
     const updatedProduct = { title, description, price, image, category };
     axios
-      .put(`http://localhost:5000/product/update/${id}`, updatedProduct, {
+      .put(`/product/update/${id}`, updatedProduct, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

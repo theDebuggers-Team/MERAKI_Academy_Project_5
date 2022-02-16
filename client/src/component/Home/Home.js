@@ -37,7 +37,7 @@ const Home = () => {
   const [limit, setLimit] = useState(4);
   const getAllProducts = () => {
     axios
-      .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
+      .get(`/product?page=${page}&limit=${limit}`)
       .then((response) => {
         dispatch(setproducts(response.data.results));
         console.log(state.products);
@@ -50,7 +50,7 @@ const Home = () => {
   const addToWishList = (productId) => {
     axios
       .post(
-        `http://localhost:5000/wishlist/add/${productId}`,
+        `/wishlist/add/${productId}`,
         {},
         {
           headers: {
@@ -115,18 +115,20 @@ const Home = () => {
                     {element.description.substring(-1, 20)}
                     <p style={{ color: "gray" }}>...more</p>
                   </span>
-                 {state.token? <div className="button-58">
-                    <Link
-                      to="#"
-                      className="link"
-                      onClick={() => {
-                        addToWishList(element.id);
-                      }}
-                    >
-                      {" "}
-                      <MdOutlineFavoriteBorder /> Favorite
-                    </Link>
-                  </div>:null}
+                  {state.token ? (
+                    <div className="button-58">
+                      <Link
+                        to="#"
+                        className="link"
+                        onClick={() => {
+                          addToWishList(element.id);
+                        }}
+                      >
+                        {" "}
+                        <MdOutlineFavoriteBorder /> Favorite
+                      </Link>
+                    </div>
+                  ) : null}
                 </div>
               </div>
             );
@@ -149,7 +151,7 @@ const Home = () => {
         </div>
       ) : null} */}
       <div className="chat">
-      <Chat />{" "}
+        <Chat />{" "}
       </div>
     </div>
   );
