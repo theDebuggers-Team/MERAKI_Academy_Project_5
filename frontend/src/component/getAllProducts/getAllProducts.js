@@ -118,7 +118,8 @@ const Products = ({ search }) => {
   };
 
   return (
-    <>
+    <div className="all">
+     <h2 className="label">All Products</h2>
       <div className="all-products">
         {state.products &&
           state.products
@@ -204,7 +205,7 @@ const Products = ({ search }) => {
           Next
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

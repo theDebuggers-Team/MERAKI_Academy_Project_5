@@ -1,5 +1,5 @@
 .all-products {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -10,7 +10,20 @@
   padding-left: 10px;
   padding-right: 86px;
   height: 100%;
+  gap: 5%; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  /* margin-left: 6%; */
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /* padding-left: 10px; */
+  /* padding-right: 86px; */
+  height: 100%;
   gap: 5%;
+  height: 69vh;
 }
 .img {
   height: 220px;
@@ -18,13 +31,22 @@
   border-radius: 1%;
 }
 .single-product {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 18%;
   align-items: center;
   
   height: 50vh;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: white;
+  border-radius: 1%;
+  margin-bottom: 3%; */
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+  align-items: center;
+  height: 50vh;
+  box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
   background-color: white;
   border-radius: 1%;
   margin-bottom: 3%;
@@ -154,14 +176,13 @@
 
 .productsPanelPagination {
   margin: auto;
-    margin-top: 20px;
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-right: -6px;
 }
-  
-
 
 .btn2 {
   padding: 10px 30px;
@@ -177,14 +198,12 @@
   cursor: pointer;
 }
 
-
-.link:hover{
-   color: black;
-   background: transparent
+.link:hover {
+  color: black;
+  background: transparent;
 }
 
-.button-58:hover{
-  
-   background:rgb(172, 131, 180) ;
-   color:black;
+.button-58:hover {
+  background: rgb(172, 131, 180);
+  color: black;
 }
