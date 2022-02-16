@@ -68,18 +68,18 @@ const Login = () => {
           className="Register-image-login"
         />
       </div> */}
-      
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            loginFunction();
-          }}
-          className="Login-form"
-        >
-          <div className="Login-form-div">
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          loginFunction();
+        }}
+        className="Login-form"
+      >
+        <div className="Login-form-div">
           <p className="title">Login</p>
           <div className="form-e">
-          <i class="fa-duotone fa-user-hair"></i>
+            <i class="fa-duotone fa-user-hair"></i>
             <input
               className="login-inp"
               placeholder="Email"
@@ -105,9 +105,8 @@ const Login = () => {
           <input type="submit" value="Login" className="Login_Submit" />
 
           <br />
-          </div>
-        </form>
-      
+        </div>
+      </form>
     </div>
   );
 };
