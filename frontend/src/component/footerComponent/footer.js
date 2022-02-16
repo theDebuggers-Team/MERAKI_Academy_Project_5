@@ -139,7 +139,7 @@ const Footer = ({ search }) => {
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to="contactUs">
               <i class="fab fa-google-plus"></i>
             </Link>
           </li>
