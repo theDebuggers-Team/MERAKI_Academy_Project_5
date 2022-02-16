@@ -55,13 +55,15 @@
 
   box-shadow: #17759c;
   height: 90rem;
-  margin-top:1rem;
-  
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
- background-color: rgb(224, 225, 226);
+  margin-top: 1rem;
+
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  background-color: rgb(224, 225, 226);
 }
 
-.Register-form-div{
+.Register-form-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,7 +91,7 @@
   border: 0.1 solid black;
   height: 30rem;
   padding-bottom: -1rem; */
-  width:100%;
+  width: 100%;
   height: 55rem;
   display: flex;
   flex-direction: column;
@@ -112,15 +114,16 @@
   border-right: none;
   border-left: none; */
   font-size: 14px;
-  width:35rem;
+  width: 35rem;
   margin: 10px auto;
   padding: 10px 8px 10px 8px;
   border-radius: 5px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0, .55), 0px 1px 1px rgba(255,255,255,.5);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.55),
+    0px 1px 1px rgba(255, 255, 255, 0.5);
   border: 1px solid #666;
   opacity: 0.5;
   font-size: 15px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .register_Submit {
@@ -152,7 +155,6 @@
   padding-bottom: -1rem;
 }
 
-
 /* .button-43 {
   background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
   border-radius: .5rem;
@@ -175,7 +177,7 @@
   background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
 }
 
-.title-sign-up{
+.title-sign-up {
   font-family: "Myriad Pro", "Helvetica Neue", Helvetica;
   font-weight: bold;
   font-size: 25px;
@@ -183,7 +185,3 @@
   color: #444;
   text-align: center;
 }
-
-
-
-
