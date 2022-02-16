@@ -23,7 +23,7 @@ const Users = () => {
   const getAllUsers = () => {
     console.log("get");
     axios
-      .get(`http://localhost:5000/user`)
+      .get(`/user`)
       .then((response) => {
         console.log(response.data.results);
         setUsers(response.data.results);
@@ -37,7 +37,7 @@ const Users = () => {
   ///////////////////////////// this function is to delete all comments reated to the user we need to delete from admin panel
   const deleteAllMyComments = (MyUserId) => {
     axios
-      .delete(`http://localhost:5000/comment/delete_2/${MyUserId}`, {
+      .delete(`/comment/delete_2/${MyUserId}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -64,7 +64,7 @@ const Users = () => {
 
   const deleteAnProductByUserId = (MyUserId) => {
     axios
-      .delete(`http://localhost:5000/product/delete_2/${MyUserId}`, {
+      .delete(`/product/delete_2/${MyUserId}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -97,7 +97,7 @@ const Users = () => {
   ////////////////////////////////////////
   const deleteUser = (id) => {
     axios
-      .delete(`http://localhost:5000/user/${id}`, {
+      .delete(`/user/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

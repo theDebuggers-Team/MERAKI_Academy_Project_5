@@ -20,7 +20,7 @@ const ProductsAdmin = () => {
   /////////////////////////////////////////////////////////
   const getAllProducts = () => {
     axios
-      .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
+      .get(`/product?page=${page}&limit=${limit}`)
       .then((response) => {
         setProducts(response.data.results);
       })
@@ -46,7 +46,7 @@ const ProductsAdmin = () => {
   ///////////////////////////////////////////
   const deleteProduct = (id) => {
     axios
-      .delete(`http://localhost:5000/product/delete_1/${id}`, {
+      .delete(`/product/delete_1/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

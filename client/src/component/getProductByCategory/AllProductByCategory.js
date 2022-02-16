@@ -16,7 +16,7 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
-import "./AllProductByCategory.css"
+import "./AllProductByCategory.css";
 
 toast.configure();
 const GetProductsByCategory = () => {
@@ -36,7 +36,7 @@ const GetProductsByCategory = () => {
 
   const getProductsByCategory = () => {
     axios
-      .get(`http://localhost:5000/product/search_2?category=${category}`)
+      .get(`/product/search_2?category=${category}`)
       .then((response) => {
         setproducts(response.data.results);
       })
@@ -50,7 +50,7 @@ const GetProductsByCategory = () => {
   const addToWishList = (productId) => {
     axios
       .post(
-        `http://localhost:5000/wishlist/add/${productId}`,
+        `/wishlist/add/${productId}`,
         {},
         {
           headers: {
@@ -99,8 +99,9 @@ const GetProductsByCategory = () => {
               {element.description.substring(-1, 20)}
               <p style={{ color: "gray" }}>...more</p>
             </span>
-           {state.token? <div className="button-58">
-              {/* <Link
+            {state.token ? (
+              <div className="button-58">
+                {/* <Link
               to="#"
               style={{
                 borderRight: "1px solid rgb(211, 206, 206)",
@@ -110,17 +111,18 @@ const GetProductsByCategory = () => {
               <BiShowAlt /> Show Product
             </Link> */}
 
-              <Link
-                to="#"
-                className="link"
-                onClick={() => {
-                  addToWishList(element.id);
-                }}
-              >
-                {" "}
-                <MdOutlineFavoriteBorder /> Favorite
-              </Link>
-            </div> :null}
+                <Link
+                  to="#"
+                  className="link"
+                  onClick={() => {
+                    addToWishList(element.id);
+                  }}
+                >
+                  {" "}
+                  <MdOutlineFavoriteBorder /> Favorite
+                </Link>
+              </div>
+            ) : null}
           </div>
 
           {/* <button

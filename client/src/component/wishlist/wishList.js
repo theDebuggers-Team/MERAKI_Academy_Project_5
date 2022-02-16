@@ -35,7 +35,7 @@ const WishList = () => {
 
   const getMyWishList = () => {
     axios
-      .get("http://localhost:5000/wishlist/", {
+      .get("/wishlist/", {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -52,7 +52,7 @@ const WishList = () => {
 
   const deleteProductFromWishList = (productId) => {
     axios
-      .delete(`http://localhost:5000/wishlist/delete/${productId}`, {
+      .delete(`/wishlist/delete/${productId}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

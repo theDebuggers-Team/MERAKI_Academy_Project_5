@@ -28,7 +28,7 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
   const createNewProduct = () => {
     axios
       .post(
-        "http://localhost:5000/product/",
+        "/product/",
         {
           title,
           description,

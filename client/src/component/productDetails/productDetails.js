@@ -44,7 +44,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   //////////////////////////////
   const getProductById = () => {
     axios
-      .get(`http://localhost:5000/product/search_1?id=${id}`)
+      .get(`/product/search_1?id=${id}`)
       .then((response) => {
         setproductDetails(response.data.results);
         setLat(response.data.results[0].latitude);
@@ -56,23 +56,16 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         console.log(typeof long);
       })
       .catch((err) => {
-        toast.error(err.response&&err.response.data.message, {
+        toast.error(err.response && err.response.data.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       });
   };
 
-
- 
-
-
-
-  
-
   /////////////////////////////
   const getAllComment = () => {
     axios
-      .get(`http://localhost:5000/comment/product/${id}`)
+      .get(`/comment/product/${id}`)
       .then((response) => {
         setcommentsOnProduct(response.data.results);
         console.log(response.data);
@@ -100,16 +93,14 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   };
   const createNewComment = () => {
     axios
-      .post(`http://localhost:5000/comment/${id}`, newComment, {
+      .post(`/comment/${id}`, newComment, {
         headers: {
           Authorization: `Basic ${token}`,
         },
       })
       .then((result) => {
-        
         toast.success(result.data.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
-
         });
       });
   };
@@ -117,7 +108,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const updateCommentById = (commentId) => {
     axios
       .put(
-        `http://localhost:5000/comment/${commentId}`,
+        `/comment/${commentId}`,
         { comment: updatedComment },
         {
           headers: {
@@ -146,7 +137,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   //////////// delete Comment by user id
   const deleteComment = (commentId) => {
     axios
-      .delete(`http://localhost:5000/comment/delete_1/${commentId}`, {
+      .delete(`/comment/delete_1/${commentId}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -172,7 +163,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   //////////// Delete All the user Comment
   const deleteAllMyComments = (MyUserId) => {
     axios
-      .delete(`http://localhost:5000/comment/delete_2/${MyUserId}`, {
+      .delete(`/comment/delete_2/${MyUserId}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -199,7 +190,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
     setRating(newRating);
 
     axios
-      .put(`http://localhost:5000/like/${id}`, { value: newRating - 0 })
+      .put(`/like/${id}`, { value: newRating - 0 })
       .then((result) => {
         console.log(result);
       })
@@ -212,7 +203,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const addToWishList = () => {
     axios
       .post(
-        `http://localhost:5000/wishlist/add/${id}`,
+        `/wishlist/add/${id}`,
         {},
         {
           headers: {
@@ -239,7 +230,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
 
   const deleteProduct = (id) => {
     axios
-      .delete(`http://localhost:5000/product/delete_1/${id}`, {
+      .delete(`/product/delete_1/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -492,8 +483,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   Add to favorite
                 </button>
 
-                {element.user_id ==decode&& decode.userId ? (
-
+                {element.user_id == decode && decode.userId ? (
                   <button
                     type="button"
                     className="btn"
@@ -505,8 +495,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   </button>
                 ) : null}
 
-                {element.user_id == decode&&decode.userId ? (
-
+                {element.user_id == decode && decode.userId ? (
                   <button type="button" className="btn9">
                     {(e) => {
                       Swal.fire({
@@ -574,54 +563,59 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         {productDetailsToShow
           ? productDetailsToShow
           : "There is No Comments yet"}
-        {decode?<div class="comments-container">
-          {allComments}
-          <ul id="comments-list" class="comments-list">
-            <li>
-              { state.token?<div class="comment-main-level">
-                <div class="comment-avatar">
-                  <img src={decode&&decode.image} alt="" />
-                </div>
+        {decode ? (
+          <div class="comments-container">
+            {allComments}
+            <ul id="comments-list" class="comments-list">
+              <li>
+                {state.token ? (
+                  <div class="comment-main-level">
+                    <div class="comment-avatar">
+                      <img src={decode && decode.image} alt="" />
+                    </div>
 
-                <div class="comment-box">
-                  <div class="comment-head">
-                    <h6 class="comment-name">
-                      {decode&&decode.firstName + " " + decode&&decode.lastName}
-                    </h6>
-                  </div>
-                  <div class="comment-content">
-                    <textarea
-                      className="comment-body"
-                      placeholder="Write Your Commment ..."
-                      onChange={(e) => {
-                        setcreateComment(e.target.value);
-                      }}
-                    />
-                    <div class="comment-btns">
-                      <button
-                        className="btn"
-                        onClick={(e) => {
-                          if (!createComment) {
-                            toast.error("No comment written to post", {
-                              position: toast.POSITION.BOTTOM_RIGHT,
-                            });
-                          } else {
-                            createNewComment();
-                            setsucesscomment(!sucesscomment);
-                          }
-                        }}
-                      >
-                        Post
-                      </button>
-                      <button className="btn">Cancel</button>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <h6 class="comment-name">
+                          {decode &&
+                            decode.firstName + " " + decode &&
+                            decode.lastName}
+                        </h6>
+                      </div>
+                      <div class="comment-content">
+                        <textarea
+                          className="comment-body"
+                          placeholder="Write Your Commment ..."
+                          onChange={(e) => {
+                            setcreateComment(e.target.value);
+                          }}
+                        />
+                        <div class="comment-btns">
+                          <button
+                            className="btn"
+                            onClick={(e) => {
+                              if (!createComment) {
+                                toast.error("No comment written to post", {
+                                  position: toast.POSITION.BOTTOM_RIGHT,
+                                });
+                              } else {
+                                createNewComment();
+                                setsucesscomment(!sucesscomment);
+                              }
+                            }}
+                          >
+                            Post
+                          </button>
+                          <button className="btn">Cancel</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>:null}
-            </li>
-          </ul>
-
-        </div>:null}
+                ) : null}
+              </li>
+            </ul>
+          </div>
+        ) : null}
       </div>
     </>
   );

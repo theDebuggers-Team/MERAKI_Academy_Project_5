@@ -57,7 +57,7 @@ const Register = () => {
       };
 
       await axios
-        .post(`http://localhost:5000/user/register`, newUser)
+        .post(`/user/register`, newUser)
         .then((response) => {
           console.log("hello");
           if (response.data.success) {
