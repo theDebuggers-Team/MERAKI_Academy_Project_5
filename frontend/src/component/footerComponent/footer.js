@@ -118,6 +118,7 @@ const Footer = ({ search }) => {
     //   </div>
     // </>
     <>
+
        <footer>
         <div class="footer-content">
             <h3>Open Sooq</h3>
@@ -144,7 +145,8 @@ const Footer = ({ search }) => {
         </div>
 
     </footer>
-    </>
+
+ 
   );
 };
 
