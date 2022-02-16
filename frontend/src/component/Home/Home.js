@@ -15,7 +15,7 @@ import {
   getproductsByState,
 } from "../reducer/products/index";
 import { Chat } from "../Chat/Chat";
-import ChatBotCom from "../ChatBot/ChatBot";
+// import ChatBotCom from "../ChatBot/ChatBot";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -34,7 +34,7 @@ const Home = () => {
   const products = state.products && state.products.slice(0, 4);
   const token = state.token;
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(4);
   const getAllProducts = () => {
     axios
       .get(`http://localhost:5000/product?page=${page}&limit=${limit}`)
@@ -98,7 +98,7 @@ const Home = () => {
         {products &&
           products.map((element) => {
             return (
-              <div className="single-product" key={element.id}>
+              <div className="single-product-1" key={element.id}>
                 <div
                   className="image"
                   onClick={(e) => {
