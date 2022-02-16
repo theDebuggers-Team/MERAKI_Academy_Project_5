@@ -136,7 +136,7 @@
     cursor: pointer;
     width: 10rem;
     height: 2.2rem; */
-  background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
+  /* background-image: linear-gradient(-180deg, rgb(70,110,190) 0%, rgb(70,110,190) 100%); */
   border-radius: 0.5rem;
   box-sizing: border-box;
   color: #ffffff;
@@ -153,6 +153,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   padding-bottom: -1rem;
+  background-color: rgb(88, 107, 150);
 }
 
 /* .button-43 {
