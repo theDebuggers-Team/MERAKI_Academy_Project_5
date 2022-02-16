@@ -87,13 +87,13 @@ const Register = () => {
 
   return (
     <div className="register_form1">
-      <div>
+      {/* <div>
         <img
           src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg"
           className="Register-image"
         />
-      </div>
-      <div className="Register-form-div">
+      </div> */}
+     
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -101,6 +101,7 @@ const Register = () => {
           }}
           className="register_form"
         >
+           <div className="Register-form-div">
           <h3 className="title-sign-up">Register</h3>
 
           <input
@@ -190,13 +191,17 @@ const Register = () => {
             }}
             required
           /> */}
+          <abale>Choose Profile Image</abale>
+          <br/>
           <Cloudinary setImage={setusers_Image} />
+          
           <br />
           <br />
           <input type="submit" value="Sign Up" className="register_Submit" />
           <br />
+          </div>
         </form>
-      </div>
+      
     </div>
   );
 };

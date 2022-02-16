@@ -62,13 +62,13 @@ const Login = () => {
 
   return (
     <div className="Login_form1">
-      <div>
+      {/* <div>
         <img
           src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg"
           className="Register-image-login"
         />
-      </div>
-      <div className="Login-form-div">
+      </div> */}
+      
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -76,8 +76,10 @@ const Login = () => {
           }}
           className="Login-form"
         >
+          <div className="Login-form-div">
           <p className="title">Login</p>
           <div className="form-e">
+          <i class="fa-duotone fa-user-hair"></i>
             <input
               className="login-inp"
               placeholder="Email"
@@ -103,8 +105,9 @@ const Login = () => {
           <input type="submit" value="Login" className="Login_Submit" />
 
           <br />
+          </div>
         </form>
-      </div>
+      
     </div>
   );
 };
