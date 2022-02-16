@@ -50,10 +50,10 @@ const Header = ({ setSearch }) => {
     };
   });
 
-  // const [search, setSearch] = useState("");
-
+  
   const token = state.token;
-
+  
+  // const [search, setSearch] = useState("");
   const lastName = token && decode(token).lastName;
   const firstName = token && decode(token).firstName;
   const firstName2 = token && decode(token).given_name;
@@ -113,7 +113,7 @@ const Header = ({ setSearch }) => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "2%",
+                // gap: "2%",
                 // width: "16%",
                 fontSize: "1.1rem",
               }}
@@ -125,7 +125,7 @@ const Header = ({ setSearch }) => {
               style={{ width: "10%", height: "10%" }}
             />{" "} */}
               <IoPersonSharp />
-              <p>{firstName ? firstName : firstName2}</p>{" "}
+              <p>{firstName ? firstName : firstName2 }</p>{" "}
               <p>{lastName ? lastName : lastName2}</p>
               <IoMdArrowDropdown />
             </span>

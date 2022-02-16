@@ -56,7 +56,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         console.log(typeof long);
       })
       .catch((err) => {
-        toast.error(err.response.data.message, {
+        toast.error(err.response&&err.response.data.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       });
@@ -106,8 +106,10 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         },
       })
       .then((result) => {
+        
         toast.success(result.data.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
+
         });
       });
   };
@@ -489,7 +491,9 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                 >
                   Add to favorite
                 </button>
-                {state.token && element.user_id ==  decode.userId ? (
+
+                {element.user_id ==decode&& decode.userId ? (
+
                   <button
                     type="button"
                     className="btn"
@@ -500,7 +504,9 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                     edit
                   </button>
                 ) : null}
-                { state.token && element.user_id == decode.userId ? (
+
+                {element.user_id == decode&&decode.userId ? (
+
                   <button type="button" className="btn9">
                     {(e) => {
                       Swal.fire({
@@ -568,19 +574,19 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         {productDetailsToShow
           ? productDetailsToShow
           : "There is No Comments yet"}
-        <div class="comments-container">
+        {decode?<div class="comments-container">
           {allComments}
           <ul id="comments-list" class="comments-list">
             <li>
               { state.token?<div class="comment-main-level">
                 <div class="comment-avatar">
-                  <img src={decode.image} alt="" />
+                  <img src={decode&&decode.image} alt="" />
                 </div>
 
                 <div class="comment-box">
                   <div class="comment-head">
                     <h6 class="comment-name">
-                      {decode.firstName + " " + decode.lastName}
+                      {decode&&decode.firstName + " " + decode&&decode.lastName}
                     </h6>
                   </div>
                   <div class="comment-content">
@@ -615,8 +621,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
             </li>
           </ul>
 
-          {/* <Demo1 /> */}
-        </div>
+        </div>:null}
       </div>
     </>
   );

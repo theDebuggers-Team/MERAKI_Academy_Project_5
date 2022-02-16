@@ -108,6 +108,30 @@ const Login = () => {
         </div>
       </form>
     </div>
+  //   <div className="all-login">
+  //   <div class="main">  	
+	// 	<input type="checkbox" id="chk" aria-hidden="true" className="input"/>
+
+	// 		<div class="signup">
+	// 			<form>
+	// 				<label for="chk" aria-hidden="true" >Sign up</label>
+	// 				<input type="text" name="txt" placeholder="User name" required=""  className="input"/>
+	// 				<input type="email" name="email" placeholder="Email" required="" className="input"/>
+	// 				<input type="password" name="pswd" placeholder="Password" required="" className="input"/>
+	// 				<button className="button">Sign up</button>
+	// 			</form>
+	// 		</div>
+
+	// 		<div class="login">
+	// 			<form>
+	// 				<label for="chk" aria-hidden="true"  >Login</label>
+	// 				<input type="email" name="email" placeholder="Email" required="" className="input"/>
+	// 				<input type="password" name="pswd" placeholder="Password" required="" className="input"/>
+	// 				<button className="button">Login</button>
+	// 			</form>
+	// 		</div>
+	// </div>
+  // </div>
   );
 };
 
