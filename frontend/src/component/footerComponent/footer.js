@@ -139,7 +139,7 @@ const Footer = ({ search }) => {
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to="contactUs">
               <i class="fab fa-google-plus"></i>
             </Link>
           </li>
@@ -154,9 +154,9 @@ const Footer = ({ search }) => {
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <a href="https://wa.me/+962797447936" target="_blank">
               <i class="fab fa-whatsapp"></i>
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
