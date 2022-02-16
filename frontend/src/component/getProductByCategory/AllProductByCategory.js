@@ -99,7 +99,7 @@ const GetProductsByCategory = () => {
               {element.description.substring(-1, 20)}
               <p style={{ color: "gray" }}>...more</p>
             </span>
-            <div className="button-58">
+           {state.token? <div className="button-58">
               {/* <Link
               to="#"
               style={{
@@ -120,7 +120,7 @@ const GetProductsByCategory = () => {
                 {" "}
                 <MdOutlineFavoriteBorder /> Favorite
               </Link>
-            </div>
+            </div> :null}
           </div>
 
           {/* <button

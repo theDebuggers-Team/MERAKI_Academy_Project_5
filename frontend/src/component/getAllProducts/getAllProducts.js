@@ -179,7 +179,7 @@ const Products = ({ search }) => {
                       />
                     </div>
 
-                    <div className="button-58">
+                   { state.token?<div className="button-58">
                       <Link
                         to="#"
                         className="link"
@@ -190,7 +190,7 @@ const Products = ({ search }) => {
                         {" "}
                         <MdOutlineFavoriteBorder /> Favorite
                       </Link>
-                    </div>
+                    </div>:null}
                   </div>
                 </div>
               );

@@ -489,7 +489,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                 >
                   Add to favorite
                 </button>
-                {element.user_id == decode.userId ? (
+                {state.token && element.user_id ==  decode.userId ? (
                   <button
                     type="button"
                     className="btn"
@@ -500,7 +500,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                     edit
                   </button>
                 ) : null}
-                {element.user_id == decode.userId ? (
+                { state.token && element.user_id == decode.userId ? (
                   <button type="button" className="btn9">
                     {(e) => {
                       Swal.fire({
@@ -572,7 +572,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
           {allComments}
           <ul id="comments-list" class="comments-list">
             <li>
-              <div class="comment-main-level">
+              { state.token?<div class="comment-main-level">
                 <div class="comment-avatar">
                   <img src={decode.image} alt="" />
                 </div>
@@ -611,7 +611,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>:null}
             </li>
           </ul>
 
