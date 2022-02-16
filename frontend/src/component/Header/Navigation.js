@@ -163,9 +163,11 @@ const Navigation = () => {
           </li>
         )}
 
-        <Link to="/NewProduct" className="link">
-          <IoIosCreate /> Create Product
-        </Link>
+        {token ? (
+          <Link to="/NewProduct" className="link">
+            <IoIosCreate /> Create Product
+          </Link>
+        ) : null}
 
         {token ? (
           <li onClick={closeMobileMenu}>
