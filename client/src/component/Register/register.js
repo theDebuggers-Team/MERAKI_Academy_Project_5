@@ -30,7 +30,7 @@ const Register = () => {
   };
 
   const notifyRegisterSuccess = () => {
-    toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
+    toast.success("Register Done", { position: toast.POSITION.TOP_RIGHT });
     navigate("/login");
   };
 
@@ -67,7 +67,7 @@ const Register = () => {
         .catch((err) => {
           console.log(err.response.data.message);
           toast.error(err.response.data.message, {
-            position: toast.POSITION.BOTTOM_CENTER,
+            position: toast.POSITION.TOP_RIGHT,
           });
         });
     } else {
