@@ -220,6 +220,18 @@ const Register = () => {
             name="Last Name"
             className="log-reg"
           />
+          <label for="email">
+            {" "}
+            <b>Email</b>
+          </label>
+
+          <input
+            className="log-reg"
+            type="text"
+            placeholder="Enter Email"
+            name="uname"
+            required
+          />
           <label for="Age">
             {" "}
             <b>Age</b>
@@ -240,6 +252,16 @@ const Register = () => {
             name="Country"
             className="log-reg"
           />
+          <label for="Phone Number">
+            {" "}
+            <b>Phone Number</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Phone Number"
+            name="Phone Number"
+            className="log-reg"
+          />
           <label for="psw">
             <b>Password</b>
           </label>
@@ -249,9 +271,21 @@ const Register = () => {
             name="psw"
             className="log-reg"
           />
+
+          <label className="image-label">
+            <b>Choose Profile Image</b>
+          </label>
+
+          <Cloudinary setImage={setusers_Image} />
         </div>
 
         <button class="cta-btn">Sign Up</button>
+        <p className="subtitle">
+          Already have an account?{" "}
+          <Link className="forget-pass" to="/login">
+           Log In
+          </Link>
+        </p>
       </form>
     </div>
   );
