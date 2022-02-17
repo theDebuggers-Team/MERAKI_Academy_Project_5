@@ -25,7 +25,7 @@ const Login = () => {
   const navigate = useNavigate();
   const notifyLoginSuccess = () => {
     toast.success("Login Successfully", {
-      position: toast.POSITION.BOTTOM_CENTER,
+      position: toast.POSITION.TOP_CENTER,
     });
     navigate("/products");
   };
@@ -52,7 +52,7 @@ const Login = () => {
         .catch((err) => {
           console.log(err.meseage);
           toast.error(err.response.data.message, {
-            position: toast.POSITION.BOTTOM_CENTER,
+            position: toast.POSITION.TOP_CENTER,
           });
         });
     } else {
@@ -70,11 +70,27 @@ const Login = () => {
             {" "}
             <b>Email</b>
           </label>
-          <input type="text" placeholder="Enter Email" name="uname" />
+          <input
+            type="text"
+            placeholder="Enter Email"
+            name="uname"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            required
+          />
           <label for="psw">
             <b>Password</b>
           </label>
-          <input type="password" placeholder="Enter Password" name="psw" />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            onChange={(e) => {
+              setpassword(e.target.value);
+            }}
+            required
+          />
         </div>
         <p class="or">
           <span>or</span>
@@ -94,11 +110,18 @@ const Login = () => {
             />
           </button>
         </div>
-        <button class="cta-btn">Log In</button>
+        <button
+          class="cta-btn"
+          onClick={(e) => {
+            loginFunction();
+          }}
+        >
+          Log In
+        </button>
 
         <p class="subtitle">
           Don't have an account?{" "}
-          <Link class="forget-pass" to="#">
+          <Link class="forget-pass" to="/register">
             Sign up
           </Link>
         </p>
