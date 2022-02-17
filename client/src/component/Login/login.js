@@ -70,7 +70,9 @@ const Login = () => {
             {" "}
             <b>Email</b>
           </label>
-          <input type="text" placeholder="Enter Email" name="uname" required />
+          <input type="text" placeholder="Enter Email" name="uname" onChange={(e)=>{
+            setEmail(e.target.value)
+          }} required />
           <label for="psw">
             <b>Password</b>
           </label>
@@ -78,6 +80,9 @@ const Login = () => {
             type="password"
             placeholder="Enter Password"
             name="psw"
+            onChange={(e)=>{
+              setpassword(e.target.value)
+            }}
             required
           />
         </div>
