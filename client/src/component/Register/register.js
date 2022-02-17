@@ -197,7 +197,12 @@ const Register = () => {
     //   </form>
     // </div>
     <div class="card1">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          user();
+        }}
+      >
         <h2 class="title"> Sign Up</h2>
 
         <div class="email-login">
@@ -225,9 +230,9 @@ const Register = () => {
             name="Last Name"
             className="log-reg"
             value={lastName}
-           onChange={(e) => {
-          setlastName(e.target.value);
-         }}
+            onChange={(e) => {
+              setlastName(e.target.value);
+            }}
             required
           />
           <label for="email">
@@ -241,10 +246,9 @@ const Register = () => {
             placeholder="Enter Email"
             name="uname"
             value={email}
-      onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-           
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             required
           />
           <label for="Age">
@@ -257,10 +261,10 @@ const Register = () => {
             name="Age"
             className="log-reg"
             value={age}
-           onChange={(e) => {
-             setAge(e.target.value);
-           }}
-           required
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+            required
           />
           <label for="Country">
             {" "}
@@ -272,10 +276,10 @@ const Register = () => {
             name="Country"
             className="log-reg"
             value={country}
-           onChange={(e) => {
-             setcountry(e.target.value);
-           }}
-           required
+            onChange={(e) => {
+              setcountry(e.target.value);
+            }}
+            required
           />
           <label for="Phone Number">
             {" "}
@@ -287,10 +291,10 @@ const Register = () => {
             name="Phone Number"
             className="log-reg"
             value={phone_Number}
-          onChange={(e) => {
-             setphone_number(e.target.value);
-          }}
-           required
+            onChange={(e) => {
+              setphone_number(e.target.value);
+            }}
+            required
           />
           <label for="psw">
             <b>Password</b>
@@ -301,10 +305,10 @@ const Register = () => {
             name="psw"
             className="log-reg"
             value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          required
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            required
           />
 
           <label className="image-label">
@@ -314,11 +318,11 @@ const Register = () => {
           <Cloudinary setImage={setusers_Image} />
         </div>
 
-        <button class="cta-btn">Sign Up</button>
+        <button class="cta-btn" >Sign Up</button>
         <p className="subtitle">
           Already have an account?{" "}
           <Link className="forget-pass" to="/login">
-           Log In
+            Log In
           </Link>
         </p>
       </form>
