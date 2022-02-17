@@ -30,7 +30,7 @@ const Register = () => {
   };
 
   const notifyRegisterSuccess = () => {
-    toast.success("Register Done", { position: toast.POSITION.BOTTOM_CENTER });
+    toast.success("Register Done", { position: toast.POSITION.TOP_RIGHT });
     navigate("/login");
   };
 
@@ -67,7 +67,7 @@ const Register = () => {
         .catch((err) => {
           console.log(err.response.data.message);
           toast.error(err.response.data.message, {
-            position: toast.POSITION.BOTTOM_CENTER,
+            position: toast.POSITION.TOP_RIGHT,
           });
         });
     } else {
@@ -197,7 +197,12 @@ const Register = () => {
     //   </form>
     // </div>
     <div class="card1">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          user();
+        }}
+      >
         <h2 class="title"> Sign Up</h2>
 
         <div class="email-login">
@@ -210,6 +215,11 @@ const Register = () => {
             placeholder="Enter First Name"
             name="First Name"
             className="log-reg"
+            required
+            value={firstName}
+            onChange={(e) => {
+              setfirstName(e.target.value);
+            }}
           />
           <label for="Last Name">
             <b>Last Name</b>
@@ -219,6 +229,11 @@ const Register = () => {
             placeholder="Enter Last Name"
             name="Last Name"
             className="log-reg"
+            value={lastName}
+            onChange={(e) => {
+              setlastName(e.target.value);
+            }}
+            required
           />
           <label for="email">
             {" "}
@@ -230,6 +245,10 @@ const Register = () => {
             type="text"
             placeholder="Enter Email"
             name="uname"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             required
           />
           <label for="Age">
@@ -241,6 +260,11 @@ const Register = () => {
             placeholder="Enter Age"
             name="Age"
             className="log-reg"
+            value={age}
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+            required
           />
           <label for="Country">
             {" "}
@@ -251,6 +275,11 @@ const Register = () => {
             placeholder="Enter Country"
             name="Country"
             className="log-reg"
+            value={country}
+            onChange={(e) => {
+              setcountry(e.target.value);
+            }}
+            required
           />
           <label for="Phone Number">
             {" "}
@@ -261,6 +290,11 @@ const Register = () => {
             placeholder="Enter Phone Number"
             name="Phone Number"
             className="log-reg"
+            value={phone_Number}
+            onChange={(e) => {
+              setphone_number(e.target.value);
+            }}
+            required
           />
           <label for="psw">
             <b>Password</b>
@@ -270,6 +304,11 @@ const Register = () => {
             placeholder="Enter Password"
             name="psw"
             className="log-reg"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            required
           />
 
           <label className="image-label">
@@ -283,7 +322,7 @@ const Register = () => {
         <p className="subtitle">
           Already have an account?{" "}
           <Link className="forget-pass" to="/login">
-           Log In
+            Log In
           </Link>
         </p>
       </form>
