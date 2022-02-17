@@ -70,11 +70,16 @@ const Login = () => {
             {" "}
             <b>Email</b>
           </label>
-          <input type="text" placeholder="Enter Email" name="uname" />
+          <input type="text" placeholder="Enter Email" name="uname" required />
           <label for="psw">
             <b>Password</b>
           </label>
-          <input type="password" placeholder="Enter Password" name="psw" />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            required
+          />
         </div>
         <p class="or">
           <span>or</span>
@@ -94,11 +99,18 @@ const Login = () => {
             />
           </button>
         </div>
-        <button class="cta-btn">Log In</button>
+        <button
+          class="cta-btn"
+          onClick={(e) => {
+            loginFunction();
+          }}
+        >
+          Log In
+        </button>
 
         <p class="subtitle">
           Don't have an account?{" "}
-          <Link class="forget-pass" to="#">
+          <Link class="forget-pass" to="/register">
             Sign up
           </Link>
         </p>
