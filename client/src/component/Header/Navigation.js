@@ -50,7 +50,14 @@ const Navigation = () => {
   const mapOverCategories = categoriesarr.map((category) => {
     return (
       <>
-        <span className="category-list">{category.name}</span>
+        <span
+          className="category-list"
+          onClick={(e) => {
+            navigate(`/getAllProductByCategory/${category.name}`);
+          }}
+        >
+          {category.name}
+        </span>
       </>
     );
   });
