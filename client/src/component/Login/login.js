@@ -25,7 +25,7 @@ const Login = () => {
   const navigate = useNavigate();
   const notifyLoginSuccess = () => {
     toast.success("Login Successfully", {
-      position: toast.POSITION.BOTTOM_CENTER,
+      position: toast.POSITION.TOP_CENTER,
     });
     navigate("/products");
   };
@@ -52,7 +52,7 @@ const Login = () => {
         .catch((err) => {
           console.log(err.meseage);
           toast.error(err.response.data.message, {
-            position: toast.POSITION.BOTTOM_CENTER,
+            position: toast.POSITION.TOP_CENTER,
           });
         });
     } else {
