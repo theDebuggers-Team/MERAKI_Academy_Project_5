@@ -50,9 +50,8 @@ const Header = ({ setSearch }) => {
     };
   });
 
-  
   const token = state.token;
-  
+
   // const [search, setSearch] = useState("");
   const lastName = token && decode(token).lastName;
   const firstName = token && decode(token).firstName;
@@ -117,7 +116,7 @@ const Header = ({ setSearch }) => {
                 // width: "16%",
                 fontSize: "1.1rem",
               }}
-              onMouseEnter={handleClickUser}
+              onClick={handleClickUser}
               // onMouseLeave={handleClickUser}
             >
               {/* <img
@@ -125,7 +124,7 @@ const Header = ({ setSearch }) => {
               style={{ width: "10%", height: "10%" }}
             />{" "} */}
               <IoPersonSharp />
-              <p>{firstName ? firstName : firstName2 }</p>{" "}
+              <p>{firstName ? firstName : firstName2}</p>{" "}
               <p>{lastName ? lastName : lastName2}</p>
               <IoMdArrowDropdown />
             </span>
@@ -133,7 +132,7 @@ const Header = ({ setSearch }) => {
               <div
                 className="dropdown-menu1-user "
                 // onMouseEnter={handleClickUser}
-                onMouseLeave={handleClickUser}
+                // onMouseLeave={handleClickUser}
               >
                 <span className="user-list">
                   <Link to="/profile" className="link-user">
