@@ -6,12 +6,9 @@
   min-width: 100%;
   overflow-x: hidden;
   background-color: white;
-  
 }
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
-.App {
-  
-}
+
 header {
   display: flex;
   flex-direction: row;
@@ -21,19 +18,17 @@ header {
 }
 #root {
   font-family: "Poppins", sans-serif;
- height: 100%;
+  height: 100%;
   min-width: 100%;
 }
 
 html,
 body,
-#app,
-.App  {
+.App {
   min-height: 100%;
   min-width: 100%;
   overflow-x: hidden;
   margin: 0;
-  position: relative;
 }
 @media (max-width: 648px) {
   html,

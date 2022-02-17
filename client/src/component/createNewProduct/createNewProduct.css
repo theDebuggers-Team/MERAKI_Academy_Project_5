@@ -24,7 +24,6 @@ textarea {
 
 .product-info {
   width: 100%;
-  /* height: 500px; */
   display: grid;
   grid-template-columns: 0.75fr 1.25fr;
   grid-template-rows: repeat(2, 1fr);
@@ -149,15 +148,7 @@ textarea {
 #save-btn {
   background: #a9a9a9;
 }
-.inputprod:not(.inputprod[type="checkbox"]),
-textarea {
-}
-.inputprod[type="text"],
-.inputprod[type="password"],
-.inputprod[type="email"],
-.inputprod[type="number"],
-textarea {
-}
+
 .inputprod::-webkit-outer-spin-button,
 .inputprod::-webkit-inner-spin-button {
   -webkit-appearance: none;

@@ -98,41 +98,13 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-/* .search {
-  width: 100%;
-  position: relative;
-  display: flex;
-} */
 
-/* .searchTerm {
-  width: 100%;
-  border: 3px solid #00b4cc;
-  border-right: none;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9dbfaf;
-} */
-/* */
 .searchTerm:focus {
   color: #00b4cc;
 }
-*/
 
-/* .searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00b4cc;
-  background: #00b4cc;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-} */
 
-/*Resize the wrap to see the search bar change!*/
+
 .wrap {
   width: 30%;
   position: absolute;
@@ -293,18 +265,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
-/* .dropdown > .option:focus >.dropdown-menu {
-  opacity: 1;
-  pointer-events: auto;
 
-} */
-/* .dropdown-menu:focus {
-  opacity: 1;
-} */
-
-/* .dropdown-menu:hover{
-  opacity: 1;
-} */
 .dropdown-menu1 {
   position: absolute;
   left: 0;
@@ -314,7 +275,6 @@ body {
   border-radius: 0.2rem;
   box-shadow: 0 2px 5px e Orgba(0, e, e, 0.1);
   opacity: 1;
-  /* pointer-events: none; */
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   height: 250px;
