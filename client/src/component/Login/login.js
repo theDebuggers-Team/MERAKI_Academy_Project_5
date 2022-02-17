@@ -77,7 +77,7 @@ const Login = () => {
           </label>
 
           <input
-className="log-reg"
+            className="log-reg"
             type="text"
             placeholder="Enter Email"
             name="uname"
@@ -90,7 +90,7 @@ className="log-reg"
             <b>Password</b>
           </label>
           <input
-className="log-reg"
+            className="log-reg"
             type="password"
             placeholder="Enter Password"
             name="psw"
@@ -99,7 +99,6 @@ className="log-reg"
             }}
             required
           />
-
         </div>
         <p className="or">
           <span>or</span>
