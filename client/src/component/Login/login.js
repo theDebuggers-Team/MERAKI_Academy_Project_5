@@ -70,11 +70,11 @@ const Login = () => {
             {" "}
             <b>Email</b>
           </label>
-          <input type="text" placeholder="Enter Email" name="uname" />
+          <input type="text" placeholder="Enter Email" name="uname" className="log-reg" />
           <label for="psw">
             <b>Password</b>
           </label>
-          <input type="password" placeholder="Enter Password" name="psw" />
+          <input type="password" placeholder="Enter Password" name="psw" className="log-reg" />
         </div>
         <p class="or">
           <span>or</span>
