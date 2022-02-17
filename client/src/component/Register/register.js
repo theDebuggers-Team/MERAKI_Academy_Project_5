@@ -318,7 +318,7 @@ const Register = () => {
           <Cloudinary setImage={setusers_Image} />
         </div>
 
-        <button class="cta-btn" >Sign Up</button>
+        <button class="cta-btn">Sign Up</button>
         <p className="subtitle">
           Already have an account?{" "}
           <Link className="forget-pass" to="/login">
