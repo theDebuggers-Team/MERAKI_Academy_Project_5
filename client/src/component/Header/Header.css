@@ -421,3 +421,17 @@ body {
   cursor: none;
   margin-top: 22px;
 } */
+@media (max-width: 500px) {
+  .header1{
+    align-items: center;
+    gap: 0;
+    padding:0
+
+  }
+  .box{
+    display:none
+  }
+  .dropdown-user{
+    display:none
+  }
+}

@@ -264,7 +264,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
     ? commentsOnProduct.map((comment) => {
         return (
           <>
-            <h1>Comments</h1>
+           
 
             <ul id="comments-list" class="comments-list">
               <li>
@@ -407,7 +407,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
             </div>
 
             <div className="product-content">
-              <div className="title">
+              <div className="title1">
                 <h2 className="product-title">{element.title}</h2>
                 <FaEllipsisH />
               </div>
@@ -416,10 +416,11 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                 {token ? (
                   <div className="stars">
                     <ReactStars
-                      value={element.rating / element.counter}
+                      value={element.rating / element.counter  / 10}
                       count={5}
                       onChange={(newRate, id) => {
                         ratingChanged(newRate, element.id);
+                        
                       }}
                       size={24}
                       half={true}
@@ -432,7 +433,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   </div>
                 ) : null}
                 <span>
-                  {element.rating / element.counter || 0}({element.counter || 0}
+                  {(Math.floor(element.rating / element.counter * 10) / 10) || 0}({element.counter || 0}
                   )
                 </span>
               </div>
@@ -565,6 +566,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
           : "There is No Comments yet"}
         {decode ? (
           <div class="comments-container">
+             <h1>Comments</h1>
             {allComments}
             <ul id="comments-list" class="comments-list">
               <li>
@@ -578,7 +580,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                       <div class="comment-head">
                         <h6 class="comment-name">
                           {decode &&
-                            decode.firstName + " " + decode &&
+                            decode.firstName + " " + 
                             decode.lastName}
                         </h6>
                       </div>

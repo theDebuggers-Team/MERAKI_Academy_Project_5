@@ -36,7 +36,9 @@
 @media (max-width: 648px) {
   .categories {
     display: grid;
-    height: 60vh;
+    
+    height: 62vh;
+    padding-top: 5%;
   }
   .category {
     width: 100%;

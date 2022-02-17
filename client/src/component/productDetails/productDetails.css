@@ -214,14 +214,14 @@ img {
   display: flex;
   justify-content: flex-start;
 }
-.title {
+.title1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .img-showcase {
   display: block;
-  width: 83%;
+  width: 95%;
   transition: all 0.5s ease;
 }
 /* comment */
