@@ -19,6 +19,8 @@ import { FaHome } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
 import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
 
 const Navigation = () => {
   const categoriesarr = [
@@ -56,7 +58,7 @@ const Navigation = () => {
             navigate(`/getAllProductByCategory/${category.name}`);
           }}
         >
-          {category.name}
+          {category.image}{category.name}
         </span>
       </>
     );
@@ -88,12 +90,11 @@ const Navigation = () => {
   });
 
   const token = state.token;
-  const role = token && decode(token).role;
   const firstName = token && decode(token).firstName;
   const firstName2 = token && decode(token).given_name;
   const lastName2 = token && decode(token).family_name;
   const googleLogin = token && decode(token);
-  console.log(googleLogin);
+  const role = token && decode(token).role;
 
   //////////////////////////
 
@@ -125,9 +126,7 @@ const Navigation = () => {
               </Link>{" "}
             </li>
             {clickCate ? (
-              <div className="dropdown-menu1" >
-                {mapOverCategories}
-              </div>
+              <div className="dropdown-menu1">{mapOverCategories}</div>
             ) : null}
           </div>
           {token ? (
@@ -151,6 +150,43 @@ const Navigation = () => {
               </Link>{" "}
             </li>
           )}
+          {token ? (
+            <li className="option mobile-option" onClick={closeMobileMenu}>
+              <Link to="/NewProduct" className="link">
+                <IoIosCreate /> Create Product
+              </Link>
+            </li>
+          ) : null}
+
+          {token ? (
+            <li className="option mobile-option" onClick={closeMobileMenu}>
+              <Link to="/profile" className="link">
+                <FaRegUser /> Profile
+              </Link>
+            </li>
+          ) : null}
+          {role == 1 ? (
+            <li className="option mobile-option" onClick={closeMobileMenu}>
+              <Link to="/panel" className="link">
+                <MdOutlineAdminPanelSettings /> Admin panel
+              </Link>
+            </li>
+          ) : null}
+
+          {token ? (
+            <li className="option mobile-option" onClick={closeMobileMenu}>
+              <Link
+                className="link"
+                to="/login"
+                onClick={() => {
+                  localStorage.clear();
+                  role = null;
+                }}
+              >
+                <MdLogout /> Log out
+              </Link>
+            </li>
+          ) : null}
         </ul>
       </div>
       <div className="signin-up">
@@ -170,9 +206,11 @@ const Navigation = () => {
           </li>
         )}
 
-        {token?<Link to="/NewProduct" className="link">
-          <IoIosCreate /> Create Product
-        </Link>:null}
+        {token ? (
+          <Link to="/NewProduct" className="link">
+            <IoIosCreate /> Create Product
+          </Link>
+        ) : null}
 
         {token ? (
           <li onClick={closeMobileMenu}>
