@@ -210,6 +210,11 @@ const Register = () => {
             placeholder="Enter First Name"
             name="First Name"
             className="log-reg"
+            required
+            value={firstName}
+            onChange={(e) => {
+              setfirstName(e.target.value);
+            }}
           />
           <label for="Last Name">
             <b>Last Name</b>
@@ -219,6 +224,11 @@ const Register = () => {
             placeholder="Enter Last Name"
             name="Last Name"
             className="log-reg"
+            value={lastName}
+           onChange={(e) => {
+          setlastName(e.target.value);
+         }}
+            required
           />
           <label for="email">
             {" "}
@@ -230,6 +240,11 @@ const Register = () => {
             type="text"
             placeholder="Enter Email"
             name="uname"
+            value={email}
+      onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+           
             required
           />
           <label for="Age">
@@ -241,6 +256,11 @@ const Register = () => {
             placeholder="Enter Age"
             name="Age"
             className="log-reg"
+            value={age}
+           onChange={(e) => {
+             setAge(e.target.value);
+           }}
+           required
           />
           <label for="Country">
             {" "}
@@ -251,6 +271,11 @@ const Register = () => {
             placeholder="Enter Country"
             name="Country"
             className="log-reg"
+            value={country}
+           onChange={(e) => {
+             setcountry(e.target.value);
+           }}
+           required
           />
           <label for="Phone Number">
             {" "}
@@ -261,6 +286,11 @@ const Register = () => {
             placeholder="Enter Phone Number"
             name="Phone Number"
             className="log-reg"
+            value={phone_Number}
+          onChange={(e) => {
+             setphone_number(e.target.value);
+          }}
+           required
           />
           <label for="psw">
             <b>Password</b>
@@ -270,6 +300,11 @@ const Register = () => {
             placeholder="Enter Password"
             name="psw"
             className="log-reg"
+            value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          required
           />
 
           <label className="image-label">
