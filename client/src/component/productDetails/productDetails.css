@@ -4,7 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
 }
 body {
   line-height: 1.5;
@@ -82,9 +82,10 @@ img {
   color: #f7c42d;
 }
 .product-rating span {
-  font-weight: 600;
-  color: #252525;
+  font-weight: 400;
+  color: #8b9dc3;
 }
+
 .product-price {
   margin: 1rem 0;
   font-size: 1rem;
@@ -550,7 +551,7 @@ ul {
   cursor: pointer;
 }
 
-.btn9:hover{
+.btn9:hover {
   color: #000;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
 }

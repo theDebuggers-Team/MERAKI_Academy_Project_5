@@ -11,6 +11,9 @@ import { BsBag } from "react-icons/bs";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 import jwtDecode from "jwt-decode";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const Header = ({ setSearch }) => {
   const [clickUser, setClickUser] = useState(false);
@@ -20,27 +23,21 @@ const Header = ({ setSearch }) => {
   const categoriesarr = [
     {
       name: "Cars",
-      // image: <IoCarSportOutline />,
     },
     {
       name: "Electronics",
-      // image: <RiComputerLine />,
     },
     {
       name: "Jobs",
-      // image: <MdOutlineWorkOutline />,
     },
     {
       name: "Real Estates",
-      // image: <FaHome />,
     },
     {
       name: "Fashoins",
-      // image: <GiClothes />,
     },
     {
       name: "Job Seeker",
-      // image: <IoSearchOutline />,
     },
   ];
   const state = useSelector((state) => {
@@ -94,17 +91,6 @@ const Header = ({ setSearch }) => {
           </div>
         </div>
 
-        {/* <div class="container">
-  <div class="box">
-    <div class="search-bar">
-      <form>
-        <input type="text" placeholder="Search">
-        <button><i class="fas fa-search"></i></button>
-      </form>
-    </div>
-  </div>
-</div> */}
-
         {token ? (
           <div className="dropdown-user">
             <span
@@ -112,37 +98,27 @@ const Header = ({ setSearch }) => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                // gap: "2%",
-                // width: "16%",
+
                 fontSize: "1.1rem",
               }}
               onClick={handleClickUser}
-              // onMouseLeave={handleClickUser}
             >
-              {/* <img
-              src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
-              style={{ width: "10%", height: "10%" }}
-            />{" "} */}
               <IoPersonSharp />
               <p>{firstName ? firstName : firstName2}</p>{" "}
               <p>{lastName ? lastName : lastName2}</p>
               <IoMdArrowDropdown />
             </span>
             {clickUser ? (
-              <div
-                className="dropdown-menu1-user "
-                // onMouseEnter={handleClickUser}
-                // onMouseLeave={handleClickUser}
-              >
+              <div className="dropdown-menu1-user ">
                 <span className="user-list">
                   <Link to="/profile" className="link-user">
-                    Show your profile
+                    <FaRegUser /> Profile
                   </Link>
                 </span>
                 {role == 1 ? (
                   <span className="user-list">
                     <Link to="/panel" className="link-user">
-                      Show admin panel
+                      <MdOutlineAdminPanelSettings /> Admin panel
                     </Link>
                   </span>
                 ) : null}
@@ -157,7 +133,7 @@ const Header = ({ setSearch }) => {
                         role = null;
                       }}
                     >
-                      Logout
+                      <AiOutlineLogout /> Logout
                     </Link>
                   </span>
                 ) : (
