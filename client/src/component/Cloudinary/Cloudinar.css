@@ -26,3 +26,6 @@
   margin-right: 10px;
   cursor: pointer;
 }
+.mck-box .show, .mck-box .vis, .mck-msg-preview.vis, .mck-sidebox-launcher .vis, .mck-sidebox-launcher.vis{
+  display: block !important;
+}

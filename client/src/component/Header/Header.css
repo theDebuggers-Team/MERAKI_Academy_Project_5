@@ -426,7 +426,9 @@ body {
   .header1{
     align-items: center;
     gap: 0;
-    padding:0
+    padding: 0;
+    justify-content: center;
+    display: grid;
 
   }
   .box{
