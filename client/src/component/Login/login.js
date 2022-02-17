@@ -75,7 +75,9 @@ const Login = () => {
             {" "}
             <b>Email</b>
           </label>
+
           <input
+className="log-reg"
             type="text"
             placeholder="Enter Email"
             name="uname"
@@ -88,6 +90,7 @@ const Login = () => {
             <b>Password</b>
           </label>
           <input
+className="log-reg"
             type="password"
             placeholder="Enter Password"
             name="psw"
@@ -96,6 +99,7 @@ const Login = () => {
             }}
             required
           />
+
         </div>
         <p className="or">
           <span>or</span>

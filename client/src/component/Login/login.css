@@ -4,13 +4,10 @@ body {
 .social-login img {
   width: 24px;
 }
-a {
-  text-decoration: none;
-}
 
 .card1 {
   font-family: sans-serif;
-  width: 400px;
+  width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3em;
@@ -25,6 +22,7 @@ a {
   text-align: center;
   font-weight: bold;
   margin: 0;
+  margin-bottom: 26px;
 }
 .subtitle {
   text-align: center;
@@ -81,8 +79,7 @@ a {
   color: rgb(170 166 166);
 }
 
-input[type="text"],
-input[type="password"] {
+.log-reg {
   padding: 15px 20px;
   margin-top: 8px;
   margin-bottom: 15px;
