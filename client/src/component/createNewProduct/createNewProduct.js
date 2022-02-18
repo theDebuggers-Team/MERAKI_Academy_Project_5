@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cloudinary from "../Cloudinary/Cloudinary";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import jwt_decode from "jwt-decode";
 const NewProduct = ({ lat, setLat, long, setLong }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,7 +25,10 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
     };
   });
   const token = state.token;
-
+  console.log(token);
+  const decode = state.token && jwt_decode(state.token);
+  let user_id = (decode && decode.userId) || (decode && decode.sub);
+  console.log(decode);
   const createNewProduct = () => {
     axios
       .post(
@@ -37,6 +41,7 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
           category,
           latitude: lat,
           longitude: long,
+          user_id,
         },
         {
           headers: {

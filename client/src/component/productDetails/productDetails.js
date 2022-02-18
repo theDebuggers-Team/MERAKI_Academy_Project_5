@@ -604,14 +604,21 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                     {state.token ? (
                       <div class="comment-main-level">
                         <div class="comment-avatar">
-                          <img src={decode && decode.image} alt="" />
+                          <img
+                            src={
+                              (decode && decode.image) ||
+                              (decode && decode.picture)
+                            }
+                            alt=""
+                          />
                         </div>
 
                         <div class="comment-box">
                           <div class="comment-head">
                             <h6 class="comment-name">
-                              {decode &&
-                                decode.firstName + " " + decode.lastName}
+                              {decode && decode.firstName
+                                ? decode.firstName + " " + decode.lastName
+                                : decode.given_name + " " + decode.family_name}
                             </h6>
                           </div>
                           <div class="comment-content">
