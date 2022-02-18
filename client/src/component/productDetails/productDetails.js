@@ -14,6 +14,7 @@ import { FaEllipsisH } from "react-icons/fa";
 import Demo1 from "../Maps/maps";
 toast.configure();
 const ProductDetails = ({ lat, setLat, long, setLong }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -49,11 +50,12 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         setproductDetails(response.data.results);
         setLat(response.data.results[0].latitude);
         setLong(response.data.results[0].longitude);
-        console.log(response.data.results);
-        console.log(lat);
-        console.log(long);
-        console.log(typeof lat);
-        console.log(typeof long);
+        // console.log(response.data.results);
+        // console.log(lat);
+        // console.log(long);
+        // console.log(typeof lat);
+        // console.log(typeof long);
+        setIsLoading(false);
       })
       .catch((err) => {
         toast.error(err.response && err.response.data.message, {
@@ -264,8 +266,6 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
     ? commentsOnProduct.map((comment) => {
         return (
           <>
-           
-
             <ul id="comments-list" class="comments-list">
               <li>
                 <div class="comment-main-level">
@@ -416,11 +416,10 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                 {token ? (
                   <div className="stars">
                     <ReactStars
-                      value={element.rating / element.counter  / 10}
+                      value={element.rating / element.counter / 10}
                       count={5}
                       onChange={(newRate, id) => {
                         ratingChanged(newRate, element.id);
-                        
                       }}
                       size={24}
                       half={true}
@@ -433,8 +432,9 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   </div>
                 ) : null}
                 <span>
-                  {(Math.floor(element.rating / element.counter * 10) / 10) || 0}({element.counter || 0}
-                  )
+                  {Math.floor((element.rating / element.counter) * 10) / 10 ||
+                    0}
+                  ({element.counter || 0})
                 </span>
               </div>
 
@@ -560,65 +560,75 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
   ///////////////////////////////
   return (
     <>
-      <div className="container-all-div">
-        {productDetailsToShow
-          ? productDetailsToShow
-          : "There is No Comments yet"}
-        {decode ? (
-          <div class="comments-container">
-             <h1>Comments</h1>
-            {allComments}
-            <ul id="comments-list" class="comments-list">
-              <li>
-                {state.token ? (
-                  <div class="comment-main-level">
-                    <div class="comment-avatar">
-                      <img src={decode && decode.image} alt="" />
-                    </div>
-
-                    <div class="comment-box">
-                      <div class="comment-head">
-                        <h6 class="comment-name">
-                          {decode &&
-                            decode.firstName + " " + 
-                            decode.lastName}
-                        </h6>
+      {isLoading ? (
+        <div className="all-loader">
+          {" "}
+          <div class="loader-container">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+            <div class="dot dot-4"></div>
+          </div>
+        </div>
+      ) : (
+        <div className="container-all-div">
+          {productDetailsToShow
+            ? productDetailsToShow
+            : "There is No Comments yet"}
+          {decode ? (
+            <div class="comments-container">
+              <h1>Comments</h1>
+              {allComments}
+              <ul id="comments-list" class="comments-list">
+                <li>
+                  {state.token ? (
+                    <div class="comment-main-level">
+                      <div class="comment-avatar">
+                        <img src={decode && decode.image} alt="" />
                       </div>
-                      <div class="comment-content">
-                        <textarea
-                          className="comment-body"
-                          placeholder="Write Your Commment ..."
-                          onChange={(e) => {
-                            setcreateComment(e.target.value);
-                          }}
-                        />
-                        <div class="comment-btns">
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              if (!createComment) {
-                                toast.error("No comment written to post", {
-                                  position: toast.POSITION.BOTTOM_RIGHT,
-                                });
-                              } else {
-                                createNewComment();
-                                setsucesscomment(!sucesscomment);
-                              }
+
+                      <div class="comment-box">
+                        <div class="comment-head">
+                          <h6 class="comment-name">
+                            {decode && decode.firstName + " " + decode.lastName}
+                          </h6>
+                        </div>
+                        <div class="comment-content">
+                          <textarea
+                            className="comment-body"
+                            placeholder="Write Your Commment ..."
+                            onChange={(e) => {
+                              setcreateComment(e.target.value);
                             }}
-                          >
-                            Post
-                          </button>
-                          <button className="btn">Cancel</button>
+                          />
+                          <div class="comment-btns">
+                            <button
+                              className="btn"
+                              onClick={(e) => {
+                                if (!createComment) {
+                                  toast.error("No comment written to post", {
+                                    position: toast.POSITION.BOTTOM_RIGHT,
+                                  });
+                                } else {
+                                  createNewComment();
+                                  setsucesscomment(!sucesscomment);
+                                }
+                              }}
+                            >
+                              Post
+                            </button>
+                            <button className="btn">Cancel</button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ) : null}
-              </li>
-            </ul>
-          </div>
-        ) : null}
-      </div>
+                  ) : null}
+                </li>
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      )}
     </>
   );
 };
