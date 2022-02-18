@@ -216,9 +216,7 @@ const Products = ({ search }) => {
                 <div class="product-card">
                   {/* <div class="badge">Hot</div> */}
                   <div class="product-tumb"   
-                  onClick={(e) => {
-                         navigate(`/productDetails/${element.id}`);
-                       }}
+                 
                   >
                     <img src={element.image} alt="" class="image" />
                   </div>
@@ -250,10 +248,19 @@ const Products = ({ search }) => {
                           edit={false}
                         />
                         {state.token?<div class="product-links">
-                        <a href="">
+                        <a href="" 
+                        onClick={() => {
+                                 addToWishList(element.id);
+                                }}
+                        
+                        >
                           <i class="fa fa-heart"></i>
                         </a>
-                        <a href="">
+                        <a href=""  
+                         onClick={(e) => {
+                          navigate(`/productDetails/${element.id}`);
+                        }}
+                        >
                           <i class="fa fa-eye"></i>
                         </a>
                       </div>:null}
