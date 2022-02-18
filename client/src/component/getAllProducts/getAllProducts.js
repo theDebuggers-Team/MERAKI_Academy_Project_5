@@ -226,8 +226,8 @@ const Products = ({ search }) => {
                     <p> {element.description.substring(-1, 70)}...</p>
                     <div class="product-bottom-details">
                       <div class="product-price">
-                        <small>${element.price - element.price * 0.05}</small>$
-                        {element.price}
+                        <small className="old-price">${element.price - element.price * 0.05}</small><span className="new-price" style={{fontWeight:600}}>${element.price}</span>
+                        
                       </div>
                       
                       

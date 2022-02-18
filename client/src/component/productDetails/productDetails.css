@@ -181,6 +181,9 @@ img {
   border-color: transparent;
   color: #fff;
 }
+.card{
+  background-color: #fafafa
+}
 
 @media screen and (min-width: 992px) {
   .card {
