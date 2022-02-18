@@ -33,6 +33,12 @@ const Home = () => {
       products: state.productReducer.products,
     };
   });
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   const products = state.products && state.products.slice(0, 4);
   const token = state.token;
   const [page, setPage] = useState(1);
@@ -122,6 +128,7 @@ const Home = () => {
                   className="image"
                   onClick={(e) => {
                     navigate(`/productDetails/${element.id}`);
+                    scrollTop();
                   }}
                 >
                   <img src={element.image} className="img" />

@@ -192,9 +192,12 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
-    background-color: white;
-    border-radius: 1%;
+    /* box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px; */
+    /* background-color: white; */
+    /* border-radius: 1%; */
+    border-radius: 10px;
+    box-shadow: 2px 5px 20px rgb(0 0 0 / 10%);
+    background-color: #ffff;
   }
 
   .product-imgs {
@@ -233,7 +236,7 @@ img {
   align-items: center;
   justify-content: center;
   padding: 3%;
-  background-color: aliceblue;
+  background-color: #ffff
 }
 
 .single-comment {
@@ -671,3 +674,12 @@ ul {
   align-items: center;
   font-family: "Poppins", sans-serif;
 }
+.commentslabel{
+  display: flex;
+    margin-top: 6%;
+    font-size: 2em;
+}
+/* .Typewriter-com{
+  font-size: 10em;
+  font-weight: 3em;
+} */

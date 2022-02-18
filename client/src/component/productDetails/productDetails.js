@@ -12,6 +12,8 @@ import Swal from "sweetalert2";
 import ReactImageMagnify from "react-image-magnify";
 import { FaEllipsisH } from "react-icons/fa";
 import Demo1 from "../Maps/maps";
+import Typewriter from "typewriter-effect";
+
 toast.configure();
 const ProductDetails = ({ lat, setLat, long, setLong }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -576,56 +578,76 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
             ? productDetailsToShow
             : "There is No Comments yet"}
           {decode ? (
-            <div class="comments-container">
-              <h1>Comments</h1>
-              {allComments}
-              <ul id="comments-list" class="comments-list">
-                <li>
-                  {state.token ? (
-                    <div class="comment-main-level">
-                      <div class="comment-avatar">
-                        <img src={decode && decode.image} alt="" />
-                      </div>
+            <>
+              <div className="commentslabel">
+                <Typewriter
+                  className="Typewriter-com"
+                  options={{
+                    autoStart: true,
+                    loop: true,
+                    delay: 50,
+                  }}
+                  onInit={(typewriter) => {
+                    typewriter
+                      .typeString("Comments")
 
-                      <div class="comment-box">
-                        <div class="comment-head">
-                          <h6 class="comment-name">
-                            {decode && decode.firstName + " " + decode.lastName}
-                          </h6>
+                      .pauseFor(5000)
+
+                      .start();
+                  }}
+                />
+              </div>
+              <div class="comments-container">
+                {allComments}
+                <ul id="comments-list" class="comments-list">
+                  <li>
+                    {state.token ? (
+                      <div class="comment-main-level">
+                        <div class="comment-avatar">
+                          <img src={decode && decode.image} alt="" />
                         </div>
-                        <div class="comment-content">
-                          <textarea
-                            className="comment-body"
-                            placeholder="Write Your Commment ..."
-                            onChange={(e) => {
-                              setcreateComment(e.target.value);
-                            }}
-                          />
-                          <div class="comment-btns">
-                            <button
-                              className="btn"
-                              onClick={(e) => {
-                                if (!createComment) {
-                                  toast.error("No comment written to post", {
-                                    position: toast.POSITION.BOTTOM_RIGHT,
-                                  });
-                                } else {
-                                  createNewComment();
-                                  setsucesscomment(!sucesscomment);
-                                }
+
+                        <div class="comment-box">
+                          <div class="comment-head">
+                            <h6 class="comment-name">
+                              {decode &&
+                                decode.firstName + " " + decode.lastName}
+                            </h6>
+                          </div>
+                          <div class="comment-content">
+                            <textarea
+                              className="comment-body"
+                              placeholder="Write Your Commment ..."
+                              onChange={(e) => {
+                                setcreateComment(e.target.value);
                               }}
-                            >
-                              Post
-                            </button>
-                            <button className="btn">Cancel</button>
+                            />
+                            <div class="comment-btns">
+                              <button
+                                className="btn"
+                                onClick={(e) => {
+                                  if (!createComment) {
+                                    toast.error("No comment written to post", {
+                                      position: toast.POSITION.BOTTOM_RIGHT,
+                                    });
+                                  } else {
+                                    createNewComment();
+                                    setsucesscomment(!sucesscomment);
+                                  }
+                                }}
+                              >
+                                Post
+                              </button>
+                              <button className="btn">Cancel</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ) : null}
-                </li>
-              </ul>
-            </div>
+                    ) : null}
+                  </li>
+                </ul>
+              </div>
+            </>
           ) : null}
         </div>
       )}
