@@ -30,6 +30,7 @@
     "redux": "^4.1.2",
     "responsive-navbar-react": "^1.2.1",
     "sweetalert2": "^11.3.10",
+    "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -56,11 +57,9 @@
       "last 1 safari version"
     ]
   },
-
-  "proxy":"http://localhost:5000",
+  "proxy": "http://localhost:5000",
   "engines": {
     "node": "16.13.1",
-    "npm":"8.1.2"
+    "npm": "8.1.2"
   }
-  
 }

@@ -7,6 +7,7 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
 import { IoSearchOutline } from "react-icons/io5";
+import Typewriter from "typewriter-effect";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -51,7 +52,24 @@ const Categories = () => {
   });
   return (
     <>
-      <h2 className="label">Categories</h2>
+      <h2 className="label">
+        <Typewriter
+          className="Typewriter"
+          options={{
+            autoStart: true,
+            loop: true,
+            delay: 75,
+          }}
+          onInit={(typewriter) => {
+            typewriter
+              .typeString("Categories")
+
+              .pauseFor(2000)
+
+              .start();
+          }}
+        />
+      </h2>
       <div className="categories">{mapOverCategories}</div>
     </>
   );

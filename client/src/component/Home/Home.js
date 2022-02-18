@@ -14,6 +14,8 @@ import {
   deleteproduct,
   getproductsByState,
 } from "../reducer/products/index";
+import Typewriter from "typewriter-effect";
+
 import { Chat } from "../Chat/Chat";
 // import ChatBotCom from "../ChatBot/ChatBot";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
@@ -93,7 +95,24 @@ const Home = () => {
           <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
         </div>
       </Carousel>
-      <h2 className="label">Latest Products</h2>
+      <h2 className="label">
+        <Typewriter
+          className="Typewriter"
+          options={{
+            autoStart: true,
+            loop: true,
+            delay: 75,
+          }}
+          onInit={(typewriter) => {
+            typewriter
+              .typeString("Latest Products")
+
+              .pauseFor(2000)
+
+              .start();
+          }}
+        />
+      </h2>
       <div className="latest-products">
         {products &&
           products.map((element) => {
