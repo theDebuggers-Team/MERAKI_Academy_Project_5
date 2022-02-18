@@ -245,16 +245,16 @@ const Products = ({ search }) => {
                       />
                       {state.token ? (
                         <div class="product-links">
-                          <a
-                            href=""
-                            onClick={() => {
-                              addToWishList(element.id);
-                            }}
-                          >
-                            <i class="fa fa-heart"></i>
+                          <a href="#">
+                            <i
+                              class="fa fa-heart"
+                              onClick={() => {
+                                addToWishList(element.id);
+                              }}
+                            ></i>
                           </a>
                           <a
-                            href=""
+                            href="#"
                             onClick={(e) => {
                               navigate(`/productDetails/${element.id}`);
                             }}
