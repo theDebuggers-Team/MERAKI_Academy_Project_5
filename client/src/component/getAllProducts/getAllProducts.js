@@ -119,11 +119,12 @@ const Products = ({ search }) => {
 
   return (
     <div className="all">
-      <h2 className="label"><Typewriter
+      <h2 className="label">
+        <Typewriter
           className="Typewriter"
           options={{
             autoStart: true,
-           
+
             delay: 75,
           }}
           onInit={(typewriter) => {
@@ -134,7 +135,8 @@ const Products = ({ search }) => {
 
               .start();
           }}
-        /></h2>
+        />
+      </h2>
       <div className="all-products">
         {state.products &&
           state.products
@@ -151,63 +153,107 @@ const Products = ({ search }) => {
             })
             .map((element) => {
               return (
-                <div className="single-product" key={element.id}>
-                  <div
-                    className="image"
-                    onClick={(e) => {
-                      navigate(`/productDetails/${element.id}`);
-                    }}
-                  >
-                    <img src={element.image} className="img" />
+                // <div className="single-product" key={element.id}>
+                //   <div
+                //     className="image"
+                //     onClick={(e) => {
+                //       navigate(`/productDetails/${element.id}`);
+                //     }}
+                //   >
+                //     <img src={element.image} className="img" />
+                //   </div>
+                //   <div className="product-description">
+                //     <span className="title">
+                //       {/* {element.title.substring(-1, 30) + "..."} */}
+                //       {element.title}
+                //     </span>
+
+                //     <span className="price"> {element.price} $</span>
+                //     <span>
+                //       {element.description.substring(-1, 20)}
+                //       <p
+                //         style={{ color: "gray", cursor: "pointer" }}
+                //         onClick={(e) => {
+                //           setmore(!more);
+                //         }}
+                //       >
+                //         ...more
+                //       </p>
+                //       {more ? <p>{element.description}</p> : null}
+                //     </span>
+                //     <div className="stars-1">
+                //       <ReactStars
+                //         count={5}
+                //         // onChange={ratingChanged}
+                //         size={24}
+                //         value={element.rating / element.counter}
+                //         half={true}
+                //         emptyIcon={<i className="far fa-star"></i>}
+                //         halfIcon={<i className="fa fa-star-half-alt"></i>}
+                //         fullIcon={<i className="fa fa-star"></i>}
+                //         color2={"#fbb034"}
+                //         edit={false}
+                //       />
+                //     </div>
+
+                //     {state.token ? (
+                //       <div className="button-58">
+                //         <Link
+                //           to="#"
+                //           className="link"
+                //           onClick={() => {
+                //             addToWishList(element.id);
+                //           }}
+                //         >
+                //           {" "}
+                //           <MdOutlineFavoriteBorder /> Favorite
+                //         </Link>
+                //       </div>
+                //     ) : null}
+                //   </div>
+                // </div>
+
+                <div class="product-card">
+                  {/* <div class="badge">Hot</div> */}
+                  <div class="product-tumb">
+                    <img src={element.image} alt="" class="image" />
                   </div>
-                  <div className="product-description">
-                    <span className="title">
-                      {/* {element.title.substring(-1, 30) + "..."} */}
-                      {element.title}
-                    </span>
-
-                    <span className="price"> {element.price} $</span>
-                    <span>
-                      {element.description.substring(-1, 20)}
-                      <p
-                        style={{ color: "gray", cursor: "pointer" }}
-                        onClick={(e) => {
-                          setmore(!more);
-                        }}
-                      >
-                        ...more
-                      </p>
-                      {more ? <p>{element.description}</p> : null}
-                    </span>
-                    <div className="stars">
-                      <ReactStars
-                        count={5}
-                        // onChange={ratingChanged}
-                        size={24}
-                        value={element.rating / element.counter}
-                        half={true}
-                        emptyIcon={<i className="far fa-star"></i>}
-                        halfIcon={<i className="fa fa-star-half-alt"></i>}
-                        fullIcon={<i className="fa fa-star"></i>}
-                        color2={"#fbb034"}
-                        edit={false}
-                      />
-                    </div>
-
-                    {state.token ? (
-                      <div className="button-58">
-                        <Link
-                          to="#"
-                          className="link"
-                          onClick={() => {
-                            addToWishList(element.id);
-                          }}
-                        >
-                          {" "}
-                          <MdOutlineFavoriteBorder /> Favorite
-                        </Link>
+                  <div class="product-details">
+                    <span class="product-catagory"> {element.category}</span>
+                    <h4>
+                      <a href=""> {element.title.substring(-1,30)}...</a>
+                    </h4>
+                    <p> {element.description.substring(-1, 70)}...</p>
+                    <div class="product-bottom-details">
+                      <div class="product-price">
+                        <small>${element.price - element.price * 0.05}</small>$
+                        {element.price}
                       </div>
-                    ) : null}
+                      
+                      
+                    </div>
+                    <div className="stars-1">
+                        <ReactStars
+                          count={5}
+                          // onChange={ratingChanged}
+                          size={24}
+                          value={element.rating / element.counter}
+                          half={true}
+                          emptyIcon={<i className="far fa-star"></i>}
+                          halfIcon={<i className="fa fa-star-half-alt"></i>}
+                          fullIcon={<i className="fa fa-star"></i>}
+                          color2={"#fbb034"}
+                          edit={false}
+                        />
+                        {state.token?<div class="product-links">
+                        <a href="">
+                          <i class="fa fa-heart"></i>
+                        </a>
+                        <a href="">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </div>:null}
+                      </div>
                   </div>
                 </div>
               );
