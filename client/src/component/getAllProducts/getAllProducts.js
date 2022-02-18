@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-
+import Typewriter from "typewriter-effect";
 import {
   setproducts,
   addproduct,
@@ -119,7 +119,22 @@ const Products = ({ search }) => {
 
   return (
     <div className="all">
-      <h2 className="label">All Products</h2>
+      <h2 className="label"><Typewriter
+          className="Typewriter"
+          options={{
+            autoStart: true,
+           
+            delay: 75,
+          }}
+          onInit={(typewriter) => {
+            typewriter
+              .typeString("All Products")
+
+              .pauseFor(2000)
+
+              .start();
+          }}
+        /></h2>
       <div className="all-products">
         {state.products &&
           state.products
