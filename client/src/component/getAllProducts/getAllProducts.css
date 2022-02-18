@@ -62,7 +62,7 @@
 .productes:hover {
   transform: scale(0.995);
 }
-@media (max-width: 648px) {
+@media (max-width: 484) {
   .all-products {
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@
     box-shadow: 0 2px 7px #dfdfdf;
     margin: 50px auto;
     background: #fafafa;
-    width: 20%;
+    width: 317px;
   }
 }
 .image {
@@ -285,7 +285,7 @@ a {
 
 .product-price {
   font-size: 18px;
-  color: #fbb72c;
+  /* color: #fbb72c; */
   font-weight: 600;
 }
 
@@ -316,4 +316,12 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.old-price{
+  color:red
+}
+.new-price{
+  
+  color:blue
+  
 }
