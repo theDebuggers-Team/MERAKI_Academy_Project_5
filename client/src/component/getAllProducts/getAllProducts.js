@@ -215,15 +215,13 @@ const Products = ({ search }) => {
 
                 <div class="product-card">
                   {/* <div class="badge">Hot</div> */}
-                  <div class="product-tumb"   
-                 
-                  >
+                  <div class="product-tumb">
                     <img src={element.image} alt="" class="image" />
                   </div>
                   <div class="product-details">
                     <span class="product-catagory"> {element.category}</span>
                     <h4>
-                      <a href=""> {element.title.substring(-1,30)}...</a>
+                      <a href=""> {element.title.substring(-1, 30)}...</a>
                     </h4>
                     <p> {element.description.substring(-1, 70)}...</p>
                     <div class="product-bottom-details">
@@ -231,40 +229,41 @@ const Products = ({ search }) => {
                         <small>${element.price - element.price * 0.05}</small>$
                         {element.price}
                       </div>
-                      
-                      
                     </div>
                     <div className="stars-1">
-                        <ReactStars
-                          count={5}
-                          // onChange={ratingChanged}
-                          size={24}
-                          value={element.rating / element.counter}
-                          half={true}
-                          emptyIcon={<i className="far fa-star"></i>}
-                          halfIcon={<i className="fa fa-star-half-alt"></i>}
-                          fullIcon={<i className="fa fa-star"></i>}
-                          color2={"#fbb034"}
-                          edit={false}
-                        />
-                        {state.token?<div class="product-links">
-                        <a href="" 
-                        onClick={() => {
-                                 addToWishList(element.id);
-                                }}
-                        
-                        >
-                          <i class="fa fa-heart"></i>
-                        </a>
-                        <a href=""  
-                         onClick={(e) => {
-                          navigate(`/productDetails/${element.id}`);
-                        }}
-                        >
-                          <i class="fa fa-eye"></i>
-                        </a>
-                      </div>:null}
-                      </div>
+                      <ReactStars
+                        count={5}
+                        // onChange={ratingChanged}
+                        size={24}
+                        value={element.rating / element.counter}
+                        half={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        color2={"#fbb034"}
+                        edit={false}
+                      />
+                      {state.token ? (
+                        <div class="product-links">
+                          <a
+                            href=""
+                            onClick={() => {
+                              addToWishList(element.id);
+                            }}
+                          >
+                            <i class="fa fa-heart"></i>
+                          </a>
+                          <a
+                            href=""
+                            onClick={(e) => {
+                              navigate(`/productDetails/${element.id}`);
+                            }}
+                          >
+                            <i class="fa fa-eye"></i>
+                          </a>
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               );
