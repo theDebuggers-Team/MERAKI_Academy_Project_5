@@ -167,7 +167,12 @@ const WishList = () => {
         // </div>
 
         <div class="product-card">
-          <div class="product-tumb">
+          <div
+            class="product-tumb"
+            onClick={(e) => {
+              navigate(`/productDetails/${element.id}`);
+            }}
+          >
             <img src={element.image} alt="" class="image" />
           </div>
           <div class="product-details">

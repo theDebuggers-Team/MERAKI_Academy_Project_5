@@ -22,7 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ReactStars from "react-rating-stars-component";
 toast.configure();
 
-const Products = ({ search ,setIsFavorite,isFavorite }) => {
+const Products = ({ search, setIsFavorite, isFavorite }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [products, setProducts] = useState("");
@@ -212,10 +212,15 @@ const Products = ({ search ,setIsFavorite,isFavorite }) => {
                 //     ) : null}
                 //   </div>
                 // </div>
-                   //<div class="badge">Hot</div> 
+                //<div class="badge">Hot</div>
 
                 <div class="product-card">
-                  <div class="product-tumb">
+                  <div
+                    class="product-tumb"
+                    onClick={(e) => {
+                      navigate(`/productDetails/${element.id}`);
+                    }}
+                  >
                     <img src={element.image} alt="" class="image" />
                   </div>
                   <div class="product-details">

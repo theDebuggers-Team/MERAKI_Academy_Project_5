@@ -17,7 +17,6 @@ import {
 import Typewriter from "typewriter-effect";
 import ReactStars from "react-rating-stars-component";
 
-
 import { Chat } from "../Chat/Chat";
 // import ChatBotCom from "../ChatBot/ChatBot";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
@@ -162,60 +161,65 @@ const Home = () => {
               // </div>
               <div class="product-card">
                 <div class="badge">New</div>
-                  <div class="product-tumb">
-                    <img src={element.image} alt="" class="image" />
+                <div
+                  class="product-tumb"
+                  onClick={(e) => {
+                    navigate(`/productDetails/${element.id}`);
+                  }}
+                >
+                  <img src={element.image} alt="" class="image" />
+                </div>
+                <div class="product-details">
+                  <span class="product-catagory"> {element.category}</span>
+                  <h4>
+                    <a href=""> {element.title.substring(-1, 30)}...</a>
+                  </h4>
+                  <p> {element.description.substring(-1, 65)}...</p>
+                  <div class="product-bottom-details">
+                    <div class="product-price">
+                      <small className="old-price">
+                        ${element.price - element.price * 0.05}
+                      </small>
+                      <span className="new-price" style={{ fontWeight: 600 }}>
+                        ${element.price}
+                      </span>
+                    </div>
                   </div>
-                  <div class="product-details">
-                    <span class="product-catagory"> {element.category}</span>
-                    <h4>
-                      <a href=""> {element.title.substring(-1, 30)}...</a>
-                    </h4>
-                    <p> {element.description.substring(-1, 65)}...</p>
-                    <div class="product-bottom-details">
-                      <div class="product-price">
-                        <small className="old-price">
-                          ${element.price - element.price * 0.05}
-                        </small>
-                        <span className="new-price" style={{ fontWeight: 600 }}>
-                          ${element.price}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="stars-1">
-                      <ReactStars
-                        count={5}
-                        size={24}
-                        value={element.rating / element.counter}
-                        half={true}
-                        emptyIcon={<i className="far fa-star"></i>}
-                        halfIcon={<i className="fa fa-star-half-alt"></i>}
-                        fullIcon={<i className="fa fa-star"></i>}
-                        color2={"#fbb034"}
-                        edit={false}
-                      />
-                      {state.token ? (
-                        <div class="product-links">
-                          <a href="#">
-                            <i
-                              class="fa fa-heart"
-                              onClick={() => {
-                                addToWishList(element.id);
-                              }}
-                            ></i>
-                          </a>
-                          <a
-                            href="#"
-                            onClick={(e) => {
-                              navigate(`/productDetails/${element.id}`);
+                  <div className="stars-1">
+                    <ReactStars
+                      count={5}
+                      size={24}
+                      value={element.rating / element.counter}
+                      half={true}
+                      emptyIcon={<i className="far fa-star"></i>}
+                      halfIcon={<i className="fa fa-star-half-alt"></i>}
+                      fullIcon={<i className="fa fa-star"></i>}
+                      color2={"#fbb034"}
+                      edit={false}
+                    />
+                    {state.token ? (
+                      <div class="product-links">
+                        <a href="#">
+                          <i
+                            class="fa fa-heart"
+                            onClick={() => {
+                              addToWishList(element.id);
                             }}
-                          >
-                            <i class="fa fa-eye"></i>
-                          </a>
-                        </div>
-                      ) : null}
-                    </div>
+                          ></i>
+                        </a>
+                        <a
+                          href="#"
+                          onClick={(e) => {
+                            navigate(`/productDetails/${element.id}`);
+                          }}
+                        >
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
+              </div>
             );
           })}
       </div>
