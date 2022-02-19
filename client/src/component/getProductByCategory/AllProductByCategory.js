@@ -19,7 +19,6 @@ import { useParams } from "react-router-dom";
 import "./AllProductByCategory.css";
 import ReactStars from "react-rating-stars-component";
 
-
 toast.configure();
 const GetProductsByCategory = () => {
   const [products, setproducts] = useState([]);
@@ -120,7 +119,12 @@ const GetProductsByCategory = () => {
 
         // </div>
         <div class="product-card">
-          <div class="product-tumb">
+          <div
+            class="product-tumb"
+            onClick={(e) => {
+              navigate(`/productDetails/${element.id}`);
+            }}
+          >
             <img src={element.image} alt="" class="image" />
           </div>
           <div class="product-details">
