@@ -14,8 +14,6 @@ const UserProfile = () => {
   const [age, setAge] = useState(0);
   const [country, setcountry] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [users_image, setusers_Image] = useState("");
   const [phone_Number, setphone_number] = useState("");
 
   const dispatch = useDispatch();
@@ -71,7 +69,7 @@ const UserProfile = () => {
   };
   const mapOverUsers = user.map((user) => {
     return (
-      <div className="divContainer">
+      <div className="divContainer" key={user.id}>
         <div className="user-image">
           <div className="user-twit">
             <img className="image-user" src={user.users_image} />

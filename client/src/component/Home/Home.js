@@ -4,28 +4,18 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { BsChatText } from "react-icons/bs";
-import {
-  setproducts,
-  addproduct,
-  updateproduct,
-  deleteproduct,
-  getproductsByState,
-} from "../reducer/products/index";
+import { setproducts } from "../reducer/products/index";
 import Typewriter from "typewriter-effect";
 import ReactStars from "react-rating-stars-component";
 
 import { Chat } from "../Chat/Chat";
-// import ChatBotCom from "../ChatBot/ChatBot";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 const Home = () => {
-  const [chatbot, setChatbot] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -40,7 +30,6 @@ const Home = () => {
       behavior: "smooth",
     });
   };
-  console.log(state.products);
   const products = state.products && state.products.slice(-4);
   const token = state.token;
   const [page, setPage] = useState(1);
@@ -50,7 +39,6 @@ const Home = () => {
       .get(`/product?page=${page}&limit=${limit}`)
       .then((response) => {
         dispatch(setproducts(response.data.results));
-        console.log(state.products);
       })
       .catch((err) => {
         console.log(err);
@@ -86,7 +74,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home">
+    <div  className="home">
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
@@ -125,58 +113,24 @@ const Home = () => {
         {products &&
           products.map((element) => {
             return (
-              // <div className="single-product-1" key={element.id}>
-              //   <div
-              //     className="image"
-              //     onClick={(e) => {
-              //       navigate(`/productDetails/${element.id}`);
-              //       scrollTop();
-              //     }}
-              //   >
-              //     <img src={element.image} className="img" />
-              //   </div>
-              //   <div className="product-description">
-              //     <span className="title">{element.title}</span>
-
-              //     <span className="price"> {element.price} $</span>
-              //     <span>
-              //       {element.description.substring(-1, 20)}
-              //       <p style={{ color: "gray" }}>...more</p>
-              //     </span>
-              //     {state.token ? (
-              //       <div className="button-58">
-              //         <Link
-              //           to="#"
-              //           className="link"
-              //           onClick={() => {
-              //             addToWishList(element.id);
-              //           }}
-              //         >
-              //           {" "}
-              //           <MdOutlineFavoriteBorder /> Favorite
-              //         </Link>
-              //       </div>
-              //     ) : null}
-              //   </div>
-              // </div>
-              <div class="product-card">
-                <div class="badge">New</div>
+              <div key={element.id} className="product-card">
+                <div className="badge">New</div>
                 <div
-                  class="product-tumb"
+                  className="product-tumb"
                   onClick={(e) => {
                     navigate(`/productDetails/${element.id}`);
                   }}
                 >
-                  <img src={element.image} alt="" class="image" />
+                  <img src={element.image} alt="" className="image" />
                 </div>
-                <div class="product-details">
-                  <span class="product-catagory"> {element.category}</span>
+                <div className="product-details">
+                  <span className="product-catagory"> {element.category}</span>
                   <h4>
                     <a href=""> {element.title.substring(-1, 30)}...</a>
                   </h4>
                   <p> {element.description.substring(-1, 65)}...</p>
-                  <div class="product-bottom-details">
-                    <div class="product-price">
+                  <div className="product-bottom-details">
+                    <div className="product-price">
                       <small className="old-price">
                         ${element.price - element.price * 0.05}
                       </small>
@@ -198,10 +152,10 @@ const Home = () => {
                       edit={false}
                     />
                     {state.token ? (
-                      <div class="product-links">
+                      <div className="product-links">
                         <a href="#">
                           <i
-                            class="fa fa-heart"
+                            className="fa fa-heart"
                             onClick={() => {
                               addToWishList(element.id);
                             }}
@@ -213,7 +167,7 @@ const Home = () => {
                             navigate(`/productDetails/${element.id}`);
                           }}
                         >
-                          <i class="fa fa-eye"></i>
+                          <i className="fa fa-eye"></i>
                         </a>
                       </div>
                     ) : null}
@@ -224,21 +178,7 @@ const Home = () => {
           })}
       </div>
       <Categories />
-      {/* <div className="chat-div">
-        <button
-          className="btn-chat"
-          onClick={() => {
-            setChatbot(!chatbot);
-          }}
-        >
-          <BsChatText /> need help ?
-        </button>
-      </div> */}
-      {/* {chatbot ? (
-        <div>
-          <ChatBotCom />
-        </div>
-      ) : null} */}
+
       <div className="chat">
         <Chat />{" "}
       </div>

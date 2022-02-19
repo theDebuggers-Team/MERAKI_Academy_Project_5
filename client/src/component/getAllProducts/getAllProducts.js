@@ -1,38 +1,22 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./getAllProducts.css";
-import jwt_decode from "jwt-decode";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import Typewriter from "typewriter-effect";
-import {
-  setproducts,
-  addproduct,
-  updateproduct,
-  deleteproduct,
-  getproductsByState,
-} from "../reducer/products/index";
-import { BiShowAlt } from "react-icons/bi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { setproducts } from "../reducer/products/index";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import "./styles.css";
 import ReactStars from "react-rating-stars-component";
 toast.configure();
 
-const Products = ({ search, setIsFavorite, isFavorite }) => {
+const Products = ({ search, favourites, setFav }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [products, setProducts] = useState("");
-  // const { search } = useParams();
+
   const [page, setPage] = useState(1);
 
   const [limit, setLimit] = useState(4);
-  const [likes, setLikes] = useState(9);
-
-  const [more, setmore] = useState(false);
 
   const state = useSelector((state) => {
     return {
@@ -41,22 +25,13 @@ const Products = ({ search, setIsFavorite, isFavorite }) => {
       products: state.productReducer.products,
     };
   });
-  // const stars = {
-  //   size: 30,
-  //   value: {0},
-  //   isHalf: true,
-  //   edit: false,
-  //   onChange: (newValue) => {
-  //     console.log(`Example 2: new value is ${newValue}`);
-  //   },
-  // };
+
   const token = state.token;
   const getAllProducts = () => {
     axios
       .get(`/product?page=${page}&limit=${limit}`)
       .then((response) => {
         dispatch(setproducts(response.data.results));
-        console.log(state.products);
       })
       .catch((err) => {
         console.log(err);
@@ -104,18 +79,6 @@ const Products = ({ search, setIsFavorite, isFavorite }) => {
   }, [page, limit]);
 
   /////////////////////////////////////////////////
-  const deleteProduct = (id) => {
-    axios
-      .delete(`/product/delete_1/${id}`, {
-        headers: {
-          Authorization: `Basic ${state.token}`,
-        },
-      })
-      .then((result) => {
-        getAllProducts();
-      })
-      .catch((error) => {});
-  };
 
   return (
     <div className="all">
@@ -153,84 +116,26 @@ const Products = ({ search, setIsFavorite, isFavorite }) => {
             })
             .map((element) => {
               return (
-                // <div className="single-product" key={element.id}>
-                //   <div
-                //     className="image"
-                //     onClick={(e) => {
-                //       navigate(`/productDetails/${element.id}`);
-                //     }}
-                //   >
-                //     <img src={element.image} className="img" />
-                //   </div>
-                //   <div className="product-description">
-                //     <span className="title">
-                //       {/* {element.title.substring(-1, 30) + "..."} */}
-                //       {element.title}
-                //     </span>
-
-                //     <span className="price"> {element.price} $</span>
-                //     <span>
-                //       {element.description.substring(-1, 20)}
-                //       <p
-                //         style={{ color: "gray", cursor: "pointer" }}
-                //         onClick={(e) => {
-                //           setmore(!more);
-                //         }}
-                //       >
-                //         ...more
-                //       </p>
-                //       {more ? <p>{element.description}</p> : null}
-                //     </span>
-                //     <div className="stars-1">
-                //       <ReactStars
-                //         count={5}
-                //         // onChange={ratingChanged}
-                //         size={24}
-                //         value={element.rating / element.counter}
-                //         half={true}
-                //         emptyIcon={<i className="far fa-star"></i>}
-                //         halfIcon={<i className="fa fa-star-half-alt"></i>}
-                //         fullIcon={<i className="fa fa-star"></i>}
-                //         color2={"#fbb034"}
-                //         edit={false}
-                //       />
-                //     </div>
-
-                //     {state.token ? (
-                //       <div className="button-58">
-                //         <Link
-                //           to="#"
-                //           className="link"
-                //           onClick={() => {
-                //             addToWishList(element.id);
-                //           }}
-                //         >
-                //           {" "}
-                //           <MdOutlineFavoriteBorder /> Favorite
-                //         </Link>
-                //       </div>
-                //     ) : null}
-                //   </div>
-                // </div>
-                //<div class="badge">Hot</div>
-
-                <div class="product-card">
+                <div  className="product-card">
                   <div
-                    class="product-tumb"
+                    className="product-tumb"
                     onClick={(e) => {
                       navigate(`/productDetails/${element.id}`);
                     }}
                   >
-                    <img src={element.image} alt="" class="image" />
+                    <img src={element.image} alt="" className="image" />
                   </div>
-                  <div class="product-details">
-                    <span class="product-catagory"> {element.category}</span>
+                  <div className="product-details">
+                    <span className="product-catagory">
+                      {" "}
+                      {element.category}
+                    </span>
                     <h4>
                       <a href=""> {element.title.substring(-1, 30)}...</a>
                     </h4>
                     <p> {element.description.substring(-1, 70)}...</p>
-                    <div class="product-bottom-details">
-                      <div class="product-price">
+                    <div className="product-bottom-details">
+                      <div className="product-price">
                         <small className="old-price">
                           ${element.price - element.price * 0.05}
                         </small>
@@ -252,14 +157,20 @@ const Products = ({ search, setIsFavorite, isFavorite }) => {
                         edit={false}
                       />
                       {state.token ? (
-                        <div class="product-links">
+                        <div className="product-links">
                           <a href="#">
                             <i
-                              class="fa fa-heart"
-                              // style={isFavorite?{color:"#fbb72c"}:null}
+                              className="fa fa-heart"
+                              style={{
+                                color: favourites.includes(element.id)
+                                  ? "red"
+                                  : "null",
+                              }}
                               onClick={() => {
-                                addToWishList(element.id);
-                                // setIsFavorite(true)
+                                if (!favourites.includes(element.id)) {
+                                  addToWishList(element.id);
+                                  setFav([...favourites, element.id]);
+                                }
                               }}
                             ></i>
                           </a>
@@ -269,7 +180,7 @@ const Products = ({ search, setIsFavorite, isFavorite }) => {
                               navigate(`/productDetails/${element.id}`);
                             }}
                           >
-                            <i class="fa fa-eye"></i>
+                            <i className="fa fa-eye"></i>
                           </a>
                         </div>
                       ) : null}

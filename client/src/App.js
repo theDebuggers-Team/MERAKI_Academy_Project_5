@@ -26,7 +26,7 @@ import jwt_decode from "jwt-decode";
 import NotFound from "./component/NOTFound/NotFound";
 function App() {
   const [search, setSearch] = useState("");
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [favourites, setFav] = useState([]);
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const state = useSelector((state) => {
@@ -38,22 +38,11 @@ function App() {
   });
   const decode = state.token && jwt_decode(state.token);
   const role = decode && decode.role;
- 
 
   return (
     <div className="App">
       <Header setSearch={setSearch} />
 
-      {/* <Navbar {...props} /> */}
-
-      {/* <input
-        placeholder="search"
-        className="search"
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
-      ></input> */}
-      {/* <GeoLocate /> */}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/register" element={<Register />} />
@@ -62,11 +51,7 @@ function App() {
           exact
           path="/products"
           element={
-            <Products
-              search={search}
-              isFavorite={isFavorite}
-              setIsFavorite={setIsFavorite}
-            />
+            <Products search={search} favourites={favourites} setFav={setFav} />
           }
         />
         <Route

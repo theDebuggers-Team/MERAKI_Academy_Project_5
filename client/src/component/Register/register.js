@@ -86,126 +86,16 @@ const Register = () => {
   };
 
   return (
-    // <div className="register_form1">
-
-    //   <form
-    //     onSubmit={(e) => {
-    //       e.preventDefault();
-    //       user();
-    //     }}
-    //     className="register_form"
-    //   >
-    //     <div className="Register-form-div">
-    //       <h3 className="title-sign-up">Register</h3>
-
-    //       <input
-    //         className="register-inp"
-    //         placeholder="First Name"
-    //         type="text"
-    //         value={firstName}
-    //         onChange={(e) => {
-    //           setfirstName(e.target.value);
-    //         }}
-    //         required
-    //       />
-    //       <br />
-    //       <input
-    //         className="register-inp"
-    //         placeholder="Last Name"
-    //         type="text"
-    //         value={lastName}
-    //         onChange={(e) => {
-    //           setlastName(e.target.value);
-    //         }}
-    //         required
-    //       />
-    //       <br />
-    //       <input
-    //         className="register-inp"
-    //         placeholder="Age"
-    //         type="number"
-    //         value={age}
-    //         onChange={(e) => {
-    //           setAge(e.target.value);
-    //         }}
-    //         required
-    //       />
-    //       <br />
-    //       <input
-    //         className="register-inp"
-    //         placeholder="Country"
-    //         type="text"
-    //         value={country}
-    //         onChange={(e) => {
-    //           setcountry(e.target.value);
-    //         }}
-    //         required
-    //       />
-    //       <br />
-    //       <input
-    //         className="register-inp"
-    //         placeholder="Email"
-    //         type="email"
-    //         value={email}
-    //         onChange={(e) => {
-    //           setEmail(e.target.value);
-    //         }}
-    //         required
-    //       />
-    //       <br />
-    //       <input
-    //         className="register-inp"
-    //         placeholder="Password"
-    //         type="password"
-    //         value={password}
-    //         onChange={(e) => {
-    //           setPassword(e.target.value);
-    //         }}
-    //         required
-    //       />
-    //       <br />
-    //       <input
-    //         className="register-inp"
-    //         placeholder="Phone Number"
-    //         type="text"
-    //         value={phone_Number}
-    //         onChange={(e) => {
-    //           setphone_number(e.target.value);
-    //         }}
-    //         required
-    //       />
-    //       <br />
-    //       {/* <input
-    //         className="register-inp"
-    //         placeholder="Profile Image"
-    //         type="text"
-    //         value={users_image}
-    //         onChange={(e) => {
-    //           setusers_Image(e.target.value);
-    //         }}
-    //         required
-    //       /> */}
-    //       <abale>Choose Profile Image</abale>
-    //       <br />
-    //       <Cloudinary setImage={setusers_Image} />
-
-    //       <br />
-    //       <br />
-    //       <input type="submit" value="Sign Up" className="register_Submit" />
-    //       <br />
-    //     </div>
-    //   </form>
-    // </div>
-    <div class="card1">
+    <div className="card1">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           user();
         }}
       >
-        <h2 class="title"> Sign Up</h2>
+        <h2 className="title"> Sign Up</h2>
 
-        <div class="email-login">
+        <div className="email-login">
           <label for="First Name">
             {" "}
             <b>First Name</b>
@@ -318,7 +208,7 @@ const Register = () => {
           <Cloudinary setImage={setusers_Image} />
         </div>
 
-        <button class="cta-btn">Sign Up</button>
+        <button className="cta-btn">Sign Up</button>
         <p className="subtitle">
           Already have an account?{" "}
           <Link className="forget-pass" to="/login">

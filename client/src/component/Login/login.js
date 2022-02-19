@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../reducer/login/index";
+import { login } from "../reducer/login/index";
 import "./login.css";
 import { GoogleLogin } from "react-google-login";
 
@@ -20,14 +19,7 @@ const Login = () => {
       isLoggedIn: state.loginReducer.isLoggedIn,
     };
   });
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [age, setAge] = useState(0);
-  const [country, setcountry] = useState("");
-  const [emailGoogle, setEmailGoogle] = useState("");
-  const [passwordGoogle, setPasswordGoogle] = useState("");
-  const [users_image, setusers_Image] = useState("");
-  const [id, setId] = useState("");
+
   ///////////////////////
   const [phone_Number, setphone_number] = useState("");
   const [email, setEmail] = useState("");
@@ -49,7 +41,7 @@ const Login = () => {
     if (email && password) {
       const userLogin = { email, password };
 
-      const myUser = axios
+      axios
         .post(`/user/login`, userLogin)
         .then((response) => {
           if (response.data.success) {
@@ -69,18 +61,7 @@ const Login = () => {
       notifyLoginError();
     }
   };
-  const newUser = {
-    firstName,
-    lastName,
-    age,
-    country,
-    email: emailGoogle,
-    password: passwordGoogle,
-    users_image,
-    role_id: 1,
-    phone_Number,
-    // id,
-  };
+
   const responseGoogle = async (responseGoogle) => {
     console.log(responseGoogle.googleId);
     const newUser = {
@@ -91,9 +72,8 @@ const Login = () => {
       email: responseGoogle.profileObj.email,
       password: "123123",
       users_image: responseGoogle.profileObj.imageUrl,
-      role_id: 1,
+      role_id: 2,
       phone_Number,
-      // id: responseGoogle.googleId + 0,
     };
     await axios
       .post(`/user/register`, newUser)

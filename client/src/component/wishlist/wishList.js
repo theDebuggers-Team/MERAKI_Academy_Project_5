@@ -81,108 +81,23 @@ const WishList = () => {
     wishList &&
     wishList.map((element) => {
       return (
-        // <div className="single-product-wishList" key={element.id}>
-        //   <div
-        //     onClick={(e) => {
-        //       navigate(`/productDetails/${element.id}`);
-        //     }}
-        //   >
-        //     <img src={element.image} className="img-wishlist" />
-        //   </div>
-        //   <div className="product-description-wish">
-        //     <span className="title">
-        //       {element.title.substring(-1, 30) + "..."}
-        //     </span>
-
-        //     <p>{element.description.substring(-1, 70) + "..."}</p>
-        //     <span className="price">Price : {element.price} J.D</span>
-        //     <div className="productes-btn-wish">
-        //       {/* <Link
-        //       to="#"
-        //       style={{
-        //         borderRight: "1px solid rgb(211, 206, 206)",
-        //         paddingLeft: "10%",
-        //       }}
-        //     >
-        //       <BiShowAlt /> Show Product
-        //     </Link>
-        //     <Link
-        //       to="#"
-        //       onClick={(e) => {
-        //         // console.log(cart);
-        //       }}
-        //     >
-        //       {" "}
-        //       <MdOutlineFavoriteBorder /> Favorite
-        //     </Link> */}
-
-        //       <button
-        //         className="btn-btn-remove-wishlist"
-        //         onClick={(e) => {
-        //           deleteProductFromWishList(element.id);
-        //           setsuccessDelete(!successDelete);
-        //         }}
-        //       >
-        //         Remove
-        //       </button>
-        //     </div>
-        //   </div>
-        // </div>
-        // <div className="single-product" key={element.id}>
-        //   <div
-        //     className="image"
-        //     onClick={(e) => {
-        //       navigate(`/productDetails/${element.id}`);
-        //     }}
-        //   >
-        //     <img src={element.image} className="img" />
-        //   </div>
-        //   <div className="product-description">
-        //     <span className="title">
-
-        //       {element.title}
-        //     </span>
-
-        //     <span className="price"> {element.price} $</span>
-        //     <span>
-        //       {element.description.substring(-1, 20)}
-        //       <p style={{ color: "gray" }}>...more</p>
-        //     </span>
-        //     <div className="button-58">
-
-        //       <Link
-        //         to="#"
-        //         className="link"
-        //         onClick={(e) => {
-        //           deleteProductFromWishList(element.id);
-        //           setsuccessDelete(!successDelete);
-        //         }}
-        //       >
-        //         {" "}
-        //         <RiDeleteBin5Line /> Remove
-        //       </Link>
-        //     </div>
-        //   </div>
-
-        // </div>
-
-        <div class="product-card">
+        <div className="product-card" key={element.id}>
           <div
-            class="product-tumb"
+            className="product-tumb"
             onClick={(e) => {
               navigate(`/productDetails/${element.id}`);
             }}
           >
-            <img src={element.image} alt="" class="image" />
+            <img src={element.image} alt="" className="image" />
           </div>
-          <div class="product-details">
-            <span class="product-catagory"> {element.category}</span>
+          <div className="product-details">
+            <span className="product-catagory"> {element.category}</span>
             <h4>
               <a href=""> {element.title.substring(-1, 30)}...</a>
             </h4>
             <p> {element.description.substring(-1, 68)}...</p>
-            <div class="product-bottom-details">
-              <div class="product-price">
+            <div className="product-bottom-details">
+              <div className="product-price">
                 <small className="old-price">
                   ${element.price - element.price * 0.05}
                 </small>
@@ -204,24 +119,24 @@ const WishList = () => {
                 edit={false}
               />
               {state.token ? (
-                <div class="product-links">
-                  <a href="#">
+                <div className="product-links">
+                  <Link to="#">
                     <i
-                      class="fa fa-trash"
+                      className="fa fa-trash"
                       onClick={(e) => {
                         deleteProductFromWishList(element.id);
                         setsuccessDelete(!successDelete);
                       }}
                     ></i>
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="#"
                     onClick={(e) => {
                       navigate(`/productDetails/${element.id}`);
                     }}
                   >
-                    <i class="fa fa-eye"></i>
-                  </a>
+                    <i className="fa fa-eye"></i>
+                  </Link>
                 </div>
               ) : null}
             </div>
