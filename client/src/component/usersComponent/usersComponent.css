@@ -23,6 +23,7 @@ table {
 thead th {
   width: 25%;
   background-color: steelblue;
+  color: rgb(236, 235, 235)
 }
 caption {
   font-weight: bold;
