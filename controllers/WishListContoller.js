@@ -5,7 +5,7 @@ const { connection } = require("../database/db");
 const getWishListByUserId = (req, res) => {
   const userId = req.token.userId;
   const query = `SELECT
-  products.id,title,description,firstName,products.user_id, users.users_image,products.image,category
+  products.id,title,description,price,rating,counter,firstName,products.user_id, users.users_image,products.image,category
   FROM
     wishlist
   INNER JOIN

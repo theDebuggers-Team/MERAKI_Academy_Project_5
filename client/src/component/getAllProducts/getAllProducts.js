@@ -212,9 +212,9 @@ const Products = ({ search }) => {
                 //     ) : null}
                 //   </div>
                 // </div>
+                   //<div class="badge">Hot</div> 
 
                 <div class="product-card">
-                  {/* <div class="badge">Hot</div> */}
                   <div class="product-tumb">
                     <img src={element.image} alt="" class="image" />
                   </div>
@@ -226,14 +226,17 @@ const Products = ({ search }) => {
                     <p> {element.description.substring(-1, 70)}...</p>
                     <div class="product-bottom-details">
                       <div class="product-price">
-                        <small className="old-price">${element.price - element.price * 0.05}</small><span className="new-price" style={{fontWeight:600}}>${element.price}</span>
-                        
+                        <small className="old-price">
+                          ${element.price - element.price * 0.05}
+                        </small>
+                        <span className="new-price" style={{ fontWeight: 600 }}>
+                          ${element.price}
+                        </span>
                       </div>
                     </div>
                     <div className="stars-1">
                       <ReactStars
                         count={5}
-                        // onChange={ratingChanged}
                         size={24}
                         value={element.rating / element.counter}
                         half={true}

@@ -15,6 +15,8 @@ import {
   getproductsByState,
 } from "../reducer/products/index";
 import Typewriter from "typewriter-effect";
+import ReactStars from "react-rating-stars-component";
+
 
 import { Chat } from "../Chat/Chat";
 // import ChatBotCom from "../ChatBot/ChatBot";
@@ -39,10 +41,11 @@ const Home = () => {
       behavior: "smooth",
     });
   };
-  const products = state.products && state.products.slice(0, 4);
+  console.log(state.products);
+  const products = state.products && state.products.slice(-4);
   const token = state.token;
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(100);
   const getAllProducts = () => {
     axios
       .get(`/product?page=${page}&limit=${limit}`)
@@ -123,40 +126,95 @@ const Home = () => {
         {products &&
           products.map((element) => {
             return (
-              <div className="single-product-1" key={element.id}>
-                <div
-                  className="image"
-                  onClick={(e) => {
-                    navigate(`/productDetails/${element.id}`);
-                    scrollTop();
-                  }}
-                >
-                  <img src={element.image} className="img" />
-                </div>
-                <div className="product-description">
-                  <span className="title">{element.title}</span>
+              // <div className="single-product-1" key={element.id}>
+              //   <div
+              //     className="image"
+              //     onClick={(e) => {
+              //       navigate(`/productDetails/${element.id}`);
+              //       scrollTop();
+              //     }}
+              //   >
+              //     <img src={element.image} className="img" />
+              //   </div>
+              //   <div className="product-description">
+              //     <span className="title">{element.title}</span>
 
-                  <span className="price"> {element.price} $</span>
-                  <span>
-                    {element.description.substring(-1, 20)}
-                    <p style={{ color: "gray" }}>...more</p>
-                  </span>
-                  {state.token ? (
-                    <div className="button-58">
-                      <Link
-                        to="#"
-                        className="link"
-                        onClick={() => {
-                          addToWishList(element.id);
-                        }}
-                      >
-                        {" "}
-                        <MdOutlineFavoriteBorder /> Favorite
-                      </Link>
+              //     <span className="price"> {element.price} $</span>
+              //     <span>
+              //       {element.description.substring(-1, 20)}
+              //       <p style={{ color: "gray" }}>...more</p>
+              //     </span>
+              //     {state.token ? (
+              //       <div className="button-58">
+              //         <Link
+              //           to="#"
+              //           className="link"
+              //           onClick={() => {
+              //             addToWishList(element.id);
+              //           }}
+              //         >
+              //           {" "}
+              //           <MdOutlineFavoriteBorder /> Favorite
+              //         </Link>
+              //       </div>
+              //     ) : null}
+              //   </div>
+              // </div>
+              <div class="product-card">
+                  <div class="product-tumb">
+                    <img src={element.image} alt="" class="image" />
+                  </div>
+                  <div class="product-details">
+                    <span class="product-catagory"> {element.category}</span>
+                    <h4>
+                      <a href=""> {element.title.substring(-1, 30)}...</a>
+                    </h4>
+                    <p> {element.description.substring(-1, 65)}...</p>
+                    <div class="product-bottom-details">
+                      <div class="product-price">
+                        <small className="old-price">
+                          ${element.price - element.price * 0.05}
+                        </small>
+                        <span className="new-price" style={{ fontWeight: 600 }}>
+                          ${element.price}
+                        </span>
+                      </div>
                     </div>
-                  ) : null}
+                    <div className="stars-1">
+                      <ReactStars
+                        count={5}
+                        size={24}
+                        value={element.rating / element.counter}
+                        half={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        color2={"#fbb034"}
+                        edit={false}
+                      />
+                      {state.token ? (
+                        <div class="product-links">
+                          <a href="#">
+                            <i
+                              class="fa fa-heart"
+                              onClick={() => {
+                                addToWishList(element.id);
+                              }}
+                            ></i>
+                          </a>
+                          <a
+                            href="#"
+                            onClick={(e) => {
+                              navigate(`/productDetails/${element.id}`);
+                            }}
+                          >
+                            <i class="fa fa-eye"></i>
+                          </a>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
                 </div>
-              </div>
             );
           })}
       </div>
