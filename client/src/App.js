@@ -26,7 +26,7 @@ import jwt_decode from "jwt-decode";
 import NotFound from "./component/NOTFound/NotFound";
 function App() {
   const [search, setSearch] = useState("");
-  const [isFavorite,setIsFavorite] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(false);
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const state = useSelector((state) => {
@@ -58,7 +58,17 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/products" element={<Products search={search} isFavorite={isFavorite} setIsFavorite={setIsFavorite} />} />
+        <Route
+          exact
+          path="/products"
+          element={
+            <Products
+              search={search}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+            />
+          }
+        />
         <Route
           path="/NewProduct"
           element={
@@ -91,12 +101,13 @@ function App() {
         <Route exact path="/users" element={<Users />} />
         <Route exact path="/profile" element={<UserProfile />} />
         <Route
-          exactpath="/panel"
+          path="/panel"
           element={
             role == 1 ? (
               <Panel />
             ) : (
               <div class="admin">
+                unauthorized
                 <img
                   src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
                   style={{ width: "40%", height: " 40%" }}
