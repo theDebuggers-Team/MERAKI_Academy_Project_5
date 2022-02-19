@@ -97,10 +97,10 @@ const Home = () => {
           <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
         </div>
         <div>
-          <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
+          <img src="https://citycenter.jo/image/catalog/revslider_media_folder/gundambanner.jpg" />
         </div>
         <div>
-          <img src="https://citycenter.jo/image/catalog/revslider_media_folder/GAMINGPCBANNER.jpg" />
+          <img src="https://citycenter.jo/image/catalog/revslider_media_folder/HXXBAN.jpg" />
         </div>
       </Carousel>
       <h2 className="label">
