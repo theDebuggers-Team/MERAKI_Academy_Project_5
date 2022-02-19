@@ -79,7 +79,7 @@ const Login = () => {
     users_image,
     role_id: 1,
     phone_Number,
-    id,
+    // id,
   };
   const responseGoogle = async (responseGoogle) => {
     console.log(responseGoogle.googleId);
@@ -93,7 +93,7 @@ const Login = () => {
       users_image: responseGoogle.profileObj.imageUrl,
       role_id: 1,
       phone_Number,
-      id: responseGoogle.googleId + 0,
+      // id: responseGoogle.googleId + 0,
     };
     await axios
       .post(`/user/register`, newUser)
