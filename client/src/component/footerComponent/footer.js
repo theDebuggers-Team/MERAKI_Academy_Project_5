@@ -123,9 +123,9 @@ const Footer = ({ search }) => {
       <div class="footer-content">
         <h3>Open Sooq</h3>
         <p>
-          Raj Template is a blog website where you will find great tutorials on
-          web design and development. Here each tutorial is beautifully
-          described step by step with the required source code.
+        OpenSooq is the number one Arabic classifieds platform in the Middle 
+        East with over 2 billion monthly pageviews. We connect buyers and 
+        sellers in real-time to be able to sell, buy, get a service or a job.
         </p>
         <ul class="socials">
           <li>
@@ -162,15 +162,15 @@ const Footer = ({ search }) => {
       </div>
       <div class="footer-bottom">
         <p>
-          copyright &copy; <Link to="#">Foolish Developer</Link>{" "}
+          copyright &copy; <Link to="#">Open Sooq</Link>{" "}
         </p>
         <div class="footer-menu">
           <ul class="f-menu">
             <li>
-              <Link to="#">Home</Link>
+              <Link to="/" onClick={scrollTop}>Home</Link>
             </li>
             <li>
-              <Link to="#">About</Link>
+              <Link to="/about">About</Link>
             </li>
             <li>
               <Link to="#">Contact</Link>

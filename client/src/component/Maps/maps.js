@@ -38,14 +38,14 @@ class Demo1 extends Component {
     // console.log("PROPS: ", this.props);
     // console.log(latitude);
     return (
-      <div>
+      <div className="map-container">
         <Map
           google={this.props.google}
           zoom={14}
           style={mapStyles}
           initialCenter={{
-            lat: this.props.lat,
-            lng: this.props.long,
+            lat: "30.2415872",
+            lng: "35.4648064",
           }}
         >
           <Marker onClick={this.onMarkerClick} name={"This is test name"} />

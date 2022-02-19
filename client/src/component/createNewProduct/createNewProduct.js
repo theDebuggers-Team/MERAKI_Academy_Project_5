@@ -183,6 +183,7 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
         <div className="location">
           <p>Insert product location</p>
           <input
+            style={{ height: "33px" }}
             placeholder="Latitude"
             value={lat}
             onChange={(e) => {
@@ -190,6 +191,7 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
             }}
           />
           <input
+            style={{ height: "33px", marginLeft: "10px", marginRight: "10px" }}
             placeholder="Longitude"
             value={long}
             onChange={(e) => {
@@ -201,7 +203,7 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
           </button>
         </div>
         <input type="checkbox" className="checkbox" id="tac" checked />
-        <label for="tac">OpenSooq take 30% from your total sell</label>
+        <label for="tac">OpenSooq take 5% from your total sell</label>
         <div className="buttons">
           <button
             className="btn"
