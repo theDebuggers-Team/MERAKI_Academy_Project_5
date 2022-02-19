@@ -37,8 +37,8 @@ function App() {
     };
   });
   const decode = state.token && jwt_decode(state.token);
-  const role = decode && decode.roleId;
-  console.log(role, decode);
+  const role = decode && decode.role;
+ 
 
   return (
     <div className="App">
@@ -145,7 +145,7 @@ function App() {
 
         <Route exact path="/contactUs" element={<ContactUs />} />
         <Route exact path="/terms" element={<Terms />} />
-        <Route path="*" exact={true} element={<NotFound/>} />
+        <Route path="*" exact={true} element={<NotFound />} />
       </Routes>
 
       <Footer />
