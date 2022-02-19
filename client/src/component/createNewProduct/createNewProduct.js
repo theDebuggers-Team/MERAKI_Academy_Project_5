@@ -1,12 +1,10 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./createNewProduct.css";
 import Swal from "sweetalert2";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Cloudinary from "../Cloudinary/Cloudinary";
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import jwt_decode from "jwt-decode";
 const NewProduct = ({ lat, setLat, long, setLong }) => {
   const [title, setTitle] = useState("");
@@ -14,9 +12,7 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
   const [price, setPrice] = useState();
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
-  const [message, setMessage] = useState("");
 
-  // const [token, setToken] = useState("");
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -25,10 +21,8 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
     };
   });
   const token = state.token;
-  console.log(token);
   const decode = state.token && jwt_decode(state.token);
   let user_id = (decode && decode.userId) || (decode && decode.sub);
-  console.log(decode);
   const createNewProduct = () => {
     axios
       .post(
@@ -64,59 +58,15 @@ const NewProduct = ({ lat, setLat, long, setLong }) => {
 
   const geoLocate = async () => {
     await navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords.latitude);
-      //   location = position;
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
-
-    console.log(lat);
   };
 
   ////////////////////////////////////////////cloudinary////////////////////////////////
 
-  // return (
-  //   <div>
-  //     <input
-  //       placeholder="title"
-  //       onChange={(e) => {
-  //         setTitle(e.target.value);
-  //       }}
-  //     ></input>
-  //     <input
-  //       placeholder="description"
-  //       onChange={(e) => {
-  //         setDescription(e.target.value);
-  //       }}
-  //     ></input>
-  //     <input
-  //       placeholder="Price"
-  //       onChange={(e) => {
-  //         setPrice(e.target.value);
-  //       }}
-  //     ></input>
-  //     {/* <input
-  //       placeholder="ImageURL"
-  //       onChange={(e) => {
-  //         setImage(e.target.value);
-  //       }}
-  //     ></input> */}
-  //     <Cloudinary setImage={setImage} />
-  //     <input
-  //       placeholder="Category"
-  //       onChange={(e) => {
-  //         setCategory(e.target.value);
-  //       }}
-  //     ></input>
-  //     <button onClick={createNewProduct} classNameName="create">
-  //       Create Product
-  //     </button>
-  //     <p>{message}</p>
-  //   </div>
-  // );
   return (
     <>
-      {/* <img src="img/dark-logo.png" className="logo" alt=""/> */}
       <span className="create">Create Product</span>
 
       <div className="form">

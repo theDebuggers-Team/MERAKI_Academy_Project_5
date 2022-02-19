@@ -21,17 +21,12 @@ const Users = () => {
   });
   /////////////////////////////
   const getAllUsers = () => {
-    console.log("get");
     axios
       .get(`/user`)
       .then((response) => {
-        console.log(response.data.results);
         setUsers(response.data.results);
-        console.log(users);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   ///////////////////////////// this function is to delete all comments reated to the user we need to delete from admin panel

@@ -16,7 +16,7 @@ const register = async (req, res) => {
     password,
     role_id,
     users_image,
-    id
+    id,
   } = req.body;
   const hashPassword = await bcrypt.hash(password, 10);
   const query = `insert into users (firstName,lastName,age,country,email,phone_Number,password,role_id,users_image) values (?,?,?,?,?,?,?,?,?)`;
@@ -31,7 +31,6 @@ const register = async (req, res) => {
     hashPassword,
     role_id,
     users_image,
-    
   ];
 
   connection.query(query, data, (err, result) => {

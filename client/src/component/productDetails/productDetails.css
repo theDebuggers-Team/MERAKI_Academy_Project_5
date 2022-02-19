@@ -181,8 +181,8 @@ img {
   border-color: transparent;
   color: #fff;
 }
-.card{
-  background-color: #fafafa
+.card {
+  background-color: #fafafa;
 }
 
 @media screen and (min-width: 992px) {
@@ -239,7 +239,7 @@ img {
   align-items: center;
   justify-content: center;
   padding: 3%;
-  background-color: #ffff
+  background-color: #ffff;
 }
 
 .single-comment {
@@ -276,19 +276,11 @@ img {
   box-sizing: border-box;
 }
 
-a {
-  color: #03658c;
-  text-decoration: none;
-}
+
 
 ul {
   list-style-type: none;
 }
-
-/* body {
-  font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
-  background: #dee1e3;
-} */
 
 /** ====================
  *comment
@@ -677,12 +669,8 @@ ul {
   align-items: center;
   font-family: "Poppins", sans-serif;
 }
-.commentslabel{
+.commentslabel {
   display: flex;
-    margin-top: 6%;
-    font-size: 2em;
+  margin-top: 6%;
+  font-size: 2em;
 }
-/* .Typewriter-com{
-  font-size: 10em;
-  font-weight: 3em;
-} */

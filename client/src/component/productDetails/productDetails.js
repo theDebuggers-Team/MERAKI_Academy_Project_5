@@ -27,23 +27,18 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
 
   //// decode tokenizer
   const decode = state.token && jwt_decode(state.token);
-  console.log(decode);
   const navigate = useNavigate();
 
   const [productDetails, setproductDetails] = useState([]);
-  const [showComment, setshowComment] = useState(false);
   const [commentsOnProduct, setcommentsOnProduct] = useState([]);
   const [createComment, setcreateComment] = useState("");
   const [updatedComment, setupdatedComment] = useState("");
-  const [isupdated, setisupdated] = useState(false);
   const [sucesscomment, setsucesscomment] = useState(false);
   const [updating, setUpdating] = useState(false);
-  const [usePhone, setusePhone] = useState([]);
   ////////////////////////////////
   const [rating, setRating] = useState(0);
   const token = state.token;
   const { id } = useParams();
-  console.log(updatedComment);
   //////////////////////////////
   const getProductById = () => {
     axios
@@ -52,11 +47,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
         setproductDetails(response.data.results);
         setLat(response.data.results[0].latitude);
         setLong(response.data.results[0].longitude);
-        // console.log(response.data.results);
-        // console.log(lat);
-        // console.log(long);
-        // console.log(typeof lat);
-        // console.log(typeof long);
+
         setIsLoading(false);
       })
       .catch((err) => {
@@ -72,7 +63,6 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       .get(`/comment/product/${id}`)
       .then((response) => {
         setcommentsOnProduct(response.data.results);
-        console.log(response.data);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -268,28 +258,28 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
     ? commentsOnProduct.map((comment) => {
         return (
           <>
-            <ul id="comments-list" class="comments-list">
+            <ul id="comments-list" className="comments-list" c>
               <li>
-                <div class="comment-main-level">
-                  <div class="comment-avatar">
+                <div className="comment-main-level">
+                  <div className="comment-avatar">
                     <img src={comment.users_image} alt="" />
                   </div>
 
-                  <div class="comment-box">
-                    <div class="comment-head">
-                      <h6 class="comment-name">
+                  <div className="comment-box">
+                    <div className="comment-head">
+                      <h6 className="comment-name">
                         {comment.firstName + " " + comment.lastName}
                       </h6>
                       <span>{comment.publish_date}</span>
                       {comment.user_id == decode.userId ? (
                         <i
-                          class="fa fa-edit"
+                          className="fa fa-edit"
                           onClick={(e) => setUpdating(!updating)}
                         ></i>
                       ) : null}
                       {comment.user_id == decode.userId ? (
                         <i
-                          class="fa fa-trash"
+                          className="fa fa-trash"
                           onClick={(e) => {
                             deleteComment(comment.id);
                             setsucesscomment(!sucesscomment);
@@ -297,9 +287,9 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                         ></i>
                       ) : null}
                     </div>
-                    <div class="comment-content">
+                    <div className="comment-content">
                       {updating ? (
-                        <div class="comment-content">
+                        <div className="comment-content">
                           <textarea
                             className="comment-body"
                             placeholder="Write Your Commment ..."
@@ -308,7 +298,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                               setupdatedComment(e.target.value);
                             }}
                           />
-                          <div class="comment-btns">
+                          <div className="comment-btns">
                             <button
                               className="btn"
                               onClick={(e) => {
@@ -346,7 +336,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
     productDetails &&
     productDetails.map((element) => {
       return (
-        <div className="card-wrapper">
+        <div className="card-wrapper" key={element.id}>
           <div className="card">
             <div className="product-imgs">
               <div className="img-display">
@@ -372,37 +362,36 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
               </div>
               <div className="img-select">
                 <div className="img-item">
-                  <a href="#" data-id="1">
+                  <Link to="#" data-id="1">
                     <img
                       src={element.image}
                       alt={element.category + " image"}
-                      alt="shoe image"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div className="img-item">
-                  <a href="#" data-id="2">
+                  <Link to="#" data-id="2">
                     <img
                       src={element.image}
                       alt={element.category + " image"}
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div className="img-item">
-                  <a href="#" data-id="3">
+                  <Link to="#" data-id="3">
                     <img
                       src={element.image}
                       alt={element.category + " image"}
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div className="img-item">
-                  <a href="#" data-id="4">
+                  <Link to="#" data-id="4">
                     <img
                       src={element.image}
                       alt={element.category + " image"}
                     />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -459,7 +448,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                 </p>
                 <ul>
                   <li>
-                    <i class="fa-solid fa-circle-check"></i>Available:{" "}
+                    <i className="fa-solid fa-circle-check"></i>Available:{" "}
                     <span>in stock</span>
                   </li>
                   <li>
@@ -537,21 +526,21 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
               <Link to="/map">see location</Link>
               <div className="social-links">
                 <p>Share At: </p>
-                <a href="#">
+                <Link to="#">
                   <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="#">
                   <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="#">
                   <i className="fab fa-instagram"></i>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="#">
                   <i className="fab fa-whatsapp"></i>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="#">
                   <i className="fab fa-pinterest"></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -564,11 +553,11 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       {isLoading ? (
         <div className="all-loader">
           {" "}
-          <div class="loader-container">
-            <div class="dot dot-1"></div>
-            <div class="dot dot-2"></div>
-            <div class="dot dot-3"></div>
-            <div class="dot dot-4"></div>
+          <div className="loader-container">
+            <div className="dot dot-1"></div>
+            <div className="dot dot-2"></div>
+            <div className="dot dot-3"></div>
+            <div className="dot dot-4"></div>
           </div>
         </div>
       ) : (
@@ -596,31 +585,31 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   }}
                 />
               </div>
-              <div class="comments-container">
+              <div className="comments-container">
                 {allComments}
-                <ul id="comments-list" class="comments-list">
+                <ul id="comments-list" className="comments-list">
                   <li>
                     {state.token ? (
-                      <div class="comment-main-level">
-                        <div class="comment-avatar">
+                      <div className="comment-main-level">
+                        <div className="comment-avatar">
                           <img
                             src={
                               (decode && decode.image) ||
                               (decode && decode.picture)
                             }
-                            alt=""
+                            alt="user-image"
                           />
                         </div>
 
-                        <div class="comment-box">
-                          <div class="comment-head">
-                            <h6 class="comment-name">
+                        <div className="comment-box">
+                          <div className="comment-head">
+                            <h6 className="comment-name">
                               {decode && decode.firstName
                                 ? decode.firstName + " " + decode.lastName
                                 : decode.given_name + " " + decode.family_name}
                             </h6>
                           </div>
-                          <div class="comment-content">
+                          <div className="comment-content">
                             <textarea
                               className="comment-body"
                               placeholder="Write Your Commment ..."
@@ -628,7 +617,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                                 setcreateComment(e.target.value);
                               }}
                             />
-                            <div class="comment-btns">
+                            <div className="comment-btns">
                               <button
                                 className="btn"
                                 onClick={(e) => {

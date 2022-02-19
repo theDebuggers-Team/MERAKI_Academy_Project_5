@@ -9,14 +9,13 @@
   height: 100%;
   gap: 5%;
   padding: 0% 3%;
-  /* height: 69vh; */
 }
 .img {
   height: 220px;
   width: 100%;
   border-radius: 1%;
 }
-.single-product {
+/* .single-product {
   display: flex;
   flex-direction: column;
   width: 18%;
@@ -26,9 +25,9 @@
   background-color: white;
   border-radius: 1%;
   margin-bottom: 3%;
-}
+} */
 
-.product-description {
+/* .product-description {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -37,31 +36,31 @@
   margin-top: 37px;
   padding: 10px;
   justify-content: space-between;
-}
+} */
 
-.productes-btn a {
+/* .productes-btn a {
   display: flex;
   flex-direction: row;
   text-decoration: none;
   align-items: center;
   justify-content: center;
   width: 40%;
-}
-.button-58 {
+} */
+/* .button-58 {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 5%;
   width: 100%;
   border-top: 1px solid rgb(211, 206, 206);
-}
-.price {
+} */
+/* .price {
   text-align: center;
   color: gray;
-}
-.productes:hover {
+} */
+/* .productes:hover {
   transform: scale(0.995);
-}
+} */
 @media (max-width: 484) {
   .all-products {
     display: flex;
@@ -73,10 +72,10 @@
     gap: 10px;
     height: 100%;
   }
-  .single-product {
+  /* .single-product {
     min-width: 100%;
     min-height: 60vh;
-  }
+  } */
   .product-card {
     position: relative;
     box-shadow: 0 2px 7px #dfdfdf;
@@ -90,7 +89,7 @@
   height: 100%;
 }
 
-.button-58 {
+/* .button-58 {
   align-items: center;
   background-image: linear-gradient(-180deg, #4267b3 0%, #466ebe 100%);
 
@@ -137,7 +136,7 @@
   .button-58 {
     min-width: 100%;
   }
-}
+} */
 .link {
   text-decoration: none;
   font-family: "Poppins", sans-serif;
@@ -200,9 +199,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
-a {
-  text-decoration: none;
-}
+
 .product-card {
   width: 380px;
   position: relative;
@@ -228,7 +225,6 @@ a {
   align-items: center;
   justify-content: center;
   height: 300px;
-  /* padding: 50px; */
   background: white;
 }
 
@@ -285,7 +281,6 @@ a {
 
 .product-price {
   font-size: 18px;
-  /* color: #fbb72c; */
   font-weight: 600;
 }
 
@@ -317,11 +312,9 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-.old-price{
-  color:red
+.old-price {
+  color: red;
 }
-.new-price{
-  
-  color:#466ebe
-  
+.new-price {
+  color: #466ebe;
 }

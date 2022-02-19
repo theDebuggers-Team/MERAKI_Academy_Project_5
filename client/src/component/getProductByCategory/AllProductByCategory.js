@@ -1,18 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setproducts,
-  addproduct,
-  updateproduct,
-  deleteproduct,
-  getproductsByState,
-} from "../reducer/products/index";
-import { BiShowAlt } from "react-icons/bi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { useSelector } from "react-redux";
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
@@ -68,7 +58,6 @@ const GetProductsByCategory = () => {
         toast.error(err.response.data.message, {
           position: toast.POSITION.TOP_RIGHT,
         });
-        console.log(err);
       });
   };
 
@@ -80,61 +69,23 @@ const GetProductsByCategory = () => {
     products &&
     products.map((element) => {
       return (
-        // <div className="single-product" key={element.id}>
-        //   <div
-        //     className="image"
-        //     onClick={(e) => {
-        //       navigate(`/productDetails/${element.id}`);
-        //     }}
-        //   >
-        //     <img src={element.image} className="img" />
-        //   </div>
-        //   <div className="product-description">
-        //     <span className="title">
-
-        //       {element.title}
-        //     </span>
-
-        //     <span className="price"> {element.price} $</span>
-        //     <span>
-        //       {element.description.substring(-1, 20)}
-        //       <p style={{ color: "gray" }}>...more</p>
-        //     </span>
-        //     {state.token ? (
-        //       <div className="button-58">
-
-        //         <Link
-        //           to="#"
-        //           className="link"
-        //           onClick={() => {
-        //             addToWishList(element.id);
-        //           }}
-        //         >
-        //           {" "}
-        //           <MdOutlineFavoriteBorder /> Favorite
-        //         </Link>
-        //       </div>
-        //     ) : null}
-        //   </div>
-
-        // </div>
-        <div class="product-card">
+        <div className="product-card" key={element.id}>
           <div
-            class="product-tumb"
+            className="product-tumb"
             onClick={(e) => {
               navigate(`/productDetails/${element.id}`);
             }}
           >
-            <img src={element.image} alt="" class="image" />
+            <img src={element.image} alt="" className="image" />
           </div>
-          <div class="product-details">
-            <span class="product-catagory"> {element.category}</span>
+          <div className="product-details">
+            <span className="product-catagory"> {element.category}</span>
             <h4>
               <a href=""> {element.title.substring(-1, 30)}...</a>
             </h4>
             <p> {element.description.substring(-1, 65)}...</p>
-            <div class="product-bottom-details">
-              <div class="product-price">
+            <div className="product-bottom-details">
+              <div className="product-price">
                 <small className="old-price">
                   ${element.price - element.price * 0.05}
                 </small>
@@ -156,23 +107,23 @@ const GetProductsByCategory = () => {
                 edit={false}
               />
               {state.token ? (
-                <div class="product-links">
-                  <a href="#">
+                <div className="product-links">
+                  <Link to="#">
                     <i
-                      class="fa fa-heart"
+                      className="fa fa-heart"
                       onClick={() => {
                         addToWishList(element.id);
                       }}
                     ></i>
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="#"
                     onClick={(e) => {
                       navigate(`/productDetails/${element.id}`);
                     }}
                   >
-                    <i class="fa fa-eye"></i>
-                  </a>
+                    <i className="fa fa-eye"></i>
+                  </Link>
                 </div>
               ) : null}
             </div>
