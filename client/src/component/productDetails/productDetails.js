@@ -281,17 +281,21 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                         {comment.firstName + " " + comment.lastName}
                       </h6>
                       <span>{comment.publish_date}</span>
-                      <i
-                        class="fa fa-edit"
-                        onClick={(e) => setUpdating(!updating)}
-                      ></i>
-                      <i
-                        class="fa fa-trash"
-                        onClick={(e) => {
-                          deleteComment(comment.id);
-                          setsucesscomment(!sucesscomment);
-                        }}
-                      ></i>
+                      {comment.user_id == decode.userId ? (
+                        <i
+                          class="fa fa-edit"
+                          onClick={(e) => setUpdating(!updating)}
+                        ></i>
+                      ) : null}
+                      {comment.user_id == decode.userId ? (
+                        <i
+                          class="fa fa-trash"
+                          onClick={(e) => {
+                            deleteComment(comment.id);
+                            setsucesscomment(!sucesscomment);
+                          }}
+                        ></i>
+                      ) : null}
                     </div>
                     <div class="comment-content">
                       {updating ? (
