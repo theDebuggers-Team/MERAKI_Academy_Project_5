@@ -357,12 +357,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                         alt: "Wristwatch by Ted Baker London",
                         isFluidWidth: true,
                         src: element.image,
-                        srcSet: [
-                          // `${element.image} 687w`,
-                          // `${element.image} 770w`,
-                          // `${element.image} 861w`,
-                          // `${element.image} 955w`,
-                        ].join(", "),
+                        srcSet: [].join(", "),
                         sizes: "(min-width: 480px) 30vw, 80vw",
                       },
                       largeImage: {

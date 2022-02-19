@@ -22,7 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ReactStars from "react-rating-stars-component";
 toast.configure();
 
-const Products = ({ search }) => {
+const Products = ({ search ,setIsFavorite,isFavorite }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [products, setProducts] = useState("");
@@ -251,8 +251,10 @@ const Products = ({ search }) => {
                           <a href="#">
                             <i
                               class="fa fa-heart"
+                              // style={isFavorite?{color:"#fbb72c"}:null}
                               onClick={() => {
                                 addToWishList(element.id);
+                                // setIsFavorite(true)
                               }}
                             ></i>
                           </a>
