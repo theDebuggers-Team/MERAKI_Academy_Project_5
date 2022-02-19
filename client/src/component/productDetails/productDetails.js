@@ -61,7 +61,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       })
       .catch((err) => {
         toast.error(err.response && err.response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
@@ -76,7 +76,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
@@ -104,7 +104,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       })
       .then((result) => {
         toast.success(result.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
@@ -123,17 +123,17 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       .then((response) => {
         if (response.data.affectedRows === 1) {
           toast.success(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         } else {
           toast.error(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         }
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
@@ -149,17 +149,17 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       .then((response) => {
         if (response.data.affectedRows === 1) {
           toast.success(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         } else {
           toast.error(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         }
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
@@ -175,17 +175,17 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
       .then((response) => {
         if (response.data.affectedRows === 1) {
           toast.success(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         } else {
           toast.error(response.data.message, {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
           });
         }
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
