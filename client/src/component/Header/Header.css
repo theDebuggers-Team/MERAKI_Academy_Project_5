@@ -14,6 +14,13 @@
   flex-direction: row;
   gap: 2%;
 }
+
+.logo150{
+  height:5rem;
+  padding-top: 1rem;
+  width: 11rem;
+  
+}
 .nav {
   display: flex;
   flex-direction: row;
