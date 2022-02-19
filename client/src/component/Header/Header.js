@@ -62,7 +62,7 @@ const Header = ({ setSearch }) => {
         <div className="logo1">
           <header>
             <h1>
-              <span>Open Sooq</span>
+              <span><img className="logo150" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/700/6847839700_90fc40b9-c25e-42c0-aec4-5b7749b4ff89.png?cb=1645274609"/></span>
             </h1>
           </header>
         </div>
