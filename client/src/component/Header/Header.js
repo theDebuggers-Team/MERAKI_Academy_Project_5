@@ -60,11 +60,11 @@ const Header = ({ setSearch }) => {
     <div className="main-header">
       <div className="header1">
         <div className="logo1">
-          <header>
+          <div>
             <h1>
-              <span><img className="logo150" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/700/6847839700_90fc40b9-c25e-42c0-aec4-5b7749b4ff89.png?cb=1645274609"/></span>
-            </h1>
-          </header>
+              <span><img className="logo150" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/899/6848090899_b19bf8cc-f43d-46ca-8443-eb794500bdcc.png?cb=1645278934"/></span>
+           </h1>
+          </div>
         </div>
         <div className="container">
           <div className="box">
