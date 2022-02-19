@@ -40,25 +40,24 @@ thead {
   letter-spacing: 2%;
 }
 
-tbody tr:nth-child(odd) th{
-  background-color: #4267B3 ;
+tbody tr:nth-child(odd) th {
+  background-color: #4267b3;
   text-align: center;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #7287b3 ;
+  background-color: #7287b3;
 }
 tbody th {
-  background-color: #4267B3 !important;
+  background-color: #4267b3 !important;
   color: #fff;
   text-align: left;
 }
 tbody tr:nth-child(even) th {
   background-color: #838deb !important;
-  text-align: center
+  text-align: center;
 }
 
-
-.delete-use-admin{
+.delete-use-admin {
   cursor: pointer;
 }
