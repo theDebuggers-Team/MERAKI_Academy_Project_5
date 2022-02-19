@@ -145,7 +145,7 @@ function App() {
 
         <Route exact path="/contactUs" element={<ContactUs />} />
         <Route exact path="/terms" element={<Terms />} />
-        <Route path="*" exact={true} element={NotFound} />
+        <Route path="*" exact={true} element={<NotFound/>} />
       </Routes>
 
       <Footer />
