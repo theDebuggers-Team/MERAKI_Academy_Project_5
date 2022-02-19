@@ -161,6 +161,7 @@ const Home = () => {
               //   </div>
               // </div>
               <div class="product-card">
+                <div class="badge">New</div>
                   <div class="product-tumb">
                     <img src={element.image} alt="" class="image" />
                   </div>
