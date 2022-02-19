@@ -75,7 +75,7 @@ const GetProductsByCategory = () => {
 
   useEffect(() => {
     getProductsByCategory();
-  }, []);
+  }, [category]);
 
   const getAllProductsCategories =
     products &&
