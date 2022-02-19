@@ -486,7 +486,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   Add to favorite
                 </button>
 
-                {element.user_id == decode && decode.userId ? (
+                {element.user_id ==  decode.userId ? (
                   <button
                     type="button"
                     className="btn"
@@ -498,7 +498,7 @@ const ProductDetails = ({ lat, setLat, long, setLong }) => {
                   </button>
                 ) : null}
 
-                {element.user_id == decode && decode.userId ? (
+                {element.user_id ==  decode.userId ? (
                   <button type="button" className="btn9">
                     {(e) => {
                       Swal.fire({
