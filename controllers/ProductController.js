@@ -99,7 +99,7 @@ const getAnProductById = (req, res) => {
 const getAnProductByCategory = (req, res) => {
   const category = req.query.category;
 
-  const query = `SELECT  title,description,firstName,user_id, users.users_image,products.image,category FROM users INNER JOIN products ON users.id=products.user_id where products.category = ? and products.is_deleted = 0`;
+  const query = `SELECT title,description,firstName,user_id,rating,counter,price,users.users_image,products.image,category FROM users INNER JOIN products ON users.id=products.user_id where products.category = ? and products.is_deleted = 0`;
 
   const data = [category];
   connection.query(query, data, (err, result) => {
