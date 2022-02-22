@@ -121,11 +121,19 @@ const Footer = ({ search }) => {
 
     <footer>
       <div class="footer-content">
-        <h3>Open Sooq</h3>
+        <h3>
+          {" "}
+          <span>
+            <img
+              className="logo150"
+              src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/899/6848090899_b19bf8cc-f43d-46ca-8443-eb794500bdcc.png?cb=1645278934"
+            />
+          </span>
+        </h3>
         <p>
-        OpenSooq is the number one Arabic classifieds platform in the Middle 
-        East with over 2 billion monthly pageviews. We connect buyers and 
-        sellers in real-time to be able to sell, buy, get a service or a job.
+          Sooq is the number one Arabic classifieds platform in the Middle
+          East with over 2 billion monthly pageviews. We connect buyers and
+          sellers in real-time to be able to sell, buy, get a service or a job.
         </p>
         <ul class="socials">
           <li>
@@ -167,7 +175,9 @@ const Footer = ({ search }) => {
         <div class="footer-menu">
           <ul class="f-menu">
             <li>
-              <Link to="/" onClick={scrollTop}>Home</Link>
+              <Link to="/" onClick={scrollTop}>
+                Home
+              </Link>
             </li>
             <li>
               <Link to="/about">About</Link>
