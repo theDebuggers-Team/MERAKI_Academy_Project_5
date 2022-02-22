@@ -23,6 +23,12 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 
 const Navigation = () => {
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 3000,
+      behavior: "smooth",
+    });
+  };
   const categoriesarr = [
     {
       name: "Cars",
@@ -58,7 +64,8 @@ const Navigation = () => {
             navigate(`/getAllProductByCategory/${category.name}`);
           }}
         >
-          {category.image}{category.name}
+          {category.image}
+          {category.name}
         </span>
       </>
     );
@@ -114,21 +121,30 @@ const Navigation = () => {
               <AiFillAppstore /> Products
             </Link>{" "}
           </li>
-          <div className="dropdown">
-            <li
-              className="option"
-              onClick={(e) => {
-                closeMobileMenu();
-              }}
-            >
-              <Link to="#" className="link" onClick={handleClickCate}>
-                <BiCategoryAlt /> Categories
+          {click ? (
+            <li className="option" onClick={closeMobileMenu}>
+              <Link to="/" className="link"
+              onClick={scrollTop}>
+                <AiFillAppstore /> Categories
               </Link>{" "}
             </li>
-            {clickCate ? (
-              <div className="dropdown-menu1">{mapOverCategories}</div>
-            ) : null}
-          </div>
+          ) : (
+            <div className="dropdown">
+              <li
+                className="option"
+                onClick={(e) => {
+                  closeMobileMenu();
+                }}
+              >
+                <Link to="#" className="link" onClick={handleClickCate}>
+                  <BiCategoryAlt /> Categories
+                </Link>{" "}
+              </li>
+              {clickCate ? (
+                <div className="dropdown-menu1">{mapOverCategories}</div>
+              ) : null}
+            </div>
+          )}
           {token ? (
             <li className="option" onClick={closeMobileMenu}>
               <Link to="/wishList" className="link">

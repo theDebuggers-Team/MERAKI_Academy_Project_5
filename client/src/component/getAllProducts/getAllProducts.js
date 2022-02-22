@@ -116,7 +116,7 @@ const Products = ({ search, favourites, setFav }) => {
             })
             .map((element) => {
               return (
-                <div  className="product-card">
+                <div className="product-card">
                   <div
                     className="product-tumb"
                     onClick={(e) => {
