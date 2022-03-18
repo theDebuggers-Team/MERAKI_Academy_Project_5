@@ -125,7 +125,7 @@ const Header = ({ setSearch }) => {
                 {state.isLoggedIn ? (
                   <span className="user-list">
                     <Link
-                      to="#"
+                   
                       className="link-user"
                       to="/login"
                       onClick={() => {
